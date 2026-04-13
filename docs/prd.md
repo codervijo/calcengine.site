@@ -1,7 +1,55 @@
-# PRD — calcengine
+# PRD — calcengine.site
 
-## Phase 1 — <phase name>
-- [ ] <feature>
+## Phase 1 — MVP Calculators (Live)
+- [x] OpenAI Cost Calculator *(API / LLM)*
+- [x] JSON Size Calculator *(Data)*
+- [x] API Rate Limit Calculator *(Backend)*
+- [x] Base64 Size Calculator *(Data)*
 
-## Phase 2 — <phase name>
-- [ ] <feature>
+## Phase 2 — Calculator Expansion (50 tools)
+- [ ] JWT Size Calculator *(Security)*
+- [ ] UUID Collision Probability Calculator *(Backend)*
+- [ ] Cron Expression Calculator *(Scheduling)*
+- [ ] Cron Next Run Calculator *(Scheduling)*
+- [ ] Latency Budget Calculator *(Performance)*
+- [ ] Cache Hit Rate Calculator *(Performance)*
+- [ ] QPS Calculator *(Backend)*
+- [ ] Throughput Calculator *(Backend)*
+- [ ] Concurrency Calculator *(Backend)*
+- [ ] Bandwidth Cost Calculator *(Cloud)*
+- [ ] Storage Cost Calculator *(Cloud)*
+- [ ] Data Transfer Cost Calculator *(Cloud)*
+- [ ] Payload Size Calculator *(API)*
+- [ ] HTTP Request Size Calculator *(API)*
+- [ ] Regex Performance Calculator *(Dev Tools)*
+- [ ] SQL Query Cost Estimator *(Database)*
+- [ ] Pagination Performance Calculator *(Database)*
+- [ ] Index Size Calculator *(Database)*
+- [ ] Thread Pool Size Calculator *(Backend)*
+- [ ] Worker Queue Throughput Calculator *(Backend)*
+- [ ] Retry Backoff Calculator *(Backend)*
+- [ ] Timeout Calculator *(Backend)*
+- [ ] API Response Time Estimator *(Performance)*
+- [ ] Compression Ratio Calculator *(Data)*
+- [ ] File Upload Time Calculator *(Network)*
+- [ ] Download Speed Calculator *(Network)*
+- [ ] TLS Handshake Time Estimator *(Network)*
+- [ ] CDN Cost Calculator *(Cloud)*
+- [ ] Lambda Cost Calculator *(Cloud)*
+- [ ] Kubernetes Resource Calculator *(DevOps)*
+- [ ] Pod Capacity Calculator *(DevOps)*
+- [ ] CPU Usage Estimator *(Performance)*
+- [ ] Memory Usage Calculator *(Performance)*
+- [ ] Disk IOPS Calculator *(Storage)*
+- [ ] RAID Capacity Calculator *(Storage)*
+- [ ] Cache TTL Impact Calculator *(Performance)*
+- [ ] Event Processing Rate Calculator *(Backend)*
+- [ ] Message Queue Delay Calculator *(Backend)*
+- [ ] Batch Processing Time Calculator *(Backend)*
+- [ ] API Pagination Limit Calculator *(API)*
+- [ ] Token Bucket Rate Limit Calculator *(Backend)*
+- [ ] Leaky Bucket Rate Calculator *(Backend)*
+- [ ] Hash Collision Probability Calculator *(Security)*
+- [ ] Encryption Overhead Calculator *(Security)*
+- [ ] Session Size Calculator *(Backend)*
+- [ ] Log Storage Cost Calculator *(Cloud)*
