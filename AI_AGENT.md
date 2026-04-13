@@ -103,3 +103,153 @@ Map output to `CalculatorMeta` fields:
 | Example | `example` |
 | FAQ | `faq[]` |
 | Related calculators | `relatedSlugs[]` |
+
+---
+
+## SEO Prompt — Full Cluster (Main + How-To + Formula Pages)
+
+Use this prompt to generate a complete 3-page SEO cluster per calculator. Run once per new calculator added.
+
+```
+You are an expert SEO strategist and technical writer.
+
+Your task is to fully optimize a calculator page and generate additional SEO pages to maximize organic traffic.
+
+INPUT:
+- Calculator name: {{calculator_name}}
+- Primary keyword: {{primary_keyword}}
+- Secondary keywords: {{secondary_keywords}}
+- What it calculates: {{description}}
+
+GOAL:
+Create a complete SEO cluster:
+1. Main calculator page
+2. "How to calculate" page
+3. "Formula explained" page
+
+-----------------------------------
+PART 1 — MAIN CALCULATOR PAGE
+-----------------------------------
+
+Generate:
+
+1. SEO Title:
+- Must start with primary keyword
+- Add: "(Free + Accurate 2026)"
+
+2. Meta Description:
+- 140–160 characters
+- Include primary keyword naturally
+
+3. H1:
+- Same or very close to title
+
+4. Intro (150–250 words):
+- Explain the problem simply
+- Include keyword early
+- Mention why the calculator is useful
+
+5. How It Works:
+- Step-by-step bullets
+- Clear and concise
+
+6. Formula Section:
+- Show formula
+- Explain each variable simply
+
+7. Example:
+- Real-world example
+- Step-by-step calculation
+
+8. How to Use This Calculator:
+- Simple instructions
+
+9. FAQ (5 questions):
+- Include long-tail keywords
+- Keep answers concise
+
+10. Internal Links Section:
+Suggest 3 related calculators (relevant to input)
+
+-----------------------------------
+PART 2 — "HOW TO CALCULATE" PAGE
+-----------------------------------
+
+Generate a full SEO article:
+
+- Title: "How to Calculate {{calculator_name}}"
+- Meta description
+- 800–1200 words
+- Include:
+  - Step-by-step explanation
+  - Formula
+  - Example
+  - Common mistakes
+  - FAQ (5 questions)
+
+IMPORTANT:
+- Do NOT duplicate content from main page
+- Write more educational and detailed
+
+-----------------------------------
+PART 3 — "FORMULA EXPLAINED" PAGE
+-----------------------------------
+
+Generate a full SEO article:
+
+- Title: "{{calculator_name}} Formula Explained"
+- Meta description
+- 800–1200 words
+- Include:
+  - Deep explanation of formula
+  - Variable breakdown
+  - Variations of formula
+  - Practical use cases
+  - FAQ (5 questions)
+
+IMPORTANT:
+- Focus on clarity + technical depth
+- Avoid repeating content from other sections
+
+-----------------------------------
+STYLE RULES
+-----------------------------------
+
+- Clear, concise, developer-friendly tone
+- Avoid fluff and generic statements
+- Use headings (H2/H3)
+- Use short paragraphs
+- Optimize for featured snippets
+- Make content practical and actionable
+
+-----------------------------------
+OUTPUT FORMAT
+-----------------------------------
+
+Return output in 3 clearly separated sections:
+
+1. MAIN PAGE
+2. HOW TO CALCULATE PAGE
+3. FORMULA PAGE
+
+Each section must include:
+- Title
+- Meta description
+- Structured content
+
+-----------------------------------
+IMPORTANT
+-----------------------------------
+
+- Content must be SEO-optimized but natural
+- Prioritize clarity over verbosity
+- Avoid repetition across sections
+- Make it ready to paste into a website
+```
+
+Map cluster output to routes:
+| Section | Route pattern | Purpose |
+|---|---|---|
+| Main page | `/calculators/{{slug}}` | Primary calculator page, maps to `CalculatorMeta` |
+| How-to page | `/calculators/{{slug}}/how-to-calculate` | Educational long-form, targets "how to calculate X" |
+| Formula page | `/calculators/{{slug}}/formula` | Technical depth, targets "X formula explained" |
