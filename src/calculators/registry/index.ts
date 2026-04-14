@@ -7,6 +7,7 @@ import { cronNextRunCalculator } from '../definitions/cron-next-run-calculator';
 import { latencyBudgetCalculator } from '../definitions/latency-budget-calculator';
 import { cacheHitRateCalculator } from '../definitions/cache-hit-rate-calculator';
 import { qpsCalculator } from '../definitions/qps-calculator';
+import { throughputCalculator } from '../definitions/throughput-calculator';
 
 const calculators: CalculatorDefinition[] = [
   openaiCostCalculator,
@@ -17,6 +18,7 @@ const calculators: CalculatorDefinition[] = [
   latencyBudgetCalculator,
   cacheHitRateCalculator,
   qpsCalculator,
+  throughputCalculator,
 ];
 
 export function getAllCalculators(): CalculatorDefinition[] {
