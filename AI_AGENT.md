@@ -19,6 +19,303 @@
 - <leave blank for user to fill>
 
 ---
+# CalcEngine — AI_AGENTS.md
+
+## 🎯 Project Goal
+
+Build a scalable, SEO-first platform of engineering calculators.
+
+Primary objective:
+- Rank for long-tail “calculator” keywords
+- Generate organic traffic via many small tools
+- Scale to 50–100+ calculators efficiently
+
+---
+
+## 🧠 Core Strategy
+
+### Key principle:
+> Volume + structure + internal linking = SEO growth
+
+We win by:
+- Shipping many calculator pages
+- Targeting long-tail keywords
+- Linking all pages together
+- Using static HTML (Astro) for SEO
+
+---
+
+## 🏗️ Architecture Overview
+
+- Framework: Astro (SSG)
+- Interactive layer: React (islands)
+- Content: Schema-driven (calculator registry)
+- Routing: Static generation via `[slug].astro`
+
+---
+
+## 📦 Calculator System Design
+
+Each calculator is defined via a schema:
+
+- slug
+- title
+- description
+- keywords
+- category
+- introHtml
+- howItWorksHtml
+- formulaHtml
+- exampleHtml
+- howToUseHtml
+- faqHtml
+- whyItMattersHtml
+- related calculators
+- component name
+
+👉 Adding a new calculator should NOT require new routing or page files.
+
+---
+
+## 🤖 AI Agents
+
+---
+
+### 1. Idea Generator Agent
+
+**Purpose:**
+Find new calculator ideas with SEO potential
+
+**Input:**
+- niche (e.g. dev, API, performance)
+
+**Output:**
+- calculator name
+- primary keyword
+- search intent
+- difficulty estimate
+
+**Rules:**
+- prioritize long-tail keywords
+- avoid high competition terms
+- focus on real dev pain
+
+---
+
+### 2. Content Generator Agent
+
+**Purpose:**
+Generate full SEO content for each calculator
+
+**Output:**
+- title
+- meta description
+- intro
+- how it works
+- formula
+- example
+- FAQ
+- related calculators
+
+**Rules:**
+- 800–1200 words equivalent
+- no fluff
+- developer-friendly tone
+- optimized for snippets
+
+---
+
+### 3. Code Generator Agent
+
+**Purpose:**
+Generate calculator logic
+
+**Output:**
+- React component (TSX)
+- simple inputs + outputs
+- no heavy dependencies
+
+**Rules:**
+- must be deterministic
+- fast and lightweight
+- handle invalid input gracefully
+
+---
+
+### 4. Registry Agent
+
+**Purpose:**
+Add new calculators to system
+
+**Actions:**
+- update `calculators.ts`
+- register component
+- add metadata
+- link related calculators
+
+**Rules:**
+- no duplicate slugs
+- ensure internal linking coverage
+
+---
+
+### 5. SEO Agent
+
+**Purpose:**
+Optimize pages for ranking
+
+**Checks:**
+- keyword in title
+- meta description present
+- H1 present
+- intro length sufficient
+- FAQ present
+- internal links ≥ 3
+
+---
+
+### 6. Internal Linking Agent
+
+**Purpose:**
+Ensure SEO graph connectivity
+
+**Rules:**
+- each page links to 3–5 others
+- prioritize related calculators
+- maintain bidirectional linking when possible
+
+---
+
+### 7. Batch Content Agent
+
+**Purpose:**
+Scale content generation
+
+**Input:**
+- list of calculator titles
+
+**Output:**
+- full SEO content for all calculators
+
+**Behavior:**
+- runs in batch (not manual)
+- outputs structured content for ingestion
+
+---
+
+### 8. Promotion Agent
+
+**Purpose:**
+Drive initial traffic + backlinks
+
+**Channels:**
+- Reddit (r/webdev, r/programming)
+- Dev.to
+- Hacker News
+
+**Style:**
+- “built a free tool”
+- no spam
+- focus on usefulness
+
+---
+
+## 📈 SEO Rules (Non-negotiable)
+
+1. Each page must target:
+   - “[keyword] calculator”
+   - “how to calculate [keyword]”
+   - “[keyword] formula”
+
+2. Each page must include:
+   - intro
+   - tool
+   - how it works
+   - formula
+   - example
+   - FAQ
+   - related links
+
+3. URLs must be: /calculators/{slug}
+
+---
+
+## ⚡ Workflow
+
+### Phase 1 (0–2 weeks)
+- Launch 10 calculators
+- Focus:
+  - OpenAI cost
+  - JSON size
+  - rate limits
+  - encoding
+
+---
+
+### Phase 2 (2–4 weeks)
+- Expand to 25+ calculators
+- Add supporting pages:
+  - “how to calculate”
+  - “formula explained”
+
+---
+
+### Phase 3 (1–2 months)
+- Scale to 50–100 calculators
+- Add:
+  - programmatic variations
+  - cloud cost tools
+  - performance tools
+
+---
+
+## 🚀 Success Metrics
+
+- Indexed pages (GSC)
+- impressions
+- clicks
+- top 20 keyword rankings
+- tool usage
+
+---
+
+## ⚠️ Constraints
+
+- Do NOT overbuild UI
+- Do NOT block on perfection
+- Ship fast, iterate later
+- Prioritize SEO over design
+
+---
+
+## 🏁 Definition of Done
+
+A calculator is complete when:
+- page is generated
+- SEO content is added
+- internal links exist
+- route works
+- page is indexed
+
+---
+
+## 🔥 Key Insight
+
+> CalcEngine is not a tool.
+
+> It is a **search engine surface area generator**
+
+---
+
+## 🧭 Long-Term Vision
+
+- 100+ calculators
+- multiple niches (dev, finance, auto)
+- strong internal linking graph
+- high organic traffic
+
+👉 Become:
+**“Omni for calculators”**
 
 ## SEO Prompt — Calculator Page Content
 

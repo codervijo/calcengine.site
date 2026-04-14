@@ -53,3 +53,91 @@
 - [ ] Encryption Overhead Calculator *(Security)*
 - [ ] Session Size Calculator *(Backend)*
 - [ ] Log Storage Cost Calculator *(Cloud)*
+
+## SEO
+
+### Audit Date
+2026-04-13
+
+### Strengths (preserve)
+- Individual calculator pages — titles, descriptions, content, and heading structure are all excellent
+- All pages have 400+ words with rich FAQ sections — no thin content
+- Robots.txt and sitemap correctly configured (`@astrojs/sitemap`, `public/robots.txt`)
+- Font loading optimised (preconnect + `display=swap`)
+- `BreadcrumbList` JSON-LD is complete and correct on all detail pages
+- Slugs are keyword-rich and consistent (e.g. `api-rate-limit-calculator`)
+- ARIA labels used comprehensively throughout all pages
+- OG images generated at build time via Satori (`/og/[slug].png`, `/og/home.png`)
+
+---
+
+### Issues by Severity
+
+#### Critical
+
+| # | Issue | Location | Impact |
+|---|-------|----------|--------|
+| C1 | **Meta description too short** — Homepage 119 chars, /calculators 99 chars (target 150–160) | `src/pages/index.astro:38`, `src/pages/calculators/index.astro:33` | Weak SERP snippets |
+| C2 | **JSON-LD missing `image` fields** — `WebApplication` and `Organization` schemas have no image/logo URL | `src/seo/jsonLd.ts` | Rich results display no visuals |
+| C3 | **No Privacy Policy or Terms pages** — Legal requirement in GDPR/CCPA jurisdictions | — | Legal liability |
+
+#### High
+
+| # | Issue | Location | Impact |
+|---|-------|----------|--------|
+| H1 | **`/calculators` links not crawlable** — All calculator `<a>` tags live inside `<SearchableListIsland client:only="react">`, so Googlebot sees no outbound links from the collection page | `src/pages/calculators/index.astro:49` | Calculator pages discovered only via homepage; collection page carries no link equity |
+| H2 | **No About page** — No author or company credibility signals anywhere on the site | — | E-E-A-T penalty |
+
+#### Medium
+
+| # | Issue | Location |
+|---|-------|----------|
+| M1 | **No category archive pages** — `/calculators/ai`, `/calculators/api`, etc. don't exist; category chips on homepage all link to `/calculators` | `src/pages/index.astro:100` |
+| M2 | **Footer has zero links** — No Privacy, Terms, About, social, or internal navigation | `src/layouts/SiteFooter.astro` |
+| M3 | **`WebSite` schema missing `SearchAction`** — Prevents Google sitelinks searchbox in SERPs | `src/pages/index.astro:19–25` |
+| M4 | **`Organization` schema minimal** — Missing `logo` and `sameAs` (social media) | `src/seo/jsonLd.ts:48–57` |
+
+#### Low
+
+| # | Issue |
+|---|-------|
+| L1 | Homepage title has no action verb ("Calculate", "Try free") |
+| L2 | No HTML sitemap page (XML sitemap exists — crawlers are fine) |
+| L3 | `keywords` meta not passed on homepage or `/calculators` index (minor SEO value) |
+
+---
+
+### Metadata Status
+
+| Page | Title | Title length | Description | Desc length | Canonical | OG image |
+|------|-------|-------------|-------------|-------------|-----------|----------|
+| `/` | CalcEngine — Engineering Calculators for Real Systems | 59 ✓ | Needs expansion | 119 ✗ | ✓ | ✓ |
+| `/calculators` | All Free Engineering Calculators — API, Data & Performance Tools | 67 ✓ | Needs expansion | 99 ✗ | ✓ | ✓ |
+| `/calculators/[slug]` | `{title} — CalcEngine` | ~68 ✓ | Action-oriented, keyword-rich | 150+ ✓ | ✓ | ✓ |
+| `/404` | 404 — Page Not Found \| CalcEngine | 34 ✓ | Appropriate | 45 ✓ | — | — |
+
+---
+
+### JSON-LD Schema Coverage
+
+| Schema | Pages | Status | Missing fields |
+|--------|-------|--------|----------------|
+| `FAQPage` | Calculator detail pages | ✓ Correct | `datePublished`, `dateModified` |
+| `WebApplication` | All pages | ✓ Good | **`image`** |
+| `BreadcrumbList` | Calculator detail pages | ✓ Excellent | — |
+| `Organization` | Homepage | Minimal | **`logo`**, `sameAs` |
+| `CollectionPage` | `/calculators` | ✓ Good | — |
+| `WebSite` | Homepage | Basic | **`potentialAction` (SearchAction)** |
+
+---
+
+### Priority Fix Order
+
+1. **C1** — Expand homepage + `/calculators` meta descriptions to 150–160 chars
+2. **H1** — Add a static `<ul>` of calculator links alongside the React island on `/calculators`
+3. **C3** — Create `/privacy` and `/terms` pages; link from footer
+4. **C2** — Add `image`/`logo` to `WebApplication` and `Organization` JSON-LD using OG image URLs
+5. **H2** — Create `/about` page with company/founder credibility signals
+6. **M2** — Expand footer: link to Privacy, Terms, About, and key calculators
+7. **M3** — Add `SearchAction` to `WebSite` schema
+8. **M1** — Create category archive pages (`/calculators/[category]`) — largest effort
