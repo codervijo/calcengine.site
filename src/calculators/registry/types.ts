@@ -34,6 +34,8 @@ export interface CalculatorMeta {
   /** Override for the "Worked Example" H2 heading */
   examplesTitle?: string;
   example: string;
+  /** Structured examples rendered as separate labelled blocks. Takes precedence over `example`. */
+  examples?: Array<{ title: string; body: string }>;
   /** Optional pricing/reference table rendered between example and tips */
   pricingTable?: PricingRow[];
   /** Override for the pricing table H2 heading */

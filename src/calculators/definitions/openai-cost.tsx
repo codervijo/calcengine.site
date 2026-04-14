@@ -50,7 +50,21 @@ const meta: CalculatorMeta = {
   howItWorks: '1. Find your model\'s input and output price per 1M tokens on the OpenAI pricing page.\n2. Count your prompt tokens — system message + user message combined. Use tiktoken or the API\'s usage field.\n3. Count your output tokens — the length of the model\'s response.\n4. Plug both counts and both prices into the calculator above.\n5. Multiply out: (input tokens ÷ 1,000,000) × input price + (output tokens ÷ 1,000,000) × output price.',
   formula: 'Total Cost = (Input Tokens ÷ 1,000,000) × Input Price\n           + (Output Tokens ÷ 1,000,000) × Output Price\n\nInput Tokens  — tokens in your prompt (system + user message)\nOutput Tokens — tokens in the model\'s response\nInput Price   — cost per 1M input tokens (e.g. $2.50 for GPT-4o)\nOutput Price  — cost per 1M output tokens (e.g. $10.00 for GPT-4o)',
   examplesTitle: 'Example Cost Calculations',
-  example: 'Example 1 — GPT-4o chat call\n  Input: 2,000 tokens @ $2.50/1M  = $0.005000\n  Output: 800 tokens @ $10.00/1M  = $0.008000\n  Total: $0.013000 per call → $13.00 per 1,000 calls\n\nExample 2 — GPT-4o mini at scale\n  Input: 1,500 tokens @ $0.15/1M  = $0.000225\n  Output: 500 tokens @ $0.60/1M   = $0.000300\n  Total: $0.000525 per call → $0.525 per 1,000 calls\n\nExample 3 — o1 reasoning task\n  Input: 5,000 tokens @ $15.00/1M = $0.075000\n  Output: 3,000 tokens @ $60.00/1M = $0.180000\n  Total: $0.255000 per call — use sparingly for complex tasks',
+  example: '',
+  examples: [
+    {
+      title: 'Example 1 — GPT-4o chat call',
+      body: 'Input:  2,000 tokens  ×  $2.50 / 1M  =  $0.005000\nOutput:   800 tokens  × $10.00 / 1M  =  $0.008000\n                                        ─────────────\nTotal per call: $0.013000   →   $13.00 per 1,000 calls',
+    },
+    {
+      title: 'Example 2 — GPT-4o mini at scale (high-volume classification)',
+      body: 'Input:  1,500 tokens  ×  $0.15 / 1M  =  $0.000225\nOutput:   500 tokens  ×  $0.60 / 1M  =  $0.000300\n                                        ─────────────\nTotal per call: $0.000525   →   $0.525 per 1,000 calls   →   ~$15.75 / month at 30k calls/day',
+    },
+    {
+      title: 'Example 3 — o1 reasoning task (use sparingly)',
+      body: 'Input:  5,000 tokens  × $15.00 / 1M  =  $0.075000\nOutput: 3,000 tokens  × $60.00 / 1M  =  $0.180000\n                                        ─────────────\nTotal per call: $0.255000   →   $255.00 per 1,000 calls',
+    },
+  ],
   pricingTableTitle: 'OpenAI Pricing by Model',
   pricingTable: [
     { model: 'GPT-4o',        inputPer1M: '$2.50',  outputPer1M: '$10.00', notes: 'Best quality/cost balance' },
@@ -81,7 +95,7 @@ const meta: CalculatorMeta = {
     },
     {
       question: 'Does this calculator work for Claude, Gemini, or other LLMs?',
-      answer: 'Yes — any provider using per-million-token billing works with this formula. Enter that model\'s input and output price and the result is accurate. Anthropic Claude 3.5 Sonnet, Google Gemini 1.5 Pro, and Mistral all use the same billing structure.',
+      answer: 'Yes — any provider using per-million-token billing works with this formula. Enter that model\'s input and output price and the result is accurate. Anthropic Claude 3.5 Sonnet, Google Gemini 1.5 Pro, and Mistral all use the same billing structure. If you\'re hitting provider rate limits alongside cost concerns, use the <a href="/calculators/api-rate-limit-calculator">API Rate Limit Calculator</a> to model your throughput.',
     },
     {
       question: 'What is the cheapest OpenAI model for production use?',
@@ -89,10 +103,14 @@ const meta: CalculatorMeta = {
     },
     {
       question: 'How do I count tokens before making an API call?',
-      answer: 'Use OpenAI\'s tiktoken Python library or the js-tiktoken npm package. Both let you tokenise a prompt string locally and get an exact count before sending the request. You can also check the usage field in the API response after each call to audit actual consumption.',
+      answer: 'Use OpenAI\'s tiktoken Python library or the js-tiktoken npm package. Both let you tokenise a prompt string locally and get an exact count before sending the request. You can also check the usage field in the API response after each call to audit actual consumption. To estimate how large your JSON request payload will be in bytes before sending, try the <a href="/calculators/json-size-calculator">JSON Size Calculator</a>.',
+    },
+    {
+      question: 'How much does OpenAI charge per 1,000 tokens?',
+      answer: 'GPT-4o costs $0.0025 per 1,000 input tokens and $0.01 per 1,000 output tokens. GPT-4o mini costs $0.00015 per 1,000 input tokens and $0.0006 per 1,000 output tokens. To get the per-thousand rate for any model, divide the per-million price by 1,000 — the pricing table above lists all current models.',
     },
   ],
-  relatedSlugs: ['api-rate-limit-calculator', 'json-size-calculator'],
+  relatedSlugs: ['api-rate-limit-calculator', 'json-size-calculator', 'base64-size-calculator'],
 };
 
 export const openaiCostCalculator: CalculatorDefinition = { meta, Component: OpenAICostUI };

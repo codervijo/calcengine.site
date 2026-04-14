@@ -112,7 +112,18 @@ const jsonLd = [
       <h2 class="text-xl sm:text-2xl font-semibold text-gray-900 dark:text-gray-100 mb-3">
         {meta.examplesTitle ?? 'Worked Example'}
       </h2>
-      <p class="text-gray-600 dark:text-gray-400 leading-relaxed whitespace-pre-line">{meta.example}</p>
+      {meta.examples && meta.examples.length > 0 ? (
+        <div class="space-y-3">
+          {meta.examples.map((ex) => (
+            <div class="rounded-lg border border-gray-200 dark:border-gray-800 bg-gray-50 dark:bg-gray-900/50 p-4">
+              <h3 class="text-sm font-semibold text-gray-800 dark:text-gray-200 mb-2">{ex.title}</h3>
+              <pre class="text-sm text-gray-600 dark:text-gray-400 font-mono whitespace-pre-wrap leading-relaxed">{ex.body}</pre>
+            </div>
+          ))}
+        </div>
+      ) : (
+        <p class="text-gray-600 dark:text-gray-400 leading-relaxed whitespace-pre-line">{meta.example}</p>
+      )}
     </section>
 
     <!-- Pricing table (optional) -->
@@ -175,8 +186,8 @@ const jsonLd = [
             {item.question}
             <span class="text-gray-400 text-lg ml-3 select-none">+</span>
           </summary>
-          <div class="px-4 pb-4 pt-2 text-sm text-gray-600 dark:text-gray-400 leading-relaxed border-t border-gray-100 dark:border-gray-800">
-            {item.answer}
+          <div class="px-4 pb-4 pt-2 text-sm text-gray-600 dark:text-gray-400 leading-relaxed border-t border-gray-100 dark:border-gray-800 [&_a]:text-[#1565c0] dark:[&_a]:text-[#42a5f5] [&_a]:underline">
+            <Fragment set:html={item.answer} />
           </div>
         </details>
       ))}
