@@ -80,3 +80,4 @@ After creating the file, register the export in `src/calculators/registry/index.
 - [ ] `faq` has exactly 5 items with 40–80 word answers
 - [ ] `lastUpdated` is set
 - [ ] `relatedSlugs` has at least 2 entries
+- [ ] `howItWorksImage` SVG created at `public/images/calculators/{slug}-how-it-works.svg` and referenced in meta
