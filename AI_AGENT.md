@@ -64,13 +64,40 @@ pnpm test       # Run Vitest suite
 ```
 Or via Makefile from parent directory: `make run`
 
+## Golden page
+
+**`/calculators/openai-cost-calculator`** is the canonical reference for all calculator pages.
+Live URL: https://www.calcengine.site/calculators/openai-cost-calculator
+Source:   `src/calculators/definitions/openai-cost.tsx`
+
+Every new and existing calculator page must match this standard:
+
+| Element | Requirement |
+|---------|-------------|
+| H1 + tagline | Short (1–2 sentences), above the fold, before the calculator |
+| Calculator UI | Immediately below the tagline — always above the fold |
+| `lastUpdated` | Shown below the calculator as a freshness signal |
+| `intro` | 2–4 paragraphs of SEO prose, rendered **below** the calculator |
+| `howItWorksTitle` | Keyword-rich H2, e.g. "How to Calculate X" |
+| `howItWorksImage` | SVG flow diagram at `public/images/calculators/{slug}-how-it-works.svg` |
+| `howItWorks` | Numbered steps (plain text, `\n`-separated) |
+| Formula | Monospace block with variable definitions |
+| `examples` array | 3 separate labelled blocks (not one text blob) |
+| `pricingTable` | Include when the calculator involves costs/pricing |
+| `tips` | 4–6 actionable bullets in a Tips section |
+| FAQ | Exactly 5 items, 40–80 word answers, HTML links allowed in answers |
+| Related cards | 3 `relatedSlugs` minimum |
+
+When in doubt, open `src/calculators/definitions/openai-cost.tsx` and mirror its structure exactly.
+
 ## Key conventions
 - **Adding a new calculator:** create one file in `src/calculators/definitions/`, export a `CalculatorDefinition` object with `meta` + `Component`. No routing changes needed — `getStaticPaths` picks it up automatically.
 - **Import types only:** all TypeScript interfaces/types must use `import type` — value imports of type-only symbols cause Astro hydration errors at runtime.
 - **MUI components must be `client:only="react"`** — Emotion CSS-in-JS is incompatible with Astro SSR. Never put MUI in a `.astro` file.
 - **Dark mode:** persisted in `localStorage` key `calcengine-theme`, applied via `dark` class on `<html>`. Cross-island sync via `CustomEvent('calcengine-theme', { detail: 'light'|'dark' })`.
 - **Static-first:** all content (breadcrumbs, H1, intro, FAQ, related links) is rendered as static Astro HTML. Only the interactive widget is a React island.
-- **SEO content fields:** `intro`, `howItWorks`, `formula`, `example`, `faq[]` in `CalculatorMeta` must be substantive (400+ words total, 5 FAQ items minimum).
+- **SEO content fields:** `intro`, `howItWorks`, `formula`, `examples[]`, `faq[]`, `tips[]` in `CalculatorMeta` must be substantive. Mirror the golden page structure.
+- **DO NOT run** npm, pnpm, astro, vite, or any build/dev commands when editing calculator definitions. Edit source files only.
 
 ## Out of scope / don't touch
 - (fill in as needed)

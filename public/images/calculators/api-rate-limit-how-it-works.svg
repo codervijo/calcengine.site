@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 180" width="680" height="180" font-family="Inter, system-ui, sans-serif" role="img" aria-label="API rate limit calculation flow: RPS multiplied by duration in seconds equals total requests">
+  <defs>
+    <marker id="arr" markerWidth="8" markerHeight="8" refX="7" refY="3" orient="auto">
+      <path d="M0,0 L0,6 L8,3 z" fill="#94a3b8"/>
+    </marker>
+    <filter id="shadow" x="-5%" y="-10%" width="110%" height="130%">
+      <feDropShadow dx="0" dy="1" stdDeviation="2" flood-color="#00000018"/>
+    </filter>
+  </defs>
+
+  <!-- RPS box -->
+  <rect x="20" y="58" width="140" height="52" rx="8" fill="#eff6ff" stroke="#bfdbfe" stroke-width="1.5" filter="url(#shadow)"/>
+  <text x="90" y="79" text-anchor="middle" font-size="12" fill="#1e40af" font-weight="600">Requests / Second</text>
+  <text x="90" y="97" text-anchor="middle" font-size="11" fill="#3b82f6">e.g. 100 RPS</text>
+
+  <!-- × symbol -->
+  <text x="196" y="91" text-anchor="middle" font-size="20" fill="#64748b" font-weight="300">×</text>
+
+  <!-- Duration box -->
+  <rect x="212" y="58" width="140" height="52" rx="8" fill="#eff6ff" stroke="#bfdbfe" stroke-width="1.5" filter="url(#shadow)"/>
+  <text x="282" y="79" text-anchor="middle" font-size="12" fill="#1e40af" font-weight="600">Duration (seconds)</text>
+  <text x="282" y="97" text-anchor="middle" font-size="11" fill="#3b82f6">e.g. 3,600 s (1 hr)</text>
+
+  <!-- unit conversion hint -->
+  <text x="282" y="128" text-anchor="middle" font-size="9" fill="#94a3b8">min × 60  |  hr × 3,600</text>
+
+  <!-- Arrow -->
+  <line x1="352" y1="84" x2="412" y2="84" stroke="#94a3b8" stroke-width="1.5" marker-end="url(#arr)"/>
+  <text x="382" y="75" text-anchor="middle" font-size="9.5" fill="#64748b">=</text>
+
+  <!-- Total Requests box -->
+  <rect x="412" y="58" width="248" height="52" rx="8" fill="#1565c0" filter="url(#shadow)"/>
+  <text x="536" y="79" text-anchor="middle" font-size="12" fill="rgba(255,255,255,0.85)" font-weight="500">Total Allowed Requests</text>
+  <text x="536" y="99" text-anchor="middle" font-size="16" fill="white" font-weight="700">360,000</text>
+</svg>

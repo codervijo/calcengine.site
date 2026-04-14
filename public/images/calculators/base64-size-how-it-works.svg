@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 180" width="680" height="180" font-family="Inter, system-ui, sans-serif" role="img" aria-label="Base64 size calculation flow: original bytes divided by 3, ceiling applied, multiplied by 4 to get encoded size and overhead percentage">
+  <defs>
+    <marker id="arr" markerWidth="8" markerHeight="8" refX="7" refY="3" orient="auto">
+      <path d="M0,0 L0,6 L8,3 z" fill="#94a3b8"/>
+    </marker>
+    <filter id="shadow" x="-5%" y="-10%" width="110%" height="130%">
+      <feDropShadow dx="0" dy="1" stdDeviation="2" flood-color="#00000018"/>
+    </filter>
+  </defs>
+
+  <!-- Original Bytes -->
+  <rect x="16" y="58" width="130" height="52" rx="8" fill="#eff6ff" stroke="#bfdbfe" stroke-width="1.5" filter="url(#shadow)"/>
+  <text x="81" y="79" text-anchor="middle" font-size="12" fill="#1e40af" font-weight="600">Original Bytes</text>
+  <text x="81" y="97" text-anchor="middle" font-size="11" fill="#3b82f6">e.g. 5,000 B</text>
+
+  <!-- Arrow + formula label -->
+  <line x1="146" y1="84" x2="196" y2="84" stroke="#94a3b8" stroke-width="1.5" marker-end="url(#arr)"/>
+  <text x="171" y="74" text-anchor="middle" font-size="9" fill="#64748b">⌈÷ 3⌉ × 4</text>
+
+  <!-- Encoded Size -->
+  <rect x="196" y="58" width="140" height="52" rx="8" fill="#eff6ff" stroke="#bfdbfe" stroke-width="1.5" filter="url(#shadow)"/>
+  <text x="266" y="79" text-anchor="middle" font-size="12" fill="#1e40af" font-weight="600">Encoded Size</text>
+  <text x="266" y="97" text-anchor="middle" font-size="11" fill="#3b82f6">6,668 bytes</text>
+
+  <!-- Arrow to result -->
+  <line x1="336" y1="84" x2="390" y2="84" stroke="#94a3b8" stroke-width="1.5" marker-end="url(#arr)"/>
+
+  <!-- Result box -->
+  <rect x="390" y="46" width="274" height="76" rx="8" fill="#1565c0" filter="url(#shadow)"/>
+  <text x="527" y="67" text-anchor="middle" font-size="11" fill="rgba(255,255,255,0.85)" font-weight="500">Encoded Size · Overhead</text>
+  <text x="487" y="91" text-anchor="middle" font-size="14" fill="white" font-weight="700">6,668 B</text>
+  <text x="547" y="91" text-anchor="middle" font-size="14" fill="rgba(255,255,255,0.5)">·</text>
+  <text x="607" y="91" text-anchor="middle" font-size="14" fill="white" font-weight="700">+33.4%</text>
+
+  <!-- 3:4 ratio note -->
+  <text x="266" y="135" text-anchor="middle" font-size="9.5" fill="#94a3b8">3 bytes in → 4 chars out, always</text>
+</svg>
