@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { TextField, Typography, Stack, Box, Alert } from '@mui/material';
-import { CalculatorDefinition, CalculatorMeta } from '../registry/types';
+import type { CalculatorDefinition, CalculatorMeta } from '../registry/types';
 
 function JsonSizeUI() {
   const [json, setJson] = useState<string>('{"hello": "world"}');

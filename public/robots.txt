@@ -14,4 +14,4 @@ User-agent: *
 Allow: /
 Disallow: /api/
 
-Sitemap: https://calcengine.dev/sitemap.xml
+Sitemap: https://calcengine.dev/sitemap-index.xml

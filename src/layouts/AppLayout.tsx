@@ -1,6 +1,5 @@
 import { ReactNode } from 'react';
 import { AppBar, Toolbar, Typography, Container, Box, Button, IconButton, useMediaQuery, useTheme } from '@mui/material';
-import { Link as RouterLink } from 'react-router-dom';
 import CalculateIcon from '@mui/icons-material/Calculate';
 import DarkModeIcon from '@mui/icons-material/DarkMode';
 import LightModeIcon from '@mui/icons-material/LightMode';
@@ -19,16 +18,16 @@ export default function AppLayout({ children }: AppLayoutProps) {
     <>
       <AppBar position="sticky" color="default" elevation={0} sx={{ borderBottom: '1px solid', borderColor: 'divider', bgcolor: 'background.paper' }}>
         <Toolbar sx={{ px: { xs: 2, sm: 3 } }}>
-          <IconButton component={RouterLink} to="/" edge="start" sx={{ mr: 1, color: 'primary.main' }}>
+          <IconButton component="a" href="/" edge="start" sx={{ mr: 1, color: 'primary.main' }}>
             <CalculateIcon />
           </IconButton>
-          <Typography variant="h6" component={RouterLink} to="/" sx={{ fontWeight: 700, textDecoration: 'none', color: 'text.primary', flexGrow: 1, fontSize: { xs: '1rem', sm: '1.15rem' } }}>
+          <Typography variant="h6" component="a" href="/" sx={{ fontWeight: 700, textDecoration: 'none', color: 'text.primary', flexGrow: 1, fontSize: { xs: '1rem', sm: '1.15rem' } }}>
             CalcEngine
           </Typography>
           <IconButton onClick={toggle} sx={{ mr: 0.5, color: 'text.secondary' }} aria-label="Toggle dark mode">
             {mode === 'dark' ? <LightModeIcon /> : <DarkModeIcon />}
           </IconButton>
-          <Button component={RouterLink} to="/calculators" size={isMobile ? 'small' : 'medium'} sx={{ fontWeight: 600 }}>
+          <Button component="a" href="/calculators" size={isMobile ? 'small' : 'medium'} sx={{ fontWeight: 600 }}>
             All Calculators
           </Button>
         </Toolbar>

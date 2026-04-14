@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { TextField, Typography, Stack, Box } from '@mui/material';
-import { CalculatorDefinition, CalculatorMeta } from '../registry/types';
+import type { CalculatorDefinition, CalculatorMeta } from '../registry/types';
 
 function OpenAICostUI() {
   const [inputTokens, setInputTokens] = useState<string>('1000');

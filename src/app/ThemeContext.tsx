@@ -58,12 +58,20 @@ function buildTheme(mode: Mode) {
 
 export default function ThemeContextProvider({ children }: { children: ReactNode }) {
   const [mode, setMode] = useState<Mode>(() => {
-    const saved = localStorage.getItem('calcengine-theme');
-    return saved === 'dark' ? 'dark' : 'light';
+    try {
+      const saved = localStorage.getItem('calcengine-theme');
+      return saved === 'dark' ? 'dark' : 'light';
+    } catch {
+      return 'light';
+    }
   });
 
   useEffect(() => {
-    localStorage.setItem('calcengine-theme', mode);
+    try {
+      localStorage.setItem('calcengine-theme', mode);
+    } catch {
+      // ignore in SSR / private browsing
+    }
   }, [mode]);
 
   const toggle = () => setMode((m) => (m === 'light' ? 'dark' : 'light'));

@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { TextField, Typography, Stack, Box } from '@mui/material';
-import { CalculatorDefinition, CalculatorMeta } from '../registry/types';
+import type { CalculatorDefinition, CalculatorMeta } from '../registry/types';
 
 function Base64SizeUI() {
   const [originalBytes, setOriginalBytes] = useState<string>('1024');

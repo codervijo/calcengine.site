@@ -1,4 +1,4 @@
-import { CalculatorDefinition } from './types';
+import type { CalculatorDefinition } from './types';
 import { openaiCostCalculator } from '../definitions/openai-cost';
 import { jsonSizeCalculator } from '../definitions/json-size';
 import { apiRateLimitCalculator } from '../definitions/api-rate-limit';

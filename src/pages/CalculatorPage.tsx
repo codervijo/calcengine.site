@@ -1,11 +1,9 @@
-import { useParams } from 'react-router-dom';
 import { Typography, Container } from '@mui/material';
 import { getCalculatorBySlug } from '../calculators/registry';
 import CalculatorPageLayout from '../layouts/CalculatorPageLayout';
 
-export default function CalculatorPage() {
-  const { slug } = useParams<{ slug: string }>();
-  const calc = slug ? getCalculatorBySlug(slug) : undefined;
+export default function CalculatorPage({ slug }: { slug: string }) {
+  const calc = getCalculatorBySlug(slug);
 
   if (!calc) {
     return (
