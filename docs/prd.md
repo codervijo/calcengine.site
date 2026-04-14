@@ -86,7 +86,7 @@
 | # | Issue | Location | Impact |
 |---|-------|----------|--------|
 | H1 | ~~**`/calculators` links not crawlable** — All calculator `<a>` tags live inside `<SearchableListIsland client:only="react">`, so Googlebot sees no outbound links from the collection page~~ | ~~`src/pages/calculators/index.astro:49`~~ | ~~Calculator pages discovered only via homepage; collection page carries no link equity~~ | ✅ **Implemented 2026-04-13** — static `<ul>` rendered in Astro HTML; React island swaps in on mount |
-| H2 | **No About page** — No author or company credibility signals anywhere on the site | — | E-E-A-T penalty |
+| H2 | ~~**No About page** — No author or company credibility signals anywhere on the site~~ | ~~—~~ | ~~E-E-A-T penalty~~ | ✅ **Implemented 2026-04-13** — `/about` created; Vik Thomas / Lamill Web Systems; linked from footer |
 
 #### Medium
 
@@ -137,7 +137,7 @@
 2. ~~**H1** — Add a static `<ul>` of calculator links alongside the React island on `/calculators`~~ ✅ 2026-04-13
 3. ~~**C3** — Create `/privacy` and `/terms` pages; link from footer~~ ✅ 2026-04-13
 4. ~~**C2** — Add `image`/`logo` to `WebApplication` and `Organization` JSON-LD using OG image URLs~~ ✅ 2026-04-13
-5. **H2** — Create `/about` page with company/founder credibility signals
-6. ~~**M2** — Expand footer: link to Privacy, Terms, About, and key calculators~~ ✅ 2026-04-13 (partial — Privacy + Terms + All Calculators added)
+5. ~~**H2** — Create `/about` page with company/founder credibility signals~~ ✅ 2026-04-13
+6. ~~**M2** — Expand footer: link to Privacy, Terms, About, and key calculators~~ ✅ 2026-04-13 — About link added; footer complete
 7. **M3** — Add `SearchAction` to `WebSite` schema
 8. **M1** — Create category archive pages (`/calculators/[category]`) — largest effort

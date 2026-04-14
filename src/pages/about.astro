@@ -1,0 +1,118 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import SiteNav from '../layouts/SiteNav.astro';
+import SiteFooter from '../layouts/SiteFooter.astro';
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'AboutPage',
+  name: 'About CalcEngine',
+  url: 'https://calcengine.dev/about',
+  description:
+    'CalcEngine is built by Vik Thomas at Lamill Web Systems — free, browser-based engineering calculators for developers.',
+  author: {
+    '@type': 'Person',
+    name: 'Vik Thomas',
+    url: 'https://lamill.io',
+    worksFor: {
+      '@type': 'Organization',
+      name: 'Lamill Web Systems',
+      url: 'https://lamill.io',
+    },
+  },
+  publisher: {
+    '@type': 'Organization',
+    name: 'Lamill Web Systems',
+    url: 'https://lamill.io',
+  },
+};
+---
+
+<BaseLayout
+  title="About — CalcEngine"
+  description="CalcEngine is a free suite of browser-based engineering calculators built by Vik Thomas at Lamill Web Systems. No sign-up. No tracking. Just tools that work."
+  canonical="/about"
+  jsonLd={jsonLd}
+>
+  <SiteNav />
+
+  <main class="max-w-2xl mx-auto px-4 sm:px-6 py-12 sm:py-16">
+    <h1 class="text-3xl font-bold text-gray-900 dark:text-gray-100 mb-2">About CalcEngine</h1>
+    <p class="text-sm text-gray-400 dark:text-gray-500 mb-10">Built by engineers, for engineers.</p>
+
+    <div class="prose-like space-y-8 text-gray-600 dark:text-gray-400 leading-relaxed">
+
+      <section>
+        <h2 class="text-lg font-semibold text-gray-900 dark:text-gray-100 mb-2">What is CalcEngine?</h2>
+        <p>
+          CalcEngine is a free collection of browser-based calculators for software engineers, backend
+          developers, and system architects. Every tool runs entirely in your browser — no account,
+          no server round-trips, no tracking.
+        </p>
+        <p class="mt-3">
+          The goal is simple: give developers instant, accurate answers to the day-to-day questions
+          that come up when designing systems — API rate limits, token costs, payload sizes, cache hit
+          rates, and more.
+        </p>
+      </section>
+
+      <section>
+        <h2 class="text-lg font-semibold text-gray-900 dark:text-gray-100 mb-2">Who built it?</h2>
+        <p>
+          CalcEngine is designed and maintained by <strong class="text-gray-800 dark:text-gray-200">Vik Thomas</strong>,
+          a software engineer and web developer with experience across backend systems, APIs, and
+          developer tooling.
+        </p>
+        <p class="mt-3">
+          Vik runs <a
+            href="https://lamill.io"
+            class="text-[#1565c0] dark:text-[#42a5f5] hover:underline"
+            rel="noopener noreferrer"
+            target="_blank"
+          >Lamill Web Systems</a> — a small, independent web studio that builds fast, focused tools for
+          developers and technical audiences. CalcEngine is one of several projects under that umbrella.
+        </p>
+      </section>
+
+      <section>
+        <h2 class="text-lg font-semibold text-gray-900 dark:text-gray-100 mb-2">Why CalcEngine?</h2>
+        <p>
+          The existing options were either buried inside expensive SaaS dashboards or required
+          copy-pasting values into a spreadsheet. CalcEngine exists because these calculations should
+          be a URL away — shareable, fast, and free.
+        </p>
+        <p class="mt-3">
+          Every calculator on the site is written from scratch with real engineering context in mind:
+          correct formulas, sensible defaults, and output that's actually useful in a planning
+          conversation or an architecture review.
+        </p>
+      </section>
+
+      <section>
+        <h2 class="text-lg font-semibold text-gray-900 dark:text-gray-100 mb-2">Privacy &amp; data</h2>
+        <p>
+          Nothing you enter is sent to a server. All calculations happen in your browser. No
+          cookies, no analytics, no behavioural tracking. Read the full
+          <a href="/privacy" class="text-[#1565c0] dark:text-[#42a5f5] hover:underline">Privacy Policy</a>
+          for details.
+        </p>
+      </section>
+
+      <section>
+        <h2 class="text-lg font-semibold text-gray-900 dark:text-gray-100 mb-2">Get in touch</h2>
+        <p>
+          Spotted a bug, want a calculator added, or just have feedback? Reach out via
+          <a
+            href="https://lamill.io"
+            class="text-[#1565c0] dark:text-[#42a5f5] hover:underline"
+            rel="noopener noreferrer"
+            target="_blank"
+          >lamill.io</a>.
+        </p>
+      </section>
+
+    </div>
+  </main>
+
+  <SiteFooter />
+</BaseLayout>
