@@ -9,6 +9,7 @@ import { cacheHitRateCalculator } from '../definitions/cache-hit-rate-calculator
 import { qpsCalculator } from '../definitions/qps-calculator';
 import { throughputCalculator } from '../definitions/throughput-calculator';
 import { concurrencyCalculator } from '../definitions/concurrency-calculator';
+import { bandwidthCostCalculator } from '../definitions/bandwidth-cost-calculator';
 
 const calculators: CalculatorDefinition[] = [
   openaiCostCalculator,
@@ -21,6 +22,7 @@ const calculators: CalculatorDefinition[] = [
   qpsCalculator,
   throughputCalculator,
   concurrencyCalculator,
+  bandwidthCostCalculator,
 ];
 
 export function getAllCalculators(): CalculatorDefinition[] {

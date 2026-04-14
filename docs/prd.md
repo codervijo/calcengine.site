@@ -16,7 +16,7 @@
 - [x] QPS Calculator *(Backend)* ✅ 2026-04-14
 - [x] Throughput Calculator *(Backend)* ✅ 2026-04-14
 - [x] Concurrency Calculator *(Backend)* ✅ 2026-04-14
-- [ ] Bandwidth Cost Calculator *(Cloud)*
+- [x] Bandwidth Cost Calculator *(Cloud)* ✅ 2026-04-14
 - [ ] Storage Cost Calculator *(Cloud)*
 - [ ] Data Transfer Cost Calculator *(Cloud)*
 - [ ] Payload Size Calculator *(API)*
