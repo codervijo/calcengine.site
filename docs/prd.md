@@ -15,7 +15,7 @@
 - [x] Cache Hit Rate Calculator *(Performance)* ✅ 2026-04-14
 - [x] QPS Calculator *(Backend)* ✅ 2026-04-14
 - [x] Throughput Calculator *(Backend)* ✅ 2026-04-14
-- [ ] Concurrency Calculator *(Backend)*
+- [x] Concurrency Calculator *(Backend)* ✅ 2026-04-14
 - [ ] Bandwidth Cost Calculator *(Cloud)*
 - [ ] Storage Cost Calculator *(Cloud)*
 - [ ] Data Transfer Cost Calculator *(Cloud)*
