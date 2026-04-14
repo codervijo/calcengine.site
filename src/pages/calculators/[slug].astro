@@ -1,7 +1,10 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import PageIsland from '../../components/PageIsland';
-import { getAllCalculators } from '../../calculators/registry';
+import SiteNav from '../../layouts/SiteNav.astro';
+import SiteFooter from '../../layouts/SiteFooter.astro';
+import CalculatorWidget from '../../components/CalculatorWidget';
+import { getAllCalculators, getRelatedCalculators } from '../../calculators/registry';
+import { CATEGORY_LABELS } from '../../calculators/registry/types';
 import { buildFaqJsonLd, buildWebAppJsonLd, buildBreadcrumbJsonLd } from '../../seo/jsonLd';
 
 export function getStaticPaths() {
@@ -14,6 +17,7 @@ export function getStaticPaths() {
 const { meta } = Astro.props;
 const BASE_URL = 'https://calcengine.dev';
 const canonicalPath = `/calculators/${meta.slug}`;
+const related = getRelatedCalculators(meta.relatedSlugs);
 
 const jsonLd = [
   buildFaqJsonLd(meta.faq),
@@ -33,5 +37,89 @@ const jsonLd = [
   keywords={meta.keywords}
   jsonLd={jsonLd}
 >
-  <PageIsland page="calculator" slug={meta.slug} client:only="react" />
+  <SiteNav />
+
+  <main class="max-w-3xl mx-auto px-4 sm:px-6 py-8 sm:py-12">
+
+    <!-- Breadcrumbs -->
+    <nav aria-label="Breadcrumb" class="text-sm text-gray-500 dark:text-gray-400 mb-5">
+      <a href="/" class="hover:text-[#1565c0] dark:hover:text-[#42a5f5] transition-colors">Home</a>
+      <span class="mx-2">›</span>
+      <a href="/calculators" class="hover:text-[#1565c0] dark:hover:text-[#42a5f5] transition-colors">Calculators</a>
+      <span class="mx-2">›</span>
+      <span class="text-gray-700 dark:text-gray-300">{meta.shortTitle}</span>
+    </nav>
+
+    <!-- Header -->
+    <header class="mb-6">
+      <h1 class="text-3xl sm:text-4xl font-bold text-gray-900 dark:text-gray-100 mb-3 leading-tight">
+        {meta.title}
+      </h1>
+      <span class="inline-block bg-blue-100 dark:bg-blue-900/40 text-blue-800 dark:text-blue-300 text-xs font-semibold px-2.5 py-1 rounded-full mb-4">
+        {CATEGORY_LABELS[meta.category]}
+      </span>
+      <p class="text-gray-600 dark:text-gray-400 leading-relaxed whitespace-pre-line">{meta.intro}</p>
+    </header>
+
+    <!-- Interactive calculator widget (React island) -->
+    <section aria-label="Calculator" class="mb-10">
+      <div class="rounded-xl border border-gray-200 dark:border-gray-800 bg-white dark:bg-[#141414] shadow-sm p-4 sm:p-6">
+        <CalculatorWidget slug={meta.slug} client:only="react" />
+      </div>
+    </section>
+
+    <!-- How It Works -->
+    <section aria-label="How It Works" class="mb-8">
+      <h2 class="text-xl sm:text-2xl font-semibold text-gray-900 dark:text-gray-100 mb-3">How It Works</h2>
+      <p class="text-gray-600 dark:text-gray-400 leading-relaxed whitespace-pre-line">{meta.howItWorks}</p>
+    </section>
+
+    <!-- Formula -->
+    <section aria-label="Formula" class="mb-8">
+      <h2 class="text-xl sm:text-2xl font-semibold text-gray-900 dark:text-gray-100 mb-3">Formula</h2>
+      <pre class="bg-gray-100 dark:bg-gray-900 text-gray-800 dark:text-gray-200 p-4 rounded-lg overflow-x-auto text-sm font-mono leading-relaxed">{meta.formula}</pre>
+    </section>
+
+    <!-- Worked Example -->
+    <section aria-label="Worked Example" class="mb-8">
+      <h2 class="text-xl sm:text-2xl font-semibold text-gray-900 dark:text-gray-100 mb-3">Worked Example</h2>
+      <p class="text-gray-600 dark:text-gray-400 leading-relaxed whitespace-pre-line">{meta.example}</p>
+    </section>
+
+    <!-- FAQ — native <details> works without JS, visible to crawlers -->
+    <section aria-label="Frequently Asked Questions" class="mb-10">
+      <h2 class="text-xl sm:text-2xl font-semibold text-gray-900 dark:text-gray-100 mb-4">
+        Frequently Asked Questions
+      </h2>
+      {meta.faq.map((item) => (
+        <details class="border border-gray-200 dark:border-gray-800 rounded-lg mb-2 overflow-hidden">
+          <summary class="px-4 py-3 cursor-pointer font-medium text-gray-900 dark:text-gray-100 hover:bg-gray-50 dark:hover:bg-gray-900/50 transition-colors list-none flex justify-between items-center">
+            {item.question}
+            <span class="text-gray-400 text-lg ml-3 select-none">+</span>
+          </summary>
+          <div class="px-4 pb-4 pt-2 text-sm text-gray-600 dark:text-gray-400 leading-relaxed border-t border-gray-100 dark:border-gray-800">
+            {item.answer}
+          </div>
+        </details>
+      ))}
+    </section>
+
+    <!-- Related Calculators -->
+    {related.length > 0 && (
+      <aside aria-label="Related calculators">
+        <h2 class="text-xl sm:text-2xl font-semibold text-gray-900 dark:text-gray-100 mb-4">Related Calculators</h2>
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+          {related.map((r) => (
+            <a href={`/calculators/${r.meta.slug}`} class="block border border-gray-200 dark:border-gray-800 rounded-xl p-4 bg-white dark:bg-[#141414] hover:shadow-md dark:hover:shadow-none dark:hover:border-gray-600 transition-all no-underline">
+              <h3 class="font-semibold text-gray-900 dark:text-gray-100 mb-1">{r.meta.shortTitle}</h3>
+              <p class="text-sm text-gray-500 dark:text-gray-400">{r.meta.description}</p>
+            </a>
+          ))}
+        </div>
+      </aside>
+    )}
+
+  </main>
+
+  <SiteFooter />
 </BaseLayout>

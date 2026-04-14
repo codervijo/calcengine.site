@@ -1,7 +1,10 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import PageIsland from '../../components/PageIsland';
+import SiteNav from '../../layouts/SiteNav.astro';
+import SiteFooter from '../../layouts/SiteFooter.astro';
+import SearchableListIsland from '../../components/SearchableListIsland';
 import { getAllCalculators } from '../../calculators/registry';
+import { buildWebAppJsonLd } from '../../seo/jsonLd';
 
 const BASE_URL = 'https://calcengine.dev';
 const calculators = getAllCalculators();
@@ -9,9 +12,10 @@ const calculators = getAllCalculators();
 const jsonLd = {
   '@context': 'https://schema.org',
   '@type': 'CollectionPage',
-  name: 'All Calculators — CalcEngine',
+  name: 'All Free Engineering Calculators — CalcEngine',
   description: 'Browse all free engineering calculators for developers.',
   url: `${BASE_URL}/calculators`,
+  inLanguage: 'en-US',
   mainEntity: {
     '@type': 'ItemList',
     itemListElement: calculators.map((c, i) => ({
@@ -25,10 +29,25 @@ const jsonLd = {
 ---
 
 <BaseLayout
-  title="All Calculators — CalcEngine"
+  title="All Free Engineering Calculators — API, Data & Performance Tools"
   description="Browse all free engineering calculators for developers. API costs, data sizes, encoding, and more."
   canonical="/calculators"
   jsonLd={jsonLd}
 >
-  <PageIsland page="all-calculators" client:only="react" />
+  <SiteNav />
+
+  <!-- Static header — visible to crawlers immediately -->
+  <div class="max-w-3xl mx-auto px-4 sm:px-6 pt-8 sm:pt-12 pb-2">
+    <h1 class="text-3xl sm:text-4xl font-bold text-gray-900 dark:text-gray-100 mb-2">All Calculators</h1>
+    <p class="text-gray-500 dark:text-gray-400 mb-6">
+      Browse and search our growing collection of engineering tools.
+    </p>
+  </div>
+
+  <!-- Searchable list — React island for filter/search interactivity -->
+  <div class="max-w-3xl mx-auto px-4 sm:px-6 pb-12">
+    <SearchableListIsland client:only="react" />
+  </div>
+
+  <SiteFooter />
 </BaseLayout>

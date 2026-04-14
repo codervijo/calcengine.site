@@ -51,11 +51,11 @@ const canonicalUrl = canonical
       <script type="application/ld+json" set:html={JSON.stringify(Array.isArray(jsonLd) ? jsonLd : [jsonLd])} />
     )}
 
-    <!-- Prevent dark mode FOUC -->
+    <!-- Prevent dark mode FOUC: apply class before first paint -->
     <script is:inline>
       try {
         if (localStorage.getItem('calcengine-theme') === 'dark') {
-          document.documentElement.style.colorScheme = 'dark';
+          document.documentElement.classList.add('dark');
         }
       } catch (_) {}
     </script>
@@ -66,14 +66,11 @@ const canonicalUrl = canonical
 </html>
 
 <style is:global>
-  *, *::before, *::after {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-  }
+  @tailwind base;
+  @tailwind components;
+  @tailwind utilities;
+
   body {
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
     min-height: 100vh;
     display: flex;
     flex-direction: column;

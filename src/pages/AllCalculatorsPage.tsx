@@ -19,14 +19,7 @@ export default function AllCalculatorsPage() {
   }, [search, activeCategory, calculators]);
 
   return (
-    <Container component="main" maxWidth="md" sx={{ py: { xs: 3, sm: 5 } }}>
-      <Typography variant="h1" component="h1" sx={{ mb: 1, fontSize: { xs: '1.75rem', sm: '2.25rem' } }}>
-        All Calculators
-      </Typography>
-      <Typography variant="body1" color="text.secondary" sx={{ mb: 3 }}>
-        Browse and search our growing collection of engineering tools.
-      </Typography>
-
+    <Container component="main" maxWidth="md" sx={{ py: 0 }}>
       <TextField
         placeholder="Search calculators..."
         value={search}
