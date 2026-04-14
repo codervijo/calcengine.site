@@ -13,7 +13,7 @@
 - [x] Cron Next Run Calculator *(Scheduling)* ✅ 2026-04-14
 - [x] Latency Budget Calculator *(Performance)* ✅ 2026-04-14
 - [x] Cache Hit Rate Calculator *(Performance)* ✅ 2026-04-14
-- [ ] QPS Calculator *(Backend)*
+- [x] QPS Calculator *(Backend)* ✅ 2026-04-14
 - [ ] Throughput Calculator *(Backend)*
 - [ ] Concurrency Calculator *(Backend)*
 - [ ] Bandwidth Cost Calculator *(Cloud)*

@@ -6,6 +6,7 @@ import { base64SizeCalculator } from '../definitions/base64-size';
 import { cronNextRunCalculator } from '../definitions/cron-next-run-calculator';
 import { latencyBudgetCalculator } from '../definitions/latency-budget-calculator';
 import { cacheHitRateCalculator } from '../definitions/cache-hit-rate-calculator';
+import { qpsCalculator } from '../definitions/qps-calculator';
 
 const calculators: CalculatorDefinition[] = [
   openaiCostCalculator,
@@ -15,6 +16,7 @@ const calculators: CalculatorDefinition[] = [
   cronNextRunCalculator,
   latencyBudgetCalculator,
   cacheHitRateCalculator,
+  qpsCalculator,
 ];
 
 export function getAllCalculators(): CalculatorDefinition[] {
