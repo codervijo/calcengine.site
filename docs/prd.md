@@ -10,7 +10,7 @@
 - [x] JWT Size Calculator *(Security)* ✅ 2026-04-14
 - [x] UUID Collision Probability Calculator *(Backend)* ✅ 2026-04-14
 - [x] Cron Expression Calculator *(Scheduling)* ✅ 2026-04-14
-- [ ] Cron Next Run Calculator *(Scheduling)*
+- [x] Cron Next Run Calculator *(Scheduling)* ✅ 2026-04-14
 - [ ] Latency Budget Calculator *(Performance)*
 - [ ] Cache Hit Rate Calculator *(Performance)*
 - [ ] QPS Calculator *(Backend)*
