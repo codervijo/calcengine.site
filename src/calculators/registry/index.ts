@@ -10,6 +10,7 @@ import { qpsCalculator } from '../definitions/qps-calculator';
 import { throughputCalculator } from '../definitions/throughput-calculator';
 import { concurrencyCalculator } from '../definitions/concurrency-calculator';
 import { bandwidthCostCalculator } from '../definitions/bandwidth-cost-calculator';
+import { storageCostCalculator } from '../definitions/storage-cost-calculator';
 
 const calculators: CalculatorDefinition[] = [
   openaiCostCalculator,
@@ -23,6 +24,7 @@ const calculators: CalculatorDefinition[] = [
   throughputCalculator,
   concurrencyCalculator,
   bandwidthCostCalculator,
+  storageCostCalculator,
 ];
 
 export function getAllCalculators(): CalculatorDefinition[] {
