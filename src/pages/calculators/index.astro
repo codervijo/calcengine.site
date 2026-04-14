@@ -1,0 +1,34 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageIsland from '../../components/PageIsland';
+import { getAllCalculators } from '../../calculators/registry';
+
+const BASE_URL = 'https://calcengine.dev';
+const calculators = getAllCalculators();
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'CollectionPage',
+  name: 'All Calculators — CalcEngine',
+  description: 'Browse all free engineering calculators for developers.',
+  url: `${BASE_URL}/calculators`,
+  mainEntity: {
+    '@type': 'ItemList',
+    itemListElement: calculators.map((c, i) => ({
+      '@type': 'ListItem',
+      position: i + 1,
+      name: c.meta.title,
+      url: `${BASE_URL}/calculators/${c.meta.slug}`,
+    })),
+  },
+};
+---
+
+<BaseLayout
+  title="All Calculators — CalcEngine"
+  description="Browse all free engineering calculators for developers. API costs, data sizes, encoding, and more."
+  canonical="/calculators"
+  jsonLd={jsonLd}
+>
+  <PageIsland page="all-calculators" client:only="react" />
+</BaseLayout>

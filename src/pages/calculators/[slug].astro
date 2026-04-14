@@ -1,0 +1,37 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageIsland from '../../components/PageIsland';
+import { getAllCalculators } from '../../calculators/registry';
+import { buildFaqJsonLd, buildWebAppJsonLd, buildBreadcrumbJsonLd } from '../../seo/jsonLd';
+
+export function getStaticPaths() {
+  return getAllCalculators().map((c) => ({
+    params: { slug: c.meta.slug },
+    props: { meta: c.meta },
+  }));
+}
+
+const { meta } = Astro.props;
+const BASE_URL = 'https://calcengine.dev';
+const canonicalPath = `/calculators/${meta.slug}`;
+
+const jsonLd = [
+  buildFaqJsonLd(meta.faq),
+  buildWebAppJsonLd(meta.title, meta.description, `${BASE_URL}${canonicalPath}`),
+  buildBreadcrumbJsonLd([
+    { name: 'Home', url: BASE_URL },
+    { name: 'Calculators', url: `${BASE_URL}/calculators` },
+    { name: meta.shortTitle, url: `${BASE_URL}${canonicalPath}` },
+  ]),
+];
+---
+
+<BaseLayout
+  title={`${meta.title} — CalcEngine`}
+  description={meta.description}
+  canonical={canonicalPath}
+  keywords={meta.keywords}
+  jsonLd={jsonLd}
+>
+  <PageIsland page="calculator" slug={meta.slug} client:only="react" />
+</BaseLayout>

@@ -1,0 +1,29 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageIsland from '../components/PageIsland';
+import { buildWebAppJsonLd } from '../seo/jsonLd';
+
+const BASE_URL = 'https://calcengine.dev';
+const jsonLd = [
+  buildWebAppJsonLd(
+    'CalcEngine',
+    'Free engineering calculators for API costs, backend performance, and developer workflows.',
+    BASE_URL,
+  ),
+  {
+    '@context': 'https://schema.org',
+    '@type': 'WebSite',
+    name: 'CalcEngine',
+    url: BASE_URL,
+  },
+];
+---
+
+<BaseLayout
+  title="CalcEngine — Engineering Calculators for Real Systems"
+  description="Free engineering calculators for API costs, backend performance, and developer workflows. Built for real systems."
+  canonical="/"
+  jsonLd={jsonLd}
+>
+  <PageIsland page="home" client:only="react" />
+</BaseLayout>
