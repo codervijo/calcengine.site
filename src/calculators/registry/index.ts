@@ -12,6 +12,7 @@ import { concurrencyCalculator } from '../definitions/concurrency-calculator';
 import { bandwidthCostCalculator } from '../definitions/bandwidth-cost-calculator';
 import { storageCostCalculator } from '../definitions/storage-cost-calculator';
 import { dataTransferCostCalculator } from '../definitions/data-transfer-cost-calculator';
+import { payloadSizeCalculator } from '../definitions/payload-size-calculator';
 
 const calculators: CalculatorDefinition[] = [
   openaiCostCalculator,
@@ -27,6 +28,7 @@ const calculators: CalculatorDefinition[] = [
   bandwidthCostCalculator,
   storageCostCalculator,
   dataTransferCostCalculator,
+  payloadSizeCalculator,
 ];
 
 export function getAllCalculators(): CalculatorDefinition[] {

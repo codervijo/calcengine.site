@@ -19,7 +19,7 @@
 - [x] Bandwidth Cost Calculator *(Cloud)* ✅ 2026-04-14
 - [x] Storage Cost Calculator *(Cloud)* ✅ 2026-04-14
 - [x] Data Transfer Cost Calculator *(Cloud)* ✅ 2026-04-14
-- [ ] Payload Size Calculator *(API)*
+- [x] Payload Size Calculator *(API)* ✅ 2026-04-14
 - [ ] HTTP Request Size Calculator *(API)*
 - [ ] Regex Performance Calculator *(Dev Tools)*
 - [ ] SQL Query Cost Estimator *(Database)*
