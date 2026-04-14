@@ -51,27 +51,53 @@ const jsonLd = [
       <span class="text-gray-700 dark:text-gray-300">{meta.shortTitle}</span>
     </nav>
 
-    <!-- Header -->
-    <header class="mb-6">
-      <h1 class="text-3xl sm:text-4xl font-bold text-gray-900 dark:text-gray-100 mb-3 leading-tight">
+    <!-- Header: H1 + short tagline only — calculator must be above the fold -->
+    <header class="mb-5">
+      <h1 class="text-3xl sm:text-4xl font-bold text-gray-900 dark:text-gray-100 mb-2 leading-tight">
         {meta.title}
       </h1>
-      <span class="inline-block bg-blue-100 dark:bg-blue-900/40 text-blue-800 dark:text-blue-300 text-xs font-semibold px-2.5 py-1 rounded-full mb-4">
+      <span class="inline-block bg-blue-100 dark:bg-blue-900/40 text-blue-800 dark:text-blue-300 text-xs font-semibold px-2.5 py-1 rounded-full mb-3">
         {CATEGORY_LABELS[meta.category]}
       </span>
-      <p class="text-gray-600 dark:text-gray-400 leading-relaxed whitespace-pre-line">{meta.intro}</p>
+      <p class="text-gray-600 dark:text-gray-400 leading-relaxed">
+        {meta.tagline ?? meta.description}
+      </p>
     </header>
 
     <!-- Interactive calculator widget (React island) -->
-    <section aria-label="Calculator" class="mb-10">
+    <section aria-label="Calculator" class="mb-3">
       <div class="rounded-xl border border-gray-200 dark:border-gray-800 bg-white dark:bg-[#141414] shadow-sm p-4 sm:p-6">
         <CalculatorWidget slug={meta.slug} client:only="react" />
       </div>
     </section>
 
+    <!-- Freshness signal -->
+    {meta.lastUpdated && (
+      <p class="text-xs text-gray-400 dark:text-gray-500 mb-10 text-right">
+        Last updated: {meta.lastUpdated}
+      </p>
+    )}
+    {!meta.lastUpdated && <div class="mb-10" />}
+
+    <!-- Intro / About (SEO body text — below the fold) -->
+    <section aria-label="About this calculator" class="mb-8">
+      <p class="text-gray-600 dark:text-gray-400 leading-relaxed whitespace-pre-line">{meta.intro}</p>
+    </section>
+
     <!-- How It Works -->
-    <section aria-label="How It Works" class="mb-8">
-      <h2 class="text-xl sm:text-2xl font-semibold text-gray-900 dark:text-gray-100 mb-3">How It Works</h2>
+    <section aria-label={meta.howItWorksTitle ?? 'How It Works'} class="mb-8">
+      <h2 class="text-xl sm:text-2xl font-semibold text-gray-900 dark:text-gray-100 mb-3">
+        {meta.howItWorksTitle ?? 'How It Works'}
+      </h2>
+      {meta.howItWorksImage && (
+        <img
+          src={meta.howItWorksImage}
+          alt={`${meta.shortTitle} — how it works diagram`}
+          class="w-full rounded-lg border border-gray-200 dark:border-gray-800 mb-4"
+          loading="lazy"
+          decoding="async"
+        />
+      )}
       <p class="text-gray-600 dark:text-gray-400 leading-relaxed whitespace-pre-line">{meta.howItWorks}</p>
     </section>
 
@@ -81,11 +107,62 @@ const jsonLd = [
       <pre class="bg-gray-100 dark:bg-gray-900 text-gray-800 dark:text-gray-200 p-4 rounded-lg overflow-x-auto text-sm font-mono leading-relaxed">{meta.formula}</pre>
     </section>
 
-    <!-- Worked Example -->
-    <section aria-label="Worked Example" class="mb-8">
-      <h2 class="text-xl sm:text-2xl font-semibold text-gray-900 dark:text-gray-100 mb-3">Worked Example</h2>
+    <!-- Example(s) -->
+    <section aria-label={meta.examplesTitle ?? 'Worked Example'} class="mb-8">
+      <h2 class="text-xl sm:text-2xl font-semibold text-gray-900 dark:text-gray-100 mb-3">
+        {meta.examplesTitle ?? 'Worked Example'}
+      </h2>
       <p class="text-gray-600 dark:text-gray-400 leading-relaxed whitespace-pre-line">{meta.example}</p>
     </section>
+
+    <!-- Pricing table (optional) -->
+    {meta.pricingTable && meta.pricingTable.length > 0 && (
+      <section aria-label="Pricing by model" class="mb-8">
+        <h2 class="text-xl sm:text-2xl font-semibold text-gray-900 dark:text-gray-100 mb-3">
+          {meta.pricingTableTitle ?? 'Pricing by Model'}
+        </h2>
+        <div class="overflow-x-auto rounded-lg border border-gray-200 dark:border-gray-800">
+          <table class="w-full text-sm text-left">
+            <thead class="bg-gray-50 dark:bg-gray-900 text-gray-700 dark:text-gray-300 text-xs uppercase tracking-wide">
+              <tr>
+                <th class="px-4 py-3 font-semibold">Model</th>
+                <th class="px-4 py-3 font-semibold">Input / 1M tokens</th>
+                <th class="px-4 py-3 font-semibold">Output / 1M tokens</th>
+                <th class="px-4 py-3 font-semibold hidden sm:table-cell">Notes</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-gray-100 dark:divide-gray-800">
+              {meta.pricingTable.map((row) => (
+                <tr class="bg-white dark:bg-[#141414] hover:bg-gray-50 dark:hover:bg-gray-900/40 transition-colors">
+                  <td class="px-4 py-3 font-medium text-gray-900 dark:text-gray-100 whitespace-nowrap">{row.model}</td>
+                  <td class="px-4 py-3 text-gray-600 dark:text-gray-400 font-mono">{row.inputPer1M}</td>
+                  <td class="px-4 py-3 text-gray-600 dark:text-gray-400 font-mono">{row.outputPer1M}</td>
+                  <td class="px-4 py-3 text-gray-500 dark:text-gray-500 hidden sm:table-cell">{row.notes ?? '—'}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+        <p class="text-xs text-gray-400 dark:text-gray-500 mt-2">Prices are approximate. Verify on your provider's pricing page before budgeting.</p>
+      </section>
+    )}
+
+    <!-- Tips (optional) -->
+    {meta.tips && meta.tips.length > 0 && (
+      <section aria-label="Tips" class="mb-8">
+        <h2 class="text-xl sm:text-2xl font-semibold text-gray-900 dark:text-gray-100 mb-3">
+          {meta.tipsTitle ?? 'Tips'}
+        </h2>
+        <ul class="space-y-2">
+          {meta.tips.map((tip) => (
+            <li class="flex gap-2 text-gray-600 dark:text-gray-400 leading-relaxed">
+              <span class="text-blue-500 mt-1 shrink-0">›</span>
+              <span>{tip}</span>
+            </li>
+          ))}
+        </ul>
+      </section>
+    )}
 
     <!-- FAQ — native <details> works without JS, visible to crawlers -->
     <section aria-label="Frequently Asked Questions" class="mb-10">
