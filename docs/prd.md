@@ -11,7 +11,7 @@
 - [x] UUID Collision Probability Calculator *(Backend)* ✅ 2026-04-14
 - [x] Cron Expression Calculator *(Scheduling)* ✅ 2026-04-14
 - [x] Cron Next Run Calculator *(Scheduling)* ✅ 2026-04-14
-- [ ] Latency Budget Calculator *(Performance)*
+- [x] Latency Budget Calculator *(Performance)* ✅ 2026-04-14
 - [ ] Cache Hit Rate Calculator *(Performance)*
 - [ ] QPS Calculator *(Backend)*
 - [ ] Throughput Calculator *(Backend)*
