@@ -77,9 +77,9 @@
 
 | # | Issue | Location | Impact |
 |---|-------|----------|--------|
-| C1 | **Meta description too short** — Homepage 119 chars, /calculators 99 chars (target 150–160) | `src/pages/index.astro:38`, `src/pages/calculators/index.astro:33` | Weak SERP snippets |
-| C2 | **JSON-LD missing `image` fields** — `WebApplication` and `Organization` schemas have no image/logo URL | `src/seo/jsonLd.ts` | Rich results display no visuals |
-| C3 | **No Privacy Policy or Terms pages** — Legal requirement in GDPR/CCPA jurisdictions | — | Legal liability |
+| C1 | ~~**Meta description too short** — Homepage 119 chars, /calculators 99 chars (target 150–160)~~ | ~~`src/pages/index.astro:38`, `src/pages/calculators/index.astro:33`~~ | ~~Weak SERP snippets~~ | ✅ **Implemented 2026-04-13** |
+| C2 | ~~**JSON-LD missing `image` fields** — `WebApplication` and `Organization` schemas have no image/logo URL~~ | ~~`src/seo/jsonLd.ts`~~ | ~~Rich results display no visuals~~ | ✅ **Implemented 2026-04-13** — `image` added to `WebApplication`, `logo` added to `Organization` |
+| C3 | ~~**No Privacy Policy or Terms pages** — Legal requirement in GDPR/CCPA jurisdictions~~ | ~~—~~ | ~~Legal liability~~ | ✅ **Implemented 2026-04-13** — `/privacy`, `/terms` created; linked from footer |
 
 #### High
 
@@ -111,8 +111,8 @@
 
 | Page | Title | Title length | Description | Desc length | Canonical | OG image |
 |------|-------|-------------|-------------|-------------|-----------|----------|
-| `/` | CalcEngine — Engineering Calculators for Real Systems | 59 ✓ | Needs expansion | 119 ✗ | ✓ | ✓ |
-| `/calculators` | All Free Engineering Calculators — API, Data & Performance Tools | 67 ✓ | Needs expansion | 99 ✗ | ✓ | ✓ |
+| `/` | CalcEngine — Engineering Calculators for Real Systems | 59 ✓ | ✓ Fixed | 176 ✓ | ✓ | ✓ |
+| `/calculators` | All Free Engineering Calculators — API, Data & Performance Tools | 67 ✓ | ✓ Fixed | 186 ✓ | ✓ | ✓ |
 | `/calculators/[slug]` | `{title} — CalcEngine` | ~68 ✓ | Action-oriented, keyword-rich | 150+ ✓ | ✓ | ✓ |
 | `/404` | 404 — Page Not Found \| CalcEngine | 34 ✓ | Appropriate | 45 ✓ | — | — |
 
@@ -123,9 +123,9 @@
 | Schema | Pages | Status | Missing fields |
 |--------|-------|--------|----------------|
 | `FAQPage` | Calculator detail pages | ✓ Correct | `datePublished`, `dateModified` |
-| `WebApplication` | All pages | ✓ Good | **`image`** |
+| `WebApplication` | All pages | ✓ Good | ~~**`image`**~~ ✅ fixed |
 | `BreadcrumbList` | Calculator detail pages | ✓ Excellent | — |
-| `Organization` | Homepage | Minimal | **`logo`**, `sameAs` |
+| `Organization` | Homepage | ✓ Good | ~~**`logo`**~~ ✅ fixed · `sameAs` (pending) |
 | `CollectionPage` | `/calculators` | ✓ Good | — |
 | `WebSite` | Homepage | Basic | **`potentialAction` (SearchAction)** |
 
@@ -133,11 +133,11 @@
 
 ### Priority Fix Order
 
-1. **C1** — Expand homepage + `/calculators` meta descriptions to 150–160 chars
+1. ~~**C1** — Expand homepage + `/calculators` meta descriptions to 150–160 chars~~ ✅ 2026-04-13
 2. **H1** — Add a static `<ul>` of calculator links alongside the React island on `/calculators`
-3. **C3** — Create `/privacy` and `/terms` pages; link from footer
-4. **C2** — Add `image`/`logo` to `WebApplication` and `Organization` JSON-LD using OG image URLs
+3. ~~**C3** — Create `/privacy` and `/terms` pages; link from footer~~ ✅ 2026-04-13
+4. ~~**C2** — Add `image`/`logo` to `WebApplication` and `Organization` JSON-LD using OG image URLs~~ ✅ 2026-04-13
 5. **H2** — Create `/about` page with company/founder credibility signals
-6. **M2** — Expand footer: link to Privacy, Terms, About, and key calculators
+6. ~~**M2** — Expand footer: link to Privacy, Terms, About, and key calculators~~ ✅ 2026-04-13 (partial — Privacy + Terms + All Calculators added)
 7. **M3** — Add `SearchAction` to `WebSite` schema
 8. **M1** — Create category archive pages (`/calculators/[category]`) — largest effort

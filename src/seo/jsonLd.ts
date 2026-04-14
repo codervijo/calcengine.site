@@ -1,7 +1,15 @@
+const BASE_URL = 'https://calcengine.dev';
+
 const ORG = {
   '@type': 'Organization',
   name: 'CalcEngine',
-  url: 'https://calcengine.dev',
+  url: BASE_URL,
+  logo: {
+    '@type': 'ImageObject',
+    url: `${BASE_URL}/og/home.png`,
+    width: 1200,
+    height: 630,
+  },
 } as const;
 
 export function buildFaqJsonLd(faq: { question: string; answer: string }[]) {
@@ -16,13 +24,14 @@ export function buildFaqJsonLd(faq: { question: string; answer: string }[]) {
   };
 }
 
-export function buildWebAppJsonLd(name: string, description: string, url: string) {
+export function buildWebAppJsonLd(name: string, description: string, url: string, ogImageUrl?: string) {
   return {
     '@context': 'https://schema.org',
     '@type': 'WebApplication',
     name,
     description,
     url,
+    ...(ogImageUrl ? { image: ogImageUrl } : {}),
     inLanguage: 'en-US',
     applicationCategory: 'UtilityApplication',
     operatingSystem: 'All',
@@ -50,8 +59,14 @@ export function buildOrganizationJsonLd() {
     '@context': 'https://schema.org',
     '@type': 'Organization',
     name: 'CalcEngine',
-    url: 'https://calcengine.dev',
+    url: BASE_URL,
     description: 'Free engineering calculators for developers.',
     inLanguage: 'en-US',
+    logo: {
+      '@type': 'ImageObject',
+      url: `${BASE_URL}/og/home.png`,
+      width: 1200,
+      height: 630,
+    },
   };
 }

@@ -3,9 +3,16 @@ const year = new Date().getFullYear();
 ---
 
 <footer class="border-t border-gray-200 dark:border-gray-800 bg-gray-50 dark:bg-[#0a0a0a] py-8 mt-auto">
-  <div class="max-w-5xl mx-auto px-4 sm:px-6 text-center">
-    <p class="text-sm text-gray-500 dark:text-gray-400">
-      © {year} CalcEngine — Free engineering calculators for developers.
-    </p>
+  <div class="max-w-5xl mx-auto px-4 sm:px-6">
+    <div class="flex flex-col sm:flex-row items-center justify-between gap-4">
+      <p class="text-sm text-gray-500 dark:text-gray-400">
+        © {year} CalcEngine — Free engineering calculators for developers.
+      </p>
+      <nav aria-label="Footer navigation" class="flex items-center gap-5 text-sm text-gray-400 dark:text-gray-500">
+        <a href="/calculators" class="hover:text-gray-700 dark:hover:text-gray-300 transition-colors">All Calculators</a>
+        <a href="/privacy" class="hover:text-gray-700 dark:hover:text-gray-300 transition-colors">Privacy</a>
+        <a href="/terms" class="hover:text-gray-700 dark:hover:text-gray-300 transition-colors">Terms</a>
+      </nav>
+    </div>
   </div>
 </footer>

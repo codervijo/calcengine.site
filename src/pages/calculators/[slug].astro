@@ -21,7 +21,7 @@ const related = getRelatedCalculators(meta.relatedSlugs);
 
 const jsonLd = [
   buildFaqJsonLd(meta.faq),
-  buildWebAppJsonLd(meta.title, meta.description, `${BASE_URL}${canonicalPath}`),
+  buildWebAppJsonLd(meta.title, meta.description, `${BASE_URL}${canonicalPath}`, `${BASE_URL}/og/${meta.slug}.png`),
   buildBreadcrumbJsonLd([
     { name: 'Home', url: BASE_URL },
     { name: 'Calculators', url: `${BASE_URL}/calculators` },
