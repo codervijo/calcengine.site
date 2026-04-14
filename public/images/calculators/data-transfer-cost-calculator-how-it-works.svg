@@ -1,0 +1,60 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 220" width="720" height="220" font-family="Inter, system-ui, sans-serif" role="img" aria-label="Data transfer cost calculation flow diagram: data volume minus free tier equals billable GB multiplied by price per GB equals total cost">
+  <defs>
+    <marker id="arr" markerWidth="8" markerHeight="8" refX="7" refY="3" orient="auto">
+      <path d="M0,0 L0,6 L8,3 z" fill="#94a3b8"/>
+    </marker>
+    <filter id="shadow" x="-5%" y="-5%" width="110%" height="120%">
+      <feDropShadow dx="0" dy="1" stdDeviation="2" flood-color="#00000018"/>
+    </filter>
+  </defs>
+
+  <!-- ── Row labels ── -->
+  <text x="4" y="82" font-size="10" fill="#94a3b8" font-weight="500" letter-spacing="0.5">VOLUME</text>
+  <text x="4" y="158" font-size="10" fill="#94a3b8" font-weight="500" letter-spacing="0.5">FREE</text>
+
+  <!-- ══ INPUT: Data Volume ══ -->
+  <rect x="60" y="48" width="120" height="52" rx="8" fill="#eff6ff" stroke="#bfdbfe" stroke-width="1.5" filter="url(#shadow)"/>
+  <text x="120" y="70" text-anchor="middle" font-size="12" fill="#1e40af" font-weight="600">Data Volume</text>
+  <text x="120" y="88" text-anchor="middle" font-size="11" fill="#3b82f6">e.g. 500 GB</text>
+
+  <!-- ══ INPUT: Free Tier ══ -->
+  <rect x="60" y="124" width="120" height="52" rx="8" fill="#eff6ff" stroke="#bfdbfe" stroke-width="1.5" filter="url(#shadow)"/>
+  <text x="120" y="146" text-anchor="middle" font-size="12" fill="#1e40af" font-weight="600">Free Tier</text>
+  <text x="120" y="164" text-anchor="middle" font-size="11" fill="#3b82f6">e.g. 100 GB</text>
+
+  <!-- Lines converging to subtract node -->
+  <line x1="180" y1="74" x2="242" y2="112" stroke="#94a3b8" stroke-width="1.5"/>
+  <line x1="180" y1="150" x2="242" y2="112" stroke="#94a3b8" stroke-width="1.5"/>
+
+  <!-- Subtract circle -->
+  <circle cx="242" cy="112" r="14" fill="white" stroke="#e2e8f0" stroke-width="1.5" filter="url(#shadow)"/>
+  <text x="242" y="117" text-anchor="middle" font-size="15" fill="#64748b" font-weight="600">−</text>
+
+  <!-- Arrow: subtract → Billable GB -->
+  <line x1="256" y1="112" x2="296" y2="112" stroke="#94a3b8" stroke-width="1.5" marker-end="url(#arr)"/>
+
+  <!-- ══ BILLABLE GB ══ -->
+  <rect x="296" y="86" width="120" height="52" rx="8" fill="#eff6ff" stroke="#bfdbfe" stroke-width="1.5" filter="url(#shadow)"/>
+  <text x="356" y="108" text-anchor="middle" font-size="12" fill="#1e40af" font-weight="600">Billable GB</text>
+  <text x="356" y="126" text-anchor="middle" font-size="11" fill="#3b82f6">400 GB</text>
+
+  <!-- Arrow: Billable GB → multiply node -->
+  <line x1="416" y1="112" x2="460" y2="112" stroke="#94a3b8" stroke-width="1.5" marker-end="url(#arr)"/>
+  <text x="438" y="104" text-anchor="middle" font-size="9.5" fill="#64748b">× price</text>
+  <text x="438" y="123" text-anchor="middle" font-size="9.5" fill="#64748b">per GB</text>
+
+  <!-- ══ INPUT: Price per GB (comes from above) ══ -->
+  <rect x="426" y="28" width="120" height="44" rx="8" fill="#eff6ff" stroke="#bfdbfe" stroke-width="1.5" filter="url(#shadow)"/>
+  <text x="486" y="47" text-anchor="middle" font-size="12" fill="#1e40af" font-weight="600">Price / GB</text>
+  <text x="486" y="63" text-anchor="middle" font-size="11" fill="#3b82f6">$0.09</text>
+  <!-- Line from Price/GB down to arrow path -->
+  <line x1="486" y1="72" x2="486" y2="105" stroke="#94a3b8" stroke-width="1.5" stroke-dasharray="4,3"/>
+
+  <!-- Arrow: → Total Cost -->
+  <line x1="460" y1="112" x2="510" y2="112" stroke="#94a3b8" stroke-width="1.5" marker-end="url(#arr)"/>
+
+  <!-- ══ TOTAL COST ══ -->
+  <rect x="510" y="86" width="180" height="52" rx="8" fill="#1565c0" filter="url(#shadow)"/>
+  <text x="600" y="108" text-anchor="middle" font-size="12" fill="rgba(255,255,255,0.85)" font-weight="500">Total Transfer Cost</text>
+  <text x="600" y="128" text-anchor="middle" font-size="16" fill="white" font-weight="700">$36.00 / mo</text>
+</svg>

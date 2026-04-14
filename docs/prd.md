@@ -18,7 +18,7 @@
 - [x] Concurrency Calculator *(Backend)* ✅ 2026-04-14
 - [x] Bandwidth Cost Calculator *(Cloud)* ✅ 2026-04-14
 - [x] Storage Cost Calculator *(Cloud)* ✅ 2026-04-14
-- [ ] Data Transfer Cost Calculator *(Cloud)*
+- [x] Data Transfer Cost Calculator *(Cloud)* ✅ 2026-04-14
 - [ ] Payload Size Calculator *(API)*
 - [ ] HTTP Request Size Calculator *(API)*
 - [ ] Regex Performance Calculator *(Dev Tools)*
