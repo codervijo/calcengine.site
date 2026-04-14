@@ -5,6 +5,7 @@ import { apiRateLimitCalculator } from '../definitions/api-rate-limit';
 import { base64SizeCalculator } from '../definitions/base64-size';
 import { cronNextRunCalculator } from '../definitions/cron-next-run-calculator';
 import { latencyBudgetCalculator } from '../definitions/latency-budget-calculator';
+import { cacheHitRateCalculator } from '../definitions/cache-hit-rate-calculator';
 
 const calculators: CalculatorDefinition[] = [
   openaiCostCalculator,
@@ -13,6 +14,7 @@ const calculators: CalculatorDefinition[] = [
   base64SizeCalculator,
   cronNextRunCalculator,
   latencyBudgetCalculator,
+  cacheHitRateCalculator,
 ];
 
 export function getAllCalculators(): CalculatorDefinition[] {

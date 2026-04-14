@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 220" width="680" height="220" font-family="Inter, system-ui, sans-serif" role="img" aria-label="Cache hit rate calculation flow diagram">
+  <defs>
+    <marker id="arr" markerWidth="8" markerHeight="8" refX="7" refY="3" orient="auto">
+      <path d="M0,0 L0,6 L8,3 z" fill="#94a3b8"/>
+    </marker>
+    <filter id="shadow" x="-5%" y="-5%" width="110%" height="120%">
+      <feDropShadow dx="0" dy="1" stdDeviation="2" flood-color="#00000018"/>
+    </filter>
+  </defs>
+
+  <!-- ── Row labels ── -->
+  <text x="12" y="82" font-size="10" fill="#94a3b8" font-weight="500" letter-spacing="0.5">HITS</text>
+  <text x="12" y="158" font-size="10" fill="#94a3b8" font-weight="500" letter-spacing="0.5">TOTAL</text>
+
+  <!-- ══ TOP ROW: Cache Hits ══ -->
+  <rect x="60" y="48" width="124" height="52" rx="8" fill="#eff6ff" stroke="#bfdbfe" stroke-width="1.5" filter="url(#shadow)"/>
+  <text x="122" y="70" text-anchor="middle" font-size="12" fill="#1e40af" font-weight="600">Cache Hits</text>
+  <text x="122" y="88" text-anchor="middle" font-size="11" fill="#3b82f6">e.g. 9,000</text>
+
+  <!-- Arrow: hits → divide -->
+  <line x1="184" y1="74" x2="258" y2="74" stroke="#94a3b8" stroke-width="1.5" marker-end="url(#arr)"/>
+
+  <!-- ══ BOTTOM ROW: Total Requests ══ -->
+  <rect x="60" y="124" width="124" height="52" rx="8" fill="#eff6ff" stroke="#bfdbfe" stroke-width="1.5" filter="url(#shadow)"/>
+  <text x="122" y="146" text-anchor="middle" font-size="12" fill="#1e40af" font-weight="600">Total Requests</text>
+  <text x="122" y="164" text-anchor="middle" font-size="11" fill="#3b82f6">e.g. 10,000</text>
+
+  <!-- Arrow: total → divide -->
+  <line x1="184" y1="150" x2="258" y2="150" stroke="#94a3b8" stroke-width="1.5" marker-end="url(#arr)"/>
+
+  <!-- ÷ node -->
+  <circle cx="270" cy="112" r="18" fill="white" stroke="#e2e8f0" stroke-width="1.5" filter="url(#shadow)"/>
+  <text x="270" y="117" text-anchor="middle" font-size="15" fill="#64748b" font-weight="600">÷</text>
+
+  <!-- Arrow: divide → × 100 label -->
+  <line x1="288" y1="112" x2="340" y2="112" stroke="#94a3b8" stroke-width="1.5" marker-end="url(#arr)"/>
+  <text x="314" y="105" text-anchor="middle" font-size="9.5" fill="#64748b">× 100</text>
+
+  <!-- Hit Rate intermediate box -->
+  <rect x="340" y="86" width="124" height="52" rx="8" fill="#eff6ff" stroke="#bfdbfe" stroke-width="1.5" filter="url(#shadow)"/>
+  <text x="402" y="107" text-anchor="middle" font-size="12" fill="#1e40af" font-weight="600">Hit Rate</text>
+  <text x="402" y="125" text-anchor="middle" font-size="11" fill="#3b82f6">90.00 %</text>
+
+  <!-- Arrow: hit rate → result -->
+  <line x1="464" y1="112" x2="498" y2="112" stroke="#94a3b8" stroke-width="1.5" marker-end="url(#arr)"/>
+
+  <!-- ══ RESULT: Miss Rate ══ -->
+  <rect x="498" y="86" width="162" height="52" rx="8" fill="#1565c0" filter="url(#shadow)"/>
+  <text x="579" y="107" text-anchor="middle" font-size="12" fill="rgba(255,255,255,0.85)" font-weight="500">Miss Rate</text>
+  <text x="579" y="127" text-anchor="middle" font-size="16" fill="white" font-weight="700">10.00 %</text>
+</svg>
