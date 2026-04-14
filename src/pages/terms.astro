@@ -1,0 +1,85 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import SiteNav from '../layouts/SiteNav.astro';
+import SiteFooter from '../layouts/SiteFooter.astro';
+---
+
+<BaseLayout
+  title="Terms of Use — CalcEngine"
+  description="CalcEngine terms of use. Free engineering calculators provided as-is for informational purposes. No warranties on calculation results."
+  canonical="/terms"
+>
+  <SiteNav />
+
+  <main class="max-w-2xl mx-auto px-4 sm:px-6 py-12 sm:py-16">
+    <h1 class="text-3xl font-bold text-gray-900 dark:text-gray-100 mb-2">Terms of Use</h1>
+    <p class="text-sm text-gray-400 dark:text-gray-500 mb-10">Last updated: April 2026</p>
+
+    <div class="space-y-8 text-gray-600 dark:text-gray-400 leading-relaxed">
+
+      <section>
+        <h2 class="text-lg font-semibold text-gray-900 dark:text-gray-100 mb-2">Acceptance</h2>
+        <p>
+          By using CalcEngine (<a href="https://calcengine.dev" class="text-[#1565c0] dark:text-[#42a5f5] hover:underline">calcengine.dev</a>),
+          you agree to these terms. If you do not agree, please do not use the site.
+        </p>
+      </section>
+
+      <section>
+        <h2 class="text-lg font-semibold text-gray-900 dark:text-gray-100 mb-2">Use of Calculators</h2>
+        <p>
+          CalcEngine provides engineering calculators for informational and planning purposes only.
+          Results are estimates based on the inputs you provide and the formulas described on each
+          calculator page. You are responsible for verifying results before relying on them for
+          production systems, financial decisions, or any other purpose.
+        </p>
+      </section>
+
+      <section>
+        <h2 class="text-lg font-semibold text-gray-900 dark:text-gray-100 mb-2">No Warranties</h2>
+        <p>
+          The site and its calculators are provided <strong class="text-gray-700 dark:text-gray-300">"as is"</strong> without
+          warranty of any kind, express or implied. We do not warrant that results will be accurate,
+          complete, or suitable for any particular purpose.
+        </p>
+      </section>
+
+      <section>
+        <h2 class="text-lg font-semibold text-gray-900 dark:text-gray-100 mb-2">Limitation of Liability</h2>
+        <p>
+          To the fullest extent permitted by law, CalcEngine and its operators shall not be liable for
+          any direct, indirect, incidental, or consequential damages arising from your use of the site
+          or reliance on its outputs.
+        </p>
+      </section>
+
+      <section>
+        <h2 class="text-lg font-semibold text-gray-900 dark:text-gray-100 mb-2">Intellectual Property</h2>
+        <p>
+          All content on CalcEngine — including text, formulas, page designs, and code — is owned by
+          CalcEngine or its contributors. You may not reproduce or redistribute it without permission,
+          except as permitted by applicable law.
+        </p>
+      </section>
+
+      <section>
+        <h2 class="text-lg font-semibold text-gray-900 dark:text-gray-100 mb-2">External Links</h2>
+        <p>
+          Some pages link to third-party websites. We are not responsible for the content or privacy
+          practices of those sites.
+        </p>
+      </section>
+
+      <section>
+        <h2 class="text-lg font-semibold text-gray-900 dark:text-gray-100 mb-2">Changes</h2>
+        <p>
+          We reserve the right to modify these terms at any time. Continued use of the site after
+          changes constitutes acceptance of the updated terms.
+        </p>
+      </section>
+
+    </div>
+  </main>
+
+  <SiteFooter />
+</BaseLayout>

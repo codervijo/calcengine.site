@@ -1,0 +1,84 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import SiteNav from '../layouts/SiteNav.astro';
+import SiteFooter from '../layouts/SiteFooter.astro';
+---
+
+<BaseLayout
+  title="Privacy Policy — CalcEngine"
+  description="CalcEngine privacy policy. We don't collect personal data, require sign-ups, or use tracking cookies. All calculations run entirely in your browser."
+  canonical="/privacy"
+>
+  <SiteNav />
+
+  <main class="max-w-2xl mx-auto px-4 sm:px-6 py-12 sm:py-16">
+    <h1 class="text-3xl font-bold text-gray-900 dark:text-gray-100 mb-2">Privacy Policy</h1>
+    <p class="text-sm text-gray-400 dark:text-gray-500 mb-10">Last updated: April 2026</p>
+
+    <div class="prose-like space-y-8 text-gray-600 dark:text-gray-400 leading-relaxed">
+
+      <section>
+        <h2 class="text-lg font-semibold text-gray-900 dark:text-gray-100 mb-2">Overview</h2>
+        <p>
+          CalcEngine is a collection of free, browser-based engineering calculators. We are committed
+          to your privacy. This policy explains what data we do and do not collect.
+        </p>
+      </section>
+
+      <section>
+        <h2 class="text-lg font-semibold text-gray-900 dark:text-gray-100 mb-2">Data We Do Not Collect</h2>
+        <ul class="list-disc list-inside space-y-1">
+          <li>No account registration or personal information is required.</li>
+          <li>No values you enter into calculators are sent to our servers — all calculations run entirely in your browser.</li>
+          <li>No tracking cookies or cross-site identifiers are set.</li>
+          <li>No behavioural profiles are built or sold.</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2 class="text-lg font-semibold text-gray-900 dark:text-gray-100 mb-2">Local Storage</h2>
+        <p>
+          We store a single key (<code class="bg-gray-100 dark:bg-gray-800 px-1 rounded text-sm font-mono">calcengine-theme</code>)
+          in your browser's <code class="bg-gray-100 dark:bg-gray-800 px-1 rounded text-sm font-mono">localStorage</code> to
+          remember your light/dark mode preference. This value never leaves your device.
+        </p>
+      </section>
+
+      <section>
+        <h2 class="text-lg font-semibold text-gray-900 dark:text-gray-100 mb-2">Web Fonts</h2>
+        <p>
+          Pages load the Inter typeface from Google Fonts. Google may log your IP address as part of
+          serving this font. See <a href="https://policies.google.com/privacy" class="text-[#1565c0] dark:text-[#42a5f5] hover:underline" rel="noopener noreferrer" target="_blank">Google's privacy policy</a> for details.
+        </p>
+      </section>
+
+      <section>
+        <h2 class="text-lg font-semibold text-gray-900 dark:text-gray-100 mb-2">Hosting</h2>
+        <p>
+          CalcEngine is a statically generated site. Our hosting provider may collect standard server
+          logs (IP address, request path, timestamp) for operational purposes. These logs are not used
+          for marketing and are not shared with third parties.
+        </p>
+      </section>
+
+      <section>
+        <h2 class="text-lg font-semibold text-gray-900 dark:text-gray-100 mb-2">Changes to This Policy</h2>
+        <p>
+          We may update this policy from time to time. Material changes will be reflected in the
+          "Last updated" date above.
+        </p>
+      </section>
+
+      <section>
+        <h2 class="text-lg font-semibold text-gray-900 dark:text-gray-100 mb-2">Contact</h2>
+        <p>
+          Questions about this policy can be directed to the site via
+          <a href="https://github.com/calcengine" class="text-[#1565c0] dark:text-[#42a5f5] hover:underline" rel="noopener noreferrer" target="_blank">GitHub</a>.
+        </p>
+      </section>
+
+    </div>
+  </main>
+
+  <SiteFooter />
+</BaseLayout>

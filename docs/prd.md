@@ -85,7 +85,7 @@
 
 | # | Issue | Location | Impact |
 |---|-------|----------|--------|
-| H1 | **`/calculators` links not crawlable** — All calculator `<a>` tags live inside `<SearchableListIsland client:only="react">`, so Googlebot sees no outbound links from the collection page | `src/pages/calculators/index.astro:49` | Calculator pages discovered only via homepage; collection page carries no link equity |
+| H1 | ~~**`/calculators` links not crawlable** — All calculator `<a>` tags live inside `<SearchableListIsland client:only="react">`, so Googlebot sees no outbound links from the collection page~~ | ~~`src/pages/calculators/index.astro:49`~~ | ~~Calculator pages discovered only via homepage; collection page carries no link equity~~ | ✅ **Implemented 2026-04-13** — static `<ul>` rendered in Astro HTML; React island swaps in on mount |
 | H2 | **No About page** — No author or company credibility signals anywhere on the site | — | E-E-A-T penalty |
 
 #### Medium
@@ -134,7 +134,7 @@
 ### Priority Fix Order
 
 1. ~~**C1** — Expand homepage + `/calculators` meta descriptions to 150–160 chars~~ ✅ 2026-04-13
-2. **H1** — Add a static `<ul>` of calculator links alongside the React island on `/calculators`
+2. ~~**H1** — Add a static `<ul>` of calculator links alongside the React island on `/calculators`~~ ✅ 2026-04-13
 3. ~~**C3** — Create `/privacy` and `/terms` pages; link from footer~~ ✅ 2026-04-13
 4. ~~**C2** — Add `image`/`logo` to `WebApplication` and `Organization` JSON-LD using OG image URLs~~ ✅ 2026-04-13
 5. **H2** — Create `/about` page with company/founder credibility signals
