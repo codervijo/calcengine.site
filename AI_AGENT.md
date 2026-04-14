@@ -1,22 +1,79 @@
-# AI Agent Context — calcengine
+# AI Agent Context — calcengine.site
 
 ## What this project is
-<1-2 sentence description — infer from README.md, package.json, go.mod, or directory name>
+CalcEngine is a statically generated (Astro SSG) site of free engineering calculators targeting developer long-tail keywords. Each calculator is a schema-driven page with full SEO content — intro, how-it-works, formula, worked example, FAQ, and related links — plus an interactive React island for the actual calculation.
 
 ## Stack
-<infer from files: language, frameworks, key dependencies>
+- **Framework:** Astro 4 (static output, `output: 'static'`)
+- **UI:** React 18 islands via `@astrojs/react`, MUI v9 + Emotion for calculator components
+- **Styling:** Tailwind CSS v3 (Astro static pages), MUI theme (`src/app/theme-builder.ts`) for React islands
+- **Language:** TypeScript
+- **Package manager:** pnpm
+- **SEO:** `@astrojs/sitemap`, JSON-LD structured data (`src/seo/jsonLd.ts`), build-time OG images via Satori + `@resvg/resvg-js`
+- **Testing:** Vitest + Testing Library
 
 ## Project structure
-<list top-level directories and their purpose>
+```
+src/
+  calculators/
+    definitions/    # One .tsx file per calculator (meta + React component)
+    registry/       # getAllCalculators(), types.ts (CalculatorMeta, CalculatorDefinition)
+  pages/
+    index.astro             # Homepage (fully static)
+    calculators/
+      index.astro           # All-calculators list (static list + React search island)
+      [slug].astro          # Individual calculator pages (getStaticPaths)
+    og/
+      [slug].png.ts         # Build-time OG images per calculator (Satori)
+      home.png.ts           # OG image for homepage
+    privacy.astro
+    terms.astro
+    404.astro
+  layouts/
+    BaseLayout.astro        # HTML shell, SEO head, FOUC prevention
+    SiteNav.astro           # Static nav + DarkModeToggle island
+    SiteFooter.astro
+  components/
+    CalculatorWidget.tsx    # React island wrapper for individual calculators
+    SearchableListIsland.tsx # React island for search/filter on /calculators
+    DarkModeToggle.tsx      # Minimal React island, no MUI
+  app/
+    ThemeContext.tsx         # MUI ThemeProvider (used inside React islands only)
+    theme-builder.ts         # buildTheme(mode) shared function
+  seo/
+    jsonLd.ts               # JSON-LD schema builders
+  og/
+    OgTemplate.tsx          # Satori JSX template
+    renderOg.ts             # Satori → resvg-js → PNG pipeline
+  styles/
+    global.css              # @tailwind directives
+docs/
+  prd.md                    # Product roadmap + SEO audit tracker
+  Prompts.md                # Prompt history log
+public/
+  robots.txt
+  favicon.ico
+```
 
 ## How to run
-<infer from Makefile, package.json scripts, or README>
+```bash
+pnpm dev        # Start Astro dev server
+pnpm build      # Static build → dist/
+pnpm preview    # Preview built output
+pnpm test       # Run Vitest suite
+```
+Or via Makefile from parent directory: `make run`
 
 ## Key conventions
-- <any patterns you notice in the code>
+- **Adding a new calculator:** create one file in `src/calculators/definitions/`, export a `CalculatorDefinition` object with `meta` + `Component`. No routing changes needed — `getStaticPaths` picks it up automatically.
+- **Import types only:** all TypeScript interfaces/types must use `import type` — value imports of type-only symbols cause Astro hydration errors at runtime.
+- **MUI components must be `client:only="react"`** — Emotion CSS-in-JS is incompatible with Astro SSR. Never put MUI in a `.astro` file.
+- **Dark mode:** persisted in `localStorage` key `calcengine-theme`, applied via `dark` class on `<html>`. Cross-island sync via `CustomEvent('calcengine-theme', { detail: 'light'|'dark' })`.
+- **Static-first:** all content (breadcrumbs, H1, intro, FAQ, related links) is rendered as static Astro HTML. Only the interactive widget is a React island.
+- **SEO content fields:** `intro`, `howItWorks`, `formula`, `example`, `faq[]` in `CalculatorMeta` must be substantive (400+ words total, 5 FAQ items minimum).
 
 ## Out of scope / don't touch
-- <leave blank for user to fill>
+- (fill in as needed)
 
 ---
 # CalcEngine — AI_AGENTS.md
