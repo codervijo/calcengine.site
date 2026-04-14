@@ -7,7 +7,7 @@
 - [x] Base64 Size Calculator *(Data)*
 
 ## Phase 2 — Calculator Expansion (50 tools)
-- [ ] JWT Size Calculator *(Security)*
+- [x] JWT Size Calculator *(Security)* ✅ 2026-04-14
 - [ ] UUID Collision Probability Calculator *(Backend)*
 - [ ] Cron Expression Calculator *(Scheduling)*
 - [ ] Cron Next Run Calculator *(Scheduling)*
