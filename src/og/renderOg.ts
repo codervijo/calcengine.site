@@ -2,13 +2,18 @@ import type { ReactNode } from 'react';
 import satori from 'satori';
 import { Resvg } from '@resvg/resvg-js';
 import { readFile } from 'node:fs/promises';
+import { resolve } from 'node:path';
 
 let fontCache: ArrayBuffer | null = null;
 
 async function loadInterBold(): Promise<ArrayBuffer> {
   if (fontCache) return fontCache;
-  const url = new URL('../assets/fonts/inter-bold.woff2', import.meta.url);
-  fontCache = await readFile(url);
+  // process.cwd() is the project root during `astro build` locally and on Vercel.
+  // The font lives in src/ and is not bundled — read it directly from source.
+  const fontPath = resolve(process.cwd(), 'src/assets/fonts/inter-bold.woff2');
+  const buf = await readFile(fontPath);
+  // Slice to get a clean ArrayBuffer (Node Buffer shares its underlying memory)
+  fontCache = buf.buffer.slice(buf.byteOffset, buf.byteOffset + buf.byteLength);
   return fontCache;
 }
 
