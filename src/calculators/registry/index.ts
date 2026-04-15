@@ -27,6 +27,7 @@ import { compressionRatioCalculator } from '../definitions/compression-ratio-cal
 import { fileUploadTimeCalculator } from '../definitions/file-upload-time-calculator';
 import { downloadSpeedCalculator } from '../definitions/download-speed-calculator';
 import { tlsHandshakeTimeEstimatorCalculator } from '../definitions/tls-handshake-time-estimator';
+import { cdnCostCalculator } from '../definitions/cdn-cost-calculator';
 
 const calculators: CalculatorDefinition[] = [
   openaiCostCalculator,
@@ -57,6 +58,7 @@ const calculators: CalculatorDefinition[] = [
   fileUploadTimeCalculator,
   downloadSpeedCalculator,
   tlsHandshakeTimeEstimatorCalculator,
+  cdnCostCalculator,
 ];
 
 export function getAllCalculators(): CalculatorDefinition[] {
