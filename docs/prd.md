@@ -21,7 +21,7 @@
 - [x] Data Transfer Cost Calculator *(Cloud)* ✅ 2026-04-14
 - [x] Payload Size Calculator *(API)* ✅ 2026-04-14
 - [x] HTTP Request Size Calculator *(API)* ✅ 2026-04-14
-- [ ] Regex Performance Calculator *(Dev Tools)*
+- [x] Regex Performance Calculator *(Dev Tools)* ✅ 2026-04-14
 - [ ] SQL Query Cost Estimator *(Database)*
 - [ ] Pagination Performance Calculator *(Database)*
 - [ ] Index Size Calculator *(Database)*
