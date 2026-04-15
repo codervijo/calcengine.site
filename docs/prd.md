@@ -25,7 +25,7 @@
 - [x] SQL Query Cost Estimator *(Database)* ✅ 2026-04-14
 - [x] Pagination Performance Calculator *(Database)* ✅ 2026-04-14
 - [x] Index Size Calculator *(Database)* ✅ 2026-04-14
-- [ ] Thread Pool Size Calculator *(Backend)*
+- [x] Thread Pool Size Calculator *(Backend)* ✅ 2026-04-14
 - [ ] Worker Queue Throughput Calculator *(Backend)*
 - [ ] Retry Backoff Calculator *(Backend)*
 - [ ] Timeout Calculator *(Backend)*

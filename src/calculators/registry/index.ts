@@ -18,6 +18,7 @@ import { regexPerformanceCalculator } from '../definitions/regex-performance-cal
 import { sqlQueryCostEstimatorCalculator } from '../definitions/sql-query-cost-estimator';
 import { paginationPerformanceCalculator } from '../definitions/pagination-performance-calculator';
 import { indexSizeCalculator } from '../definitions/index-size-calculator';
+import { threadPoolSizeCalculator } from '../definitions/thread-pool-size-calculator';
 
 const calculators: CalculatorDefinition[] = [
   openaiCostCalculator,
@@ -39,6 +40,7 @@ const calculators: CalculatorDefinition[] = [
   sqlQueryCostEstimatorCalculator,
   paginationPerformanceCalculator,
   indexSizeCalculator,
+  threadPoolSizeCalculator,
 ];
 
 export function getAllCalculators(): CalculatorDefinition[] {
