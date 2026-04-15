@@ -33,7 +33,7 @@
 - [x] Compression Ratio Calculator *(Data)* ✅ 2026-04-15
 - [x] File Upload Time Calculator *(Network)* ✅ 2026-04-15
 - [x] Download Speed Calculator *(Network)* ✅ 2026-04-15
-- [ ] TLS Handshake Time Estimator *(Network)*
+- [x] TLS Handshake Time Estimator *(Network)* ✅ 2026-04-15
 - [ ] CDN Cost Calculator *(Cloud)*
 - [ ] Lambda Cost Calculator *(Cloud)*
 - [ ] Kubernetes Resource Calculator *(DevOps)*
