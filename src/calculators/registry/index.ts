@@ -20,6 +20,7 @@ import { paginationPerformanceCalculator } from '../definitions/pagination-perfo
 import { indexSizeCalculator } from '../definitions/index-size-calculator';
 import { threadPoolSizeCalculator } from '../definitions/thread-pool-size-calculator';
 import { workerQueueThroughputCalculator } from '../definitions/worker-queue-throughput-calculator';
+import { retryBackoffCalculator } from '../definitions/retry-backoff-calculator';
 
 const calculators: CalculatorDefinition[] = [
   openaiCostCalculator,
@@ -43,6 +44,7 @@ const calculators: CalculatorDefinition[] = [
   indexSizeCalculator,
   threadPoolSizeCalculator,
   workerQueueThroughputCalculator,
+  retryBackoffCalculator,
 ];
 
 export function getAllCalculators(): CalculatorDefinition[] {

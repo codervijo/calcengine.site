@@ -1,0 +1,61 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 240" width="720" height="240" font-family="Inter, system-ui, sans-serif" role="img" aria-label="Retry backoff calculation flow diagram showing inputs flowing through the exponential backoff formula to produce per-attempt delay output">
+  <defs>
+    <marker id="arr" markerWidth="8" markerHeight="8" refX="7" refY="3" orient="auto">
+      <path d="M0,0 L0,6 L8,3 z" fill="#94a3b8"/>
+    </marker>
+    <filter id="shadow" x="-5%" y="-5%" width="110%" height="120%">
+      <feDropShadow dx="0" dy="1" stdDeviation="2" flood-color="#00000018"/>
+    </filter>
+  </defs>
+
+  <!-- ── Row labels ── -->
+  <text x="8" y="68" font-size="10" fill="#94a3b8" font-weight="500" letter-spacing="0.5">INPUTS</text>
+  <text x="8" y="148" font-size="10" fill="#94a3b8" font-weight="500" letter-spacing="0.5">LIMITS</text>
+
+  <!-- ══ INPUT ROW ══ -->
+  <!-- Initial Delay -->
+  <rect x="52" y="38" width="118" height="52" rx="8" fill="#eff6ff" stroke="#bfdbfe" stroke-width="1.5" filter="url(#shadow)"/>
+  <text x="111" y="60" text-anchor="middle" font-size="11" fill="#1e40af" font-weight="600">Initial Delay</text>
+  <text x="111" y="78" text-anchor="middle" font-size="11" fill="#3b82f6">100 ms</text>
+
+  <!-- Multiplier -->
+  <rect x="188" y="38" width="118" height="52" rx="8" fill="#eff6ff" stroke="#bfdbfe" stroke-width="1.5" filter="url(#shadow)"/>
+  <text x="247" y="60" text-anchor="middle" font-size="11" fill="#1e40af" font-weight="600">Multiplier</text>
+  <text x="247" y="78" text-anchor="middle" font-size="11" fill="#3b82f6">2×</text>
+
+  <!-- Arrow: inputs → formula -->
+  <line x1="170" y1="64" x2="186" y2="64" stroke="#94a3b8" stroke-width="1.5"/>
+  <line x1="306" y1="64" x2="346" y2="64" stroke="#94a3b8" stroke-width="1.5" marker-end="url(#arr)"/>
+  <text x="326" y="56" text-anchor="middle" font-size="9" fill="#64748b">× mult^(n-1)</text>
+
+  <!-- ══ LIMITS ROW ══ -->
+  <!-- Max Retries -->
+  <rect x="52" y="118" width="118" height="52" rx="8" fill="#eff6ff" stroke="#bfdbfe" stroke-width="1.5" filter="url(#shadow)"/>
+  <text x="111" y="140" text-anchor="middle" font-size="11" fill="#1e40af" font-weight="600">Max Retries</text>
+  <text x="111" y="158" text-anchor="middle" font-size="11" fill="#3b82f6">5 attempts</text>
+
+  <!-- Max Delay Cap -->
+  <rect x="188" y="118" width="118" height="52" rx="8" fill="#eff6ff" stroke="#bfdbfe" stroke-width="1.5" filter="url(#shadow)"/>
+  <text x="247" y="140" text-anchor="middle" font-size="11" fill="#1e40af" font-weight="600">Max Delay</text>
+  <text x="247" y="158" text-anchor="middle" font-size="11" fill="#3b82f6">30,000 ms</text>
+
+  <!-- Arrow: limits → formula -->
+  <line x1="306" y1="144" x2="346" y2="144" stroke="#94a3b8" stroke-width="1.5"/>
+  <text x="326" y="136" text-anchor="middle" font-size="9" fill="#64748b">min(cap, …)</text>
+
+  <!-- ══ FORMULA BOX ══ -->
+  <rect x="346" y="78" width="144" height="88" rx="8" fill="#eff6ff" stroke="#bfdbfe" stroke-width="1.5" filter="url(#shadow)"/>
+  <text x="418" y="100" text-anchor="middle" font-size="11" fill="#1e40af" font-weight="600">Formula</text>
+  <text x="418" y="118" text-anchor="middle" font-size="9.5" fill="#3b82f6">min(MaxDelay,</text>
+  <text x="418" y="132" text-anchor="middle" font-size="9.5" fill="#3b82f6">Delay × Mult^n)</text>
+  <text x="418" y="150" text-anchor="middle" font-size="9" fill="#64748b">+ jitter ±50%</text>
+
+  <!-- Arrow: formula → output -->
+  <line x1="490" y1="122" x2="534" y2="122" stroke="#94a3b8" stroke-width="1.5" marker-end="url(#arr)"/>
+
+  <!-- ══ OUTPUT ══ -->
+  <rect x="534" y="86" width="164" height="72" rx="8" fill="#1565c0" filter="url(#shadow)"/>
+  <text x="616" y="110" text-anchor="middle" font-size="11" fill="rgba(255,255,255,0.85)" font-weight="500">Delay per Attempt</text>
+  <text x="616" y="130" text-anchor="middle" font-size="15" fill="white" font-weight="700">100 → 3,200 ms</text>
+  <text x="616" y="148" text-anchor="middle" font-size="10" fill="rgba(255,255,255,0.7)">total wait: 6,200 ms</text>
+</svg>
