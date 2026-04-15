@@ -22,6 +22,7 @@ import { threadPoolSizeCalculator } from '../definitions/thread-pool-size-calcul
 import { workerQueueThroughputCalculator } from '../definitions/worker-queue-throughput-calculator';
 import { retryBackoffCalculator } from '../definitions/retry-backoff-calculator';
 import { timeoutCalculator } from '../definitions/timeout-calculator';
+import { apiResponseTimeEstimatorCalculator } from '../definitions/api-response-time-estimator';
 
 const calculators: CalculatorDefinition[] = [
   openaiCostCalculator,
@@ -47,6 +48,7 @@ const calculators: CalculatorDefinition[] = [
   workerQueueThroughputCalculator,
   retryBackoffCalculator,
   timeoutCalculator,
+  apiResponseTimeEstimatorCalculator,
 ];
 
 export function getAllCalculators(): CalculatorDefinition[] {

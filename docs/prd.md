@@ -29,7 +29,7 @@
 - [x] Worker Queue Throughput Calculator *(Backend)* ✅ 2026-04-14
 - [x] Retry Backoff Calculator *(Backend)* ✅ 2026-04-15
 - [x] Timeout Calculator *(Backend)* ✅ 2026-04-15
-- [ ] API Response Time Estimator *(Performance)*
+- [x] API Response Time Estimator *(Performance)* ✅ 2026-04-15
 - [ ] Compression Ratio Calculator *(Data)*
 - [ ] File Upload Time Calculator *(Network)*
 - [ ] Download Speed Calculator *(Network)*
