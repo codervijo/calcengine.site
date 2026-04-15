@@ -1,0 +1,63 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 220" width="680" height="220" font-family="Inter, system-ui, sans-serif" role="img" aria-label="Pod capacity calculation flow diagram: node CPU and memory divided by pod requests, then min() to get max pods">
+  <defs>
+    <marker id="arr" markerWidth="8" markerHeight="8" refX="7" refY="3" orient="auto">
+      <path d="M0,0 L0,6 L8,3 z" fill="#94a3b8"/>
+    </marker>
+    <filter id="shadow" x="-5%" y="-5%" width="110%" height="120%">
+      <feDropShadow dx="0" dy="1" stdDeviation="2" flood-color="#00000018"/>
+    </filter>
+  </defs>
+
+  <!-- ── Row labels ── -->
+  <text x="12" y="82" font-size="10" fill="#94a3b8" font-weight="500" letter-spacing="0.5">CPU</text>
+  <text x="12" y="158" font-size="10" fill="#94a3b8" font-weight="500" letter-spacing="0.5">MEMORY</text>
+
+  <!-- ══ CPU ROW ══ -->
+  <!-- Node CPU -->
+  <rect x="60" y="48" width="124" height="52" rx="8" fill="#eff6ff" stroke="#bfdbfe" stroke-width="1.5" filter="url(#shadow)"/>
+  <text x="122" y="70" text-anchor="middle" font-size="12" fill="#1e40af" font-weight="600">Node CPU</text>
+  <text x="122" y="88" text-anchor="middle" font-size="11" fill="#3b82f6">e.g. 4000m</text>
+
+  <!-- Arrow: node cpu → pods by cpu -->
+  <line x1="184" y1="74" x2="258" y2="74" stroke="#94a3b8" stroke-width="1.5" marker-end="url(#arr)"/>
+  <text x="221" y="65" text-anchor="middle" font-size="9.5" fill="#64748b">÷ pod CPU req</text>
+  <text x="221" y="87" text-anchor="middle" font-size="9.5" fill="#64748b">floor()</text>
+
+  <!-- Pods by CPU -->
+  <rect x="258" y="48" width="124" height="52" rx="8" fill="#eff6ff" stroke="#bfdbfe" stroke-width="1.5" filter="url(#shadow)"/>
+  <text x="320" y="70" text-anchor="middle" font-size="12" fill="#1e40af" font-weight="600">Pods by CPU</text>
+  <text x="320" y="88" text-anchor="middle" font-size="11" fill="#3b82f6">e.g. 16</text>
+
+  <!-- ══ MEMORY ROW ══ -->
+  <!-- Node Memory -->
+  <rect x="60" y="124" width="124" height="52" rx="8" fill="#eff6ff" stroke="#bfdbfe" stroke-width="1.5" filter="url(#shadow)"/>
+  <text x="122" y="146" text-anchor="middle" font-size="12" fill="#1e40af" font-weight="600">Node Memory</text>
+  <text x="122" y="164" text-anchor="middle" font-size="11" fill="#3b82f6">e.g. 16384 MiB</text>
+
+  <!-- Arrow: node memory → pods by memory -->
+  <line x1="184" y1="150" x2="258" y2="150" stroke="#94a3b8" stroke-width="1.5" marker-end="url(#arr)"/>
+  <text x="221" y="141" text-anchor="middle" font-size="9.5" fill="#64748b">÷ pod mem req</text>
+  <text x="221" y="163" text-anchor="middle" font-size="9.5" fill="#64748b">floor()</text>
+
+  <!-- Pods by Memory -->
+  <rect x="258" y="124" width="124" height="52" rx="8" fill="#eff6ff" stroke="#bfdbfe" stroke-width="1.5" filter="url(#shadow)"/>
+  <text x="320" y="146" text-anchor="middle" font-size="12" fill="#1e40af" font-weight="600">Pods by Memory</text>
+  <text x="320" y="164" text-anchor="middle" font-size="11" fill="#3b82f6">e.g. 32</text>
+
+  <!-- ══ CONVERGENCE LINES ══ -->
+  <!-- Pods by CPU → merge point -->
+  <line x1="382" y1="74" x2="440" y2="112" stroke="#94a3b8" stroke-width="1.5"/>
+  <!-- Pods by Memory → merge point -->
+  <line x1="382" y1="150" x2="440" y2="112" stroke="#94a3b8" stroke-width="1.5"/>
+  <!-- merge → Max Pods -->
+  <line x1="440" y1="112" x2="476" y2="112" stroke="#94a3b8" stroke-width="1.5" marker-end="url(#arr)"/>
+
+  <!-- min() label at merge -->
+  <circle cx="440" cy="112" r="14" fill="white" stroke="#e2e8f0" stroke-width="1.5"/>
+  <text x="440" y="117" text-anchor="middle" font-size="11" fill="#64748b" font-weight="600">min</text>
+
+  <!-- ══ MAX PODS ══ -->
+  <rect x="476" y="86" width="168" height="52" rx="8" fill="#1565c0" filter="url(#shadow)"/>
+  <text x="560" y="107" text-anchor="middle" font-size="12" fill="rgba(255,255,255,0.85)" font-weight="500">Max Pods / Node</text>
+  <text x="560" y="127" text-anchor="middle" font-size="16" fill="white" font-weight="700">16 pods</text>
+</svg>

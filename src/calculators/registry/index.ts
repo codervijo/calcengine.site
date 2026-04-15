@@ -30,6 +30,7 @@ import { tlsHandshakeTimeEstimatorCalculator } from '../definitions/tls-handshak
 import { cdnCostCalculator } from '../definitions/cdn-cost-calculator';
 import { lambdaCostCalculator } from '../definitions/lambda-cost-calculator';
 import { kubernetesResourceCalculator } from '../definitions/kubernetes-resource-calculator';
+import { podCapacityCalculator } from '../definitions/pod-capacity-calculator';
 
 const calculators: CalculatorDefinition[] = [
   openaiCostCalculator,
@@ -63,6 +64,7 @@ const calculators: CalculatorDefinition[] = [
   cdnCostCalculator,
   lambdaCostCalculator,
   kubernetesResourceCalculator,
+  podCapacityCalculator,
 ];
 
 export function getAllCalculators(): CalculatorDefinition[] {

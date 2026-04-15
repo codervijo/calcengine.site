@@ -37,7 +37,7 @@
 - [x] CDN Cost Calculator *(Cloud)* ✅ 2026-04-15
 - [x] Lambda Cost Calculator *(Cloud)* ✅ 2026-04-15
 - [x] Kubernetes Resource Calculator *(DevOps)* ✅ 2026-04-15
-- [ ] Pod Capacity Calculator *(DevOps)*
+- [x] Pod Capacity Calculator *(DevOps)* ✅ 2026-04-15
 - [ ] CPU Usage Estimator *(Performance)*
 - [ ] Memory Usage Calculator *(Performance)*
 - [ ] Disk IOPS Calculator *(Storage)*
