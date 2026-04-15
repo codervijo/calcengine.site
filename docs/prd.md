@@ -39,7 +39,7 @@
 - [x] Kubernetes Resource Calculator *(DevOps)* ✅ 2026-04-15
 - [x] Pod Capacity Calculator *(DevOps)* ✅ 2026-04-15
 - [x] CPU Usage Estimator *(Performance)* ✅ 2026-04-15
-- [ ] Memory Usage Calculator *(Performance)*
+- [x] Memory Usage Calculator *(Performance)* ✅ 2026-04-15
 - [ ] Disk IOPS Calculator *(Storage)*
 - [ ] RAID Capacity Calculator *(Storage)*
 - [ ] Cache TTL Impact Calculator *(Performance)*
