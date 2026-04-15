@@ -40,7 +40,7 @@
 - [x] Pod Capacity Calculator *(DevOps)* ✅ 2026-04-15
 - [x] CPU Usage Estimator *(Performance)* ✅ 2026-04-15
 - [x] Memory Usage Calculator *(Performance)* ✅ 2026-04-15
-- [ ] Disk IOPS Calculator *(Storage)*
+- [x] Disk IOPS Calculator *(Storage)* ✅ 2026-04-15
 - [ ] RAID Capacity Calculator *(Storage)*
 - [ ] Cache TTL Impact Calculator *(Performance)*
 - [ ] Event Processing Rate Calculator *(Backend)*

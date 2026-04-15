@@ -33,6 +33,7 @@ import { kubernetesResourceCalculator } from '../definitions/kubernetes-resource
 import { podCapacityCalculator } from '../definitions/pod-capacity-calculator';
 import { cpuUsageEstimatorCalculator } from '../definitions/cpu-usage-estimator';
 import { memoryUsageCalculator } from '../definitions/memory-usage-calculator';
+import { diskIOPSCalculator } from '../definitions/disk-iops-calculator';
 
 const calculators: CalculatorDefinition[] = [
   openaiCostCalculator,
@@ -69,6 +70,7 @@ const calculators: CalculatorDefinition[] = [
   podCapacityCalculator,
   cpuUsageEstimatorCalculator,
   memoryUsageCalculator,
+  diskIOPSCalculator,
 ];
 
 export function getAllCalculators(): CalculatorDefinition[] {

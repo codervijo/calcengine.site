@@ -1,0 +1,76 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 250" width="720" height="250" font-family="Inter, system-ui, sans-serif" role="img" aria-label="Disk IOPS calculation flow: seek time, RPM, and block size inputs combine into IO time, then divide to produce IOPS">
+  <defs>
+    <marker id="arr" markerWidth="8" markerHeight="8" refX="7" refY="3" orient="auto">
+      <path d="M0,0 L0,6 L8,3 z" fill="#94a3b8"/>
+    </marker>
+    <filter id="shadow" x="-5%" y="-5%" width="110%" height="120%">
+      <feDropShadow dx="0" dy="1" stdDeviation="2" flood-color="#00000018"/>
+    </filter>
+  </defs>
+
+  <!-- ── Row labels ── -->
+  <text x="10" y="46" font-size="9.5" fill="#94a3b8" font-weight="500" letter-spacing="0.5">SEEK</text>
+  <text x="10" y="118" font-size="9.5" fill="#94a3b8" font-weight="500" letter-spacing="0.5">RPM</text>
+  <text x="10" y="194" font-size="9.5" fill="#94a3b8" font-weight="500" letter-spacing="0.5">BLOCK</text>
+
+  <!-- ══ ROW 1 — Seek Time ══ -->
+  <rect x="52" y="20" width="122" height="48" rx="8" fill="#eff6ff" stroke="#bfdbfe" stroke-width="1.5" filter="url(#shadow)"/>
+  <text x="113" y="41" text-anchor="middle" font-size="12" fill="#1e40af" font-weight="600">Seek Time</text>
+  <text x="113" y="58" text-anchor="middle" font-size="11" fill="#3b82f6">e.g. 8 ms</text>
+
+  <!-- Seek Time → merge (diagonal) -->
+  <line x1="174" y1="44" x2="408" y2="137" stroke="#94a3b8" stroke-width="1.5"/>
+
+  <!-- ══ ROW 2 — RPM → Rot. Latency ══ -->
+  <rect x="52" y="93" width="122" height="48" rx="8" fill="#eff6ff" stroke="#bfdbfe" stroke-width="1.5" filter="url(#shadow)"/>
+  <text x="113" y="114" text-anchor="middle" font-size="12" fill="#1e40af" font-weight="600">Disk RPM</text>
+  <text x="113" y="131" text-anchor="middle" font-size="11" fill="#3b82f6">e.g. 7200</text>
+
+  <!-- RPM → Rot. Latency -->
+  <line x1="174" y1="117" x2="222" y2="117" stroke="#94a3b8" stroke-width="1.5" marker-end="url(#arr)"/>
+  <text x="198" y="110" text-anchor="middle" font-size="9" fill="#64748b">60k/RPM/2</text>
+
+  <rect x="222" y="93" width="130" height="48" rx="8" fill="#eff6ff" stroke="#bfdbfe" stroke-width="1.5" filter="url(#shadow)"/>
+  <text x="287" y="114" text-anchor="middle" font-size="12" fill="#1e40af" font-weight="600">Rot. Latency</text>
+  <text x="287" y="131" text-anchor="middle" font-size="11" fill="#3b82f6">4.17 ms</text>
+
+  <!-- Rot. Latency → merge -->
+  <line x1="352" y1="117" x2="408" y2="137" stroke="#94a3b8" stroke-width="1.5"/>
+
+  <!-- ══ ROW 3 — Block+Rate → Transfer Time ══ -->
+  <rect x="52" y="169" width="122" height="48" rx="8" fill="#eff6ff" stroke="#bfdbfe" stroke-width="1.5" filter="url(#shadow)"/>
+  <text x="113" y="188" text-anchor="middle" font-size="11.5" fill="#1e40af" font-weight="600">Block / Rate</text>
+  <text x="113" y="205" text-anchor="middle" font-size="11" fill="#3b82f6">4 KB / 100 MB/s</text>
+
+  <!-- Block+Rate → Transfer Time -->
+  <line x1="174" y1="193" x2="222" y2="193" stroke="#94a3b8" stroke-width="1.5" marker-end="url(#arr)"/>
+  <text x="198" y="186" text-anchor="middle" font-size="9" fill="#64748b">÷ rate</text>
+
+  <rect x="222" y="169" width="130" height="48" rx="8" fill="#eff6ff" stroke="#bfdbfe" stroke-width="1.5" filter="url(#shadow)"/>
+  <text x="287" y="190" text-anchor="middle" font-size="12" fill="#1e40af" font-weight="600">Transfer Time</text>
+  <text x="287" y="207" text-anchor="middle" font-size="11" fill="#3b82f6">0.039 ms</text>
+
+  <!-- Transfer Time → merge -->
+  <line x1="352" y1="193" x2="408" y2="150" stroke="#94a3b8" stroke-width="1.5"/>
+
+  <!-- ══ MERGE CIRCLE ══ -->
+  <circle cx="422" cy="144" r="13" fill="white" stroke="#e2e8f0" stroke-width="1.5"/>
+  <text x="422" y="149" text-anchor="middle" font-size="14" fill="#64748b" font-weight="500">+</text>
+
+  <!-- merge → IO Time -->
+  <line x1="435" y1="144" x2="462" y2="144" stroke="#94a3b8" stroke-width="1.5" marker-end="url(#arr)"/>
+
+  <!-- ══ IO TIME ══ -->
+  <rect x="462" y="120" width="120" height="48" rx="8" fill="#eff6ff" stroke="#bfdbfe" stroke-width="1.5" filter="url(#shadow)"/>
+  <text x="522" y="141" text-anchor="middle" font-size="12" fill="#1e40af" font-weight="600">IO Time</text>
+  <text x="522" y="158" text-anchor="middle" font-size="11" fill="#3b82f6">12.21 ms</text>
+
+  <!-- IO Time → IOPS -->
+  <line x1="582" y1="144" x2="610" y2="144" stroke="#94a3b8" stroke-width="1.5" marker-end="url(#arr)"/>
+  <text x="596" y="136" text-anchor="middle" font-size="9" fill="#64748b">1000 ÷</text>
+
+  <!-- ══ IOPS RESULT ══ -->
+  <rect x="610" y="120" width="100" height="48" rx="8" fill="#1565c0" filter="url(#shadow)"/>
+  <text x="660" y="141" text-anchor="middle" font-size="12" fill="rgba(255,255,255,0.85)" font-weight="500">IOPS</text>
+  <text x="660" y="158" text-anchor="middle" font-size="16" fill="white" font-weight="700">82</text>
+</svg>
