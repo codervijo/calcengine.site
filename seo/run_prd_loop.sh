@@ -12,7 +12,7 @@ set -euo pipefail
 # ── Config ──────────────────────────────────────────────────────────────────
 REPO_DIR="${1:-.}"
 MODEL="${MODEL:-claude-sonnet-4-6}"
-WAIT_SECONDS="${WAIT:-600}"
+WAIT_SECONDS="${WAIT:-3600}"
 
 # ── Colors ───────────────────────────────────────────────────────────────────
 RED='\033[0;31m'
@@ -29,6 +29,16 @@ die() { echo -e "\n${RED}✗ ERROR: $*${NC}" >&2; exit 1; }
 banner() {
   echo -e "\n${BOLD}${CYAN}━━━ $* ━━━${NC}"
 }
+
+# ── Ctrl+C → stop immediately, no commit ─────────────────────────────────────
+_cleanup() {
+  echo -e "\n\n${YELLOW}⚠ Interrupted — stopping. No commit made for current run.${NC}\n"
+  # kill any background timer we may have started
+  [[ -n "${TIMER_PID:-}" ]] && kill "$TIMER_PID" 2>/dev/null || true
+  [[ -n "${CLAUDE_OUT:-}" ]] && rm -f "$CLAUDE_OUT"
+  exit 130
+}
+trap '_cleanup' INT TERM
 
 # ── Preflight ────────────────────────────────────────────────────────────────
 [[ -d "$REPO_DIR" ]]                    || die "Repo dir not found: $REPO_DIR"
@@ -92,7 +102,7 @@ PROMPT_TEMPLATE=$(awk 'f; /^---$/{f=1}' docs/Prompts.md)
 echo -e "\n${BOLD}CalcEngine PRD Loop${NC}"
 echo -e "  Model : ${MODEL}"
 echo -e "  Repo  : $(pwd)"
-echo -e "  Wait  : ${WAIT_SECONDS}s between runs"
+echo -e "  Cycle : 1 run/hour (wait = 3600s − run time, min 60s)"
 
 RUN=0
 
@@ -173,12 +183,44 @@ The SVG must:
 After writing the files, print a one-line summary of what was created."
 
   # ── Run Claude ──────────────────────────────────────────────────────────────
-  echo -e "${DIM}Running claude…${NC}\n"
+  echo -e "${DIM}Running claude… (this takes 3-8 minutes)${NC}\n"
 
-  if claude \
+  CLAUDE_OUT=$(mktemp /tmp/calcengine-out-XXXXXX.txt)
+  RUN_START=$SECONDS
+
+  # Background timer: prints elapsed time every 10s so you know it's alive
+  (
+    trap '' INT
+    START=$SECONDS
+    while true; do
+      sleep 10
+      ELAPSED=$((SECONDS - START))
+      printf "\r  ${DIM}⏱  %dm%02ds — claude working…${NC}    " $((ELAPSED/60)) $((ELAPSED%60)) >&2
+    done
+  ) &
+  TIMER_PID=$!
+
+  claude \
     --model "$MODEL" \
     --dangerously-skip-permissions \
-    -p "$PROMPT"; then
+    -p "$PROMPT" \
+    </dev/null \
+    2>&1 | tee "$CLAUDE_OUT"
+  CLAUDE_EXIT=${PIPESTATUS[0]}
+
+  kill "$TIMER_PID" 2>/dev/null; wait "$TIMER_PID" 2>/dev/null || true
+  printf "\n"
+
+  # ── Progress report: highlight key lines from claude output ────────────────
+  echo -e "\n${CYAN}── Progress report ─────────────────────────────────────────${NC}"
+  grep -iE \
+    "(writing|creating|created|wrote|edit|✓|✗|error|file:|src/|public/|import|export)" \
+    "$CLAUDE_OUT" | head -30 || echo -e "${DIM}(no structured output lines found)${NC}"
+  echo -e "${CYAN}────────────────────────────────────────────────────────────${NC}\n"
+
+  rm -f "$CLAUDE_OUT"
+
+  if [[ "$CLAUDE_EXIT" -eq 0 ]]; then
 
     echo ""
 
@@ -214,14 +256,13 @@ Co-Authored-By: Claude Sonnet 4.6 <noreply@anthropic.com>" \
     echo -e "\n${GREEN}${BOLD}✓ ${NAME} committed.${NC}"
 
   else
-    EXIT_CODE=$?
     echo ""
     echo -e "${RED}┌────────────────────────────────────────────────────┐${NC}"
     echo -e "${RED}│  FAILED: ${NAME}${NC}"
-    echo -e "${RED}│  claude exited with code ${EXIT_CODE}${NC}"
+    echo -e "${RED}│  claude exited with code ${CLAUDE_EXIT}${NC}"
     echo -e "${RED}│  Inspect the output above, fix the issue, re-run.${NC}"
     echo -e "${RED}└────────────────────────────────────────────────────┘${NC}"
-    exit "$EXIT_CODE"
+    exit "$CLAUDE_EXIT"
   fi
 
   # ── Check if anything left ────────────────────────────────────────────────
@@ -231,6 +272,13 @@ Co-Authored-By: Claude Sonnet 4.6 <noreply@anthropic.com>" \
     exit 0
   fi
 
+  # ── Adaptive wait: target 1 run per hour ─────────────────────────────────
+  RUN_ELAPSED=$((SECONDS - RUN_START))
+  CYCLE="${WAIT:-3600}"
+  REMAINING=$((CYCLE - RUN_ELAPSED))
+  if [[ $REMAINING -lt 60 ]]; then REMAINING=60; fi
+  echo -e "  ${DIM}Run took ${RUN_ELAPSED}s. Waiting ${REMAINING}s to stay at 1 run/hour.${NC}"
+  WAIT_SECONDS=$REMAINING
   wait_or_skip
 
 done
