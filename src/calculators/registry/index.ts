@@ -28,6 +28,7 @@ import { fileUploadTimeCalculator } from '../definitions/file-upload-time-calcul
 import { downloadSpeedCalculator } from '../definitions/download-speed-calculator';
 import { tlsHandshakeTimeEstimatorCalculator } from '../definitions/tls-handshake-time-estimator';
 import { cdnCostCalculator } from '../definitions/cdn-cost-calculator';
+import { lambdaCostCalculator } from '../definitions/lambda-cost-calculator';
 
 const calculators: CalculatorDefinition[] = [
   openaiCostCalculator,
@@ -59,6 +60,7 @@ const calculators: CalculatorDefinition[] = [
   downloadSpeedCalculator,
   tlsHandshakeTimeEstimatorCalculator,
   cdnCostCalculator,
+  lambdaCostCalculator,
 ];
 
 export function getAllCalculators(): CalculatorDefinition[] {

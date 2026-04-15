@@ -35,7 +35,7 @@
 - [x] Download Speed Calculator *(Network)* ✅ 2026-04-15
 - [x] TLS Handshake Time Estimator *(Network)* ✅ 2026-04-15
 - [x] CDN Cost Calculator *(Cloud)* ✅ 2026-04-15
-- [ ] Lambda Cost Calculator *(Cloud)*
+- [x] Lambda Cost Calculator *(Cloud)* ✅ 2026-04-15
 - [ ] Kubernetes Resource Calculator *(DevOps)*
 - [ ] Pod Capacity Calculator *(DevOps)*
 - [ ] CPU Usage Estimator *(Performance)*
