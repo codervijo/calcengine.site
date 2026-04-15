@@ -1,0 +1,73 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 240" width="720" height="240" font-family="Inter, system-ui, sans-serif" role="img" aria-label="Kubernetes resource calculator flow diagram: replicas and per-pod CPU and memory multiplied to produce total cluster resource requirements">
+  <defs>
+    <marker id="arr" markerWidth="8" markerHeight="8" refX="7" refY="3" orient="auto">
+      <path d="M0,0 L0,6 L8,3 z" fill="#94a3b8"/>
+    </marker>
+    <filter id="shadow" x="-5%" y="-5%" width="110%" height="120%">
+      <feDropShadow dx="0" dy="1" stdDeviation="2" flood-color="#00000018"/>
+    </filter>
+  </defs>
+
+  <!-- ── Row labels ── -->
+  <text x="8" y="66" font-size="10" fill="#94a3b8" font-weight="500" letter-spacing="0.5">PODS</text>
+  <text x="8" y="136" font-size="10" fill="#94a3b8" font-weight="500" letter-spacing="0.5">CPU</text>
+  <text x="8" y="206" font-size="10" fill="#94a3b8" font-weight="500" letter-spacing="0.5">MEM</text>
+
+  <!-- ══ INPUT: Replicas ══ -->
+  <rect x="48" y="42" width="124" height="48" rx="8" fill="#eff6ff" stroke="#bfdbfe" stroke-width="1.5" filter="url(#shadow)"/>
+  <text x="110" y="63" text-anchor="middle" font-size="12" fill="#1e40af" font-weight="600">Replicas</text>
+  <text x="110" y="80" text-anchor="middle" font-size="11" fill="#3b82f6">e.g. 3 pods</text>
+
+  <!-- ══ INPUT: CPU Request/Pod ══ -->
+  <rect x="48" y="112" width="124" height="48" rx="8" fill="#eff6ff" stroke="#bfdbfe" stroke-width="1.5" filter="url(#shadow)"/>
+  <text x="110" y="131" text-anchor="middle" font-size="12" fill="#1e40af" font-weight="600">CPU Request/Pod</text>
+  <text x="110" y="149" text-anchor="middle" font-size="11" fill="#3b82f6">e.g. 250m</text>
+
+  <!-- ══ INPUT: Memory Request/Pod ══ -->
+  <rect x="48" y="182" width="124" height="48" rx="8" fill="#eff6ff" stroke="#bfdbfe" stroke-width="1.5" filter="url(#shadow)"/>
+  <text x="110" y="201" text-anchor="middle" font-size="12" fill="#1e40af" font-weight="600">Memory/Pod</text>
+  <text x="110" y="219" text-anchor="middle" font-size="11" fill="#3b82f6">e.g. 512 MiB</text>
+
+  <!-- ══ ARROWS to multiply circles ══ -->
+  <!-- Replicas → CPU multiply -->
+  <line x1="172" y1="66" x2="246" y2="112" stroke="#94a3b8" stroke-width="1.5"/>
+  <!-- CPU/Pod → CPU multiply -->
+  <line x1="172" y1="136" x2="246" y2="136" stroke="#94a3b8" stroke-width="1.5" marker-end="url(#arr)"/>
+  <!-- Replicas → Mem multiply -->
+  <line x1="172" y1="66" x2="246" y2="192" stroke="#94a3b8" stroke-width="1.5"/>
+  <!-- Mem/Pod → Mem multiply -->
+  <line x1="172" y1="206" x2="246" y2="206" stroke="#94a3b8" stroke-width="1.5" marker-end="url(#arr)"/>
+
+  <!-- CPU multiply circle -->
+  <circle cx="258" cy="136" r="14" fill="white" stroke="#e2e8f0" stroke-width="1.5" filter="url(#shadow)"/>
+  <text x="258" y="141" text-anchor="middle" font-size="15" fill="#64748b" font-weight="500">×</text>
+
+  <!-- Mem multiply circle -->
+  <circle cx="258" cy="206" r="14" fill="white" stroke="#e2e8f0" stroke-width="1.5" filter="url(#shadow)"/>
+  <text x="258" y="211" text-anchor="middle" font-size="15" fill="#64748b" font-weight="500">×</text>
+
+  <!-- ══ ARROWS from circles to outputs ══ -->
+  <line x1="272" y1="136" x2="336" y2="136" stroke="#94a3b8" stroke-width="1.5" marker-end="url(#arr)"/>
+  <line x1="272" y1="206" x2="336" y2="206" stroke="#94a3b8" stroke-width="1.5" marker-end="url(#arr)"/>
+
+  <!-- ══ OUTPUT: Total CPU ══ -->
+  <rect x="336" y="112" width="148" height="48" rx="8" fill="#1565c0" filter="url(#shadow)"/>
+  <text x="410" y="133" text-anchor="middle" font-size="12" fill="rgba(255,255,255,0.85)" font-weight="500">Total CPU Requests</text>
+  <text x="410" y="151" text-anchor="middle" font-size="14" fill="white" font-weight="700">750m (0.75 cores)</text>
+
+  <!-- ══ OUTPUT: Total Memory ══ -->
+  <rect x="336" y="182" width="148" height="48" rx="8" fill="#1565c0" filter="url(#shadow)"/>
+  <text x="410" y="203" text-anchor="middle" font-size="12" fill="rgba(255,255,255,0.85)" font-weight="500">Total Memory Requests</text>
+  <text x="410" y="221" text-anchor="middle" font-size="14" fill="white" font-weight="700">1536 MiB (1.5 GiB)</text>
+
+  <!-- ══ Node capacity hint ══ -->
+  <rect x="504" y="122" width="200" height="96" rx="8" fill="#eff6ff" stroke="#bfdbfe" stroke-width="1.5" filter="url(#shadow)"/>
+  <text x="604" y="143" text-anchor="middle" font-size="11" fill="#1e40af" font-weight="600">Node Capacity Check</text>
+  <line x1="524" y1="152" x2="684" y2="152" stroke="#bfdbfe" stroke-width="1"/>
+  <text x="604" y="168" text-anchor="middle" font-size="10" fill="#64748b">Allocatable CPU ÷ Request/Pod</text>
+  <text x="604" y="184" text-anchor="middle" font-size="10" fill="#64748b">= max pods per node (CPU)</text>
+  <text x="604" y="200" text-anchor="middle" font-size="10" fill="#3b82f6" font-weight="500">Reserve ~10–15% for system</text>
+
+  <!-- Arrow from Total CPU to hint box -->
+  <line x1="484" y1="136" x2="504" y2="152" stroke="#94a3b8" stroke-width="1.5" stroke-dasharray="4 3" marker-end="url(#arr)"/>
+</svg>

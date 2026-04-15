@@ -36,7 +36,7 @@
 - [x] TLS Handshake Time Estimator *(Network)* ✅ 2026-04-15
 - [x] CDN Cost Calculator *(Cloud)* ✅ 2026-04-15
 - [x] Lambda Cost Calculator *(Cloud)* ✅ 2026-04-15
-- [ ] Kubernetes Resource Calculator *(DevOps)*
+- [x] Kubernetes Resource Calculator *(DevOps)* ✅ 2026-04-15
 - [ ] Pod Capacity Calculator *(DevOps)*
 - [ ] CPU Usage Estimator *(Performance)*
 - [ ] Memory Usage Calculator *(Performance)*

@@ -29,6 +29,7 @@ import { downloadSpeedCalculator } from '../definitions/download-speed-calculato
 import { tlsHandshakeTimeEstimatorCalculator } from '../definitions/tls-handshake-time-estimator';
 import { cdnCostCalculator } from '../definitions/cdn-cost-calculator';
 import { lambdaCostCalculator } from '../definitions/lambda-cost-calculator';
+import { kubernetesResourceCalculator } from '../definitions/kubernetes-resource-calculator';
 
 const calculators: CalculatorDefinition[] = [
   openaiCostCalculator,
@@ -61,6 +62,7 @@ const calculators: CalculatorDefinition[] = [
   tlsHandshakeTimeEstimatorCalculator,
   cdnCostCalculator,
   lambdaCostCalculator,
+  kubernetesResourceCalculator,
 ];
 
 export function getAllCalculators(): CalculatorDefinition[] {
