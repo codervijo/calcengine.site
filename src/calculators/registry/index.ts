@@ -31,6 +31,7 @@ import { cdnCostCalculator } from '../definitions/cdn-cost-calculator';
 import { lambdaCostCalculator } from '../definitions/lambda-cost-calculator';
 import { kubernetesResourceCalculator } from '../definitions/kubernetes-resource-calculator';
 import { podCapacityCalculator } from '../definitions/pod-capacity-calculator';
+import { cpuUsageEstimatorCalculator } from '../definitions/cpu-usage-estimator';
 
 const calculators: CalculatorDefinition[] = [
   openaiCostCalculator,
@@ -65,6 +66,7 @@ const calculators: CalculatorDefinition[] = [
   lambdaCostCalculator,
   kubernetesResourceCalculator,
   podCapacityCalculator,
+  cpuUsageEstimatorCalculator,
 ];
 
 export function getAllCalculators(): CalculatorDefinition[] {
