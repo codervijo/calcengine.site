@@ -71,13 +71,17 @@ const jsonLd = [
       </div>
     </section>
 
-    <!-- Freshness signal -->
-    {meta.lastUpdated && (
-      <p class="text-xs text-gray-400 dark:text-gray-500 mb-10 text-right">
-        Last updated: {meta.lastUpdated}
+    <!-- Freshness signal + trust sentence -->
+    <div class="mb-10">
+      {meta.lastUpdated && (
+        <p class="text-xs text-gray-400 dark:text-gray-500 text-right mb-1">
+          Last updated: {meta.lastUpdated}
+        </p>
+      )}
+      <p class="text-xs text-gray-400 dark:text-gray-500 text-right">
+        This calculator is designed for real-world usage based on typical engineering scenarios and publicly available documentation.
       </p>
-    )}
-    {!meta.lastUpdated && <div class="mb-10" />}
+    </div>
 
     <!-- Intro / About (SEO body text — below the fold) -->
     <section aria-label="About this calculator" class="mb-8">
@@ -174,6 +178,21 @@ const jsonLd = [
         </ul>
       </section>
     )}
+
+    <!-- Notes -->
+    <section aria-label="Notes" class="mb-8">
+      <h2 class="text-xl sm:text-2xl font-semibold text-gray-900 dark:text-gray-100 mb-3">Notes</h2>
+      <ul class="space-y-1">
+        <li class="flex gap-2 text-sm text-gray-500 dark:text-gray-400">
+          <span class="text-blue-400 shrink-0">›</span>
+          Results are estimates and may vary based on actual usage.
+        </li>
+        <li class="flex gap-2 text-sm text-gray-500 dark:text-gray-400">
+          <span class="text-blue-400 shrink-0">›</span>
+          Always validate against your production environment.
+        </li>
+      </ul>
+    </section>
 
     <!-- FAQ — native <details> works without JS, visible to crawlers -->
     <section aria-label="Frequently Asked Questions" class="mb-10">
