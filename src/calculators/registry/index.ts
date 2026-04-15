@@ -13,6 +13,7 @@ import { bandwidthCostCalculator } from '../definitions/bandwidth-cost-calculato
 import { storageCostCalculator } from '../definitions/storage-cost-calculator';
 import { dataTransferCostCalculator } from '../definitions/data-transfer-cost-calculator';
 import { payloadSizeCalculator } from '../definitions/payload-size-calculator';
+import { httpRequestSizeCalculator } from '../definitions/http-request-size-calculator';
 
 const calculators: CalculatorDefinition[] = [
   openaiCostCalculator,
@@ -29,6 +30,7 @@ const calculators: CalculatorDefinition[] = [
   storageCostCalculator,
   dataTransferCostCalculator,
   payloadSizeCalculator,
+  httpRequestSizeCalculator,
 ];
 
 export function getAllCalculators(): CalculatorDefinition[] {

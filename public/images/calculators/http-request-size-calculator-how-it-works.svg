@@ -1,0 +1,78 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 240" width="720" height="240" font-family="Inter, system-ui, sans-serif" role="img" aria-label="HTTP request size calculation flow diagram">
+  <defs>
+    <marker id="arr" markerWidth="8" markerHeight="8" refX="7" refY="3" orient="auto">
+      <path d="M0,0 L0,6 L8,3 z" fill="#94a3b8"/>
+    </marker>
+    <filter id="shadow" x="-5%" y="-5%" width="110%" height="120%">
+      <feDropShadow dx="0" dy="1" stdDeviation="2" flood-color="#00000018"/>
+    </filter>
+  </defs>
+
+  <!-- ── Row labels ── -->
+  <text x="8" y="56" font-size="9.5" fill="#94a3b8" font-weight="500" letter-spacing="0.5">REQUEST</text>
+  <text x="8" y="67" font-size="9.5" fill="#94a3b8" font-weight="500" letter-spacing="0.5">LINE</text>
+  <text x="8" y="118" font-size="9.5" fill="#94a3b8" font-weight="500" letter-spacing="0.5">HEADERS</text>
+  <text x="8" y="180" font-size="9.5" fill="#94a3b8" font-weight="500" letter-spacing="0.5">BODY</text>
+
+  <!-- ══ REQUEST LINE ══ -->
+  <rect x="70" y="34" width="134" height="48" rx="8" fill="#eff6ff" stroke="#bfdbfe" stroke-width="1.5" filter="url(#shadow)"/>
+  <text x="137" y="54" text-anchor="middle" font-size="11.5" fill="#1e40af" font-weight="600">Method + URL</text>
+  <text x="137" y="72" text-anchor="middle" font-size="10.5" fill="#3b82f6">e.g. POST /api/v1</text>
+
+  <!-- Arrow: request line → sum -->
+  <line x1="204" y1="58" x2="280" y2="58" stroke="#94a3b8" stroke-width="1.5" marker-end="url(#arr)"/>
+  <text x="242" y="50" text-anchor="middle" font-size="9" fill="#64748b">+ 11 bytes</text>
+  <text x="242" y="70" text-anchor="middle" font-size="9" fill="#64748b">(overhead)</text>
+
+  <!-- Request Line Cost -->
+  <rect x="280" y="34" width="114" height="48" rx="8" fill="#eff6ff" stroke="#bfdbfe" stroke-width="1.5" filter="url(#shadow)"/>
+  <text x="337" y="54" text-anchor="middle" font-size="11.5" fill="#1e40af" font-weight="600">Line Size</text>
+  <text x="337" y="72" text-anchor="middle" font-size="10.5" fill="#3b82f6">31 bytes</text>
+
+  <!-- ══ HEADERS ROW ══ -->
+  <rect x="70" y="96" width="134" height="48" rx="8" fill="#eff6ff" stroke="#bfdbfe" stroke-width="1.5" filter="url(#shadow)"/>
+  <text x="137" y="116" text-anchor="middle" font-size="11.5" fill="#1e40af" font-weight="600">Headers</text>
+  <text x="137" y="134" text-anchor="middle" font-size="10.5" fill="#3b82f6">9 headers</text>
+
+  <!-- Arrow: headers → cost -->
+  <line x1="204" y1="120" x2="280" y2="120" stroke="#94a3b8" stroke-width="1.5" marker-end="url(#arr)"/>
+  <text x="242" y="112" text-anchor="middle" font-size="9" fill="#64748b">× avg size</text>
+  <text x="242" y="132" text-anchor="middle" font-size="9" fill="#64748b">(bytes each)</text>
+
+  <!-- Header Total -->
+  <rect x="280" y="96" width="114" height="48" rx="8" fill="#eff6ff" stroke="#bfdbfe" stroke-width="1.5" filter="url(#shadow)"/>
+  <text x="337" y="116" text-anchor="middle" font-size="11.5" fill="#1e40af" font-weight="600">Header Block</text>
+  <text x="337" y="134" text-anchor="middle" font-size="10.5" fill="#3b82f6">495 bytes</text>
+
+  <!-- ══ BODY ROW ══ -->
+  <rect x="70" y="158" width="134" height="48" rx="8" fill="#eff6ff" stroke="#bfdbfe" stroke-width="1.5" filter="url(#shadow)"/>
+  <text x="137" y="178" text-anchor="middle" font-size="11.5" fill="#1e40af" font-weight="600">Body</text>
+  <text x="137" y="196" text-anchor="middle" font-size="10.5" fill="#3b82f6">1,024 bytes</text>
+
+  <!-- Arrow: body → passthrough -->
+  <line x1="204" y1="182" x2="280" y2="182" stroke="#94a3b8" stroke-width="1.5" marker-end="url(#arr)"/>
+
+  <!-- Body passthrough -->
+  <rect x="280" y="158" width="114" height="48" rx="8" fill="#eff6ff" stroke="#bfdbfe" stroke-width="1.5" filter="url(#shadow)"/>
+  <text x="337" y="178" text-anchor="middle" font-size="11.5" fill="#1e40af" font-weight="600">Body Size</text>
+  <text x="337" y="196" text-anchor="middle" font-size="10.5" fill="#3b82f6">1,024 bytes</text>
+
+  <!-- ══ CONVERGENCE ══ -->
+  <!-- Line → merge -->
+  <line x1="394" y1="58" x2="472" y2="120" stroke="#94a3b8" stroke-width="1.5"/>
+  <!-- Header → merge -->
+  <line x1="394" y1="120" x2="472" y2="120" stroke="#94a3b8" stroke-width="1.5"/>
+  <!-- Body → merge -->
+  <line x1="394" y1="182" x2="472" y2="120" stroke="#94a3b8" stroke-width="1.5"/>
+  <!-- merge → Total -->
+  <line x1="472" y1="120" x2="508" y2="120" stroke="#94a3b8" stroke-width="1.5" marker-end="url(#arr)"/>
+
+  <!-- + label at merge -->
+  <circle cx="472" cy="120" r="13" fill="white" stroke="#e2e8f0" stroke-width="1.5"/>
+  <text x="472" y="125" text-anchor="middle" font-size="14" fill="#64748b" font-weight="500">+</text>
+
+  <!-- ══ TOTAL REQUEST SIZE ══ -->
+  <rect x="508" y="94" width="188" height="52" rx="8" fill="#1565c0" filter="url(#shadow)"/>
+  <text x="602" y="115" text-anchor="middle" font-size="12" fill="rgba(255,255,255,0.85)" font-weight="500">Total Request Size</text>
+  <text x="602" y="136" text-anchor="middle" font-size="16" fill="white" font-weight="700">1,552 bytes</text>
+</svg>
