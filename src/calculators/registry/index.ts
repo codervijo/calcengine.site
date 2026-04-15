@@ -34,6 +34,7 @@ import { podCapacityCalculator } from '../definitions/pod-capacity-calculator';
 import { cpuUsageEstimatorCalculator } from '../definitions/cpu-usage-estimator';
 import { memoryUsageCalculator } from '../definitions/memory-usage-calculator';
 import { diskIOPSCalculator } from '../definitions/disk-iops-calculator';
+import { raidCapacityCalculator } from '../definitions/raid-capacity-calculator';
 
 const calculators: CalculatorDefinition[] = [
   openaiCostCalculator,
@@ -71,6 +72,7 @@ const calculators: CalculatorDefinition[] = [
   cpuUsageEstimatorCalculator,
   memoryUsageCalculator,
   diskIOPSCalculator,
+  raidCapacityCalculator,
 ];
 
 export function getAllCalculators(): CalculatorDefinition[] {

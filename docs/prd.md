@@ -41,7 +41,7 @@
 - [x] CPU Usage Estimator *(Performance)* ✅ 2026-04-15
 - [x] Memory Usage Calculator *(Performance)* ✅ 2026-04-15
 - [x] Disk IOPS Calculator *(Storage)* ✅ 2026-04-15
-- [ ] RAID Capacity Calculator *(Storage)*
+- [x] RAID Capacity Calculator *(Storage)* ✅ 2026-04-15
 - [ ] Cache TTL Impact Calculator *(Performance)*
 - [ ] Event Processing Rate Calculator *(Backend)*
 - [ ] Message Queue Delay Calculator *(Backend)*
