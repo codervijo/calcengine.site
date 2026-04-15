@@ -26,7 +26,7 @@
 - [x] Pagination Performance Calculator *(Database)* ✅ 2026-04-14
 - [x] Index Size Calculator *(Database)* ✅ 2026-04-14
 - [x] Thread Pool Size Calculator *(Backend)* ✅ 2026-04-14
-- [ ] Worker Queue Throughput Calculator *(Backend)*
+- [x] Worker Queue Throughput Calculator *(Backend)* ✅ 2026-04-14
 - [ ] Retry Backoff Calculator *(Backend)*
 - [ ] Timeout Calculator *(Backend)*
 - [ ] API Response Time Estimator *(Performance)*
