@@ -17,6 +17,7 @@ import { httpRequestSizeCalculator } from '../definitions/http-request-size-calc
 import { regexPerformanceCalculator } from '../definitions/regex-performance-calculator';
 import { sqlQueryCostEstimatorCalculator } from '../definitions/sql-query-cost-estimator';
 import { paginationPerformanceCalculator } from '../definitions/pagination-performance-calculator';
+import { indexSizeCalculator } from '../definitions/index-size-calculator';
 
 const calculators: CalculatorDefinition[] = [
   openaiCostCalculator,
@@ -37,6 +38,7 @@ const calculators: CalculatorDefinition[] = [
   regexPerformanceCalculator,
   sqlQueryCostEstimatorCalculator,
   paginationPerformanceCalculator,
+  indexSizeCalculator,
 ];
 
 export function getAllCalculators(): CalculatorDefinition[] {

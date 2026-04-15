@@ -24,7 +24,7 @@
 - [x] Regex Performance Calculator *(Dev Tools)* ✅ 2026-04-14
 - [x] SQL Query Cost Estimator *(Database)* ✅ 2026-04-14
 - [x] Pagination Performance Calculator *(Database)* ✅ 2026-04-14
-- [ ] Index Size Calculator *(Database)*
+- [x] Index Size Calculator *(Database)* ✅ 2026-04-14
 - [ ] Thread Pool Size Calculator *(Backend)*
 - [ ] Worker Queue Throughput Calculator *(Backend)*
 - [ ] Retry Backoff Calculator *(Backend)*
