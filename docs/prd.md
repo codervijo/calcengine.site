@@ -23,7 +23,7 @@
 - [x] HTTP Request Size Calculator *(API)* ✅ 2026-04-14
 - [x] Regex Performance Calculator *(Dev Tools)* ✅ 2026-04-14
 - [x] SQL Query Cost Estimator *(Database)* ✅ 2026-04-14
-- [ ] Pagination Performance Calculator *(Database)*
+- [x] Pagination Performance Calculator *(Database)* ✅ 2026-04-14
 - [ ] Index Size Calculator *(Database)*
 - [ ] Thread Pool Size Calculator *(Backend)*
 - [ ] Worker Queue Throughput Calculator *(Backend)*

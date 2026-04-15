@@ -16,6 +16,7 @@ import { payloadSizeCalculator } from '../definitions/payload-size-calculator';
 import { httpRequestSizeCalculator } from '../definitions/http-request-size-calculator';
 import { regexPerformanceCalculator } from '../definitions/regex-performance-calculator';
 import { sqlQueryCostEstimatorCalculator } from '../definitions/sql-query-cost-estimator';
+import { paginationPerformanceCalculator } from '../definitions/pagination-performance-calculator';
 
 const calculators: CalculatorDefinition[] = [
   openaiCostCalculator,
@@ -35,6 +36,7 @@ const calculators: CalculatorDefinition[] = [
   httpRequestSizeCalculator,
   regexPerformanceCalculator,
   sqlQueryCostEstimatorCalculator,
+  paginationPerformanceCalculator,
 ];
 
 export function getAllCalculators(): CalculatorDefinition[] {
