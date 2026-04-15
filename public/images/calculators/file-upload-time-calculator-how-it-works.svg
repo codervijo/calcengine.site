@@ -1,0 +1,63 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 220" width="720" height="220" font-family="Inter, system-ui, sans-serif" role="img" aria-label="File upload time calculation flow diagram: file size and upload speed inputs combine to produce estimated upload time">
+  <defs>
+    <marker id="arr" markerWidth="8" markerHeight="8" refX="7" refY="3" orient="auto">
+      <path d="M0,0 L0,6 L8,3 z" fill="#94a3b8"/>
+    </marker>
+    <filter id="shadow" x="-5%" y="-5%" width="110%" height="120%">
+      <feDropShadow dx="0" dy="1" stdDeviation="2" flood-color="#00000018"/>
+    </filter>
+  </defs>
+
+  <!-- ── Row labels ── -->
+  <text x="12" y="82" font-size="10" fill="#94a3b8" font-weight="500" letter-spacing="0.5">FILE</text>
+  <text x="12" y="158" font-size="10" fill="#94a3b8" font-weight="500" letter-spacing="0.5">SPEED</text>
+
+  <!-- ══ FILE SIZE ROW ══ -->
+  <!-- File Size input -->
+  <rect x="60" y="48" width="130" height="52" rx="8" fill="#eff6ff" stroke="#bfdbfe" stroke-width="1.5" filter="url(#shadow)"/>
+  <text x="125" y="70" text-anchor="middle" font-size="12" fill="#1e40af" font-weight="600">File Size</text>
+  <text x="125" y="88" text-anchor="middle" font-size="11" fill="#3b82f6">e.g. 100 MB</text>
+
+  <!-- Arrow: file size → bits -->
+  <line x1="190" y1="74" x2="262" y2="74" stroke="#94a3b8" stroke-width="1.5" marker-end="url(#arr)"/>
+  <text x="226" y="65" text-anchor="middle" font-size="9.5" fill="#64748b">× 8</text>
+  <text x="226" y="87" text-anchor="middle" font-size="9.5" fill="#64748b">MB → Mbits</text>
+
+  <!-- File Bits node -->
+  <rect x="262" y="48" width="130" height="52" rx="8" fill="#eff6ff" stroke="#bfdbfe" stroke-width="1.5" filter="url(#shadow)"/>
+  <text x="327" y="70" text-anchor="middle" font-size="12" fill="#1e40af" font-weight="600">File Data</text>
+  <text x="327" y="88" text-anchor="middle" font-size="11" fill="#3b82f6">800 Mbits</text>
+
+  <!-- ══ UPLOAD SPEED ROW ══ -->
+  <!-- Upload Speed input -->
+  <rect x="60" y="124" width="130" height="52" rx="8" fill="#eff6ff" stroke="#bfdbfe" stroke-width="1.5" filter="url(#shadow)"/>
+  <text x="125" y="146" text-anchor="middle" font-size="12" fill="#1e40af" font-weight="600">Upload Speed</text>
+  <text x="125" y="164" text-anchor="middle" font-size="11" fill="#3b82f6">e.g. 50 Mbps</text>
+
+  <!-- Arrow: speed → merge (pass-through label) -->
+  <line x1="190" y1="150" x2="262" y2="150" stroke="#94a3b8" stroke-width="1.5" marker-end="url(#arr)"/>
+  <text x="226" y="141" text-anchor="middle" font-size="9.5" fill="#64748b">+ overhead</text>
+  <text x="226" y="163" text-anchor="middle" font-size="9.5" fill="#64748b">factor</text>
+
+  <!-- Overhead node -->
+  <rect x="262" y="124" width="130" height="52" rx="8" fill="#eff6ff" stroke="#bfdbfe" stroke-width="1.5" filter="url(#shadow)"/>
+  <text x="327" y="146" text-anchor="middle" font-size="12" fill="#1e40af" font-weight="600">Adj. Speed</text>
+  <text x="327" y="164" text-anchor="middle" font-size="11" fill="#3b82f6">45.5 Mbps eff.</text>
+
+  <!-- ══ CONVERGENCE LINES ══ -->
+  <!-- File Bits → merge point -->
+  <line x1="392" y1="74" x2="452" y2="112" stroke="#94a3b8" stroke-width="1.5"/>
+  <!-- Adj. Speed → merge point -->
+  <line x1="392" y1="150" x2="452" y2="112" stroke="#94a3b8" stroke-width="1.5"/>
+  <!-- merge → Upload Time -->
+  <line x1="452" y1="112" x2="488" y2="112" stroke="#94a3b8" stroke-width="1.5" marker-end="url(#arr)"/>
+
+  <!-- ÷ label at merge -->
+  <circle cx="452" cy="112" r="12" fill="white" stroke="#e2e8f0" stroke-width="1.5"/>
+  <text x="452" y="117" text-anchor="middle" font-size="13" fill="#64748b" font-weight="600">÷</text>
+
+  <!-- ══ UPLOAD TIME RESULT ══ -->
+  <rect x="488" y="86" width="192" height="52" rx="8" fill="#1565c0" filter="url(#shadow)"/>
+  <text x="584" y="107" text-anchor="middle" font-size="12" fill="rgba(255,255,255,0.85)" font-weight="500">Upload Time</text>
+  <text x="584" y="127" text-anchor="middle" font-size="16" fill="white" font-weight="700">17.6 seconds</text>
+</svg>

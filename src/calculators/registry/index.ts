@@ -24,6 +24,7 @@ import { retryBackoffCalculator } from '../definitions/retry-backoff-calculator'
 import { timeoutCalculator } from '../definitions/timeout-calculator';
 import { apiResponseTimeEstimatorCalculator } from '../definitions/api-response-time-estimator';
 import { compressionRatioCalculator } from '../definitions/compression-ratio-calculator';
+import { fileUploadTimeCalculator } from '../definitions/file-upload-time-calculator';
 
 const calculators: CalculatorDefinition[] = [
   openaiCostCalculator,
@@ -51,6 +52,7 @@ const calculators: CalculatorDefinition[] = [
   timeoutCalculator,
   apiResponseTimeEstimatorCalculator,
   compressionRatioCalculator,
+  fileUploadTimeCalculator,
 ];
 
 export function getAllCalculators(): CalculatorDefinition[] {
