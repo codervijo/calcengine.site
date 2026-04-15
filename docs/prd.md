@@ -32,7 +32,7 @@
 - [x] API Response Time Estimator *(Performance)* ✅ 2026-04-15
 - [x] Compression Ratio Calculator *(Data)* ✅ 2026-04-15
 - [x] File Upload Time Calculator *(Network)* ✅ 2026-04-15
-- [ ] Download Speed Calculator *(Network)*
+- [x] Download Speed Calculator *(Network)* ✅ 2026-04-15
 - [ ] TLS Handshake Time Estimator *(Network)*
 - [ ] CDN Cost Calculator *(Cloud)*
 - [ ] Lambda Cost Calculator *(Cloud)*
