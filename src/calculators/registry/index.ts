@@ -35,6 +35,7 @@ import { cpuUsageEstimatorCalculator } from '../definitions/cpu-usage-estimator'
 import { memoryUsageCalculator } from '../definitions/memory-usage-calculator';
 import { diskIOPSCalculator } from '../definitions/disk-iops-calculator';
 import { raidCapacityCalculator } from '../definitions/raid-capacity-calculator';
+import { cacheTTLImpactCalculator } from '../definitions/cache-ttl-impact-calculator';
 
 const calculators: CalculatorDefinition[] = [
   openaiCostCalculator,
@@ -73,6 +74,7 @@ const calculators: CalculatorDefinition[] = [
   memoryUsageCalculator,
   diskIOPSCalculator,
   raidCapacityCalculator,
+  cacheTTLImpactCalculator,
 ];
 
 export function getAllCalculators(): CalculatorDefinition[] {
