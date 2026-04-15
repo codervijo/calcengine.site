@@ -76,7 +76,7 @@ export function calcOgTemplate({ title, description, category }: OgTemplateProps
             </div>
           ) : null}
         </div>
-        <div style={{ color: 'rgba(255,255,255,0.5)', fontSize: 21 }}>calcengine.dev</div>
+        <div style={{ color: 'rgba(255,255,255,0.5)', fontSize: 21 }}>www.calcengine.site</div>
       </div>
     </div>
   );

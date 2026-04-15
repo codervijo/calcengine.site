@@ -3,7 +3,7 @@ import react from '@astrojs/react';
 import sitemap from '@astrojs/sitemap';
 
 export default defineConfig({
-  site: 'https://calcengine.dev',
+  site: 'https://www.calcengine.site',
   output: 'static',
   integrations: [
     react(),

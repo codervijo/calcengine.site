@@ -10,7 +10,7 @@ interface Props {
 }
 
 const { title, description, canonical, keywords, ogType = 'website', jsonLd, ogImage } = Astro.props;
-const BASE_URL = 'https://calcengine.dev';
+const BASE_URL = 'https://www.calcengine.site';
 const canonicalUrl = canonical
   ? canonical.startsWith('http') ? canonical : `${BASE_URL}${canonical}`
   : BASE_URL;
