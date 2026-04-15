@@ -23,6 +23,7 @@ import { workerQueueThroughputCalculator } from '../definitions/worker-queue-thr
 import { retryBackoffCalculator } from '../definitions/retry-backoff-calculator';
 import { timeoutCalculator } from '../definitions/timeout-calculator';
 import { apiResponseTimeEstimatorCalculator } from '../definitions/api-response-time-estimator';
+import { compressionRatioCalculator } from '../definitions/compression-ratio-calculator';
 
 const calculators: CalculatorDefinition[] = [
   openaiCostCalculator,
@@ -49,6 +50,7 @@ const calculators: CalculatorDefinition[] = [
   retryBackoffCalculator,
   timeoutCalculator,
   apiResponseTimeEstimatorCalculator,
+  compressionRatioCalculator,
 ];
 
 export function getAllCalculators(): CalculatorDefinition[] {
