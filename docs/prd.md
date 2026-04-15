@@ -28,7 +28,7 @@
 - [x] Thread Pool Size Calculator *(Backend)* ✅ 2026-04-14
 - [x] Worker Queue Throughput Calculator *(Backend)* ✅ 2026-04-14
 - [x] Retry Backoff Calculator *(Backend)* ✅ 2026-04-15
-- [ ] Timeout Calculator *(Backend)*
+- [x] Timeout Calculator *(Backend)* ✅ 2026-04-15
 - [ ] API Response Time Estimator *(Performance)*
 - [ ] Compression Ratio Calculator *(Data)*
 - [ ] File Upload Time Calculator *(Network)*
