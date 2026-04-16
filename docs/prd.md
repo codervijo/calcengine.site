@@ -47,7 +47,7 @@
 - [x] Message Queue Delay Calculator *(Backend)* ✅ 2026-04-15
 - [x] Batch Processing Time Calculator *(Backend)* ✅ 2026-04-15
 - [x] API Pagination Limit Calculator *(API)* ✅ 2026-04-15
-- [ ] Token Bucket Rate Limit Calculator *(Backend)*
+- [x] Token Bucket Rate Limit Calculator *(Backend)* ✅ 2026-04-15
 - [ ] Leaky Bucket Rate Calculator *(Backend)*
 - [ ] Hash Collision Probability Calculator *(Security)*
 - [ ] Encryption Overhead Calculator *(Security)*

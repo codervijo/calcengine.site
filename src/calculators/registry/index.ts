@@ -40,6 +40,7 @@ import { eventProcessingRateCalculator } from '../definitions/event-processing-r
 import { messageQueueDelayCalculator } from '../definitions/message-queue-delay-calculator';
 import { batchProcessingTimeCalculator } from '../definitions/batch-processing-time-calculator';
 import { apiPaginationLimitCalculator } from '../definitions/api-pagination-limit-calculator';
+import { tokenBucketRateLimitCalculator } from '../definitions/token-bucket-rate-limit-calculator';
 
 const calculators: CalculatorDefinition[] = [
   openaiCostCalculator,
@@ -83,6 +84,7 @@ const calculators: CalculatorDefinition[] = [
   messageQueueDelayCalculator,
   batchProcessingTimeCalculator,
   apiPaginationLimitCalculator,
+  tokenBucketRateLimitCalculator,
 ];
 
 export function getAllCalculators(): CalculatorDefinition[] {
