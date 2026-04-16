@@ -51,7 +51,7 @@
 - [x] Leaky Bucket Rate Calculator *(Backend)* ✅ 2026-04-15
 - [x] Hash Collision Probability Calculator *(Security)* ✅ 2026-04-15
 - [x] Encryption Overhead Calculator *(Security)* ✅ 2026-04-15
-- [ ] Session Size Calculator *(Backend)*
+- [x] Session Size Calculator *(Backend)* ✅ 2026-04-15
 - [ ] Log Storage Cost Calculator *(Cloud)*
 
 ## SEO

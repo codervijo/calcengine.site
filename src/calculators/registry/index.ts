@@ -44,6 +44,7 @@ import { tokenBucketRateLimitCalculator } from '../definitions/token-bucket-rate
 import { leakyBucketRateCalculator } from '../definitions/leaky-bucket-rate-calculator';
 import { hashCollisionProbabilityCalculator } from '../definitions/hash-collision-probability-calculator';
 import { encryptionOverheadCalculator } from '../definitions/encryption-overhead-calculator';
+import { sessionSizeCalculator } from '../definitions/session-size-calculator';
 
 const calculators: CalculatorDefinition[] = [
   openaiCostCalculator,
@@ -91,6 +92,7 @@ const calculators: CalculatorDefinition[] = [
   leakyBucketRateCalculator,
   hashCollisionProbabilityCalculator,
   encryptionOverheadCalculator,
+  sessionSizeCalculator,
 ];
 
 export function getAllCalculators(): CalculatorDefinition[] {
