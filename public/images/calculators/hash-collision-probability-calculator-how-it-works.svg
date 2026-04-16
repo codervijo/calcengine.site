@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 700 220" width="700" height="220" font-family="Inter, system-ui, sans-serif" role="img" aria-label="Hash collision probability calculation flow diagram">
+  <defs>
+    <marker id="arr" markerWidth="8" markerHeight="8" refX="7" refY="3" orient="auto">
+      <path d="M0,0 L0,6 L8,3 z" fill="#94a3b8"/>
+    </marker>
+    <filter id="shadow" x="-5%" y="-5%" width="110%" height="120%">
+      <feDropShadow dx="0" dy="1" stdDeviation="2" flood-color="#00000018"/>
+    </filter>
+  </defs>
+
+  <!-- ── Row labels ── -->
+  <text x="12" y="82" font-size="10" fill="#94a3b8" font-weight="500" letter-spacing="0.5">ITEMS</text>
+  <text x="12" y="158" font-size="10" fill="#94a3b8" font-weight="500" letter-spacing="0.5">BITS</text>
+
+  <!-- ══ INPUT: Number of Items ══ -->
+  <rect x="60" y="48" width="130" height="52" rx="8" fill="#eff6ff" stroke="#bfdbfe" stroke-width="1.5" filter="url(#shadow)"/>
+  <text x="125" y="70" text-anchor="middle" font-size="12" fill="#1e40af" font-weight="600">Items (n)</text>
+  <text x="125" y="88" text-anchor="middle" font-size="11" fill="#3b82f6">e.g. 10,000</text>
+
+  <!-- Arrow: Items → Exponent box (diagonal down-right) -->
+  <line x1="190" y1="82" x2="278" y2="103" stroke="#94a3b8" stroke-width="1.5" marker-end="url(#arr)"/>
+
+  <!-- ══ INPUT: Hash Bits ══ -->
+  <rect x="60" y="124" width="130" height="52" rx="8" fill="#eff6ff" stroke="#bfdbfe" stroke-width="1.5" filter="url(#shadow)"/>
+  <text x="125" y="146" text-anchor="middle" font-size="12" fill="#1e40af" font-weight="600">Hash Bits</text>
+  <text x="125" y="164" text-anchor="middle" font-size="11" fill="#3b82f6">e.g. 32 bits</text>
+
+  <!-- Arrow: Hash Bits → Exponent box (diagonal up-right) -->
+  <line x1="190" y1="142" x2="278" y2="121" stroke="#94a3b8" stroke-width="1.5" marker-end="url(#arr)"/>
+  <!-- Label on hash bits arrow -->
+  <text x="238" y="143" text-anchor="middle" font-size="9.5" fill="#64748b">H = 2^bits</text>
+
+  <!-- ══ EXPONENT box ══ -->
+  <rect x="278" y="84" width="152" height="52" rx="8" fill="#eff6ff" stroke="#bfdbfe" stroke-width="1.5" filter="url(#shadow)"/>
+  <text x="354" y="106" text-anchor="middle" font-size="11" fill="#1e40af" font-weight="600">Exponent</text>
+  <text x="354" y="123" text-anchor="middle" font-size="10" fill="#3b82f6">n(n−1) ÷ (2H)</text>
+
+  <!-- Arrow: Exponent → Result -->
+  <line x1="430" y1="110" x2="490" y2="110" stroke="#94a3b8" stroke-width="1.5" marker-end="url(#arr)"/>
+  <text x="460" y="103" text-anchor="middle" font-size="9.5" fill="#64748b">1 − e^(−x)</text>
+
+  <!-- ══ RESULT: Collision Probability ══ -->
+  <rect x="490" y="84" width="180" height="52" rx="8" fill="#1565c0" filter="url(#shadow)"/>
+  <text x="580" y="106" text-anchor="middle" font-size="12" fill="rgba(255,255,255,0.85)" font-weight="500">Collision Probability</text>
+  <text x="580" y="126" text-anchor="middle" font-size="16" fill="white" font-weight="700">0.011601%</text>
+</svg>

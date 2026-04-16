@@ -42,6 +42,7 @@ import { batchProcessingTimeCalculator } from '../definitions/batch-processing-t
 import { apiPaginationLimitCalculator } from '../definitions/api-pagination-limit-calculator';
 import { tokenBucketRateLimitCalculator } from '../definitions/token-bucket-rate-limit-calculator';
 import { leakyBucketRateCalculator } from '../definitions/leaky-bucket-rate-calculator';
+import { hashCollisionProbabilityCalculator } from '../definitions/hash-collision-probability-calculator';
 
 const calculators: CalculatorDefinition[] = [
   openaiCostCalculator,
@@ -87,6 +88,7 @@ const calculators: CalculatorDefinition[] = [
   apiPaginationLimitCalculator,
   tokenBucketRateLimitCalculator,
   leakyBucketRateCalculator,
+  hashCollisionProbabilityCalculator,
 ];
 
 export function getAllCalculators(): CalculatorDefinition[] {

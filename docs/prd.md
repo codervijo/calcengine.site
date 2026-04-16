@@ -49,7 +49,7 @@
 - [x] API Pagination Limit Calculator *(API)* ✅ 2026-04-15
 - [x] Token Bucket Rate Limit Calculator *(Backend)* ✅ 2026-04-15
 - [x] Leaky Bucket Rate Calculator *(Backend)* ✅ 2026-04-15
-- [ ] Hash Collision Probability Calculator *(Security)*
+- [x] Hash Collision Probability Calculator *(Security)* ✅ 2026-04-15
 - [ ] Encryption Overhead Calculator *(Security)*
 - [ ] Session Size Calculator *(Backend)*
 - [ ] Log Storage Cost Calculator *(Cloud)*
