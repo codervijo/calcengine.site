@@ -48,7 +48,7 @@
 - [x] Batch Processing Time Calculator *(Backend)* ✅ 2026-04-15
 - [x] API Pagination Limit Calculator *(API)* ✅ 2026-04-15
 - [x] Token Bucket Rate Limit Calculator *(Backend)* ✅ 2026-04-15
-- [ ] Leaky Bucket Rate Calculator *(Backend)*
+- [x] Leaky Bucket Rate Calculator *(Backend)* ✅ 2026-04-15
 - [ ] Hash Collision Probability Calculator *(Security)*
 - [ ] Encryption Overhead Calculator *(Security)*
 - [ ] Session Size Calculator *(Backend)*

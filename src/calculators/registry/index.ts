@@ -41,6 +41,7 @@ import { messageQueueDelayCalculator } from '../definitions/message-queue-delay-
 import { batchProcessingTimeCalculator } from '../definitions/batch-processing-time-calculator';
 import { apiPaginationLimitCalculator } from '../definitions/api-pagination-limit-calculator';
 import { tokenBucketRateLimitCalculator } from '../definitions/token-bucket-rate-limit-calculator';
+import { leakyBucketRateCalculator } from '../definitions/leaky-bucket-rate-calculator';
 
 const calculators: CalculatorDefinition[] = [
   openaiCostCalculator,
@@ -85,6 +86,7 @@ const calculators: CalculatorDefinition[] = [
   batchProcessingTimeCalculator,
   apiPaginationLimitCalculator,
   tokenBucketRateLimitCalculator,
+  leakyBucketRateCalculator,
 ];
 
 export function getAllCalculators(): CalculatorDefinition[] {
