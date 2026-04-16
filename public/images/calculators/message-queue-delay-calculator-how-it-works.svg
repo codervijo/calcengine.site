@@ -1,0 +1,63 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 700 230" width="700" height="230" font-family="Inter, system-ui, sans-serif" role="img" aria-label="Message queue delay calculation flow diagram: queue depth and consumer rate produce queue wait time, which sums with fixed delays to give total message queue delay">
+  <defs>
+    <marker id="arr" markerWidth="8" markerHeight="8" refX="7" refY="3" orient="auto">
+      <path d="M0,0 L0,6 L8,3 z" fill="#94a3b8"/>
+    </marker>
+    <filter id="shadow" x="-5%" y="-5%" width="110%" height="120%">
+      <feDropShadow dx="0" dy="1" stdDeviation="2" flood-color="#00000018"/>
+    </filter>
+  </defs>
+
+  <!-- ── Row labels ── -->
+  <text x="8" y="82" font-size="10" fill="#94a3b8" font-weight="500" letter-spacing="0.5">QUEUE</text>
+  <text x="8" y="158" font-size="10" fill="#94a3b8" font-weight="500" letter-spacing="0.5">FIXED</text>
+
+  <!-- ══ QUEUE WAIT ROW ══ -->
+  <!-- Queue Depth -->
+  <rect x="58" y="50" width="124" height="52" rx="8" fill="#eff6ff" stroke="#bfdbfe" stroke-width="1.5" filter="url(#shadow)"/>
+  <text x="120" y="72" text-anchor="middle" font-size="12" fill="#1e40af" font-weight="600">Queue Depth</text>
+  <text x="120" y="90" text-anchor="middle" font-size="11" fill="#3b82f6">e.g. 1,000 msgs</text>
+
+  <!-- Arrow: Queue Depth → Queue Wait Time -->
+  <line x1="182" y1="76" x2="258" y2="76" stroke="#94a3b8" stroke-width="1.5" marker-end="url(#arr)"/>
+  <text x="220" y="67" text-anchor="middle" font-size="9.5" fill="#64748b">÷ Consumer Rate</text>
+  <text x="220" y="88" text-anchor="middle" font-size="9.5" fill="#64748b">× 1,000 ms</text>
+
+  <!-- Queue Wait Time -->
+  <rect x="258" y="50" width="124" height="52" rx="8" fill="#eff6ff" stroke="#bfdbfe" stroke-width="1.5" filter="url(#shadow)"/>
+  <text x="320" y="72" text-anchor="middle" font-size="12" fill="#1e40af" font-weight="600">Queue Wait</text>
+  <text x="320" y="90" text-anchor="middle" font-size="11" fill="#3b82f6">10,000 ms</text>
+
+  <!-- ══ FIXED DELAYS ROW ══ -->
+  <!-- Fixed Delays Input -->
+  <rect x="58" y="126" width="124" height="52" rx="8" fill="#eff6ff" stroke="#bfdbfe" stroke-width="1.5" filter="url(#shadow)"/>
+  <text x="120" y="146" text-anchor="middle" font-size="12" fill="#1e40af" font-weight="600">Fixed Delays</text>
+  <text x="120" y="163" text-anchor="middle" font-size="10" fill="#3b82f6">proc + net + serial</text>
+
+  <!-- Arrow: Fixed Delays → Fixed Delays sum -->
+  <line x1="182" y1="152" x2="258" y2="152" stroke="#94a3b8" stroke-width="1.5" marker-end="url(#arr)"/>
+  <text x="220" y="143" text-anchor="middle" font-size="9.5" fill="#64748b">sum of</text>
+  <text x="220" y="163" text-anchor="middle" font-size="9.5" fill="#64748b">overheads</text>
+
+  <!-- Fixed Delays Sum -->
+  <rect x="258" y="126" width="124" height="52" rx="8" fill="#eff6ff" stroke="#bfdbfe" stroke-width="1.5" filter="url(#shadow)"/>
+  <text x="320" y="148" text-anchor="middle" font-size="12" fill="#1e40af" font-weight="600">Fixed Delays</text>
+  <text x="320" y="166" text-anchor="middle" font-size="11" fill="#3b82f6">8 ms</text>
+
+  <!-- ══ CONVERGENCE LINES ══ -->
+  <!-- Queue Wait → merge point -->
+  <line x1="382" y1="76" x2="440" y2="114" stroke="#94a3b8" stroke-width="1.5"/>
+  <!-- Fixed Delays → merge point -->
+  <line x1="382" y1="152" x2="440" y2="114" stroke="#94a3b8" stroke-width="1.5"/>
+  <!-- merge → Total Delay -->
+  <line x1="440" y1="114" x2="476" y2="114" stroke="#94a3b8" stroke-width="1.5" marker-end="url(#arr)"/>
+
+  <!-- + label at merge -->
+  <circle cx="440" cy="114" r="12" fill="white" stroke="#e2e8f0" stroke-width="1.5"/>
+  <text x="440" y="119" text-anchor="middle" font-size="14" fill="#64748b" font-weight="500">+</text>
+
+  <!-- ══ TOTAL DELAY ══ -->
+  <rect x="476" y="88" width="192" height="52" rx="8" fill="#1565c0" filter="url(#shadow)"/>
+  <text x="572" y="109" text-anchor="middle" font-size="12" fill="rgba(255,255,255,0.85)" font-weight="500">Total Queue Delay</text>
+  <text x="572" y="129" text-anchor="middle" font-size="16" fill="white" font-weight="700">10,008 ms</text>
+</svg>

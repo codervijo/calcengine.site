@@ -44,7 +44,7 @@
 - [x] RAID Capacity Calculator *(Storage)* ✅ 2026-04-15
 - [x] Cache TTL Impact Calculator *(Performance)* ✅ 2026-04-15
 - [x] Event Processing Rate Calculator *(Backend)* ✅ 2026-04-15
-- [ ] Message Queue Delay Calculator *(Backend)*
+- [x] Message Queue Delay Calculator *(Backend)* ✅ 2026-04-15
 - [ ] Batch Processing Time Calculator *(Backend)*
 - [ ] API Pagination Limit Calculator *(API)*
 - [ ] Token Bucket Rate Limit Calculator *(Backend)*
