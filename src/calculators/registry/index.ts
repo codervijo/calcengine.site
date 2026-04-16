@@ -39,6 +39,7 @@ import { cacheTTLImpactCalculator } from '../definitions/cache-ttl-impact-calcul
 import { eventProcessingRateCalculator } from '../definitions/event-processing-rate-calculator';
 import { messageQueueDelayCalculator } from '../definitions/message-queue-delay-calculator';
 import { batchProcessingTimeCalculator } from '../definitions/batch-processing-time-calculator';
+import { apiPaginationLimitCalculator } from '../definitions/api-pagination-limit-calculator';
 
 const calculators: CalculatorDefinition[] = [
   openaiCostCalculator,
@@ -81,6 +82,7 @@ const calculators: CalculatorDefinition[] = [
   eventProcessingRateCalculator,
   messageQueueDelayCalculator,
   batchProcessingTimeCalculator,
+  apiPaginationLimitCalculator,
 ];
 
 export function getAllCalculators(): CalculatorDefinition[] {
