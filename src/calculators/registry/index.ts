@@ -43,6 +43,7 @@ import { apiPaginationLimitCalculator } from '../definitions/api-pagination-limi
 import { tokenBucketRateLimitCalculator } from '../definitions/token-bucket-rate-limit-calculator';
 import { leakyBucketRateCalculator } from '../definitions/leaky-bucket-rate-calculator';
 import { hashCollisionProbabilityCalculator } from '../definitions/hash-collision-probability-calculator';
+import { encryptionOverheadCalculator } from '../definitions/encryption-overhead-calculator';
 
 const calculators: CalculatorDefinition[] = [
   openaiCostCalculator,
@@ -89,6 +90,7 @@ const calculators: CalculatorDefinition[] = [
   tokenBucketRateLimitCalculator,
   leakyBucketRateCalculator,
   hashCollisionProbabilityCalculator,
+  encryptionOverheadCalculator,
 ];
 
 export function getAllCalculators(): CalculatorDefinition[] {

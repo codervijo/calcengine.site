@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 220" width="680" height="220" font-family="Inter, system-ui, sans-serif" role="img" aria-label="Encryption overhead calculation flow: plaintext size and CPU throughput feed through algorithm formula to produce ciphertext size and encryption time">
+  <defs>
+    <marker id="arr" markerWidth="8" markerHeight="8" refX="7" refY="3" orient="auto">
+      <path d="M0,0 L0,6 L8,3 z" fill="#94a3b8"/>
+    </marker>
+    <filter id="shadow" x="-5%" y="-5%" width="110%" height="120%">
+      <feDropShadow dx="0" dy="1" stdDeviation="2" flood-color="#00000018"/>
+    </filter>
+  </defs>
+
+  <!-- Row labels -->
+  <text x="10" y="79" font-size="10" fill="#94a3b8" font-weight="500" letter-spacing="0.5">SIZE</text>
+  <text x="10" y="155" font-size="10" fill="#94a3b8" font-weight="500" letter-spacing="0.5">TIME</text>
+
+  <!-- ══ SIZE ROW ══ -->
+  <!-- Plaintext Size input -->
+  <rect x="55" y="48" width="130" height="52" rx="8" fill="#eff6ff" stroke="#bfdbfe" stroke-width="1.5" filter="url(#shadow)"/>
+  <text x="120" y="70" text-anchor="middle" font-size="12" fill="#1e40af" font-weight="600">Plaintext Size</text>
+  <text x="120" y="88" text-anchor="middle" font-size="11" fill="#3b82f6">e.g. 4,096 bytes</text>
+
+  <!-- Arrow: plaintext → ciphertext -->
+  <line x1="185" y1="74" x2="453" y2="74" stroke="#94a3b8" stroke-width="1.5" marker-end="url(#arr)"/>
+  <text x="319" y="64" text-anchor="middle" font-size="9.5" fill="#64748b">AES-256-GCM</text>
+  <text x="319" y="84" text-anchor="middle" font-size="9.5" fill="#64748b">+ 28 B (12B IV + 16B tag)</text>
+
+  <!-- Ciphertext Size result (blue) -->
+  <rect x="455" y="48" width="185" height="52" rx="8" fill="#1565c0" filter="url(#shadow)"/>
+  <text x="547" y="70" text-anchor="middle" font-size="12" fill="rgba(255,255,255,0.85)" font-weight="500">Ciphertext Size</text>
+  <text x="547" y="88" text-anchor="middle" font-size="13" fill="white" font-weight="700">4,124 B (+0.68%)</text>
+
+  <!-- ══ TIME ROW ══ -->
+  <!-- CPU Throughput input -->
+  <rect x="55" y="124" width="130" height="52" rx="8" fill="#eff6ff" stroke="#bfdbfe" stroke-width="1.5" filter="url(#shadow)"/>
+  <text x="120" y="146" text-anchor="middle" font-size="12" fill="#1e40af" font-weight="600">CPU Throughput</text>
+  <text x="120" y="164" text-anchor="middle" font-size="11" fill="#3b82f6">2,500 MB/s</text>
+
+  <!-- Arrow: throughput → encrypt time -->
+  <line x1="185" y1="150" x2="453" y2="150" stroke="#94a3b8" stroke-width="1.5" marker-end="url(#arr)"/>
+  <text x="319" y="140" text-anchor="middle" font-size="9.5" fill="#64748b">bytes ÷ (throughput × 1,048,576)</text>
+  <text x="319" y="160" text-anchor="middle" font-size="9.5" fill="#64748b">× 1,000 → milliseconds</text>
+
+  <!-- Encryption Time result (blue) -->
+  <rect x="455" y="124" width="185" height="52" rx="8" fill="#1565c0" filter="url(#shadow)"/>
+  <text x="547" y="146" text-anchor="middle" font-size="12" fill="rgba(255,255,255,0.85)" font-weight="500">Encryption Time</text>
+  <text x="547" y="164" text-anchor="middle" font-size="13" fill="white" font-weight="700">~0.0016 ms</text>
+</svg>
