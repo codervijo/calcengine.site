@@ -52,7 +52,7 @@
 - [x] Hash Collision Probability Calculator *(Security)* ✅ 2026-04-15
 - [x] Encryption Overhead Calculator *(Security)* ✅ 2026-04-15
 - [x] Session Size Calculator *(Backend)* ✅ 2026-04-15
-- [ ] Log Storage Cost Calculator *(Cloud)*
+- [x] Log Storage Cost Calculator *(Cloud)* ✅ 2026-04-15
 
 ## SEO
 

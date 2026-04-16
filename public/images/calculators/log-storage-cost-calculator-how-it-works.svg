@@ -1,0 +1,61 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 200" width="680" height="200" font-family="Inter, system-ui, sans-serif" role="img" aria-label="Log storage cost calculation flow diagram">
+  <defs>
+    <marker id="arr" markerWidth="8" markerHeight="8" refX="7" refY="3" orient="auto">
+      <path d="M0,0 L0,6 L8,3 z" fill="#94a3b8"/>
+    </marker>
+    <filter id="shadow" x="-5%" y="-5%" width="110%" height="120%">
+      <feDropShadow dx="0" dy="1" stdDeviation="2" flood-color="#00000018"/>
+    </filter>
+  </defs>
+
+  <!-- ── Row labels ── -->
+  <text x="6" y="70" font-size="10" fill="#94a3b8" font-weight="500" letter-spacing="0.5">VOL</text>
+  <text x="6" y="146" font-size="10" fill="#94a3b8" font-weight="500" letter-spacing="0.5">RET</text>
+
+  <!-- ══ INPUT COLUMN ══ -->
+  <!-- Daily Volume box -->
+  <rect x="42" y="44" width="118" height="52" rx="8" fill="#eff6ff" stroke="#bfdbfe" stroke-width="1.5" filter="url(#shadow)"/>
+  <text x="101" y="66" text-anchor="middle" font-size="12" fill="#1e40af" font-weight="600">Daily Volume</text>
+  <text x="101" y="84" text-anchor="middle" font-size="11" fill="#3b82f6">e.g. 10 GB/day</text>
+
+  <!-- Retention Days box -->
+  <rect x="42" y="120" width="118" height="52" rx="8" fill="#eff6ff" stroke="#bfdbfe" stroke-width="1.5" filter="url(#shadow)"/>
+  <text x="101" y="142" text-anchor="middle" font-size="12" fill="#1e40af" font-weight="600">Retention Period</text>
+  <text x="101" y="160" text-anchor="middle" font-size="11" fill="#3b82f6">e.g. 30 days</text>
+
+  <!-- Lines from inputs to × circle -->
+  <line x1="160" y1="70" x2="186" y2="104" stroke="#94a3b8" stroke-width="1.5"/>
+  <line x1="160" y1="146" x2="186" y2="112" stroke="#94a3b8" stroke-width="1.5"/>
+
+  <!-- × merge circle -->
+  <circle cx="198" cy="108" r="13" fill="white" stroke="#e2e8f0" stroke-width="1.5"/>
+  <text x="198" y="113" text-anchor="middle" font-size="13" fill="#64748b" font-weight="600">×</text>
+
+  <!-- Arrow: × → Raw Storage -->
+  <line x1="211" y1="108" x2="238" y2="108" stroke="#94a3b8" stroke-width="1.5" marker-end="url(#arr)"/>
+
+  <!-- ══ RAW STORAGE ══ -->
+  <rect x="238" y="82" width="118" height="52" rx="8" fill="#eff6ff" stroke="#bfdbfe" stroke-width="1.5" filter="url(#shadow)"/>
+  <text x="297" y="104" text-anchor="middle" font-size="12" fill="#1e40af" font-weight="600">Raw Storage</text>
+  <text x="297" y="122" text-anchor="middle" font-size="11" fill="#3b82f6">e.g. 300 GB</text>
+
+  <!-- Arrow: Raw → Compressed with label -->
+  <line x1="356" y1="108" x2="395" y2="108" stroke="#94a3b8" stroke-width="1.5" marker-end="url(#arr)"/>
+  <text x="375" y="100" text-anchor="middle" font-size="9.5" fill="#64748b">÷ Compression</text>
+  <text x="375" y="121" text-anchor="middle" font-size="9.5" fill="#64748b">Ratio</text>
+
+  <!-- ══ COMPRESSED STORAGE ══ -->
+  <rect x="395" y="82" width="118" height="52" rx="8" fill="#eff6ff" stroke="#bfdbfe" stroke-width="1.5" filter="url(#shadow)"/>
+  <text x="454" y="104" text-anchor="middle" font-size="12" fill="#1e40af" font-weight="600">Compressed GB</text>
+  <text x="454" y="122" text-anchor="middle" font-size="11" fill="#3b82f6">e.g. 60 GB</text>
+
+  <!-- Arrow: Compressed → Monthly Cost with label -->
+  <line x1="513" y1="108" x2="546" y2="108" stroke="#94a3b8" stroke-width="1.5" marker-end="url(#arr)"/>
+  <text x="529" y="100" text-anchor="middle" font-size="9.5" fill="#64748b">× $/GB</text>
+  <text x="529" y="121" text-anchor="middle" font-size="9.5" fill="#64748b">per month</text>
+
+  <!-- ══ MONTHLY COST (result) ══ -->
+  <rect x="546" y="82" width="122" height="52" rx="8" fill="#1565c0" filter="url(#shadow)"/>
+  <text x="607" y="104" text-anchor="middle" font-size="12" fill="rgba(255,255,255,0.85)" font-weight="500">Monthly Cost</text>
+  <text x="607" y="124" text-anchor="middle" font-size="16" fill="white" font-weight="700">$1.38/mo</text>
+</svg>
