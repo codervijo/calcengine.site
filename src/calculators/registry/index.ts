@@ -38,6 +38,7 @@ import { raidCapacityCalculator } from '../definitions/raid-capacity-calculator'
 import { cacheTTLImpactCalculator } from '../definitions/cache-ttl-impact-calculator';
 import { eventProcessingRateCalculator } from '../definitions/event-processing-rate-calculator';
 import { messageQueueDelayCalculator } from '../definitions/message-queue-delay-calculator';
+import { batchProcessingTimeCalculator } from '../definitions/batch-processing-time-calculator';
 
 const calculators: CalculatorDefinition[] = [
   openaiCostCalculator,
@@ -79,6 +80,7 @@ const calculators: CalculatorDefinition[] = [
   cacheTTLImpactCalculator,
   eventProcessingRateCalculator,
   messageQueueDelayCalculator,
+  batchProcessingTimeCalculator,
 ];
 
 export function getAllCalculators(): CalculatorDefinition[] {

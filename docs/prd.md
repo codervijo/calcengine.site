@@ -45,7 +45,7 @@
 - [x] Cache TTL Impact Calculator *(Performance)* ✅ 2026-04-15
 - [x] Event Processing Rate Calculator *(Backend)* ✅ 2026-04-15
 - [x] Message Queue Delay Calculator *(Backend)* ✅ 2026-04-15
-- [ ] Batch Processing Time Calculator *(Backend)*
+- [x] Batch Processing Time Calculator *(Backend)* ✅ 2026-04-15
 - [ ] API Pagination Limit Calculator *(API)*
 - [ ] Token Bucket Rate Limit Calculator *(Backend)*
 - [ ] Leaky Bucket Rate Calculator *(Backend)*
