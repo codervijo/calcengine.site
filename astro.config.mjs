@@ -4,6 +4,7 @@ import sitemap from '@astrojs/sitemap';
 
 export default defineConfig({
   site: 'https://www.calcengine.site',
+  trailingSlash: 'never',
   output: 'static',
   integrations: [
     react(),

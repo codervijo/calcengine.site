@@ -9,6 +9,7 @@
     "preview": "astro preview",
     "lint": "eslint .",
     "test": "vitest run",
+    "test:seo": "vitest run --config vitest.seo.config.ts",
     "test:watch": "vitest",
     "astro": "astro"
   },
