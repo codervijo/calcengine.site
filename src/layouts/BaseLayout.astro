@@ -14,6 +14,7 @@ const BASE_URL = 'https://www.calcengine.site';
 const canonicalUrl = canonical
   ? canonical.startsWith('http') ? canonical : canonical === '/' ? BASE_URL : `${BASE_URL}${canonical}`
   : BASE_URL;
+const GA_ID = import.meta.env.PUBLIC_GA_ID;
 ---
 
 <!DOCTYPE html>
@@ -57,6 +58,19 @@ const canonicalUrl = canonical
     <!-- JSON-LD -->
     {jsonLd && (
       <script type="application/ld+json" set:html={JSON.stringify(Array.isArray(jsonLd) ? jsonLd : [jsonLd])} />
+    )}
+
+    <!-- Google Analytics (GA4) — only injected when PUBLIC_GA_ID is set -->
+    {GA_ID && (
+      <>
+        <script async src={`https://www.googletagmanager.com/gtag/js?id=${GA_ID}`} />
+        <script is:inline define:vars={{ GA_ID }}>
+          window.dataLayer = window.dataLayer || [];
+          function gtag() { dataLayer.push(arguments); }
+          gtag('js', new Date());
+          gtag('config', GA_ID);
+        </script>
+      </>
     )}
 
     <!-- Prevent dark mode FOUC: apply class before first paint -->
