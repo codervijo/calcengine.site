@@ -157,4 +157,4 @@ Target audience: embedded/IoT engineers, product managers, compliance teams ship
 5. ~~**H2** — Create `/about` page with company/founder credibility signals~~ ✅ 2026-04-13
 6. ~~**M2** — Expand footer: link to Privacy, Terms, About, and key calculators~~ ✅ 2026-04-13 — About link added; footer complete
 7. ~~**M3** — Add `SearchAction` to `WebSite` schema~~ ✅ 2026-04-19 — `buildWebSiteJsonLd()` with `potentialAction`; `?q=` param wired into search island; `sameAs` added to `Organization`; `dateModified` added to `WebApplication`
-8. **M1** — Create category archive pages (`/calculators/[category]`) — largest effort
+8. ~~**M1** — Create category archive pages (`/calculators/[category]`)~~ ✅ 2026-04-19 — `/calculators/ai`, `/api`, `/data`, `/performance`, `/encoding`, `/general`; shared `CategoryPageLayout.astro`; homepage category chips linked

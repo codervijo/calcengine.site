@@ -131,8 +131,8 @@ const features = [
     </div>
 
     <div class="flex flex-wrap gap-2 justify-center mt-10 mb-10">
-      {Object.entries(CATEGORY_LABELS).map(([, label]) => (
-        <a href="/calculators" class="border border-gray-300 dark:border-gray-700 text-gray-700 dark:text-gray-300 text-sm px-4 py-1.5 rounded-full hover:border-[#1565c0] dark:hover:border-[#42a5f5] hover:text-[#1565c0] dark:hover:text-[#42a5f5] transition-colors no-underline">
+      {Object.entries(CATEGORY_LABELS).map(([key, label]) => (
+        <a href={`/calculators/${key}`} class="border border-gray-300 dark:border-gray-700 text-gray-700 dark:text-gray-300 text-sm px-4 py-1.5 rounded-full hover:border-[#1565c0] dark:hover:border-[#42a5f5] hover:text-[#1565c0] dark:hover:text-[#42a5f5] transition-colors no-underline">
           {label}
         </a>
       ))}
