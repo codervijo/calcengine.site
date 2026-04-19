@@ -68,7 +68,17 @@ const GA_ID = import.meta.env.PUBLIC_GA_ID;
           window.dataLayer = window.dataLayer || [];
           function gtag() { dataLayer.push(arguments); }
           gtag('js', new Date());
-          gtag('config', GA_ID);
+          gtag('config', GA_ID, { debug_mode: location.hostname === 'localhost' });
+
+          // Dev helper: window.gaDebug() logs the last 20 dataLayer entries
+          if (location.hostname === 'localhost') {
+            window.gaDebug = function() {
+              console.table(window.dataLayer.slice(-20).map(function(e) {
+                return Array.isArray(e) ? e : e;
+              }));
+            };
+            console.info('[GA] Debug mode on. Run gaDebug() to inspect dataLayer.');
+          }
         </script>
       </>
     )}
