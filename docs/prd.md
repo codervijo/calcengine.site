@@ -54,6 +54,23 @@
 - [x] Session Size Calculator *(Backend)* ✅ 2026-04-15
 - [x] Log Storage Cost Calculator *(Cloud)* ✅ 2026-04-15
 
+## Phase 3 — EU Cyber Resilience Act (CRA) Calculators
+
+Target audience: embedded/IoT engineers, product managers, compliance teams shipping connected devices to the EU market.
+
+| # | Calculator | Key Inputs | Output | Target Query |
+|---|-----------|------------|--------|--------------|
+| 1 | **CRA Compliance Score Calculator** | Device features: OTA, encryption, auth, SBOM, logging | Compliance score + missing items checklist | "CRA compliance checklist" |
+| 2 | **CVE Exposure Calculator (Embedded)** | Library / RTOS / version list | Known CVE count + severity breakdown | "cve risk embedded firmware" |
+| 3 | **Patch SLA Calculator** | Vuln discovery date + severity | Latest safe patch window per CRA deadlines | "vulnerability patch timeline cra" |
+| 4 | **SBOM Coverage Calculator** | Total components vs documented components | % SBOM completeness + risk gaps | "sbom completeness tool" |
+| 5 | **OTA Compliance Checker** | Update mechanism features (signed, rollback, encrypted) | Pass/fail vs CRA expectations | "ota firmware compliance" |
+| 6 | **Device Lifecycle Compliance Calculator** | Product launch date + support period | Compliance status + EOL risk | "iot support lifecycle requirements eu" |
+| 7 | **Firmware Risk Score Calculator** | Open ports, services, default creds, update capability | Attack surface score | "firmware risk assessment tool" |
+| 8 | **Vulnerability Response Time Calculator** | Detection → patch → disclosure timeline | Compliance vs CRA reporting obligations | "vulnerability response time requirements" |
+| 9 | **Encryption Coverage Calculator** | % data encrypted at rest + in transit | Compliance gap + recommendations | "iot encryption requirements eu" |
+| 10 | **"Is My Device Illegal in EU?" Quiz** | 10–15 yes/no questions | Compliant / at-risk / non-compliant verdict | "is my iot device cra compliant" |
+
 ## SEO
 
 ### Audit Date
