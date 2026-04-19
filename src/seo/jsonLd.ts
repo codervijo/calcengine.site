@@ -24,7 +24,13 @@ export function buildFaqJsonLd(faq: { question: string; answer: string }[]) {
   };
 }
 
-export function buildWebAppJsonLd(name: string, description: string, url: string, ogImageUrl?: string) {
+export function buildWebAppJsonLd(
+  name: string,
+  description: string,
+  url: string,
+  ogImageUrl?: string,
+  dateModified?: string,
+) {
   return {
     '@context': 'https://schema.org',
     '@type': 'WebApplication',
@@ -32,6 +38,7 @@ export function buildWebAppJsonLd(name: string, description: string, url: string
     description,
     url,
     ...(ogImageUrl ? { image: ogImageUrl } : {}),
+    ...(dateModified ? { dateModified } : {}),
     inLanguage: 'en-US',
     applicationCategory: 'UtilityApplication',
     operatingSystem: 'All',
@@ -67,6 +74,27 @@ export function buildOrganizationJsonLd() {
       url: `${BASE_URL}/og/home.png`,
       width: 1200,
       height: 630,
+    },
+    sameAs: [
+      'https://github.com/codervijo/calcengine.site',
+    ],
+  };
+}
+
+export function buildWebSiteJsonLd() {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'WebSite',
+    name: 'CalcEngine',
+    url: BASE_URL,
+    inLanguage: 'en-US',
+    potentialAction: {
+      '@type': 'SearchAction',
+      target: {
+        '@type': 'EntryPoint',
+        urlTemplate: `${BASE_URL}/calculators?q={search_term_string}`,
+      },
+      'query-input': 'required name=search_term_string',
     },
   };
 }

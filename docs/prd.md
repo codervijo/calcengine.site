@@ -142,9 +142,9 @@ Target audience: embedded/IoT engineers, product managers, compliance teams ship
 | `FAQPage` | Calculator detail pages | ✓ Correct | `datePublished`, `dateModified` |
 | `WebApplication` | All pages | ✓ Good | ~~**`image`**~~ ✅ fixed |
 | `BreadcrumbList` | Calculator detail pages | ✓ Excellent | — |
-| `Organization` | Homepage | ✓ Good | ~~**`logo`**~~ ✅ fixed · `sameAs` (pending) |
+| `Organization` | Homepage | ✓ Good | ~~**`logo`**~~ ✅ fixed · ~~`sameAs`~~ ✅ fixed |
 | `CollectionPage` | `/calculators` | ✓ Good | — |
-| `WebSite` | Homepage | Basic | **`potentialAction` (SearchAction)** |
+| `WebSite` | Homepage | ✓ Complete | ~~**`potentialAction` (SearchAction)**~~ ✅ fixed |
 
 ---
 
@@ -156,5 +156,5 @@ Target audience: embedded/IoT engineers, product managers, compliance teams ship
 4. ~~**C2** — Add `image`/`logo` to `WebApplication` and `Organization` JSON-LD using OG image URLs~~ ✅ 2026-04-13
 5. ~~**H2** — Create `/about` page with company/founder credibility signals~~ ✅ 2026-04-13
 6. ~~**M2** — Expand footer: link to Privacy, Terms, About, and key calculators~~ ✅ 2026-04-13 — About link added; footer complete
-7. **M3** — Add `SearchAction` to `WebSite` schema
+7. ~~**M3** — Add `SearchAction` to `WebSite` schema~~ ✅ 2026-04-19 — `buildWebSiteJsonLd()` with `potentialAction`; `?q=` param wired into search island; `sameAs` added to `Organization`; `dateModified` added to `WebApplication`
 8. **M1** — Create category archive pages (`/calculators/[category]`) — largest effort

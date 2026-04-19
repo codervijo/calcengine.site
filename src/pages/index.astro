@@ -4,7 +4,7 @@ import SiteNav from '../layouts/SiteNav.astro';
 import SiteFooter from '../layouts/SiteFooter.astro';
 import { getAllCalculators } from '../calculators/registry';
 import { CATEGORY_LABELS } from '../calculators/registry/types';
-import { buildWebAppJsonLd, buildOrganizationJsonLd } from '../seo/jsonLd';
+import { buildWebAppJsonLd, buildOrganizationJsonLd, buildWebSiteJsonLd } from '../seo/jsonLd';
 
 const BASE_URL = 'https://www.calcengine.site';
 const calculators = getAllCalculators();
@@ -17,13 +17,7 @@ const jsonLd = [
     `${BASE_URL}/og/home.png`,
   ),
   buildOrganizationJsonLd(),
-  {
-    '@context': 'https://schema.org',
-    '@type': 'WebSite',
-    name: 'CalcEngine',
-    url: BASE_URL,
-    inLanguage: 'en-US',
-  },
+  buildWebSiteJsonLd(),
 ];
 
 const features = [

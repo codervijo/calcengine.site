@@ -5,7 +5,12 @@ import { getAllCalculators, getCategories } from '../calculators/registry';
 import { CATEGORY_LABELS, type CalculatorCategory } from '../calculators/registry/types';
 
 export default function AllCalculatorsPage() {
-  const [search, setSearch] = useState('');
+  const [search, setSearch] = useState(() => {
+    if (typeof window !== 'undefined') {
+      return new URLSearchParams(window.location.search).get('q') ?? '';
+    }
+    return '';
+  });
   const [activeCategory, setActiveCategory] = useState<string | null>(null);
   const calculators = getAllCalculators();
   const categories = getCategories();
