@@ -112,7 +112,7 @@ Extract all hardcoded pricing tables and regulatory thresholds out of calculator
 - [x] Create `src/data/pricing/storage.json` and update `storage-cost-calculator.tsx` to import it *(General)* ✅ 2026-04-20
 - [x] Create `src/data/pricing/bandwidth.json` and update `bandwidth-cost-calculator.tsx` to import it *(General)* ✅ 2026-04-20
 - [x] Create `src/data/pricing/log-storage.json` and update `log-storage-cost-calculator.tsx` to import it *(General)* ✅ 2026-04-20
-- [ ] Create `src/data/pricing/sql-query.json` and update `sql-query-cost-estimator.tsx` to import it *(General)*
+- [x] Create `src/data/pricing/sql-query.json` and update `sql-query-cost-estimator.tsx` to import it *(General)* ✅ 2026-04-20
 - [ ] Create `src/data/regulatory/cra-thresholds.json` for CRA patch SLA, reporting deadlines, and compliance criteria — shared across all Phase 3 calculators *(General)*
 
 Each JSON file should include a `lastVerified` ISO date field so the data freshness marker (Phase 2 — Freshness Markers) can read it directly.
