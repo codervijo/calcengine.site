@@ -52,6 +52,7 @@ import { cveExposureCalculator } from '../definitions/cve-exposure-calculator';
 import { patchSlaCalculator } from '../definitions/patch-sla-calculator';
 import { sbomCoverageCalculator } from '../definitions/sbom-coverage-calculator';
 import { otaComplianceCheckerCalculator } from '../definitions/ota-compliance-checker';
+import { deviceLifecycleComplianceCalculator } from '../definitions/device-lifecycle-compliance-calculator';
 
 const calculators: CalculatorDefinition[] = [
   openaiCostCalculator,
@@ -107,6 +108,7 @@ const calculators: CalculatorDefinition[] = [
   patchSlaCalculator,
   sbomCoverageCalculator,
   otaComplianceCheckerCalculator,
+  deviceLifecycleComplianceCalculator,
 ];
 
 export function getAllCalculators(): CalculatorDefinition[] {
