@@ -70,7 +70,7 @@ Target audience: embedded/IoT engineers, product managers, compliance teams ship
 - [x] Firmware Risk Score Calculator *(IoTSecurity)* — inputs: open ports, services, default creds, update capability → attack surface score — "firmware risk assessment tool" ✅ 2026-04-20
 - [x] Vulnerability Response Time Calculator *(IoTSecurity)* — inputs: detection → patch → disclosure timeline → compliance vs CRA obligations — "vulnerability response time requirements" ✅ 2026-04-20
 - [x] Encryption Coverage Calculator *(IoTSecurity)* — inputs: % data encrypted at rest + in transit → compliance gap + recommendations — "iot encryption requirements eu" ✅ 2026-04-20
-- [ ] EU Device Compliance Quiz *(IoTSecurity)* — inputs: 10–15 yes/no questions → compliant / at-risk / non-compliant verdict — "is my iot device cra compliant"
+- [x] EU Device Compliance Quiz *(IoTSecurity)* — inputs: 10–15 yes/no questions → compliant / at-risk / non-compliant verdict — "is my iot device cra compliant" ✅ 2026-04-20
 
 ## Data-Dependent Pages
 

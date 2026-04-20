@@ -56,6 +56,7 @@ import { deviceLifecycleComplianceCalculator } from '../definitions/device-lifec
 import { firmwareRiskScoreCalculator } from '../definitions/firmware-risk-score-calculator';
 import { vulnerabilityResponseTimeCalculator } from '../definitions/vulnerability-response-time-calculator';
 import { encryptionCoverageCalculator } from '../definitions/encryption-coverage-calculator';
+import { euDeviceComplianceQuizCalculator } from '../definitions/eu-device-compliance-quiz';
 
 const calculators: CalculatorDefinition[] = [
   openaiCostCalculator,
@@ -115,6 +116,7 @@ const calculators: CalculatorDefinition[] = [
   firmwareRiskScoreCalculator,
   vulnerabilityResponseTimeCalculator,
   encryptionCoverageCalculator,
+  euDeviceComplianceQuizCalculator,
 ];
 
 export function getAllCalculators(): CalculatorDefinition[] {
