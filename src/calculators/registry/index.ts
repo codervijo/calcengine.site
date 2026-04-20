@@ -55,6 +55,7 @@ import { otaComplianceCheckerCalculator } from '../definitions/ota-compliance-ch
 import { deviceLifecycleComplianceCalculator } from '../definitions/device-lifecycle-compliance-calculator';
 import { firmwareRiskScoreCalculator } from '../definitions/firmware-risk-score-calculator';
 import { vulnerabilityResponseTimeCalculator } from '../definitions/vulnerability-response-time-calculator';
+import { encryptionCoverageCalculator } from '../definitions/encryption-coverage-calculator';
 
 const calculators: CalculatorDefinition[] = [
   openaiCostCalculator,
@@ -113,6 +114,7 @@ const calculators: CalculatorDefinition[] = [
   deviceLifecycleComplianceCalculator,
   firmwareRiskScoreCalculator,
   vulnerabilityResponseTimeCalculator,
+  encryptionCoverageCalculator,
 ];
 
 export function getAllCalculators(): CalculatorDefinition[] {
