@@ -47,6 +47,7 @@ import { encryptionOverheadCalculator } from '../definitions/encryption-overhead
 import { sessionSizeCalculator } from '../definitions/session-size-calculator';
 import { logStorageCostCalculator } from '../definitions/log-storage-cost-calculator';
 import { freshnessMarkersCalculator } from '../definitions/freshness-markers';
+import { craComplianceScoreCalculator } from '../definitions/cra-compliance-score-calculator';
 
 const calculators: CalculatorDefinition[] = [
   openaiCostCalculator,
@@ -97,6 +98,7 @@ const calculators: CalculatorDefinition[] = [
   sessionSizeCalculator,
   logStorageCostCalculator,
   freshnessMarkersCalculator,
+  craComplianceScoreCalculator,
 ];
 
 export function getAllCalculators(): CalculatorDefinition[] {

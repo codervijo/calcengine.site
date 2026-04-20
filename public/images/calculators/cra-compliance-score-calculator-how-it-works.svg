@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 300" width="680" height="300" font-family="Inter, system-ui, sans-serif" role="img" aria-label="CRA compliance score calculation flow: five domain scores summed and normalised to a percentage">
+  <defs>
+    <marker id="arr" markerWidth="8" markerHeight="8" refX="7" refY="3" orient="auto">
+      <path d="M0,0 L0,6 L8,3 z" fill="#94a3b8"/>
+    </marker>
+    <filter id="shadow" x="-5%" y="-5%" width="110%" height="120%">
+      <feDropShadow dx="0" dy="1" stdDeviation="2" flood-color="#00000018"/>
+    </filter>
+  </defs>
+
+  <!-- ── Column label ── -->
+  <text x="12" y="58" font-size="10" fill="#94a3b8" font-weight="500" letter-spacing="0.5">DOMAINS</text>
+
+  <!-- ══ DOMAIN NODES (5 rows) ══ -->
+  <!-- D1: Secure by Design -->
+  <rect x="54" y="20" width="150" height="40" rx="8" fill="#eff6ff" stroke="#bfdbfe" stroke-width="1.5" filter="url(#shadow)"/>
+  <text x="129" y="36" text-anchor="middle" font-size="11" fill="#1e40af" font-weight="600">Secure by Design</text>
+  <text x="129" y="52" text-anchor="middle" font-size="10" fill="#3b82f6">0 – 4</text>
+
+  <!-- D2: Vulnerability Handling -->
+  <rect x="54" y="70" width="150" height="40" rx="8" fill="#eff6ff" stroke="#bfdbfe" stroke-width="1.5" filter="url(#shadow)"/>
+  <text x="129" y="86" text-anchor="middle" font-size="11" fill="#1e40af" font-weight="600">Vulnerability Handling</text>
+  <text x="129" y="102" text-anchor="middle" font-size="10" fill="#3b82f6">0 – 4</text>
+
+  <!-- D3: Documentation & SBOM -->
+  <rect x="54" y="120" width="150" height="40" rx="8" fill="#eff6ff" stroke="#bfdbfe" stroke-width="1.5" filter="url(#shadow)"/>
+  <text x="129" y="136" text-anchor="middle" font-size="11" fill="#1e40af" font-weight="600">Documentation &amp; SBOM</text>
+  <text x="129" y="152" text-anchor="middle" font-size="10" fill="#3b82f6">0 – 4</text>
+
+  <!-- D4: Update & Patch Policy -->
+  <rect x="54" y="170" width="150" height="40" rx="8" fill="#eff6ff" stroke="#bfdbfe" stroke-width="1.5" filter="url(#shadow)"/>
+  <text x="129" y="186" text-anchor="middle" font-size="11" fill="#1e40af" font-weight="600">Update &amp; Patch Policy</text>
+  <text x="129" y="202" text-anchor="middle" font-size="10" fill="#3b82f6">0 – 4</text>
+
+  <!-- D5: Incident Reporting -->
+  <rect x="54" y="220" width="150" height="40" rx="8" fill="#eff6ff" stroke="#bfdbfe" stroke-width="1.5" filter="url(#shadow)"/>
+  <text x="129" y="236" text-anchor="middle" font-size="11" fill="#1e40af" font-weight="600">Incident Reporting</text>
+  <text x="129" y="252" text-anchor="middle" font-size="10" fill="#3b82f6">0 – 4</text>
+
+  <!-- ══ CONVERGING LINES from each domain to Σ node ══ -->
+  <line x1="204" y1="40"  x2="390" y2="150" stroke="#94a3b8" stroke-width="1.5"/>
+  <line x1="204" y1="90"  x2="390" y2="150" stroke="#94a3b8" stroke-width="1.5"/>
+  <line x1="204" y1="140" x2="390" y2="150" stroke="#94a3b8" stroke-width="1.5"/>
+  <line x1="204" y1="190" x2="390" y2="150" stroke="#94a3b8" stroke-width="1.5"/>
+  <line x1="204" y1="240" x2="390" y2="150" stroke="#94a3b8" stroke-width="1.5"/>
+
+  <!-- Σ node -->
+  <circle cx="390" cy="150" r="22" fill="white" stroke="#e2e8f0" stroke-width="1.5" filter="url(#shadow)"/>
+  <text x="390" y="145" text-anchor="middle" font-size="13" fill="#64748b" font-weight="600">Σ</text>
+  <text x="390" y="160" text-anchor="middle" font-size="9" fill="#94a3b8">÷ 20 × 100</text>
+
+  <!-- Arrow from Σ to result -->
+  <line x1="412" y1="150" x2="456" y2="150" stroke="#94a3b8" stroke-width="1.5" marker-end="url(#arr)"/>
+
+  <!-- ══ RESULT NODE ══ -->
+  <rect x="456" y="118" width="196" height="64" rx="8" fill="#1565c0" filter="url(#shadow)"/>
+  <text x="554" y="143" text-anchor="middle" font-size="12" fill="rgba(255,255,255,0.85)" font-weight="500">CRA Compliance Score</text>
+  <text x="554" y="168" text-anchor="middle" font-size="18" fill="white" font-weight="700">0 – 100%</text>
+</svg>
