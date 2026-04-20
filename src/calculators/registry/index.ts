@@ -53,6 +53,7 @@ import { patchSlaCalculator } from '../definitions/patch-sla-calculator';
 import { sbomCoverageCalculator } from '../definitions/sbom-coverage-calculator';
 import { otaComplianceCheckerCalculator } from '../definitions/ota-compliance-checker';
 import { deviceLifecycleComplianceCalculator } from '../definitions/device-lifecycle-compliance-calculator';
+import { firmwareRiskScoreCalculator } from '../definitions/firmware-risk-score-calculator';
 
 const calculators: CalculatorDefinition[] = [
   openaiCostCalculator,
@@ -109,6 +110,7 @@ const calculators: CalculatorDefinition[] = [
   sbomCoverageCalculator,
   otaComplianceCheckerCalculator,
   deviceLifecycleComplianceCalculator,
+  firmwareRiskScoreCalculator,
 ];
 
 export function getAllCalculators(): CalculatorDefinition[] {
