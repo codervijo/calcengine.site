@@ -1,0 +1,71 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 700 270" width="700" height="270" font-family="Inter, system-ui, sans-serif" role="img" aria-label="SBOM coverage score calculation flow diagram: component counts, metadata, and VEX data feed weighted formula to produce overall SBOM score">
+  <defs>
+    <marker id="arr" markerWidth="8" markerHeight="8" refX="7" refY="3" orient="auto">
+      <path d="M0,0 L0,6 L8,3 z" fill="#94a3b8"/>
+    </marker>
+    <filter id="shadow" x="-5%" y="-5%" width="110%" height="120%">
+      <feDropShadow dx="0" dy="1" stdDeviation="2" flood-color="#00000018"/>
+    </filter>
+  </defs>
+
+  <!-- Row labels -->
+  <text x="12" y="72" font-size="10" fill="#94a3b8" font-weight="500" letter-spacing="0.5">COVERAGE</text>
+  <text x="12" y="142" font-size="10" fill="#94a3b8" font-weight="500" letter-spacing="0.5">METADATA</text>
+  <text x="12" y="212" font-size="10" fill="#94a3b8" font-weight="500" letter-spacing="0.5">VEX</text>
+
+  <!-- ROW 1: Component Coverage -->
+  <rect x="60" y="47" width="132" height="50" rx="8" fill="#eff6ff" stroke="#bfdbfe" stroke-width="1.5" filter="url(#shadow)"/>
+  <text x="126" y="67" text-anchor="middle" font-size="11" fill="#1e40af" font-weight="600">Component Counts</text>
+  <text x="126" y="85" text-anchor="middle" font-size="10" fill="#3b82f6">100 total / 85 documented</text>
+
+  <line x1="192" y1="72" x2="258" y2="72" stroke="#94a3b8" stroke-width="1.5" marker-end="url(#arr)"/>
+  <text x="225" y="64" text-anchor="middle" font-size="9" fill="#64748b">85 ÷ 100</text>
+  <text x="225" y="85" text-anchor="middle" font-size="9" fill="#64748b">× 100</text>
+
+  <rect x="258" y="47" width="118" height="50" rx="8" fill="#eff6ff" stroke="#bfdbfe" stroke-width="1.5" filter="url(#shadow)"/>
+  <text x="317" y="67" text-anchor="middle" font-size="11" fill="#1e40af" font-weight="600">Coverage</text>
+  <text x="317" y="85" text-anchor="middle" font-size="13" fill="#3b82f6">85.0%</text>
+
+  <!-- ROW 2: Metadata Completeness -->
+  <rect x="60" y="117" width="132" height="50" rx="8" fill="#eff6ff" stroke="#bfdbfe" stroke-width="1.5" filter="url(#shadow)"/>
+  <text x="126" y="137" text-anchor="middle" font-size="11" fill="#1e40af" font-weight="600">Complete Metadata</text>
+  <text x="126" y="155" text-anchor="middle" font-size="10" fill="#3b82f6">61 of 85 documented</text>
+
+  <line x1="192" y1="142" x2="258" y2="142" stroke="#94a3b8" stroke-width="1.5" marker-end="url(#arr)"/>
+  <text x="225" y="134" text-anchor="middle" font-size="9" fill="#64748b">61 ÷ 85</text>
+  <text x="225" y="155" text-anchor="middle" font-size="9" fill="#64748b">× 100</text>
+
+  <rect x="258" y="117" width="118" height="50" rx="8" fill="#eff6ff" stroke="#bfdbfe" stroke-width="1.5" filter="url(#shadow)"/>
+  <text x="317" y="137" text-anchor="middle" font-size="11" fill="#1e40af" font-weight="600">Metadata</text>
+  <text x="317" y="155" text-anchor="middle" font-size="13" fill="#3b82f6">71.8%</text>
+
+  <!-- ROW 3: VEX Coverage -->
+  <rect x="60" y="187" width="132" height="50" rx="8" fill="#eff6ff" stroke="#bfdbfe" stroke-width="1.5" filter="url(#shadow)"/>
+  <text x="126" y="207" text-anchor="middle" font-size="11" fill="#1e40af" font-weight="600">VEX Assessed</text>
+  <text x="126" y="225" text-anchor="middle" font-size="10" fill="#3b82f6">51 of 85 documented</text>
+
+  <line x1="192" y1="212" x2="258" y2="212" stroke="#94a3b8" stroke-width="1.5" marker-end="url(#arr)"/>
+  <text x="225" y="204" text-anchor="middle" font-size="9" fill="#64748b">51 ÷ 85</text>
+  <text x="225" y="225" text-anchor="middle" font-size="9" fill="#64748b">× 100</text>
+
+  <rect x="258" y="187" width="118" height="50" rx="8" fill="#eff6ff" stroke="#bfdbfe" stroke-width="1.5" filter="url(#shadow)"/>
+  <text x="317" y="207" text-anchor="middle" font-size="11" fill="#1e40af" font-weight="600">VEX</text>
+  <text x="317" y="225" text-anchor="middle" font-size="13" fill="#3b82f6">60.0%</text>
+
+  <!-- Convergence lines to merge point at (458, 142) -->
+  <line x1="376" y1="72" x2="446" y2="136" stroke="#94a3b8" stroke-width="1.5"/>
+  <line x1="376" y1="142" x2="446" y2="142" stroke="#94a3b8" stroke-width="1.5"/>
+  <line x1="376" y1="212" x2="446" y2="148" stroke="#94a3b8" stroke-width="1.5"/>
+
+  <!-- Merge circle with weighted-sum label -->
+  <circle cx="458" cy="142" r="12" fill="white" stroke="#e2e8f0" stroke-width="1.5"/>
+  <text x="458" y="147" text-anchor="middle" font-size="13" fill="#64748b" font-weight="600">Σ</text>
+
+  <!-- Arrow merge → result -->
+  <line x1="470" y1="142" x2="490" y2="142" stroke="#94a3b8" stroke-width="1.5" marker-end="url(#arr)"/>
+
+  <!-- SBOM Score result box -->
+  <rect x="490" y="112" width="182" height="60" rx="8" fill="#1565c0" filter="url(#shadow)"/>
+  <text x="581" y="135" text-anchor="middle" font-size="12" fill="rgba(255,255,255,0.85)" font-weight="500">SBOM Score</text>
+  <text x="581" y="158" text-anchor="middle" font-size="18" fill="white" font-weight="700">77.9%</text>
+</svg>

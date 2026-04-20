@@ -50,6 +50,7 @@ import { freshnessMarkersCalculator } from '../definitions/freshness-markers';
 import { craComplianceScoreCalculator } from '../definitions/cra-compliance-score-calculator';
 import { cveExposureCalculator } from '../definitions/cve-exposure-calculator';
 import { patchSlaCalculator } from '../definitions/patch-sla-calculator';
+import { sbomCoverageCalculator } from '../definitions/sbom-coverage-calculator';
 
 const calculators: CalculatorDefinition[] = [
   openaiCostCalculator,
@@ -103,6 +104,7 @@ const calculators: CalculatorDefinition[] = [
   craComplianceScoreCalculator,
   cveExposureCalculator,
   patchSlaCalculator,
+  sbomCoverageCalculator,
 ];
 
 export function getAllCalculators(): CalculatorDefinition[] {
