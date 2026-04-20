@@ -54,6 +54,7 @@ import { sbomCoverageCalculator } from '../definitions/sbom-coverage-calculator'
 import { otaComplianceCheckerCalculator } from '../definitions/ota-compliance-checker';
 import { deviceLifecycleComplianceCalculator } from '../definitions/device-lifecycle-compliance-calculator';
 import { firmwareRiskScoreCalculator } from '../definitions/firmware-risk-score-calculator';
+import { vulnerabilityResponseTimeCalculator } from '../definitions/vulnerability-response-time-calculator';
 
 const calculators: CalculatorDefinition[] = [
   openaiCostCalculator,
@@ -111,6 +112,7 @@ const calculators: CalculatorDefinition[] = [
   otaComplianceCheckerCalculator,
   deviceLifecycleComplianceCalculator,
   firmwareRiskScoreCalculator,
+  vulnerabilityResponseTimeCalculator,
 ];
 
 export function getAllCalculators(): CalculatorDefinition[] {
