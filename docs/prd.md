@@ -106,7 +106,7 @@ Pages where hardcoded values (prices, specs, regulatory thresholds) go stale and
 Extract all hardcoded pricing tables and regulatory thresholds out of calculator definition files into versioned JSON files under `src/data/`. This decouples data updates from code changes and makes scrapers/ingesters trivial to wire up.
 
 - [x] Create `src/data/pricing/openai.json` and update `openai-cost.tsx` to import it *(General)* ✅ 2026-04-20
-- [ ] Create `src/data/pricing/aws-lambda.json` and update `lambda-cost-calculator.tsx` to import it *(General)*
+- [x] Create `src/data/pricing/aws-lambda.json` and update `lambda-cost-calculator.tsx` to import it *(General)* ✅ 2026-04-20
 - [ ] Create `src/data/pricing/cdn.json` and update `cdn-cost-calculator.tsx` to import it *(General)*
 - [ ] Create `src/data/pricing/data-transfer.json` and update `data-transfer-cost-calculator.tsx` to import it *(General)*
 - [ ] Create `src/data/pricing/storage.json` and update `storage-cost-calculator.tsx` to import it *(General)*
