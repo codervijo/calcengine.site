@@ -1,0 +1,61 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 220" width="720" height="220" font-family="Inter, system-ui, sans-serif" role="img" aria-label="OTA compliance checker calculation flow diagram">
+  <defs>
+    <marker id="arr" markerWidth="8" markerHeight="8" refX="7" refY="3" orient="auto">
+      <path d="M0,0 L0,6 L8,3 z" fill="#94a3b8"/>
+    </marker>
+    <filter id="shadow" x="-5%" y="-5%" width="110%" height="120%">
+      <feDropShadow dx="0" dy="1" stdDeviation="2" flood-color="#00000018"/>
+    </filter>
+  </defs>
+
+  <!-- Row labels -->
+  <text x="4" y="82" font-size="10" fill="#94a3b8" font-weight="500" letter-spacing="0.5">FLEET</text>
+  <text x="4" y="158" font-size="10" fill="#94a3b8" font-weight="500" letter-spacing="0.5">TARGET</text>
+
+  <!-- ══ FLEET ROW ══ -->
+  <!-- Total Devices -->
+  <rect x="52" y="48" width="124" height="52" rx="8" fill="#eff6ff" stroke="#bfdbfe" stroke-width="1.5" filter="url(#shadow)"/>
+  <text x="114" y="70" text-anchor="middle" font-size="12" fill="#1e40af" font-weight="600">Total Devices</text>
+  <text x="114" y="88" text-anchor="middle" font-size="11" fill="#3b82f6">e.g. 10,000</text>
+
+  <!-- Arrow: total → rate -->
+  <line x1="176" y1="74" x2="248" y2="74" stroke="#94a3b8" stroke-width="1.5" marker-end="url(#arr)"/>
+  <text x="212" y="65" text-anchor="middle" font-size="9.5" fill="#64748b">Updated ÷</text>
+  <text x="212" y="87" text-anchor="middle" font-size="9.5" fill="#64748b">Total × 100</text>
+
+  <!-- Compliance Rate -->
+  <rect x="248" y="48" width="124" height="52" rx="8" fill="#eff6ff" stroke="#bfdbfe" stroke-width="1.5" filter="url(#shadow)"/>
+  <text x="310" y="70" text-anchor="middle" font-size="12" fill="#1e40af" font-weight="600">Compliance %</text>
+  <text x="310" y="88" text-anchor="middle" font-size="11" fill="#3b82f6">e.g. 85.0%</text>
+
+  <!-- ══ TARGET ROW ══ -->
+  <!-- Target % -->
+  <rect x="52" y="124" width="124" height="52" rx="8" fill="#eff6ff" stroke="#bfdbfe" stroke-width="1.5" filter="url(#shadow)"/>
+  <text x="114" y="146" text-anchor="middle" font-size="12" fill="#1e40af" font-weight="600">Target (%)</text>
+  <text x="114" y="164" text-anchor="middle" font-size="11" fill="#3b82f6">e.g. 95%</text>
+
+  <!-- Arrow: target → gap -->
+  <line x1="176" y1="150" x2="248" y2="150" stroke="#94a3b8" stroke-width="1.5" marker-end="url(#arr)"/>
+  <text x="212" y="141" text-anchor="middle" font-size="9.5" fill="#64748b">Target −</text>
+  <text x="212" y="163" text-anchor="middle" font-size="9.5" fill="#64748b">Rate = Gap</text>
+
+  <!-- Compliance Gap -->
+  <rect x="248" y="124" width="124" height="52" rx="8" fill="#eff6ff" stroke="#bfdbfe" stroke-width="1.5" filter="url(#shadow)"/>
+  <text x="310" y="146" text-anchor="middle" font-size="12" fill="#1e40af" font-weight="600">Gap to Target</text>
+  <text x="310" y="164" text-anchor="middle" font-size="11" fill="#3b82f6">e.g. 10%</text>
+
+  <!-- ══ CONVERGENCE ══ -->
+  <line x1="372" y1="74" x2="432" y2="112" stroke="#94a3b8" stroke-width="1.5"/>
+  <line x1="372" y1="150" x2="432" y2="112" stroke="#94a3b8" stroke-width="1.5"/>
+  <line x1="432" y1="112" x2="468" y2="112" stroke="#94a3b8" stroke-width="1.5" marker-end="url(#arr)"/>
+
+  <!-- merge node -->
+  <circle cx="432" cy="112" r="12" fill="white" stroke="#e2e8f0" stroke-width="1.5"/>
+  <text x="432" y="117" text-anchor="middle" font-size="13" fill="#64748b" font-weight="500">→</text>
+
+  <!-- ══ RESULT ══ -->
+  <rect x="468" y="80" width="220" height="64" rx="8" fill="#1565c0" filter="url(#shadow)"/>
+  <text x="578" y="103" text-anchor="middle" font-size="11" fill="rgba(255,255,255,0.85)" font-weight="500">Compliance Status</text>
+  <text x="578" y="124" text-anchor="middle" font-size="15" fill="white" font-weight="700">85.0% — Gap: 10%</text>
+  <text x="578" y="140" text-anchor="middle" font-size="10" fill="rgba(255,255,255,0.75)">~2 days to close at current rate</text>
+</svg>

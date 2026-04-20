@@ -51,6 +51,7 @@ import { craComplianceScoreCalculator } from '../definitions/cra-compliance-scor
 import { cveExposureCalculator } from '../definitions/cve-exposure-calculator';
 import { patchSlaCalculator } from '../definitions/patch-sla-calculator';
 import { sbomCoverageCalculator } from '../definitions/sbom-coverage-calculator';
+import { otaComplianceCheckerCalculator } from '../definitions/ota-compliance-checker';
 
 const calculators: CalculatorDefinition[] = [
   openaiCostCalculator,
@@ -105,6 +106,7 @@ const calculators: CalculatorDefinition[] = [
   cveExposureCalculator,
   patchSlaCalculator,
   sbomCoverageCalculator,
+  otaComplianceCheckerCalculator,
 ];
 
 export function getAllCalculators(): CalculatorDefinition[] {
