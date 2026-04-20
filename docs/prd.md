@@ -7,7 +7,7 @@
 - [x] Base64 Size Calculator *(Data)*
 
 ## Phase 2 — Calculator Expansion (50 tools)
-- [x] JWT Size Calculator *(Security)* ✅ 2026-04-14
+- [x] JWT Size Calculator *(IoTSecurity)* ✅ 2026-04-14
 - [x] UUID Collision Probability Calculator *(Backend)* ✅ 2026-04-14
 - [x] Cron Expression Calculator *(Scheduling)* ✅ 2026-04-14
 - [x] Cron Next Run Calculator *(Scheduling)* ✅ 2026-04-14
@@ -49,27 +49,79 @@
 - [x] API Pagination Limit Calculator *(API)* ✅ 2026-04-15
 - [x] Token Bucket Rate Limit Calculator *(Backend)* ✅ 2026-04-15
 - [x] Leaky Bucket Rate Calculator *(Backend)* ✅ 2026-04-15
-- [x] Hash Collision Probability Calculator *(Security)* ✅ 2026-04-15
-- [x] Encryption Overhead Calculator *(Security)* ✅ 2026-04-15
+- [x] Hash Collision Probability Calculator *(IoTSecurity)* ✅ 2026-04-15
+- [x] Encryption Overhead Calculator *(IoTSecurity)* ✅ 2026-04-15
 - [x] Session Size Calculator *(Backend)* ✅ 2026-04-15
 - [x] Log Storage Cost Calculator *(Cloud)* ✅ 2026-04-15
+- [ ] Freshness Markers *(General)* — two distinct signals on every calculator page:
+  1. **Code freshness** — "Last updated from git at" — derived at build time from `git log` on the definition file; injected into `dateModified` JSON-LD and shown in the UI
+  2. **Data freshness** — "Data last verified" — manually set via `meta.dataUpdated` (e.g. pricing, formula accuracy, external references); shown separately in the UI so users know the underlying numbers are current
 
 ## Phase 3 — EU Cyber Resilience Act (CRA) Calculators
 
 Target audience: embedded/IoT engineers, product managers, compliance teams shipping connected devices to the EU market.
 
-| # | Calculator | Key Inputs | Output | Target Query |
-|---|-----------|------------|--------|--------------|
-| 1 | **CRA Compliance Score Calculator** | Device features: OTA, encryption, auth, SBOM, logging | Compliance score + missing items checklist | "CRA compliance checklist" |
-| 2 | **CVE Exposure Calculator (Embedded)** | Library / RTOS / version list | Known CVE count + severity breakdown | "cve risk embedded firmware" |
-| 3 | **Patch SLA Calculator** | Vuln discovery date + severity | Latest safe patch window per CRA deadlines | "vulnerability patch timeline cra" |
-| 4 | **SBOM Coverage Calculator** | Total components vs documented components | % SBOM completeness + risk gaps | "sbom completeness tool" |
-| 5 | **OTA Compliance Checker** | Update mechanism features (signed, rollback, encrypted) | Pass/fail vs CRA expectations | "ota firmware compliance" |
-| 6 | **Device Lifecycle Compliance Calculator** | Product launch date + support period | Compliance status + EOL risk | "iot support lifecycle requirements eu" |
-| 7 | **Firmware Risk Score Calculator** | Open ports, services, default creds, update capability | Attack surface score | "firmware risk assessment tool" |
-| 8 | **Vulnerability Response Time Calculator** | Detection → patch → disclosure timeline | Compliance vs CRA reporting obligations | "vulnerability response time requirements" |
-| 9 | **Encryption Coverage Calculator** | % data encrypted at rest + in transit | Compliance gap + recommendations | "iot encryption requirements eu" |
-| 10 | **"Is My Device Illegal in EU?" Quiz** | 10–15 yes/no questions | Compliant / at-risk / non-compliant verdict | "is my iot device cra compliant" |
+- [ ] CRA Compliance Score Calculator *(IoTSecurity)* — inputs: OTA, encryption, auth, SBOM, logging → compliance score + missing items — "CRA compliance checklist"
+- [ ] CVE Exposure Calculator *(IoTSecurity)* — inputs: library / RTOS / version list → CVE count + severity breakdown — "cve risk embedded firmware"
+- [ ] Patch SLA Calculator *(IoTSecurity)* — inputs: vuln discovery date + severity → latest safe patch window per CRA deadlines — "vulnerability patch timeline cra"
+- [ ] SBOM Coverage Calculator *(IoTSecurity)* — inputs: total components vs documented → % SBOM completeness + risk gaps — "sbom completeness tool"
+- [ ] OTA Compliance Checker *(IoTSecurity)* — inputs: signed, rollback, encrypted flags → pass/fail vs CRA expectations — "ota firmware compliance"
+- [ ] Device Lifecycle Compliance Calculator *(IoTSecurity)* — inputs: product launch date + support period → compliance status + EOL risk — "iot support lifecycle requirements eu"
+- [ ] Firmware Risk Score Calculator *(IoTSecurity)* — inputs: open ports, services, default creds, update capability → attack surface score — "firmware risk assessment tool"
+- [ ] Vulnerability Response Time Calculator *(IoTSecurity)* — inputs: detection → patch → disclosure timeline → compliance vs CRA obligations — "vulnerability response time requirements"
+- [ ] Encryption Coverage Calculator *(IoTSecurity)* — inputs: % data encrypted at rest + in transit → compliance gap + recommendations — "iot encryption requirements eu"
+- [ ] EU Device Compliance Quiz *(IoTSecurity)* — inputs: 10–15 yes/no questions → compliant / at-risk / non-compliant verdict — "is my iot device cra compliant"
+
+## Data-Dependent Pages
+
+Pages where hardcoded values (prices, specs, regulatory thresholds) go stale and will eventually need a scraper or ingestion pipeline to stay accurate.
+
+### Pricing data (cloud/AI — changes frequently)
+
+| Page | Data source | Staleness risk | Notes |
+|---|---|---|---|
+| `openai-cost-calculator` | [OpenAI pricing](https://openai.com/api/pricing) | High — changes without notice | GPT-4o, GPT-4o mini prices hardcoded |
+| `lambda-cost-calculator` | [AWS Lambda pricing](https://aws.amazon.com/lambda/pricing/) | Medium | x86_64 + arm64 GB-s rates hardcoded |
+| `cdn-cost-calculator` | [CloudFront](https://aws.amazon.com/cloudfront/pricing/), [Cloudflare](https://www.cloudflare.com/plans/) | Medium | Per-GB and per-10k-req rates hardcoded |
+| `data-transfer-cost-calculator` | [AWS](https://aws.amazon.com/ec2/pricing/on-demand/), [GCP](https://cloud.google.com/vpc/network-pricing) egress pricing | Medium | Per-GB egress rates hardcoded |
+| `storage-cost-calculator` | Cloud storage pricing (S3/GCS/Azure) | Low-medium | Per-GB-month rates hardcoded |
+| `bandwidth-cost-calculator` | Cloud bandwidth pricing | Low-medium | Per-GB rates hardcoded |
+| `log-storage-cost-calculator` | Cloud storage pricing | Low | Storage rates hardcoded |
+| `sql-query-cost-estimator` | [BigQuery](https://cloud.google.com/bigquery/pricing), [Athena](https://aws.amazon.com/athena/pricing/) pricing | Low | Per-TB scan rates hardcoded |
+
+### Regulatory data (CRA — changes as regulation matures)
+
+| Page | Data source | Staleness risk | Notes |
+|---|---|---|---|
+| `cra-compliance-score-calculator` | [EU CRA text](https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32024R2847) | Medium — regulation finalised but guidance evolving | Compliance criteria hardcoded |
+| `patch-sla-calculator` | EU CRA Article 13 deadlines | Medium | Patch window thresholds hardcoded |
+| `vulnerability-response-time-calculator` | EU CRA + ENISA guidance | Medium | Reporting timeline thresholds hardcoded |
+| `ota-compliance-checker` | EU CRA Annex I requirements | Low-medium | Pass/fail criteria hardcoded |
+| `device-lifecycle-compliance-calculator` | EU CRA support period requirements | Low | Min support period hardcoded |
+
+### ⚠ All pricing/regulatory data is currently hardcoded inline in each `.tsx` definition file. No external JSON exists.
+
+## Phase 4 — Externalize Pricing & Regulatory Data to JSON
+
+Extract all hardcoded pricing tables and regulatory thresholds out of calculator definition files into versioned JSON files under `src/data/`. This decouples data updates from code changes and makes scrapers/ingesters trivial to wire up.
+
+- [ ] Create `src/data/pricing/openai.json` and update `openai-cost.tsx` to import it *(General)*
+- [ ] Create `src/data/pricing/aws-lambda.json` and update `lambda-cost-calculator.tsx` to import it *(General)*
+- [ ] Create `src/data/pricing/cdn.json` and update `cdn-cost-calculator.tsx` to import it *(General)*
+- [ ] Create `src/data/pricing/data-transfer.json` and update `data-transfer-cost-calculator.tsx` to import it *(General)*
+- [ ] Create `src/data/pricing/storage.json` and update `storage-cost-calculator.tsx` to import it *(General)*
+- [ ] Create `src/data/pricing/bandwidth.json` and update `bandwidth-cost-calculator.tsx` to import it *(General)*
+- [ ] Create `src/data/pricing/log-storage.json` and update `log-storage-cost-calculator.tsx` to import it *(General)*
+- [ ] Create `src/data/pricing/sql-query.json` and update `sql-query-cost-estimator.tsx` to import it *(General)*
+- [ ] Create `src/data/regulatory/cra-thresholds.json` for CRA patch SLA, reporting deadlines, and compliance criteria — shared across all Phase 3 calculators *(General)*
+
+Each JSON file should include a `lastVerified` ISO date field so the data freshness marker (Phase 2 — Freshness Markers) can read it directly.
+
+### Ingestion pipeline candidates (priority order)
+
+1. **OpenAI pricing** — highest churn, highest user impact; scrape `openai.com/api/pricing` → update definition
+2. **AWS Lambda + CDN + egress pricing** — moderate churn; AWS pricing API available
+3. **CRA patch/reporting deadlines** — monitor EUR-Lex for amendments
 
 ## SEO
 

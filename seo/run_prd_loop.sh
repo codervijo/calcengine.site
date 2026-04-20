@@ -52,7 +52,8 @@ cd "$REPO_DIR"
 # ── Category mapping: PRD label → CalculatorCategory type ────────────────────
 map_category() {
   case "$1" in
-    Security)     echo "encoding"    ;;
+    Security)     echo "general"     ;;
+    IoTSecurity)  echo "general"     ;;
     Backend)      echo "api"         ;;
     Scheduling)   echo "api"         ;;
     Performance)  echo "performance" ;;
@@ -67,9 +68,9 @@ map_category() {
   esac
 }
 
-# ── Get next unchecked Phase 2 item ─────────────────────────────────────────
+# ── Get next unchecked item across all Phase sections ────────────────────────
 get_next_unchecked() {
-  awk '/^## Phase 2/{p=1} /^## / && !/^## Phase 2/{p=0} p' docs/prd.md \
+  awk '/^## Phase [0-9]/{p=1} /^## / && !/^## Phase/{p=0} p' docs/prd.md \
     | grep '^\- \[ \]' \
     | head -1 \
     || true
@@ -111,7 +112,7 @@ while true; do
   LINE=$(get_next_unchecked)
 
   if [[ -z "$LINE" ]]; then
-    echo -e "\n${GREEN}${BOLD}✓ All Phase 2 calculators implemented. Done.${NC}\n"
+    echo -e "\n${GREEN}${BOLD}✓ All calculators implemented. Done.${NC}\n"
     exit 0
   fi
 
@@ -268,7 +269,7 @@ Co-Authored-By: Claude Sonnet 4.6 <noreply@anthropic.com>" \
   # ── Check if anything left ────────────────────────────────────────────────
   NEXT=$(get_next_unchecked)
   if [[ -z "$NEXT" ]]; then
-    echo -e "\n${GREEN}${BOLD}✓ All Phase 2 calculators implemented. Done.${NC}\n"
+    echo -e "\n${GREEN}${BOLD}✓ All calculators implemented. Done.${NC}\n"
     exit 0
   fi
 
