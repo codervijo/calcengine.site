@@ -53,7 +53,7 @@
 - [x] Encryption Overhead Calculator *(IoTSecurity)* ✅ 2026-04-15
 - [x] Session Size Calculator *(Backend)* ✅ 2026-04-15
 - [x] Log Storage Cost Calculator *(Cloud)* ✅ 2026-04-15
-- [ ] Freshness Markers *(General)* — two distinct signals on every calculator page:
+- [x] Freshness Markers *(General)* — two distinct signals on every calculator page: ✅ 2026-04-19
   1. **Code freshness** — "Last updated from git at" — derived at build time from `git log` on the definition file; injected into `dateModified` JSON-LD and shown in the UI
   2. **Data freshness** — "Data last verified" — manually set via `meta.dataUpdated` (e.g. pricing, formula accuracy, external references); shown separately in the UI so users know the underlying numbers are current
 

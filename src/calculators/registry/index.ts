@@ -46,6 +46,7 @@ import { hashCollisionProbabilityCalculator } from '../definitions/hash-collisio
 import { encryptionOverheadCalculator } from '../definitions/encryption-overhead-calculator';
 import { sessionSizeCalculator } from '../definitions/session-size-calculator';
 import { logStorageCostCalculator } from '../definitions/log-storage-cost-calculator';
+import { freshnessMarkersCalculator } from '../definitions/freshness-markers';
 
 const calculators: CalculatorDefinition[] = [
   openaiCostCalculator,
@@ -95,6 +96,7 @@ const calculators: CalculatorDefinition[] = [
   encryptionOverheadCalculator,
   sessionSizeCalculator,
   logStorageCostCalculator,
+  freshnessMarkersCalculator,
 ];
 
 export function getAllCalculators(): CalculatorDefinition[] {
