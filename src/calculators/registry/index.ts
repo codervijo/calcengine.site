@@ -48,6 +48,7 @@ import { sessionSizeCalculator } from '../definitions/session-size-calculator';
 import { logStorageCostCalculator } from '../definitions/log-storage-cost-calculator';
 import { freshnessMarkersCalculator } from '../definitions/freshness-markers';
 import { craComplianceScoreCalculator } from '../definitions/cra-compliance-score-calculator';
+import { cveExposureCalculator } from '../definitions/cve-exposure-calculator';
 
 const calculators: CalculatorDefinition[] = [
   openaiCostCalculator,
@@ -99,6 +100,7 @@ const calculators: CalculatorDefinition[] = [
   logStorageCostCalculator,
   freshnessMarkersCalculator,
   craComplianceScoreCalculator,
+  cveExposureCalculator,
 ];
 
 export function getAllCalculators(): CalculatorDefinition[] {
