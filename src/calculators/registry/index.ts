@@ -49,6 +49,7 @@ import { logStorageCostCalculator } from '../definitions/log-storage-cost-calcul
 import { freshnessMarkersCalculator } from '../definitions/freshness-markers';
 import { craComplianceScoreCalculator } from '../definitions/cra-compliance-score-calculator';
 import { cveExposureCalculator } from '../definitions/cve-exposure-calculator';
+import { patchSlaCalculator } from '../definitions/patch-sla-calculator';
 
 const calculators: CalculatorDefinition[] = [
   openaiCostCalculator,
@@ -101,6 +102,7 @@ const calculators: CalculatorDefinition[] = [
   freshnessMarkersCalculator,
   craComplianceScoreCalculator,
   cveExposureCalculator,
+  patchSlaCalculator,
 ];
 
 export function getAllCalculators(): CalculatorDefinition[] {

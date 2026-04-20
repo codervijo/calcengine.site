@@ -63,7 +63,7 @@ Target audience: embedded/IoT engineers, product managers, compliance teams ship
 
 - [x] CRA Compliance Score Calculator *(IoTSecurity)* — inputs: OTA, encryption, auth, SBOM, logging → compliance score + missing items — "CRA compliance checklist" ✅ 2026-04-19
 - [x] CVE Exposure Calculator *(IoTSecurity)* — inputs: library / RTOS / version list → CVE count + severity breakdown — "cve risk embedded firmware" ✅ 2026-04-19
-- [ ] Patch SLA Calculator *(IoTSecurity)* — inputs: vuln discovery date + severity → latest safe patch window per CRA deadlines — "vulnerability patch timeline cra"
+- [x] Patch SLA Calculator *(IoTSecurity)* — inputs: vuln discovery date + severity → latest safe patch window per CRA deadlines — "vulnerability patch timeline cra" ✅ 2026-04-19
 - [ ] SBOM Coverage Calculator *(IoTSecurity)* — inputs: total components vs documented → % SBOM completeness + risk gaps — "sbom completeness tool"
 - [ ] OTA Compliance Checker *(IoTSecurity)* — inputs: signed, rollback, encrypted flags → pass/fail vs CRA expectations — "ota firmware compliance"
 - [ ] Device Lifecycle Compliance Calculator *(IoTSecurity)* — inputs: product launch date + support period → compliance status + EOL risk — "iot support lifecycle requirements eu"
