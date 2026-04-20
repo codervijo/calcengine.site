@@ -57,7 +57,7 @@
   1. **Code freshness** — "Last updated from git at" — derived at build time from `git log` on the definition file; injected into `dateModified` JSON-LD and shown in the UI
   2. **Data freshness** — "Data last verified" — manually set via `meta.dataUpdated` (e.g. pricing, formula accuracy, external references); shown separately in the UI so users know the underlying numbers are current
 
-## Phase 3 — EU Cyber Resilience Act (CRA) Calculators
+## Phase 4 — EU Cyber Resilience Act (CRA) Calculators
 
 Target audience: embedded/IoT engineers, product managers, compliance teams shipping connected devices to the EU market.
 
@@ -101,7 +101,7 @@ Pages where hardcoded values (prices, specs, regulatory thresholds) go stale and
 
 ### ⚠ All pricing/regulatory data is currently hardcoded inline in each `.tsx` definition file. No external JSON exists.
 
-## Phase 4 — Externalize Pricing & Regulatory Data to JSON
+## Phase 3 — Externalize Pricing & Regulatory Data to JSON
 
 Extract all hardcoded pricing tables and regulatory thresholds out of calculator definition files into versioned JSON files under `src/data/`. This decouples data updates from code changes and makes scrapers/ingesters trivial to wire up.
 
