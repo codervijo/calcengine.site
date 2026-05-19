@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { TextField, Typography, Stack, Box } from '@mui/material';
 import type { CalculatorDefinition, CalculatorMeta } from '../registry/types';
+import dataTransferPricing from '../../data/pricing/data-transfer.json';
 
 function DataTransferCostUI() {
   const [dataGB, setDataGB] = useState<string>('100');
@@ -92,14 +93,7 @@ const meta: CalculatorMeta = {
     },
   ],
   pricingTableTitle: 'Cloud Egress Pricing by Provider (Outbound to Internet)',
-  pricingTable: [
-    { model: 'AWS (us-east-1)', inputPer1M: '100 GB free/mo', outputPer1M: '$0.09/GB (first 10 TB)', notes: 'Drops to $0.085 at 10–50 TB' },
-    { model: 'Google Cloud',    inputPer1M: '1 GB free/mo',   outputPer1M: '$0.08/GB (first 10 TB)', notes: 'Drops to $0.06 at 10–150 TB' },
-    { model: 'Azure',           inputPer1M: '5 GB free/mo',   outputPer1M: '$0.0875/GB (first 10 TB)', notes: 'Drops to $0.083 at 10–50 TB' },
-    { model: 'Cloudflare R2',   inputPer1M: 'Unlimited free', outputPer1M: '$0.00/GB egress',        notes: 'Zero egress fees — great CDN alternative' },
-    { model: 'Backblaze B2',    inputPer1M: '3× storage free',outputPer1M: '$0.01/GB',               notes: 'Cheapest standard egress' },
-    { model: 'DigitalOcean',    inputPer1M: '1 TB free/mo',   outputPer1M: '$0.01/GB after free',    notes: 'Generous free tier for small apps' },
-  ],
+  pricingTable: dataTransferPricing,
   tipsTitle: 'Tips to Reduce Data Transfer Costs',
   tips: [
     'Use a CDN (Cloudflare, CloudFront, Fastly) to serve static assets. CDN egress is often 5–10× cheaper than origin egress, and Cloudflare\'s free tier has zero egress fees.',

@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { TextField, Typography, Stack, Box } from '@mui/material';
 import type { CalculatorDefinition, CalculatorMeta } from '../registry/types';
+import storagePricing from '../../data/pricing/storage.json';
 
 function StorageCostUI() {
   const [storageGB, setStorageGB] = useState<string>('100');
@@ -92,6 +93,8 @@ const meta: CalculatorMeta = {
       body: 'Hardware cost: $300 for 500 GB SSD\nAmortised price per GB per month: $300 ÷ 500 GB ÷ 36 months  =  $0.0167 / GB / month\n\nMonthly cost equivalent: 500 GB × $0.0167  =  $8.33 / month\nTotal over 3 years: $300 (hardware cost, no ongoing fee)\n\nCloud equivalent (AWS S3 Standard): $11.52 / month  →  $414.72 over 36 months\nOn-prem saves: ~$115 over 3 years before power and maintenance',
     },
   ],
+  pricingTableTitle: 'Cloud Storage Pricing by Provider',
+  pricingTable: storagePricing,
   tipsTitle: 'Tips to Reduce Storage Costs',
   tips: [
     'Use lifecycle policies to automatically move data to cheaper tiers. On AWS, S3 Intelligent-Tiering moves infrequently accessed objects to lower-cost storage with no retrieval fee — it pays for itself above ~128 KB object sizes.',

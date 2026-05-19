@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { TextField, Typography, Stack, Box } from '@mui/material';
 import type { CalculatorDefinition, CalculatorMeta } from '../registry/types';
+import logStoragePricing from '../../data/pricing/log-storage.json';
 
 function LogStorageCostUI() {
   const [dailyVolume, setDailyVolume] = useState<string>('10');
@@ -110,6 +111,8 @@ const meta: CalculatorMeta = {
       body: 'Daily volume:   200 GB/day  ×  365 days  =  73,000 GB raw\nCompression:    73,000 GB  ÷  6:1  =  12,167 GB on disk\nStorage price:  12,167 GB  ×  $0.010/GB/mo  =  $121.67/month\n────────────────────────────────────────────────────\nAnnual cost:  ~$1,460   (segment cold vs. hot logs to cut this further)',
     },
   ],
+  pricingTableTitle: 'Log Storage Pricing by Provider',
+  pricingTable: logStoragePricing,
   tipsTitle: 'Tips to Reduce Log Storage Cost',
   tips: [
     'Use S3 Intelligent-Tiering or lifecycle rules to move logs older than 30 days to Infrequent Access automatically — typically cuts storage cost by 45% with no code changes.',

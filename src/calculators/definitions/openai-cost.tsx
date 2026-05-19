@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { TextField, Typography, Stack, Box } from '@mui/material';
 import type { CalculatorDefinition, CalculatorMeta } from '../registry/types';
+import openaiPricing from '../../data/pricing/openai.json';
 
 function OpenAICostUI() {
   const [inputTokens, setInputTokens] = useState<string>('1000');
@@ -66,15 +67,7 @@ const meta: CalculatorMeta = {
     },
   ],
   pricingTableTitle: 'OpenAI Pricing by Model',
-  pricingTable: [
-    { model: 'GPT-4o',        inputPer1M: '$2.50',  outputPer1M: '$10.00', notes: 'Best quality/cost balance' },
-    { model: 'GPT-4o mini',   inputPer1M: '$0.15',  outputPer1M: '$0.60',  notes: 'Best for high-volume tasks' },
-    { model: 'o1',            inputPer1M: '$15.00', outputPer1M: '$60.00', notes: 'Extended reasoning' },
-    { model: 'o1 mini',       inputPer1M: '$3.00',  outputPer1M: '$12.00', notes: 'Faster reasoning tasks' },
-    { model: 'o3 mini',       inputPer1M: '$1.10',  outputPer1M: '$4.40',  notes: 'Efficient reasoning' },
-    { model: 'GPT-4 Turbo',   inputPer1M: '$10.00', outputPer1M: '$30.00', notes: 'Legacy, use GPT-4o instead' },
-    { model: 'GPT-3.5 Turbo', inputPer1M: '$0.50',  outputPer1M: '$1.50',  notes: 'Simple tasks only' },
-  ],
+  pricingTable: openaiPricing,
   tipsTitle: 'Tips to Reduce OpenAI API Cost',
   tips: [
     'Use GPT-4o mini for classification, extraction, and summarisation tasks — it costs 17× less than GPT-4o with comparable accuracy on structured outputs.',

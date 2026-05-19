@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { TextField, Typography, Stack, Box } from '@mui/material';
 import type { CalculatorDefinition, CalculatorMeta } from '../registry/types';
+import lambdaPricing from '../../data/pricing/aws-lambda.json';
 
 function LambdaCostUI() {
   const [memoryMb, setMemoryMb] = useState<string>('512');
@@ -76,13 +77,7 @@ const meta: CalculatorMeta = {
     },
   ],
   pricingTableTitle: 'AWS Lambda Pricing Reference',
-  pricingTable: [
-    { model: 'x86_64 Compute',       inputPer1M: '$0.0000166667 / GB-s', outputPer1M: '—',     notes: 'Standard architecture (us-east-1)' },
-    { model: 'arm64 Compute (Graviton)', inputPer1M: '$0.0000133334 / GB-s', outputPer1M: '—', notes: '20% cheaper, same performance tier' },
-    { model: 'Requests',             inputPer1M: '$0.20 / 1M req',       outputPer1M: '—',     notes: 'Applied to all invocations' },
-    { model: 'Free Tier (monthly)',   inputPer1M: '400,000 GB-s',         outputPer1M: '—',     notes: '+ 1M requests, does not expire' },
-    { model: 'Provisioned Concurrency', inputPer1M: '$0.0000097222 / GB-s', outputPer1M: '—',  notes: 'Eliminates cold starts; charged while allocated' },
-  ],
+  pricingTable: lambdaPricing,
   tipsTitle: 'Tips to Reduce Lambda Costs',
   tips: [
     'Switch to arm64 (Graviton2) architecture — it costs 20% less per GB-second with comparable throughput. A one-line change in your function configuration.',

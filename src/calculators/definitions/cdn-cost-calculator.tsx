@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { TextField, Typography, Stack, Box } from '@mui/material';
 import type { CalculatorDefinition, CalculatorMeta } from '../registry/types';
+import cdnPricing from '../../data/pricing/cdn.json';
 
 function CdnCostUI() {
   const [dataTransferGB, setDataTransferGB] = useState<string>('500');
@@ -71,15 +72,7 @@ const meta: CalculatorMeta = {
     },
   ],
   pricingTableTitle: 'CDN Pricing by Provider',
-  pricingTable: [
-    { model: 'AWS CloudFront',        inputPer1M: '$0.085/GB',  outputPer1M: '$0.0100/10k req', notes: 'First 10 TB/month' },
-    { model: 'Cloudflare Pay-As-You-Go', inputPer1M: '$0.000/GB', outputPer1M: '$0.0050/10k req', notes: 'Free egress, request-based pricing' },
-    { model: 'Cloudflare Pro',        inputPer1M: '$20/mo flat', outputPer1M: 'Included',        notes: 'Best value under ~$100/mo CDN spend' },
-    { model: 'Fastly',                inputPer1M: '$0.120/GB',  outputPer1M: '$0.0090/10k req', notes: 'North America/Europe' },
-    { model: 'Azure CDN (Microsoft)', inputPer1M: '$0.087/GB',  outputPer1M: '$0.0090/10k req', notes: 'First 10 TB/month, Zone 1' },
-    { model: 'Google Cloud CDN',      inputPer1M: '$0.080/GB',  outputPer1M: '$0.0075/10k req', notes: 'North America/Europe egress' },
-    { model: 'BunnyCDN',              inputPer1M: '$0.010/GB',  outputPer1M: 'Included',         notes: 'Cheapest egress, good for media' },
-  ],
+  pricingTable: cdnPricing,
   tipsTitle: 'Tips to Reduce Your CDN Bill',
   tips: [
     'Enable long-lived cache headers (Cache-Control: max-age=31536000) on static assets. Every cache hit is a request that doesn\'t hit origin and reduces both request and transfer costs.',

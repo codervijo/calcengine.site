@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { TextField, Typography, Stack, Box } from '@mui/material';
 import type { CalculatorDefinition, CalculatorMeta } from '../registry/types';
+import sqlQueryPricing from '../../data/pricing/sql-query.json';
 
 function SqlQueryCostEstimatorUI() {
   const [dataScanned, setDataScanned] = useState<string>('100');
@@ -66,14 +67,7 @@ const meta: CalculatorMeta = {
     },
   ],
   pricingTableTitle: 'SQL Query Pricing by Cloud Service',
-  pricingTable: [
-    { model: 'BigQuery (on-demand)',    inputPer1M: '$5.00/TB',  outputPer1M: '—', notes: 'First 1 TB/month free' },
-    { model: 'Amazon Athena',          inputPer1M: '$5.00/TB',  outputPer1M: '—', notes: 'Min 10 MB charge per query' },
-    { model: 'Redshift Spectrum',      inputPer1M: '$5.00/TB',  outputPer1M: '—', notes: 'External table queries only' },
-    { model: 'Azure Synapse Serverless', inputPer1M: '$5.00/TB', outputPer1M: '—', notes: 'Per TB of data processed' },
-    { model: 'BigQuery (flat-rate)',   inputPer1M: 'Fixed',     outputPer1M: '—', notes: 'Slot-based, not per-TB' },
-    { model: 'Snowflake',             inputPer1M: 'Compute',    outputPer1M: '—', notes: 'Credit-based, not per-scan' },
-  ],
+  pricingTable: sqlQueryPricing,
   tipsTitle: 'Tips to Reduce SQL Query Scan Costs',
   tips: [
     'Partition your tables by date or a high-cardinality filter column. A date-partitioned BigQuery table lets a query scanning one day\'s data skip the remaining 364 days — reducing scanned bytes and cost by up to 99%.',

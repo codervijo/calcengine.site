@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { TextField, Typography, Stack, Box } from '@mui/material';
 import type { CalculatorDefinition, CalculatorMeta } from '../registry/types';
+import bandwidthPricing from '../../data/pricing/bandwidth.json';
 
 function BandwidthCostUI() {
   const [dataGB, setDataGB] = useState<string>('1000');
@@ -71,6 +72,8 @@ const meta: CalculatorMeta = {
       body: 'Monthly Transfer:  51,200 GB  (50 TB of static assets)\nFree Tier:         Unlimited  (R2 egress to Cloudflare CDN is free)\nBillable GB:            0 GB\nPrice per GB:           $0.00\n─────────────────────────────────────\nMonthly Cost: $0.00   →   R2 storage ($0.015/GB/month) replaces all bandwidth charges for static content',
     },
   ],
+  pricingTableTitle: 'Bandwidth Pricing by Provider',
+  pricingTable: bandwidthPricing,
   tipsTitle: 'Tips to Reduce Bandwidth Costs',
   tips: [
     'Switch from EC2 direct egress ($0.09/GB) to CloudFront CDN ($0.009/GB for the first 10 TB) — a 10× cost reduction for any cacheable content at production volumes.',
