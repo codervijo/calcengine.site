@@ -210,3 +210,14 @@ Each JSON file should include a `lastVerified` ISO date field so the data freshn
 6. ~~**M2** — Expand footer: link to Privacy, Terms, About, and key calculators~~ ✅ 2026-04-13 — About link added; footer complete
 7. ~~**M3** — Add `SearchAction` to `WebSite` schema~~ ✅ 2026-04-19 — `buildWebSiteJsonLd()` with `potentialAction`; `?q=` param wired into search island; `sameAs` added to `Organization`; `dateModified` added to `WebApplication`
 8. ~~**M1** — Create category archive pages (`/calculators/[category]`)~~ ✅ 2026-04-19 — `/calculators/ai`, `/api`, `/data`, `/performance`, `/encoding`, `/general`; shared `CategoryPageLayout.astro`; homepage category chips linked
+
+## Problem
+
+<1-2 sentences: what is the user-facing problem this site solves?
+Who has it? Why does it matter?>
+
+## Users
+
+<Who's the target user? What do they care about? Roughly how many
+exist? What's their willingness to pay / engage?>
+
