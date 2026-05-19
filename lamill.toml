@@ -1,0 +1,8 @@
+schema = "lamill-toml-v1"
+
+[deploy]
+platform = "netlify"
+production_branch = "main"
+custom_domains = [
+    "calcengine.site",
+]
