@@ -1,0 +1,9 @@
+[
+  { "model": "AWS CloudFront",           "inputPer1M": "$0.085/GB",   "outputPer1M": "$0.0100/10k req", "notes": "First 10 TB/month" },
+  { "model": "Cloudflare Pay-As-You-Go", "inputPer1M": "$0.000/GB",   "outputPer1M": "$0.0050/10k req", "notes": "Free egress, request-based pricing" },
+  { "model": "Cloudflare Pro",           "inputPer1M": "$20/mo flat", "outputPer1M": "Included",        "notes": "Best value under ~$100/mo CDN spend" },
+  { "model": "Fastly",                   "inputPer1M": "$0.120/GB",   "outputPer1M": "$0.0090/10k req", "notes": "North America/Europe" },
+  { "model": "Azure CDN (Microsoft)",    "inputPer1M": "$0.087/GB",   "outputPer1M": "$0.0090/10k req", "notes": "First 10 TB/month, Zone 1" },
+  { "model": "Google Cloud CDN",         "inputPer1M": "$0.080/GB",   "outputPer1M": "$0.0075/10k req", "notes": "North America/Europe egress" },
+  { "model": "BunnyCDN",                 "inputPer1M": "$0.010/GB",   "outputPer1M": "Included",        "notes": "Cheapest egress, good for media" }
+]

@@ -1,0 +1,12 @@
+[
+  { "model": "AWS CloudWatch Logs",            "inputPer1M": "$0.03/GB/mo",    "outputPer1M": "$0.50/GB",    "notes": "Ingestion $0.50/GB; storage $0.03/GB/mo; us-east-1" },
+  { "model": "AWS S3 Standard (log archive)",  "inputPer1M": "$0.023/GB/mo",   "outputPer1M": "$0.00/GB",    "notes": "Export CW Logs to S3 to save ~23%; no ingestion fee" },
+  { "model": "AWS S3 Infrequent Access",       "inputPer1M": "$0.0125/GB/mo",  "outputPer1M": "$0.00/GB",    "notes": "30-day min; best for logs older than 30 days" },
+  { "model": "AWS S3 Glacier Instant",         "inputPer1M": "$0.004/GB/mo",   "outputPer1M": "$0.00/GB",    "notes": "Millisecond retrieval; ideal for compliance archives" },
+  { "model": "Google Cloud Logging",           "inputPer1M": "$0.01/GB/mo",    "outputPer1M": "$0.50/GB",    "notes": "First 50 GB/month ingestion free; us-central1" },
+  { "model": "Google Cloud Storage Nearline",  "inputPer1M": "$0.010/GB/mo",   "outputPer1M": "$0.00/GB",    "notes": "Export Cloud Logging to GCS; 30-day min retention" },
+  { "model": "Azure Monitor Logs",             "inputPer1M": "$0.12/GB/mo",    "outputPer1M": "$2.30/GB",    "notes": "Basic tier; 90-day retention included; East US" },
+  { "model": "Datadog Log Management",         "inputPer1M": "$0.10/GB/mo",    "outputPer1M": "$0.10/GB",    "notes": "Flex Logs tier; 15-day hot + configurable archive" },
+  { "model": "Grafana Cloud Logs",             "inputPer1M": "$0.50/GB/mo",    "outputPer1M": "$0.50/GB",    "notes": "Based on Loki; first 50 GB/mo included in free tier" },
+  { "model": "Elastic Cloud (Elasticsearch)",  "inputPer1M": "$0.032/GB/mo",   "outputPer1M": "N/A",         "notes": "AWS-hosted; hot tier; price varies by node size" }
+]

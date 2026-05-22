@@ -1,0 +1,12 @@
+[
+  { "model": "AWS EC2 (us-east-1)",       "inputPer1M": "100 GB free/mo",    "outputPer1M": "$0.09/GB (first 10 TB)",    "notes": "Drops to $0.085 at 10–50 TB, $0.07 at 50–150 TB" },
+  { "model": "AWS CloudFront CDN",         "inputPer1M": "1 TB free/mo",      "outputPer1M": "$0.0085/GB (first 10 TB)",  "notes": "Dramatically cheaper than EC2 direct egress for cacheable content" },
+  { "model": "Google Cloud (us-central1)", "inputPer1M": "1 GB free/mo",      "outputPer1M": "$0.08/GB (first 10 TB)",    "notes": "Drops to $0.06 at 10–150 TB; premium vs standard tier pricing differs" },
+  { "model": "Azure (East US)",            "inputPer1M": "5 GB free/mo",      "outputPer1M": "$0.0875/GB (first 10 TB)", "notes": "Drops to $0.083 at 10–50 TB; CDN egress cheaper" },
+  { "model": "Cloudflare R2",             "inputPer1M": "Unlimited free",    "outputPer1M": "$0.00/GB",                  "notes": "Zero egress when delivered via Cloudflare CDN — best for static assets" },
+  { "model": "Cloudflare CDN",            "inputPer1M": "Unlimited free",    "outputPer1M": "$0.00/GB",                  "notes": "Free egress on all CDN plans; origin bandwidth still billed by origin provider" },
+  { "model": "Backblaze B2",              "inputPer1M": "3× storage free",   "outputPer1M": "$0.01/GB",                  "notes": "Zero egress when paired with Cloudflare CDN under Bandwidth Alliance" },
+  { "model": "DigitalOcean Spaces",       "inputPer1M": "1 TB free/mo",      "outputPer1M": "$0.01/GB after free",       "notes": "Generous free tier; built-in CDN included" },
+  { "model": "Hetzner (EU)",              "inputPer1M": "Varies by plan",    "outputPer1M": "$0.01/GB",                  "notes": "Very cheap EU egress; good for European audience" },
+  { "model": "Bunny CDN",                 "inputPer1M": "None",              "outputPer1M": "$0.01/GB (EU/US)",           "notes": "Volume pricing available; no minimum spend" }
+]

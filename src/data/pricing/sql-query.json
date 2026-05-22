@@ -1,0 +1,8 @@
+[
+  { "model": "BigQuery (on-demand)",      "inputPer1M": "$5.00/TB", "outputPer1M": "—", "notes": "First 1 TB/month free" },
+  { "model": "Amazon Athena",             "inputPer1M": "$5.00/TB", "outputPer1M": "—", "notes": "Min 10 MB charge per query" },
+  { "model": "Redshift Spectrum",         "inputPer1M": "$5.00/TB", "outputPer1M": "—", "notes": "External table queries only" },
+  { "model": "Azure Synapse Serverless",  "inputPer1M": "$5.00/TB", "outputPer1M": "—", "notes": "Per TB of data processed" },
+  { "model": "BigQuery (flat-rate)",      "inputPer1M": "Fixed",    "outputPer1M": "—", "notes": "Slot-based, not per-TB" },
+  { "model": "Snowflake",                 "inputPer1M": "Compute",  "outputPer1M": "—", "notes": "Credit-based, not per-scan" }
+]

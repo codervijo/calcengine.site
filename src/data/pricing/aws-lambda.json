@@ -1,0 +1,7 @@
+[
+  { "model": "x86_64 Compute",            "inputPer1M": "$0.0000166667 / GB-s", "outputPer1M": "—", "notes": "Standard architecture (us-east-1)" },
+  { "model": "arm64 Compute (Graviton)",   "inputPer1M": "$0.0000133334 / GB-s", "outputPer1M": "—", "notes": "20% cheaper, same performance tier" },
+  { "model": "Requests",                   "inputPer1M": "$0.20 / 1M req",       "outputPer1M": "—", "notes": "Applied to all invocations" },
+  { "model": "Free Tier (monthly)",        "inputPer1M": "400,000 GB-s",         "outputPer1M": "—", "notes": "+ 1M requests, does not expire" },
+  { "model": "Provisioned Concurrency",    "inputPer1M": "$0.0000097222 / GB-s", "outputPer1M": "—", "notes": "Eliminates cold starts; charged while allocated" }
+]

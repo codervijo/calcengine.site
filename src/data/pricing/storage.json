@@ -1,0 +1,11 @@
+[
+  { "model": "AWS S3 Standard",              "inputPer1M": "$0.023/GB/mo",    "outputPer1M": "$0.090/GB",   "notes": "First 50 TB/month (us-east-1)" },
+  { "model": "AWS S3 Intelligent-Tiering",   "inputPer1M": "$0.023/GB/mo",    "outputPer1M": "$0.090/GB",   "notes": "Auto-moves to cheaper tier; monitoring fee applies" },
+  { "model": "AWS S3 Glacier Instant",       "inputPer1M": "$0.004/GB/mo",    "outputPer1M": "$0.090/GB",   "notes": "Millisecond retrieval; higher retrieval fee" },
+  { "model": "AWS S3 Glacier Deep Archive",  "inputPer1M": "$0.00099/GB/mo",  "outputPer1M": "$0.090/GB",   "notes": "12-hour retrieval SLA; cheapest AWS tier" },
+  { "model": "Azure Blob Hot",               "inputPer1M": "$0.018/GB/mo",    "outputPer1M": "$0.087/GB",   "notes": "First 50 TB/month, LRS, East US" },
+  { "model": "Azure Blob Cool",              "inputPer1M": "$0.010/GB/mo",    "outputPer1M": "$0.087/GB",   "notes": "30-day min retention; higher read cost" },
+  { "model": "Google Cloud Storage Standard","inputPer1M": "$0.020/GB/mo",    "outputPer1M": "$0.080/GB",   "notes": "Multi-region; first 10 GB egress free" },
+  { "model": "Cloudflare R2",               "inputPer1M": "$0.015/GB/mo",    "outputPer1M": "$0.000/GB",   "notes": "Zero egress fees; 10 GB free storage" },
+  { "model": "Backblaze B2",                "inputPer1M": "$0.006/GB/mo",    "outputPer1M": "$0.010/GB",   "notes": "10 GB free + 1 GB/day free egress" }
+]
