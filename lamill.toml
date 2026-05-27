@@ -1,7 +1,7 @@
 schema = "lamill-toml-v1"
 
 [deploy]
-platform = "netlify"
+platform = "vercel"
 production_branch = "main"
 custom_domains = [
     "calcengine.site",
