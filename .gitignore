@@ -27,3 +27,6 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Astro (generated content cache + types — never tracked)
+.astro/
