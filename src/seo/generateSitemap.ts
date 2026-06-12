@@ -3,7 +3,7 @@
  * Run at build time via the Vite plugin in vite.config.ts.
  */
 
-const BASE_URL = 'https://www.calcengine.site';
+const BASE_URL = 'https://calcengine.site';
 
 export interface SitemapEntry {
   loc: string;

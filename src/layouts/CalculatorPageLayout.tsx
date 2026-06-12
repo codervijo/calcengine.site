@@ -11,7 +11,7 @@ import { getRelatedCalculators } from '../calculators/registry';
 // Suppress unused import warning — these are kept so callers can still import from here
 export { buildFaqJsonLd, buildWebAppJsonLd, buildBreadcrumbJsonLd };
 
-const BASE_URL = 'https://www.calcengine.site';
+const BASE_URL = 'https://calcengine.site';
 
 interface CalculatorPageLayoutProps {
   meta: CalculatorMeta;

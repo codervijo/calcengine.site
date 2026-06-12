@@ -13,7 +13,7 @@ interface Props {
 }
 
 const { category, title, description } = Astro.props;
-const BASE_URL = 'https://www.calcengine.site';
+const BASE_URL = 'https://calcengine.site';
 const calculators = getCalculatorsByCategory(category);
 const categoryLabel = CATEGORY_LABELS[category];
 const canonicalPath = `/calculators/${category}`;
