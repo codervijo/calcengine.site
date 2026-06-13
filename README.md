@@ -2,7 +2,7 @@
 
 Free engineering calculators for developers — API costs, token pricing, JSON sizing, Base64 encoding, backend performance, and more.
 
-Live at: **https://calcengine.dev**
+Live at: **https://calcengine.site**
 
 ## What it is
 
