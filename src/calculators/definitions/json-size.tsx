@@ -112,7 +112,7 @@ const meta: CalculatorMeta = {
       answer: 'Paste the file contents into the calculator above — the result is identical to the file size on disk (assuming UTF-8 encoding, which is the JSON default). Alternatively, check file properties in your OS or run <code>wc -c filename.json</code> in a terminal.',
     },
   ],
-  relatedSlugs: ['base64-size-calculator', 'openai-cost-calculator', 'api-rate-limit-calculator'],
+  relatedSlugs: ['base64-size-calculator', 'openai-cost-calculator', '429-too-many-requests-calculator'],
 };
 
 export const jsonSizeCalculator: CalculatorDefinition = { meta, Component: JsonSizeUI };

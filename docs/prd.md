@@ -134,7 +134,7 @@ Each JSON file should include a `lastVerified` ISO date field so the data freshn
 - Robots.txt and sitemap correctly configured (`@astrojs/sitemap`, `public/robots.txt`)
 - Font loading optimised (preconnect + `display=swap`)
 - `BreadcrumbList` JSON-LD is complete and correct on all detail pages
-- Slugs are keyword-rich and consistent (e.g. `api-rate-limit-calculator`)
+- Slugs are keyword-rich and consistent (e.g. `429-too-many-requests-calculator`)
 - ARIA labels used comprehensively throughout all pages
 - OG images generated at build time via Satori (`/og/[slug].png`, `/og/home.png`)
 

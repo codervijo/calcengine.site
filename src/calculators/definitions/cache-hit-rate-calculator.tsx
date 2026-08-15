@@ -123,7 +123,7 @@ const meta: CalculatorMeta = {
       answer: 'They are the same metric expressed differently. Cache hit rate is the percentage form (e.g. 90%), and cache hit ratio is the decimal form (e.g. 0.90). Most monitoring tools use "hit rate" or "hit ratio" interchangeably. When comparing across systems, confirm whether a vendor reports the value as a percentage or a decimal to avoid misreading a 0.90 ratio as 0.90%.',
     },
   ],
-  relatedSlugs: ['latency-budget-calculator', 'api-rate-limit-calculator', 'json-size-calculator'],
+  relatedSlugs: ['latency-budget-calculator', '429-too-many-requests-calculator', 'json-size-calculator'],
 };
 
 export const cacheHitRateCalculator: CalculatorDefinition = { meta, Component: CacheHitRateUI };

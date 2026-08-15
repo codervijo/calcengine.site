@@ -157,7 +157,7 @@ const meta: CalculatorMeta = {
       answer: 'There is no universal limit, but each layer adds overhead on every request. If each middleware costs 5 ms and you have 10 layers, that is 50 ms added before your route handler runs — a significant portion of most latency budgets. Audit with your framework\'s profiling tools and consolidate layers that perform similar functions, such as merging logging and tracing into a single interceptor.',
     },
   ],
-  relatedSlugs: ['latency-budget-calculator', 'api-rate-limit-calculator', 'timeout-calculator', 'qps-calculator'],
+  relatedSlugs: ['latency-budget-calculator', '429-too-many-requests-calculator', 'timeout-calculator', 'qps-calculator'],
 };
 
 export const apiResponseTimeEstimatorCalculator: CalculatorDefinition = { meta, Component: ApiResponseTimeEstimatorUI };

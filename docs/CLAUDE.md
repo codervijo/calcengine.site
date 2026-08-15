@@ -23,7 +23,7 @@ make build          # production build → dist/
 make test           # if a test suite is wired in
 
 # Deploy
-git push            # Cloudflare Pages auto-builds on push to main
+git push            # Vercel auto-builds on push to main
 ```
 
 ## Conventions
@@ -31,8 +31,17 @@ git push            # Cloudflare Pages auto-builds on push to main
   - Build path: this project's `Makefile` → `../Makefile` (parent
     workspace) → `~/work/projects/builder/` (central builder).
   - Stack: pnpm-only. No `package-lock.json` / `bun.lockb` / `yarn.lock`.
-  - Deploy: Cloudflare Pages via `wrangler.jsonc`. No `_redirects`
-    SPA fallback (uses CF's `not_found_handling` instead).
+  - Deploy: **Vercel** (confirmed from live response headers:
+    `server: Vercel` / `x-vercel-id`; matches `[deploy] platform = "vercel"`
+    in `lamill.toml`). Auto-builds on push to `main`.
+  - Redirects live in `vercel.json` → `redirects[]`. Not `_redirects`,
+    not `netlify.toml` — those are Netlify/Cloudflare formats and are
+    inert here. A stale `netlify.toml` was removed 2026-08-14.
+  - URL form: no trailing slash. Declared in two places that must stay
+    in agreement — `trailingSlash: 'never'` (`astro.config.mjs`, what
+    Astro emits) and `"trailingSlash": false` (`vercel.json`, what the
+    host enforces at request time). Write redirect `source` values
+    without a trailing slash to match.
 
 ## Heading hygiene
 

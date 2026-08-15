@@ -1,7 +1,7 @@
 import type { CalculatorDefinition } from './types';
 import { openaiCostCalculator } from '../definitions/openai-cost';
 import { jsonSizeCalculator } from '../definitions/json-size';
-import { apiRateLimitCalculator } from '../definitions/api-rate-limit';
+import { tooManyRequestsCalculator } from '../definitions/429-too-many-requests-calculator';
 import { base64SizeCalculator } from '../definitions/base64-size';
 import { cronNextRunCalculator } from '../definitions/cron-next-run-calculator';
 import { latencyBudgetCalculator } from '../definitions/latency-budget-calculator';
@@ -61,7 +61,7 @@ import { euDeviceComplianceQuizCalculator } from '../definitions/eu-device-compl
 const calculators: CalculatorDefinition[] = [
   openaiCostCalculator,
   jsonSizeCalculator,
-  apiRateLimitCalculator,
+  tooManyRequestsCalculator,
   base64SizeCalculator,
   cronNextRunCalculator,
   latencyBudgetCalculator,

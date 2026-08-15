@@ -98,7 +98,7 @@ const meta: CalculatorMeta = {
     'Use a 3× peak multiplier as a starting point for consumer-facing APIs. Increase to 5× if you run time-limited promotions, batch jobs that overlap with live traffic, or have upstream services that retry aggressively.',
     'Convert to the right granularity before comparing. A dashboard showing "10k RPM" means 167 RPS — always normalise to per-second before feeding numbers into rate limiters or quotas, which operate in per-second windows.',
     'Log actual peak QPS in your APM tool (Datadog, Grafana, CloudWatch) and compare it against your provisioned ceiling each quarter. Capacity that felt generous at launch often looks tight after 6 months of growth.',
-    'If your service is behind an API gateway, use the <a href="/calculators/api-rate-limit-calculator">API Rate Limit Calculator</a> to align gateway throttle limits with your infrastructure\'s sustainable QPS so upstream limits fire before downstream systems saturate.',
+    'If your service is behind an API gateway, understand <a href="/calculators/429-too-many-requests-calculator">how rate-limit refusals behave</a> and align gateway throttle limits with your infrastructure\'s sustainable QPS, so upstream limits fire before downstream systems saturate.',
     'For latency-sensitive APIs, check that your p99 latency stays within budget at peak QPS using the <a href="/calculators/latency-budget-calculator">Latency Budget Calculator</a> — high QPS and tight latency targets together define your real concurrency requirement.',
   ],
   faq: [
@@ -123,7 +123,7 @@ const meta: CalculatorMeta = {
       answer: 'Divide your Peak QPS by the per-instance sustainable throughput — benchmark this under realistic load, not synthetic no-op tests. Add 20–30% headroom for GC pauses, health checks, and gradual rollouts. For example, if peak is 3,000 QPS and each instance handles 400 QPS, you need 3,000 ÷ 400 = 7.5 → 8 instances, then add 2 for headroom = 10 instances minimum. Use the <a href="/calculators/cache-hit-rate-calculator">Cache Hit Rate Calculator</a> to reduce the QPS that actually reaches your backend.',
     },
   ],
-  relatedSlugs: ['api-rate-limit-calculator', 'latency-budget-calculator', 'cache-hit-rate-calculator'],
+  relatedSlugs: ['429-too-many-requests-calculator', 'latency-budget-calculator', 'cache-hit-rate-calculator'],
 };
 
 export const qpsCalculator: CalculatorDefinition = { meta, Component: QPSCalculatorUI };

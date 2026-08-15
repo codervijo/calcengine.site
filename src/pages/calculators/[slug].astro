@@ -19,6 +19,10 @@ const BASE_URL = 'https://calcengine.site';
 const canonicalPath = `/calculators/${meta.slug}`;
 const related = getRelatedCalculators(meta.relatedSlugs);
 
+// Section order. Defaults to the golden-page standard (calculator above the
+// fold); pages targeting a problem query opt into leading with the explanation.
+const explanationFirst = meta.layout === 'explanation-first';
+
 const jsonLd = [
   buildFaqJsonLd(meta.faq),
   buildWebAppJsonLd(meta.title, meta.description, `${BASE_URL}${canonicalPath}`, `${BASE_URL}/og/${meta.slug}.png`, meta.lastUpdated),
@@ -54,7 +58,7 @@ const jsonLd = [
     <!-- Header: H1 + short tagline only — calculator must be above the fold -->
     <header class="mb-5">
       <h1 class="text-3xl sm:text-4xl font-bold text-gray-900 dark:text-gray-100 mb-2 leading-tight">
-        {meta.title}
+        {meta.h1 ?? meta.title}
       </h1>
       <span class="inline-block bg-blue-100 dark:bg-blue-900/40 text-blue-800 dark:text-blue-300 text-xs font-semibold px-2.5 py-1 rounded-full mb-3">
         {CATEGORY_LABELS[meta.category]}
@@ -63,6 +67,33 @@ const jsonLd = [
         {meta.tagline ?? meta.description}
       </p>
     </header>
+
+    {/* Explanation-first pages answer the query before showing the tool. */}
+    {explanationFirst && meta.directAnswer && (
+      <section aria-label="Short answer" class="mb-8 rounded-xl border-l-4 border-[#1565c0] bg-blue-50 dark:bg-blue-950/30 px-4 py-4 sm:px-5">
+        <p class="text-gray-800 dark:text-gray-200 leading-relaxed whitespace-pre-line">{meta.directAnswer}</p>
+      </section>
+    )}
+
+    {explanationFirst && meta.explainer && meta.explainer.length > 0 && (
+      <div class="mb-10">
+        {meta.explainer.map((s) => (
+          <section aria-label={s.heading} class="mb-8">
+            <h2 class="text-xl sm:text-2xl font-semibold text-gray-900 dark:text-gray-100 mb-3">{s.heading}</h2>
+            <div class="text-gray-600 dark:text-gray-400 leading-relaxed whitespace-pre-line [&_a]:text-[#1565c0] dark:[&_a]:text-[#42a5f5] [&_a]:underline [&_code]:font-mono [&_code]:text-sm [&_code]:bg-gray-100 dark:[&_code]:bg-gray-900 [&_code]:px-1 [&_code]:py-0.5 [&_code]:rounded">
+              <Fragment set:html={s.body} />
+            </div>
+          </section>
+        ))}
+      </div>
+    )}
+
+    {explanationFirst && meta.calculatorHeading && (
+      <h2 class="text-xl sm:text-2xl font-semibold text-gray-900 dark:text-gray-100 mb-2">{meta.calculatorHeading}</h2>
+    )}
+    {explanationFirst && meta.calculatorIntro && (
+      <p class="text-gray-600 dark:text-gray-400 leading-relaxed mb-4">{meta.calculatorIntro}</p>
+    )}
 
     <!-- Interactive calculator widget (React island) -->
     <section aria-label="Calculator" class="mb-3">
@@ -78,15 +109,19 @@ const jsonLd = [
           Last updated: {meta.lastUpdated}
         </p>
       )}
-      <p class="text-xs text-gray-400 dark:text-gray-500 text-right">
-        This calculator is designed for real-world usage based on typical engineering scenarios and publicly available documentation.
-      </p>
+      {!meta.suppressBoilerplate && (
+        <p class="text-xs text-gray-400 dark:text-gray-500 text-right">
+          This calculator is designed for real-world usage based on typical engineering scenarios and publicly available documentation.
+        </p>
+      )}
     </div>
 
     <!-- Intro / About (SEO body text — below the fold) -->
-    <section aria-label="About this calculator" class="mb-8">
-      <p class="text-gray-600 dark:text-gray-400 leading-relaxed whitespace-pre-line">{meta.intro}</p>
-    </section>
+    {!explanationFirst && (
+      <section aria-label="About this calculator" class="mb-8">
+        <p class="text-gray-600 dark:text-gray-400 leading-relaxed whitespace-pre-line">{meta.intro}</p>
+      </section>
+    )}
 
     <!-- How It Works -->
     <section aria-label={meta.howItWorksTitle ?? 'How It Works'} class="mb-8">
@@ -180,19 +215,21 @@ const jsonLd = [
     )}
 
     <!-- Notes -->
-    <section aria-label="Notes" class="mb-8">
-      <h2 class="text-xl sm:text-2xl font-semibold text-gray-900 dark:text-gray-100 mb-3">Notes</h2>
-      <ul class="space-y-1">
-        <li class="flex gap-2 text-sm text-gray-500 dark:text-gray-400">
-          <span class="text-blue-400 shrink-0">›</span>
-          Results are estimates and may vary based on actual usage.
-        </li>
-        <li class="flex gap-2 text-sm text-gray-500 dark:text-gray-400">
-          <span class="text-blue-400 shrink-0">›</span>
-          Always validate against your production environment.
-        </li>
-      </ul>
-    </section>
+    {!meta.suppressBoilerplate && (
+      <section aria-label="Notes" class="mb-8">
+        <h2 class="text-xl sm:text-2xl font-semibold text-gray-900 dark:text-gray-100 mb-3">Notes</h2>
+        <ul class="space-y-1">
+          <li class="flex gap-2 text-sm text-gray-500 dark:text-gray-400">
+            <span class="text-blue-400 shrink-0">›</span>
+            Results are estimates and may vary based on actual usage.
+          </li>
+          <li class="flex gap-2 text-sm text-gray-500 dark:text-gray-400">
+            <span class="text-blue-400 shrink-0">›</span>
+            Always validate against your production environment.
+          </li>
+        </ul>
+      </section>
+    )}
 
     <!-- FAQ — native <details> works without JS, visible to crawlers -->
     <section aria-label="Frequently Asked Questions" class="mb-10">

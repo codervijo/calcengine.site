@@ -143,7 +143,7 @@ const meta: CalculatorMeta = {
       answer: 'Add 10–20% to your calculated fetch time for typical workloads. Under heavy load or with aggressive rate limits, budget up to 50% overhead. Each 429 response requires a retry-after wait (usually 1–60 seconds) and re-sending the same request. Use exponential backoff with jitter to distribute retry pressure. The <a href="/calculators/retry-backoff-calculator">Retry Backoff Calculator</a> can help you size your maximum backoff window correctly.',
     },
   ],
-  relatedSlugs: ['api-rate-limit-calculator', 'retry-backoff-calculator', 'pagination-performance-calculator', 'timeout-calculator'],
+  relatedSlugs: ['429-too-many-requests-calculator', 'retry-backoff-calculator', 'pagination-performance-calculator', 'timeout-calculator'],
 };
 
 export const apiPaginationLimitCalculator: CalculatorDefinition = { meta, Component: ApiPaginationLimitUI };

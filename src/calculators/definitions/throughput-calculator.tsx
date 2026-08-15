@@ -106,7 +106,7 @@ const meta: CalculatorMeta = {
     'Measure throughput over representative time windows — a 10-second spike after a cache warm-up will overstate steady-state RPS. Use a 5-minute window for meaningful baselines.',
     'Reduce average response size with field filtering (GraphQL selections, REST sparse fieldsets). Halving payload size halves your bandwidth cost and often doubles effective throughput at the same RPS.',
     'Use the <a href="/calculators/qps-calculator">QPS Calculator</a> alongside this tool to model database query load driven by your API tier — high RPS with a high queries-per-request ratio saturates DB connections long before app servers.',
-    'Check your <a href="/calculators/api-rate-limit-calculator">API rate limits</a> before assuming you can sustain peak RPS — provider quotas cap throughput independently of your infrastructure capacity.',
+    'Check your <a href="/calculators/429-too-many-requests-calculator">API rate limits</a> before assuming you can sustain peak RPS — provider quotas cap throughput independently of your infrastructure capacity.',
     'Enable HTTP/2 or HTTP/3 on your API gateway. Multiplexing reduces connection overhead and typically improves sustainable RPS by 20–40% under real-world mixed-request workloads.',
     'Monitor p95 and p99 latency alongside throughput. A system can sustain 1,000 RPS with a 99th-percentile latency of 5 seconds — that is a queue building, not healthy throughput.',
   ],
@@ -132,7 +132,7 @@ const meta: CalculatorMeta = {
       answer: 'Take your data throughput in MB/s, multiply by 3,600 to get MB/hour, then by 24 for MB/day, then by 30 for monthly GB. Divide by 1,024 to convert MB to GB if your cloud provider bills in GB. Most providers charge $0.08–$0.12 per GB of outbound data transfer — multiply monthly GB by that rate for a rough bandwidth cost estimate.',
     },
   ],
-  relatedSlugs: ['qps-calculator', 'api-rate-limit-calculator', 'latency-budget-calculator'],
+  relatedSlugs: ['qps-calculator', '429-too-many-requests-calculator', 'latency-budget-calculator'],
 };
 
 export const throughputCalculator: CalculatorDefinition = { meta, Component: ThroughputUI };

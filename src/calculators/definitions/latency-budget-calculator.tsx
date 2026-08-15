@@ -158,7 +158,7 @@ const meta: CalculatorMeta = {
       answer: 'Use distributed tracing — OpenTelemetry is the standard, with exporters for Jaeger, Tempo, and Datadog APM. Instrument each service boundary with a span. Your trace waterfall view will show exact durations per component. For database queries, enable slow query logging and use EXPLAIN ANALYZE. Once you have p99 measurements per component, plug them directly into this calculator.',
     },
   ],
-  relatedSlugs: ['api-rate-limit-calculator', 'json-size-calculator', 'openai-cost-calculator'],
+  relatedSlugs: ['429-too-many-requests-calculator', 'json-size-calculator', 'openai-cost-calculator'],
 };
 
 export const latencyBudgetCalculator: CalculatorDefinition = { meta, Component: LatencyBudgetUI };

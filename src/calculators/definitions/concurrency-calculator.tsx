@@ -125,10 +125,10 @@ const meta: CalculatorMeta = {
     {
       question: 'What happens if my concurrency is too low or too high?',
       answer:
-        "Too low: requests queue waiting for a free connection, p99 latency spikes, and clients time out even though your service is healthy. Too high: you exhaust database connection limits, waste memory on idle threads, and increase context-switching overhead. Size it right with this calculator, then monitor pool wait time in production to confirm. See the <a href=\"/calculators/api-rate-limit-calculator\">API Rate Limit Calculator</a> to pair concurrency limits with rate limit planning.",
+        "Too low: requests queue waiting for a free connection, p99 latency spikes, and clients time out even though your service is healthy. Too high: you exhaust database connection limits, waste memory on idle threads, and increase context-switching overhead. Size it right with this calculator, then monitor pool wait time in production to confirm. See the <a href=\"/calculators/429-too-many-requests-calculator\">API Rate Limit Calculator</a> to pair concurrency limits with rate limit planning.",
     },
   ],
-  relatedSlugs: ['qps-calculator', 'api-rate-limit-calculator', 'throughput-calculator', 'latency-budget-calculator'],
+  relatedSlugs: ['qps-calculator', '429-too-many-requests-calculator', 'throughput-calculator', 'latency-budget-calculator'],
 };
 
 export const concurrencyCalculator: CalculatorDefinition = { meta, Component: ConcurrencyUI };

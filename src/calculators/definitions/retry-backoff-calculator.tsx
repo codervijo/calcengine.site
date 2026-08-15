@@ -177,7 +177,7 @@ const meta: CalculatorMeta = {
       answer: 'Thundering herd occurs when many clients all fail at the same moment and then retry simultaneously — creating a traffic spike that re-triggers the failure. Jitter adds a random offset (e.g. ±50%) to each computed delay, spreading retries across time. Even a 25% jitter dramatically smooths the retry curve. AWS and Google Cloud documentation both recommend full jitter for distributed systems.',
     },
   ],
-  relatedSlugs: ['api-rate-limit-calculator', 'latency-budget-calculator', 'concurrency-calculator', 'qps-calculator'],
+  relatedSlugs: ['429-too-many-requests-calculator', 'latency-budget-calculator', 'concurrency-calculator', 'qps-calculator'],
 };
 
 export const retryBackoffCalculator: CalculatorDefinition = { meta, Component: RetryBackoffUI };

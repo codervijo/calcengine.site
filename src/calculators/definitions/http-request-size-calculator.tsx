@@ -155,7 +155,7 @@ const meta: CalculatorMeta = {
       answer: 'Many API gateways charge based on payload bytes processed (e.g. AWS API Gateway charges per GB of data processed). Large bodies also affect latency — a 5 MB body at 10 Mbps takes 4 seconds just to transmit. At scale, even 1 KB of unnecessary overhead per request adds up to gigabytes per day. Use the <a href="/calculators/bandwidth-cost-calculator">Bandwidth Cost Calculator</a> to convert your total daily request bytes into a dollar figure.',
     },
   ],
-  relatedSlugs: ['payload-size-calculator', 'json-size-calculator', 'api-rate-limit-calculator', 'bandwidth-cost-calculator'],
+  relatedSlugs: ['payload-size-calculator', 'json-size-calculator', '429-too-many-requests-calculator', 'bandwidth-cost-calculator'],
 };
 
 export const httpRequestSizeCalculator: CalculatorDefinition = { meta, Component: HttpRequestSizeUI };

@@ -143,10 +143,10 @@ const meta: CalculatorMeta = {
     },
     {
       question: 'Can I use this calculator for Redis-based rate limiters?',
-      answer: 'Yes. A Redis token bucket stores the current token count and last refill timestamp in a key. On each request, it computes elapsed time × refill rate to add tokens (capped at capacity), then checks if cost can be deducted. The math is identical to this calculator. Use the output wait time as the TTL for a retry key or as the delay argument in a job queue. See also the <a href="/calculators/api-rate-limit-calculator">API Rate Limit Calculator</a> for request-window-based limiters.',
+      answer: 'Yes. A Redis token bucket stores the current token count and last refill timestamp in a key. On each request, it computes elapsed time × refill rate to add tokens (capped at capacity), then checks if cost can be deducted. The math is identical to this calculator. Use the output wait time as the TTL for a retry key or as the delay argument in a job queue. See also the <a href="/calculators/429-too-many-requests-calculator">429 Too Many Requests</a> for request-window-based limiters.',
     },
   ],
-  relatedSlugs: ['api-rate-limit-calculator', 'retry-backoff-calculator', 'qps-calculator', 'timeout-calculator'],
+  relatedSlugs: ['429-too-many-requests-calculator', 'retry-backoff-calculator', 'qps-calculator', 'timeout-calculator'],
 };
 
 export const tokenBucketRateLimitCalculator: CalculatorDefinition = { meta, Component: TokenBucketRateLimitUI };

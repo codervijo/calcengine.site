@@ -118,7 +118,7 @@ const meta: CalculatorMeta = {
       answer: 'Your timeout is a ceiling on one dependency\'s contribution to your total latency budget. If your API must respond in 500 ms end-to-end and you call three downstream services serially, each can consume at most ~150 ms. Use the <a href="/calculators/latency-budget-calculator">Latency Budget Calculator</a> to allocate time across dependencies and verify your timeout settings fit within the budget.',
     },
   ],
-  relatedSlugs: ['retry-backoff-calculator', 'latency-budget-calculator', 'api-rate-limit-calculator'],
+  relatedSlugs: ['retry-backoff-calculator', 'latency-budget-calculator', '429-too-many-requests-calculator'],
 };
 
 export const timeoutCalculator: CalculatorDefinition = { meta, Component: TimeoutUI };

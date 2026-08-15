@@ -135,7 +135,7 @@ const meta: CalculatorMeta = {
       answer: 'Your payload exceeds the server\'s configured body-size limit. Express defaults to 100 KB; nginx to 1 MB; AWS API Gateway to 10 MB. Increase the limit in your server config, or — better — reduce the payload by splitting it into smaller batches. For file uploads, use multipart streaming or a presigned S3 URL instead of sending the binary through your API server.',
     },
   ],
-  relatedSlugs: ['json-size-calculator', 'api-rate-limit-calculator', 'bandwidth-cost-calculator'],
+  relatedSlugs: ['json-size-calculator', '429-too-many-requests-calculator', 'bandwidth-cost-calculator'],
 };
 
 export const payloadSizeCalculator: CalculatorDefinition = { meta, Component: PayloadSizeUI };

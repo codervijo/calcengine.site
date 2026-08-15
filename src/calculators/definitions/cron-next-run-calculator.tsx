@@ -226,10 +226,10 @@ const meta: CalculatorMeta = {
     {
       question: 'What is the minimum cron interval?',
       answer:
-        'One minute — standard cron has minute-level granularity and cannot schedule jobs more often than once per minute. For sub-minute scheduling, use an event loop, a message queue consumer, or a platform-specific mechanism (e.g., a tight loop inside a Kubernetes Job container). Use <code>* * * * *</code> if you need to run every single minute. For rate-limit and throughput planning alongside your schedule, see the <a href="/calculators/api-rate-limit-calculator">API Rate Limit Calculator</a>.',
+        'One minute — standard cron has minute-level granularity and cannot schedule jobs more often than once per minute. For sub-minute scheduling, use an event loop, a message queue consumer, or a platform-specific mechanism (e.g., a tight loop inside a Kubernetes Job container). Use <code>* * * * *</code> if you need to run every single minute. For rate-limit and throughput planning alongside your schedule, see the <a href="/calculators/429-too-many-requests-calculator">429 Too Many Requests</a>.',
     },
   ],
-  relatedSlugs: ['api-rate-limit-calculator', 'json-size-calculator', 'openai-cost-calculator'],
+  relatedSlugs: ['429-too-many-requests-calculator', 'json-size-calculator', 'openai-cost-calculator'],
 };
 
 export const cronNextRunCalculator: CalculatorDefinition = { meta, Component: CronNextRunUI };

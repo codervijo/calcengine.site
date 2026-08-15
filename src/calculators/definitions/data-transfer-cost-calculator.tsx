@@ -125,7 +125,7 @@ const meta: CalculatorMeta = {
       answer: 'AWS offers 100 GB/month free egress from EC2 and 1 TB/month free from CloudFront. Google Cloud provides 1 GB/month free internet egress and free traffic to certain Google services. Azure gives 5 GB/month free. All three providers also offer free intra-region traffic between their services. Use the <a href="/calculators/storage-cost-calculator">Storage Cost Calculator</a> to pair transfer costs with object storage fees.',
     },
   ],
-  relatedSlugs: ['bandwidth-cost-calculator', 'storage-cost-calculator', 'api-rate-limit-calculator'],
+  relatedSlugs: ['bandwidth-cost-calculator', 'storage-cost-calculator', '429-too-many-requests-calculator'],
 };
 
 export const dataTransferCostCalculator: CalculatorDefinition = { meta, Component: DataTransferCostUI };

@@ -107,7 +107,7 @@ const meta: CalculatorMeta = {
   tips: [
     'Set your leak rate (R) to your backend\'s safe sustained capacity — not its peak capacity. The bucket gives you a burst buffer, not a sustained overload buffer.',
     'Size the bucket capacity to absorb the longest expected burst without dropping. A short spike of 2× traffic for 5 seconds needs a bucket of at least 5 × (λ − R) requests.',
-    'Monitor drop rate in production. A non-zero drop rate under normal load means your leak rate is set too low. Use the <a href="/calculators/api-rate-limit-calculator">API Rate Limit Calculator</a> to cross-check your QPS headroom.',
+    'Monitor drop rate in production. A non-zero drop rate under normal load means your leak rate is set too low. Cross-check your QPS headroom against <a href="/calculators/429-too-many-requests-calculator">the conditions that produce a 429</a>.',
     'Prefer leaky bucket when you need smooth outbound traffic (e.g. calling a third-party API with strict per-second limits). Prefer token bucket when you want to allow short bursts — see the <a href="/calculators/token-bucket-rate-limit-calculator">Token Bucket Rate Limit Calculator</a>.',
     'Combine leaky bucket with retry backoff on the client side. When the bucket drops a request, the client should wait before retrying — check the <a href="/calculators/retry-backoff-calculator">Retry Backoff Calculator</a> to size the delay.',
     'In distributed systems, use a shared atomic counter (Redis INCR + TTL) to implement the leak rate across multiple nodes. Per-node leaky buckets can allow 2–5× your intended leak rate in a multi-instance deployment.',
@@ -134,7 +134,7 @@ const meta: CalculatorMeta = {
       answer: 'NGINX uses <code>limit_req_zone</code> and <code>limit_req</code> directives which implement a leaky bucket. Set <code>rate=10r/s</code> as the leak rate and <code>burst=100</code> as the bucket capacity. AWS API Gateway\'s usage plans also implement leaky bucket semantics with "rate" (leak rate) and "burst" (bucket size) parameters. Both map directly to this calculator\'s inputs.',
     },
   ],
-  relatedSlugs: ['token-bucket-rate-limit-calculator', 'api-rate-limit-calculator', 'retry-backoff-calculator'],
+  relatedSlugs: ['token-bucket-rate-limit-calculator', '429-too-many-requests-calculator', 'retry-backoff-calculator'],
 };
 
 export const leakyBucketRateCalculator: CalculatorDefinition = { meta, Component: LeakyBucketRateUI };

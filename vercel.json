@@ -1,0 +1,10 @@
+{
+  "trailingSlash": false,
+  "redirects": [
+    {
+      "source": "/calculators/api-rate-limit-calculator",
+      "destination": "/calculators/429-too-many-requests-calculator",
+      "statusCode": 301
+    }
+  ]
+}

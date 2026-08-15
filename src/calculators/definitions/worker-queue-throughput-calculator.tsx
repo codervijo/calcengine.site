@@ -104,7 +104,7 @@ const meta: CalculatorMeta = {
     'Set a concurrency limit that matches your downstream resource. If each worker makes one database query, cap workers at the database connection pool size to avoid connection exhaustion and queueing inside the pool.',
     'Use the drain time formula to set your autoscaling trigger. If your target drain time is under 5 minutes, alert when queue size / current throughput exceeds 300 seconds — before it becomes a problem.',
     'Batch small tasks. If individual task duration is under 50 ms, queue overhead (serialisation, dequeue, ack) may dominate. Grouping 10–50 tasks per job can raise effective throughput by 2–5×.',
-    'For <a href="/calculators/api-rate-limit-calculator">rate-limited downstream APIs</a>, cap worker count to stay within the API\'s requests-per-second limit — more workers will not help and will trigger 429 errors that further degrade throughput.',
+    'For <a href="/calculators/429-too-many-requests-calculator">rate-limited downstream APIs</a>, cap worker count to stay within the API\'s requests-per-second limit — more workers will not help and will trigger 429 errors that further degrade throughput.',
   ],
   faq: [
     {
@@ -128,7 +128,7 @@ const meta: CalculatorMeta = {
       answer: 'Rearrange the formula: Workers = Queue Size / (Target Drain Time × Tasks per Second per Worker). To drain 10,000 tasks in under 5 minutes (300 s) with each task taking 500 ms, you need Workers = 10,000 / (300 × 2) = 16.7, so 17 workers minimum. Use this calculator to validate and tune the number before deploying to production.',
     },
   ],
-  relatedSlugs: ['throughput-calculator', 'concurrency-calculator', 'api-rate-limit-calculator', 'qps-calculator'],
+  relatedSlugs: ['throughput-calculator', 'concurrency-calculator', '429-too-many-requests-calculator', 'qps-calculator'],
 };
 
 export const workerQueueThroughputCalculator: CalculatorDefinition = { meta, Component: WorkerQueueThroughputUI };

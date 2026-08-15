@@ -90,7 +90,7 @@ const meta: CalculatorMeta = {
       answer: 'No. Base64url uses the same 4:3 ratio but replaces + with - and / with _, and omits padding = characters. The byte count is effectively identical to standard Base64 — padding omission saves at most 2 bytes.',
     },
   ],
-  relatedSlugs: ['json-size-calculator', 'openai-cost-calculator', 'api-rate-limit-calculator'],
+  relatedSlugs: ['json-size-calculator', 'openai-cost-calculator', '429-too-many-requests-calculator'],
 };
 
 export const base64SizeCalculator: CalculatorDefinition = { meta, Component: Base64SizeUI };
