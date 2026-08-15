@@ -161,7 +161,7 @@ const meta: CalculatorMeta = {
       answer: 'Divide the allocatable node CPU (node capacity minus system reserved) by the CPU request per pod for CPU-bound limits, and do the same for memory. The binding constraint is whichever resource fills first. For example, a node with 3.5 allocatable cores and a pod CPU request of 250m can fit at most 14 pods on CPU, so if memory allows more, CPU is the bottleneck.',
     },
   ],
-  relatedSlugs: ['lambda-cost-calculator', 'concurrency-calculator', 'thread-pool-size-calculator'],
+  relatedSlugs: ['lambda-cost-calculator', 'littles-law-calculator', 'thread-pool-size-calculator'],
 };
 
 export const kubernetesResourceCalculator: CalculatorDefinition = { meta, Component: KubernetesResourceUI };

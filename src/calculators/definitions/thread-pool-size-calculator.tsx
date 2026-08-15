@@ -108,7 +108,7 @@ const meta: CalculatorMeta = {
     'Profile before you size. Measure actual wait time and compute time under realistic load — synthetic benchmarks often underestimate I/O latency, leading to under-sized pools.',
     'Leave CPU headroom. Target 70–80% utilisation, not 100%. The remaining 20–30% absorbs GC pauses, traffic bursts, and OS scheduling without causing latency spikes.',
     'Size connection pools to match your thread pool. If you have 70 threads hitting a database, your DB connection pool must be at least 70 — otherwise threads will queue waiting for a connection.',
-    'Use the <a href="/calculators/concurrency-calculator">Concurrency Calculator</a> alongside this tool to verify your pool can sustain your target QPS without queuing.',
+    "Cross-check the result against Little's Law — arrival rate times average service time gives the number of threads kept busy, and your pool needs to sit above that with headroom or requests queue.",
     'Monitor queue depth, not just thread count. A healthy pool has near-zero queue depth at steady state. Growing queues signal the pool is too small or upstream services are slowing down.',
     'Re-measure after major changes. Adding caching, switching databases, or changing frameworks all shifts the wait/compute ratio significantly — recalculate after each architectural change.',
   ],
@@ -134,7 +134,7 @@ const meta: CalculatorMeta = {
       answer: 'Yes, for any system where you control a worker count or pool size. In Go, apply it to goroutine worker pools backed by a semaphore. In Python, use it for ThreadPoolExecutor or Celery worker counts. Node.js is single-threaded for JS but uses a libuv thread pool for I/O — set UV_THREADPOOL_SIZE using this formula. The math is language-agnostic; only the wait/compute ratio matters.',
     },
   ],
-  relatedSlugs: ['concurrency-calculator', 'qps-calculator', 'latency-budget-calculator'],
+  relatedSlugs: ['littles-law-calculator', 'qps-calculator', 'latency-budget-calculator'],
 };
 
 export const threadPoolSizeCalculator: CalculatorDefinition = { meta, Component: ThreadPoolSizeUI };

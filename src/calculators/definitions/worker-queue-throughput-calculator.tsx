@@ -117,7 +117,7 @@ const meta: CalculatorMeta = {
     },
     {
       question: 'Does adding more workers always increase throughput?',
-      answer: 'Only up to the bottleneck. If all workers share a single database connection pool, a rate-limited API, or a CPU-bound resource, adding workers past that limit creates contention and can reduce effective throughput. Use the <a href="/calculators/concurrency-calculator">Concurrency Calculator</a> to model the interaction between concurrency, wait time, and throughput via Little\'s Law.',
+      answer: 'Only up to the bottleneck. If all workers share a single database connection pool, a rate-limited API, or a CPU-bound resource, adding workers past that limit creates contention and can reduce effective throughput. Use <a href="/calculators/littles-law-calculator">Little\'s Law</a> to model the interaction between concurrency, wait time, and throughput.',
     },
     {
       question: 'What task duration should I use in the calculator?',
@@ -128,7 +128,7 @@ const meta: CalculatorMeta = {
       answer: 'Rearrange the formula: Workers = Queue Size / (Target Drain Time × Tasks per Second per Worker). To drain 10,000 tasks in under 5 minutes (300 s) with each task taking 500 ms, you need Workers = 10,000 / (300 × 2) = 16.7, so 17 workers minimum. Use this calculator to validate and tune the number before deploying to production.',
     },
   ],
-  relatedSlugs: ['throughput-calculator', 'concurrency-calculator', '429-too-many-requests-calculator', 'qps-calculator'],
+  relatedSlugs: ['throughput-calculator', 'littles-law-calculator', '429-too-many-requests-calculator', 'qps-calculator'],
 };
 
 export const workerQueueThroughputCalculator: CalculatorDefinition = { meta, Component: WorkerQueueThroughputUI };

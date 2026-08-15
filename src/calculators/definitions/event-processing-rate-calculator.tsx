@@ -136,7 +136,7 @@ const meta: CalculatorMeta = {
       answer: 'Consumer lag grows when ingestion rate exceeds processing throughput. Common causes: insufficient workers, slow downstream I/O such as DB writes or API calls, GC pauses inflating per-event latency, or larger event payloads increasing deserialization time. Use this calculator to verify your worker count matches your required throughput, then add 20–30% headroom for traffic bursts.',
     },
   ],
-  relatedSlugs: ['throughput-calculator', 'worker-queue-throughput-calculator', 'concurrency-calculator', 'qps-calculator'],
+  relatedSlugs: ['throughput-calculator', 'worker-queue-throughput-calculator', 'littles-law-calculator', 'qps-calculator'],
 };
 
 export const eventProcessingRateCalculator: CalculatorDefinition = { meta, Component: EventProcessingRateUI };

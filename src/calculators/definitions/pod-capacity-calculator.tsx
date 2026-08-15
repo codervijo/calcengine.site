@@ -145,7 +145,7 @@ const meta: CalculatorMeta = {
       answer: 'Divide the total number of pods by the max pods per node from this calculator, then round up: nodes = ceil(N ÷ max_pods_per_node). Add at least one extra node for rolling updates and disruption budget headroom. For production, plan for N+1 or N+2 nodes so that losing one node does not breach your pod availability targets.',
     },
   ],
-  relatedSlugs: ['kubernetes-resource-calculator', 'thread-pool-size-calculator', 'concurrency-calculator'],
+  relatedSlugs: ['kubernetes-resource-calculator', 'thread-pool-size-calculator', 'littles-law-calculator'],
 };
 
 export const podCapacityCalculator: CalculatorDefinition = { meta, Component: PodCapacityUI };

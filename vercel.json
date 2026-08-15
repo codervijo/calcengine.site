@@ -5,6 +5,11 @@
       "source": "/calculators/api-rate-limit-calculator",
       "destination": "/calculators/429-too-many-requests-calculator",
       "statusCode": 301
+    },
+    {
+      "source": "/calculators/concurrency-calculator",
+      "destination": "/calculators/littles-law-calculator",
+      "statusCode": 301
     }
   ]
 }

@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 220" width="680" height="220" font-family="Inter, system-ui, sans-serif" role="img" aria-label="Concurrency calculation flow diagram: RPS and average latency multiplied together to produce required concurrency">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 220" width="680" height="220" font-family="Inter, system-ui, sans-serif" role="img" aria-label="Little's Law flow diagram: arrival rate multiplied by average residence time to produce the number of requests in flight">
   <defs>
     <marker id="arr" markerWidth="8" markerHeight="8" refX="7" refY="3" orient="auto">
       <path d="M0,0 L0,6 L8,3 z" fill="#94a3b8"/>

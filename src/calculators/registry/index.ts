@@ -8,7 +8,7 @@ import { latencyBudgetCalculator } from '../definitions/latency-budget-calculato
 import { cacheHitRateCalculator } from '../definitions/cache-hit-rate-calculator';
 import { qpsCalculator } from '../definitions/qps-calculator';
 import { throughputCalculator } from '../definitions/throughput-calculator';
-import { concurrencyCalculator } from '../definitions/concurrency-calculator';
+import { littlesLawCalculator } from '../definitions/littles-law-calculator';
 import { bandwidthCostCalculator } from '../definitions/bandwidth-cost-calculator';
 import { storageCostCalculator } from '../definitions/storage-cost-calculator';
 import { dataTransferCostCalculator } from '../definitions/data-transfer-cost-calculator';
@@ -68,7 +68,7 @@ const calculators: CalculatorDefinition[] = [
   cacheHitRateCalculator,
   qpsCalculator,
   throughputCalculator,
-  concurrencyCalculator,
+  littlesLawCalculator,
   bandwidthCostCalculator,
   storageCostCalculator,
   dataTransferCostCalculator,
