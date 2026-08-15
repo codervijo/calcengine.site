@@ -10,7 +10,7 @@
  * 2. Each sitemap URL maps to an existing HTML file in dist/.
  * 3. Each HTML file has exactly one <link rel="canonical"> tag.
  * 4. The canonical href EXACTLY matches the sitemap <loc> URL.
- * 5. The canonical href uses https and the www subdomain.
+ * 5. The canonical href uses https and the apex host (no www).
  * 6. Internal <a href> links resolve to files that exist in dist/.
  * 7. Internal links do not end with a trailing slash (except "/" itself).
  * 8. sitemap-index.xml and all sub-sitemaps are valid, parseable XML.
@@ -26,7 +26,11 @@ import * as path from "node:path";
 // ---------------------------------------------------------------------------
 
 const DIST = path.resolve(__dirname, "../dist");
-const SITE = "https://www.calcengine.site";
+// Canonical host is the apex, not www — see commit 876aa9f "seo: canonicalize
+// host www→apex". astro.config.mjs `site` matches this, and www 308-redirects
+// here in production. Every host assertion below derives from this constant so
+// there is one place to change if that ever flips.
+const SITE = "https://calcengine.site";
 
 /** Pages explicitly allowed to carry noindex (relative paths inside dist/). */
 const NOINDEX_WHITELIST: string[] = [];
@@ -107,7 +111,7 @@ function extractInternalLinks(html: string): string[] {
 
 /**
  * Convert a URL or path to the expected file path inside dist/.
- * e.g. https://www.calcengine.site/calculators/foo → dist/calculators/foo.html
+ * e.g. https://calcengine.site/calculators/foo → dist/calculators/foo.html
  *      /calculators/foo                             → dist/calculators/foo.html
  *      /                                            → dist/index.html
  */
@@ -300,13 +304,11 @@ describe("Sitemap URLs — no trailing slash", () => {
     }
   });
 
-  it("all sitemap URLs use https and www subdomain", () => {
-    const offenders = allSitemapUrls.filter(
-      (url) => !url.startsWith("https://www.")
-    );
+  it("all sitemap URLs use https and the apex host", () => {
+    const offenders = allSitemapUrls.filter((url) => !url.startsWith(SITE));
     if (offenders.length > 0) {
       throw new Error(
-        `${offenders.length} sitemap URL(s) do not start with https://www.:\n${offenders.join("\n")}`
+        `${offenders.length} sitemap URL(s) do not start with ${SITE}:\n${offenders.join("\n")}`
       );
     }
   });
@@ -361,11 +363,11 @@ describe("Canonical tags", () => {
     }
   });
 
-  it("canonical href uses https and www subdomain", () => {
+  it("canonical href uses https and the apex host", () => {
     const errors: string[] = [];
     for (const { distFile, canonicals } of pageRecords) {
       const canonical = canonicals[0];
-      if (!canonical.startsWith("https://www.")) {
+      if (!canonical.startsWith(SITE)) {
         errors.push(
           `${path.relative(DIST, distFile)}: canonical is ${canonical}`
         );
@@ -373,7 +375,7 @@ describe("Canonical tags", () => {
     }
     if (errors.length > 0) {
       throw new Error(
-        `${errors.length} page(s) have canonical not starting with https://www.:\n${errors.join("\n")}`
+        `${errors.length} page(s) have canonical not starting with ${SITE}:\n${errors.join("\n")}`
       );
     }
   });
