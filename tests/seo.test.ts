@@ -407,3 +407,34 @@ describe("Robots / noindex", () => {
     }
   });
 });
+
+describe("Escaped HTML in rendered output", () => {
+  // Several CalculatorMeta fields carry inline HTML (links, <code>, <strong>).
+  // Astro escapes `{expr}` by default, so a field rendered without `set:html`
+  // ships raw markup as visible page text — e.g. a literal `<a href="...">`
+  // in the middle of a sentence. That shipped undetected on ~10 pages until
+  // 2026-08-14. This test fails the build rather than letting it recur.
+  //
+  // Note: `formula` and `examples[].body` render inside <pre> and are
+  // deliberately escaped — they contain literal `<` (e.g. `λ × S < c`), which
+  // is why the patterns below are specific to tags rather than bare `&lt;`.
+  const FORBIDDEN = ["&lt;a href", "&lt;code&gt;", "&lt;strong&gt;", "&lt;em&gt;"];
+
+  it("no page renders escaped HTML tags as visible text", () => {
+    const errors: string[] = [];
+    for (const htmlFile of allDistHtmlFiles) {
+      const html = fs.readFileSync(htmlFile, "utf-8");
+      const rel = path.relative(DIST, htmlFile);
+      for (const needle of FORBIDDEN) {
+        const hits = html.split(needle).length - 1;
+        if (hits > 0) errors.push(`${rel}: ${hits}× "${needle}"`);
+      }
+    }
+    if (errors.length > 0) {
+      throw new Error(
+        `${errors.length} escaped-HTML occurrence(s) — a meta field is rendered ` +
+          `without set:html in [slug].astro:\n${errors.join("\n")}`
+      );
+    }
+  });
+});

@@ -61,7 +61,7 @@ const meta: CalculatorMeta = {
   // well over a decade and reads as a low-quality signal. The template only
   // emits the tag when this array is non-empty.
   keywords: [],
-  category: 'api',
+  category: 'performance',
   icon: 'AccountTree',
   layout: 'explanation-first',
   suppressBoilerplate: true,
