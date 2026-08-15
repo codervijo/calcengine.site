@@ -11,6 +11,10 @@ custom_domains = [
     "calcengine.site",
 ]
 
+[index]
+indexnow_key = "cf72530eed2cae85a7c3215d92affcbf"
+indexnow_enabled = true
+
 [stack]
 framework = "astro"
 
