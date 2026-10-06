@@ -81,3 +81,89 @@ After creating the file, register the export in `src/calculators/registry/index.
 - [ ] `lastUpdated` is set
 - [ ] `relatedSlugs` has at least 2 entries
 - [ ] `howItWorksImage` SVG created at `public/images/calculators/{slug}-how-it-works.svg` and referenced in meta
+
+## 2026-10-05 — Demand-first pivot (PRD v2 / Experiment 1)
+
+Session outcome: PRD v2.A–v2.E shipped (commits `1da5617`, `fb36022`);
+9 calculators + 3 hubs live; Etsy held back. Experiment record:
+`docs/seo-experiments.md`.
+
+### Prompt 1 — pivot brief (verbatim headings, condensed body)
+
+> Work in the existing `calcengine.site` repository.
+>
+> **Objective:** Pivot CalcEngine from its narrow developer/technical
+> calculator strategy toward a broader high-demand calculator engine,
+> preserving existing useful/indexed URLs. This is an SEO experiment —
+> treat experiment logging and observability as first-class deliverables.
+> Inspect the existing implementation first; do not blindly rewrite.
+>
+> **Document the experiment history BEFORE changing anything** —
+> `docs/seo-experiments.md`. Experiment 0 — Developer Calculator Thesis:
+> ~69 pages; 28d GSC around 2026-10-05: 69 pages, 12 impressions, 0 clicks,
+> avg position 19.8, Δimp −35 vs ≈2026-09-05, last crawl 2026-09-18, site
+> updated 2026-08-14. Mark the ~47 prior-period figure as "inferred from the
+> portfolio ΔImp value, not a directly captured GSC snapshot". Ahrefs
+> validation of developer keywords (claude api cost calculator ~30 … docker /
+> requests-per-minute calculators insufficient demand). Conclusion: "Natural
+> combinatorial page surface does not imply natural search demand."
+>
+> **Experiment 1 — Demand-First Broad Calculator Pivot**, start 2026-10-05.
+> Hypothesis: demand-validated, weak-KD calculators → substantially more
+> discovery/ranking. `search demand → SERP validation → calculator → measure`.
+> Ahrefs table: markup 17,000/6 · PayPal fee 13,000/0 · weighted average
+> 10,000/0 · shipping 10,000/0 · wire size 7,000/6 · tile 5,600/8 ·
+> commission 5,200/0 · deck 4,100/5 · fence 3,700/4 · amp 2,900/2 · flooring
+> 2,500/8 · food cost 2,100/5 · Etsy fee 2,000/6 · Stripe fee 1,800/0 · energy
+> cost 800/5 · battery 700/8 · catering 500/8.
+>
+> **Phase 1 pages (10-page validation batch):** PayPal Fee, Commission,
+> Stripe Fee, Markup, Etsy Fee, Weighted Average, Wire Size, Amp, Food Cost,
+> Energy Cost. Do not build the rest yet.
+>
+> **Quality bar:** genuinely useful product pages — defaults, multiple
+> inputs, secondary outputs, formulas, units, assumptions, worked examples,
+> edge cases, related calculators, FAQ only where useful, methodology/sources
+> where rules or rates are external; crawlable HTML; no keyword stuffing.
+> **Fee calculators:** rates separate from UI; state schedule, jurisdiction,
+> last-verified date, exclusions; transparent assumptions over false
+> precision. **Electrical:** expose assumptions/units/method; never imply it
+> replaces code, manufacturer requirements or professional judgment —
+> accuracy > SEO.
+>
+> **Architecture:** categories Business & Seller, Math, Construction,
+> Electrical & Energy, Developer (keep Developer; don't destroy URLs).
+> **Internal linking:** PayPal↔Stripe↔Etsy; Markup↔Commission↔Food Cost;
+> Wire Size↔Amp↔Energy Cost; Weighted Average→math; crawlable hubs; no
+> orphans. **Homepage:** general calculation engine; no "thousands of
+> calculators" claims. **SEO fundamentals** per page; avoid unnecessary
+> schema and near-duplicates. **Build for scale** with reusable primitives,
+> but no generic DSL.
+>
+> **Observability:** durable 2026-10-05 pre-deploy baseline (pages, sitemap
+> count, indexed count, 28d impressions/clicks/CTR/position, top queries and
+> pages, git SHA, start date, new URLs) — e.g. `seo/snapshots/2026-10-05.json`;
+> never overwrite snapshots. **Success checkpoints:** ~14d crawl/index/first
+> impressions (don't judge rankings); ~30d compare to baseline; ~60–90d
+> SCALE / ITERATE / STOP. Don't generate hundreds of pages before Phase 1
+> evidence. Portfolio question: can AI-assisted development scale ~100-page
+> sites toward 1,000+ pages by first finding a repeatable,
+> search-demand-validated page primitive?
+>
+> **Final deliverable:** implement Phase 1 completely, then report baseline,
+> log location, architecture, preserved/changed pages, the 10 URLs,
+> methodology, SEO/internal-link/sitemap changes, test/build/lint results,
+> deployment-ready page count, diff summary, checkpoint metrics. No Phase 2.
+
+### Operator decisions during the session
+
+- PRD slot: **option A** — new tier v2 (v2.A planning … v2.F measurement).
+- "Etsy verification shouldn't hold the whole deployment hostage. Verify/fix
+  that calculator quickly or temporarily exclude just Etsy, then ship the
+  other 81 pages." → Etsy unregistered (etsy.com 403s automated fetch); 81
+  pages shipped.
+- "add notices in ai_agents to check on measurements on days 14,20,60-90"
+  → checkpoint table at the top of `AI_AGENTS.md` (read as day 14 / 30 /
+  60 / 90).
+- "resubmit using lamill tool" → `lamill settings gsc submit-sitemap --site
+  calcengine.site --force`.

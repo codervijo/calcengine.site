@@ -74,3 +74,17 @@ mistakes at the point of writing, not at quarterly cleanup time.
 
 <Things deliberately *not* shipped. Append entries with rationale so
 future Claude sessions don't re-propose them.>
+
+- **Etsy Fee Calculator — held back (2026-10-05).** Built and tested
+  (`src/calculators/definitions/etsy-fee-calculator.tsx`, `src/data/fees/etsy.json`)
+  but unregistered: etsy.com returns 403 to automated fetches, so rates were only
+  checked against an archived copy. Re-register only after the operator confirms
+  rates on the live pages; give it its own day 0 in `docs/seo-experiments.md`.
+- **No new calculators until PRD v2.F says SCALE.** The remaining Ahrefs list
+  (shipping, tile, deck, fence, flooring, battery, catering) is deliberately
+  unbuilt — Experiment 1 is a fixed 9-page batch. Don't propose them early.
+- **Math and Construction hubs** are not generated until each has ≥2 calculators
+  (`MIN_HUB_SIZE`) — no thin hub pages.
+- **Known doc drift, not fixed:** `AI_AGENTS.md` § Deployment info says Cloudflare
+  Pages; the site deploys on Vercel. `/about` says "no analytics" but GA4 loads
+  when `PUBLIC_GA_ID` is set.

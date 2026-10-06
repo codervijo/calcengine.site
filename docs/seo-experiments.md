@@ -315,3 +315,26 @@ Do **not** generate hundreds of pages before there is Phase 1 evidence.
 - Live sitemap target: 81 URLs (69 existing + 9 calculators + 3 hubs)
 - Etsy fee calculator held back (rates unverified on the live site)
 - Next: day 14 on 2026-10-19 (discovery check)
+- Sitemap force-resubmitted to GSC via `lamill settings gsc submit-sitemap --force`
+  at 2026-10-06T00:25Z (UTC); GSC shows it pending, last download still 2026-06-19.
+  Day-14 check: confirm `lastDownloaded` moved past this date.
+
+#### 2026-10-05 — session close
+
+State at close:
+
+- Live: 81 sitemap URLs (69 existing + 9 calculators + 3 hubs), verified
+  200 on every new URL; Etsy page 404 (held back).
+- GSC: sitemap resubmitted and pending; Google has not re-downloaded it yet.
+  Per-URL "Request indexing" for the 12 new URLs is a manual GSC step for the operator.
+- Tests at deploy: unit 73/73, SEO suite 12/12, production build 81 URLs.
+- Not yet done: real-browser use of the 9 calculators (operator validation);
+  Etsy rate confirmation.
+
+Open items carried forward:
+
+1. **Day 14 — 2026-10-19:** discovery check (preconditions above). Capture
+   `seo/snapshots/2026-10-19.json`.
+2. **Day 30 — 2026-11-04:** baseline comparison.
+3. **Day 60 — 2026-12-04 / Day 90 — 2027-01-03:** SCALE / ITERATE / STOP.
+4. Etsy: confirm live rates → re-register → separate day 0.
