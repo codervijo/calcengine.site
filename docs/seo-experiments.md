@@ -308,3 +308,10 @@ Do **not** generate hundreds of pages before there is Phase 1 evidence.
   `calculator api` 1
 - Top pages 28d: `/` (all 12 impressions)
 - Git SHA at capture: `3949dd89fafd142489305e8e48add5271768fd78`
+
+#### 2026-10-05 — v2 deployed (day 0)
+
+- Pushed to `main` (Vercel auto-deploy): `1da5617ff30e822c0d9f6b5514846244ffdef3a5`
+- Live sitemap target: 81 URLs (69 existing + 9 calculators + 3 hubs)
+- Etsy fee calculator held back (rates unverified on the live site)
+- Next: day 14 on 2026-10-19 (discovery check)
