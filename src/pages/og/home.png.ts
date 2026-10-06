@@ -5,8 +5,8 @@ import { renderOgImage } from '../../og/renderOg';
 export const GET: APIRoute = async () => {
   const png = await renderOgImage(
     calcOgTemplate({
-      title: 'Engineering Calculators for Real Systems',
-      description: 'Free tools for API costs, backend performance, and developer workflows.',
+      title: 'Free Calculators With Open Formulas',
+      description: 'Fees, pricing, math, electrical and developer calculators — formulas, assumptions and sources shown.',
     }),
   );
   return new Response(png, {

@@ -1,7 +1,34 @@
 # AI Agent Context — calcengine.site
 
+## ⏰ Pending measurement checkpoints — check these first
+
+**Experiment 1 (PRD v2) is live and being measured. At the start of any
+session, compare today's date to the table below. If a checkpoint is
+due or overdue and has no entry in `docs/seo-experiments.md` →
+"Checkpoint log", tell the operator before doing anything else.**
+
+Day 0 = production deploy of v2, **2026-10-05**.
+
+| Checkpoint | Due | What to capture |
+|---|---|---|
+| Day 14 | **2026-10-19** | Discovery: did GSC re-fetch the sitemap? URL Inspection state of the 9 new calculators + 3 hubs; new URLs with ≥1 impression; matched queries. Do NOT judge rankings. If the new URLs are still "unknown to Google", the verdict is "discovery broken", not "demand failed". |
+| Day 30 | **2026-11-04** | Compare to the 2026-10-05 baseline: indexed count (baseline 1), 28d impressions (12) / clicks (0) / avg position (19.8), site-wide and for new pages; queries and impressions per new page; did old developer pages get indexed? |
+| Day 60 | **2026-12-04** | Trend check, then the decision window opens: SCALE / ITERATE / STOP (criteria in `docs/seo-experiments.md`). |
+| Day 90 | **2027-01-03** | Final call if day 60 was ambiguous. No new calculators before SCALE. |
+
+How to capture: re-run the read-only GSC pull (Search Console API via
+`~/work/projects/sites/portfolio` OAuth, `uv run --project …`), save it as a
+**new** `seo/snapshots/YYYY-MM-DD.json` (never overwrite), then append
+a dated entry to the checkpoint log in `docs/seo-experiments.md` and
+tick the matching v2.F row in `docs/prd.md`.
+
+Held back from the batch: **Etsy Fee Calculator.** Its rates are unconfirmed
+on the live etsy.com (`src/data/fees/etsy.json` → `verificationNote`).
+Re-register it only after the operator confirms the rates, and log its
+own day 0.
+
 ## What this project is
-CalcEngine is a statically generated (Astro SSG) site of free engineering calculators targeting developer long-tail keywords. Each calculator is a schema-driven page with full SEO content — intro, how-it-works, formula, worked example, FAQ, and related links — plus an interactive React island for the actual calculation.
+CalcEngine is a statically generated (Astro SSG) site of free calculators. Since v2 (2026-10-05) it targets demand-validated calculator queries across verticals (Business & Seller, Math, Construction, Electrical & Energy, Developer); the original developer calculators remain as the Developer vertical. Each calculator is a schema-driven page with full SEO content — intro, how-it-works, formula, worked example, FAQ, and related links — plus an interactive React island for the actual calculation.
 
 ## Stack
 - **Framework:** Astro 4 (static output, `output: 'static'`)
@@ -98,6 +125,23 @@ When in doubt, open `src/calculators/definitions/openai-cost.tsx` and mirror its
 - **Static-first:** all content (breadcrumbs, H1, intro, FAQ, related links) is rendered as static Astro HTML. Only the interactive widget is a React island.
 - **SEO content fields:** `intro`, `howItWorks`, `formula`, `examples[]`, `faq[]`, `tips[]` in `CalculatorMeta` must be substantive. Mirror the golden page structure.
 - **DO NOT run** npm, pnpm, astro, vite, or any build/dev commands when editing calculator definitions. Edit source files only.
+
+## Strategy — demand-first (v2)
+
+Read `docs/seo-experiments.md` before adding pages. Experiment 0 (developer
+calculators, 69 pages) produced ~12 impressions / 28d; Experiment 1 tests a
+10-page demand-validated batch. Rule: `search demand → SERP validation →
+calculator → measure`. **No new calculators until PRD v2.F returns SCALE.**
+Never overwrite `seo/snapshots/*.json`; add a new dated file per capture.
+
+## Adding a calculator (v2 building blocks)
+
+- **Logic** — pure functions in `src/calculators/logic/<name>.ts`, unit-tested in `logic.test.ts`. No React, no rates.
+- **Data** — external rates/tables in `src/data/**.json` with `lastVerified` + `sources`. Never hardcode a rate in a component. Unverifiable values are a `TODO(operator)`, never a guess.
+- **UI** — compose `src/calculators/primitives` (`NumberField`/`MoneyField`/`PercentField`/`SelectField`/`ModeToggle`, `ResultCard`, `Notices`, `check()`, `fmt*`). Inputs are strings; validate with `check()`; invalid → `EmptyResult`/`Notices`, never a crash or `NaN`.
+- **Meta** — `category` (vertical), `methodology` (assumptions, exclusions, sources, `verified`, `disclaimer` for safety-relevant tools), `referenceTables` for crawlable rate/code tables. FAQ only where genuinely useful (0–5); FAQPage JSON-LD is emitted only when FAQ is non-empty.
+- **Hubs** — a vertical gets `/calculators/<vertical>` only at ≥2 calculators (`MIN_HUB_SIZE`); create `src/pages/calculators/<vertical>.astro` then — `registry.test.ts` enforces it.
+- **Register** in `src/calculators/registry/index.ts`; add the slug to the v2 lists in `registry.test.ts` / `v2-render.test.tsx` if it is part of an experiment batch.
 
 ## Out of scope / don't touch
 - (fill in as needed)
@@ -642,10 +686,10 @@ to the portfolio (see `sites/portfolio/AI_AGENTS.md` for the full
 statement):
 
 - **`vN`** — major capability tier (SemVer-MAJOR semantics).
-- **`vN.X`** — phase letter within a tier (A, B, C, …) for
-  internal slicing.
-- **`vN.X.Y`** — numeric sub-phase for follow-up work that lands
-  after `vN.X` shipped.
+- **`vN.X`** — phase letter within a tier (A, B, C, …). `vN.A` is
+  always planning/decisions-lock; build work starts at `.B`.
+- Two levels only — never `vN.X.Y`. Follow-up work inside a tier
+  pushes later phase letters down.
 
 Track current phase + completed work in `docs/prd.md`.
 

@@ -1,8 +1,8 @@
 import { useState, useMemo } from 'react';
 import { Container, Typography, TextField, Card, CardContent, CardActionArea, Chip, Stack, Box, InputAdornment } from '@mui/material';
 import SearchIcon from '@mui/icons-material/Search';
-import { getAllCalculators, getCategories } from '../calculators/registry';
-import { CATEGORY_LABELS, type CalculatorCategory } from '../calculators/registry/types';
+import { getAllCalculators, getCalculatorsByVertical } from '../calculators/registry';
+import { CATEGORY_LABELS, CATEGORY_VERTICAL, VERTICALS, type Vertical } from '../calculators/registry/types';
 
 export default function AllCalculatorsPage() {
   const [search, setSearch] = useState(() => {
@@ -13,12 +13,12 @@ export default function AllCalculatorsPage() {
   });
   const [activeCategory, setActiveCategory] = useState<string | null>(null);
   const calculators = getAllCalculators();
-  const categories = getCategories();
+  const verticals = (Object.keys(VERTICALS) as Vertical[]).filter((v) => getCalculatorsByVertical(v).length > 0);
 
   const filtered = useMemo(() => {
     return calculators.filter((c) => {
       const matchesSearch = !search || c.meta.title.toLowerCase().includes(search.toLowerCase()) || c.meta.description.toLowerCase().includes(search.toLowerCase());
-      const matchesCat = !activeCategory || c.meta.category === activeCategory;
+      const matchesCat = !activeCategory || CATEGORY_VERTICAL[c.meta.category] === activeCategory;
       return matchesSearch && matchesCat;
     });
   }, [search, activeCategory, calculators]);
@@ -36,8 +36,8 @@ export default function AllCalculatorsPage() {
 
       <Stack component="nav" aria-label="Filter by category" direction="row" spacing={1} sx={{ mb: 4, flexWrap: 'wrap', gap: 1 }}>
         <Chip label="All" variant={activeCategory === null ? 'filled' : 'outlined'} onClick={() => setActiveCategory(null)} color={activeCategory === null ? 'primary' : 'default'} />
-        {categories.map((cat) => (
-          <Chip key={cat} label={CATEGORY_LABELS[cat as CalculatorCategory]} variant={activeCategory === cat ? 'filled' : 'outlined'} onClick={() => setActiveCategory(cat)} color={activeCategory === cat ? 'primary' : 'default'} />
+        {verticals.map((v) => (
+          <Chip key={v} label={VERTICALS[v].label} variant={activeCategory === v ? 'filled' : 'outlined'} onClick={() => setActiveCategory(v)} color={activeCategory === v ? 'primary' : 'default'} />
         ))}
       </Stack>
 

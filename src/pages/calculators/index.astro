@@ -3,18 +3,21 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import SiteNav from '../../layouts/SiteNav.astro';
 import SiteFooter from '../../layouts/SiteFooter.astro';
 import SearchableListIsland from '../../components/SearchableListIsland';
-import { getAllCalculators } from '../../calculators/registry';
-import { CATEGORY_LABELS } from '../../calculators/registry/types';
-import { buildWebAppJsonLd } from '../../seo/jsonLd';
+import { getAllCalculators, getCalculatorsByVertical, getHubVerticals } from '../../calculators/registry';
+import { CATEGORY_LABELS, VERTICALS, type Vertical } from '../../calculators/registry/types';
 
 const BASE_URL = 'https://calcengine.site';
 const calculators = getAllCalculators();
+const hubs = getHubVerticals();
+const sections = (Object.keys(VERTICALS) as Vertical[])
+  .map((v) => ({ v, info: VERTICALS[v], items: getCalculatorsByVertical(v), hasHub: hubs.includes(v) }))
+  .filter((s) => s.items.length > 0);
 
 const jsonLd = {
   '@context': 'https://schema.org',
   '@type': 'CollectionPage',
-  name: 'All Free Engineering Calculators — CalcEngine',
-  description: 'Browse all free engineering calculators for developers.',
+  name: 'All Free Online Calculators — CalcEngine',
+  description: 'Browse every CalcEngine calculator: business and seller fees, math, electrical and energy, and developer tools.',
   url: `${BASE_URL}/calculators`,
   inLanguage: 'en-US',
   mainEntity: {
@@ -30,8 +33,8 @@ const jsonLd = {
 ---
 
 <BaseLayout
-  title="All Free Engineering Calculators — API, Data & Performance Tools"
-  description="Browse all free engineering calculators for developers. Tools for API rate limits, OpenAI token costs, JSON sizing, Base64 encoding, and backend performance. No sign-up needed."
+  title="All Free Online Calculators — Business, Electrical, Math & Developer | CalcEngine"
+  description="Browse every CalcEngine calculator: PayPal and Stripe fees, markup, commission, weighted average, wire size, amps, energy cost, and developer tools. No sign-up needed."
   canonical="/calculators"
   jsonLd={jsonLd}
   ogImage={`${BASE_URL}/og/home.png`}
@@ -42,14 +45,20 @@ const jsonLd = {
   <div class="max-w-3xl mx-auto px-4 sm:px-6 pt-8 sm:pt-12 pb-2">
     <h1 class="text-3xl sm:text-4xl font-bold text-gray-900 dark:text-gray-100 mb-2">All Calculators</h1>
     <p class="text-gray-500 dark:text-gray-400 mb-6">
-      Browse and search our growing collection of engineering tools.
+      Every calculator, grouped by category. Each one shows its formula, assumptions and worked examples.
     </p>
   </div>
 
   <!-- Static list — rendered in HTML for crawlers and no-JS users.
        Hidden by SearchableListIsland on mount once React is ready. -->
-  <ul id="static-calc-list" class="max-w-3xl mx-auto px-4 sm:px-6 pb-12 space-y-2 list-none">
-    {calculators.map((c) => (
+  <div id="static-calc-list" class="max-w-3xl mx-auto px-4 sm:px-6 pb-12">
+    {sections.map((sec) => (
+    <section aria-label={`${sec.info.label} calculators`} class="mb-8">
+    <h2 class="text-xl font-semibold text-gray-900 dark:text-gray-100 mb-3">
+      {sec.hasHub ? <a href={`/calculators/${sec.v}`} class="hover:text-[#1565c0] dark:hover:text-[#42a5f5] no-underline">{sec.info.label}</a> : sec.info.label}
+    </h2>
+    <ul class="space-y-2 list-none">
+    {sec.items.map((c) => (
       <li>
         <a
           href={`/calculators/${c.meta.slug}`}
@@ -65,7 +74,10 @@ const jsonLd = {
         </a>
       </li>
     ))}
-  </ul>
+    </ul>
+    </section>
+    ))}
+  </div>
 
   <!-- Interactive island — search + filter. Hidden until React mounts, then swaps with static list. -->
   <div id="react-calc-island" style="display:none" class="max-w-3xl mx-auto px-4 sm:px-6 pb-12">

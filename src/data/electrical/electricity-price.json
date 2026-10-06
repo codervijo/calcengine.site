@@ -1,0 +1,11 @@
+{
+  "region": "United States, residential sector",
+  "centsPerKwh": 17.99,
+  "period": "12 months ending July 2026",
+  "lastVerified": "2026-10-05",
+  "note": "EIA Electric Power Monthly (released 2026-09-24), Table 5.3, rolling 12-month average. Preliminary. Latest single month (July 2026): 18.31¢/kWh; full-year 2025: 17.30¢/kWh. Your own rate varies by state, utility, plan and time of use.",
+  "sources": [
+    { "label": "EIA Electric Power Monthly — Table 5.3, average price of electricity to ultimate customers", "url": "https://www.eia.gov/electricity/monthly/epm_table_grapher.php?t=epmt_5_3" },
+    { "label": "EIA Electric Power Monthly — Table 5.6.A, average price by state", "url": "https://www.eia.gov/electricity/monthly/epm_table_grapher.php?t=epmt_5_6_a" }
+  ]
+}

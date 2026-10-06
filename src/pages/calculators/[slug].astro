@@ -3,7 +3,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import SiteNav from '../../layouts/SiteNav.astro';
 import SiteFooter from '../../layouts/SiteFooter.astro';
 import CalculatorWidget from '../../components/CalculatorWidget';
-import { getAllCalculators, getRelatedCalculators } from '../../calculators/registry';
+import { getAllCalculators, getRelatedCalculators, getHubForCategory } from '../../calculators/registry';
 import { CATEGORY_LABELS } from '../../calculators/registry/types';
 import { buildFaqJsonLd, buildWebAppJsonLd, buildBreadcrumbJsonLd } from '../../seo/jsonLd';
 
@@ -18,17 +18,23 @@ const { meta } = Astro.props;
 const BASE_URL = 'https://calcengine.site';
 const canonicalPath = `/calculators/${meta.slug}`;
 const related = getRelatedCalculators(meta.relatedSlugs);
+const hub = getHubForCategory(meta.category);
+const methodology = meta.methodology;
+const verifiedLabel = methodology?.verified
+  ? new Date(`${methodology.verified}T00:00:00Z`).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric', timeZone: 'UTC' })
+  : null;
 
 // Section order. Defaults to the golden-page standard (calculator above the
 // fold); pages targeting a problem query opt into leading with the explanation.
 const explanationFirst = meta.layout === 'explanation-first';
 
 const jsonLd = [
-  buildFaqJsonLd(meta.faq),
+  ...(meta.faq.length > 0 ? [buildFaqJsonLd(meta.faq)] : []),
   buildWebAppJsonLd(meta.title, meta.description, `${BASE_URL}${canonicalPath}`, `${BASE_URL}/og/${meta.slug}.png`, meta.lastUpdated),
   buildBreadcrumbJsonLd([
     { name: 'Home', url: BASE_URL },
     { name: 'Calculators', url: `${BASE_URL}/calculators` },
+    ...(hub ? [{ name: hub.label, url: `${BASE_URL}${hub.url}` }] : []),
     { name: meta.shortTitle, url: `${BASE_URL}${canonicalPath}` },
   ]),
 ];
@@ -52,6 +58,12 @@ const jsonLd = [
       <span class="mx-2">›</span>
       <a href="/calculators" class="hover:text-[#1565c0] dark:hover:text-[#42a5f5] transition-colors">Calculators</a>
       <span class="mx-2">›</span>
+      {hub && (
+        <>
+          <a href={hub.url} class="hover:text-[#1565c0] dark:hover:text-[#42a5f5] transition-colors">{hub.label}</a>
+          <span class="mx-2">›</span>
+        </>
+      )}
       <span class="text-gray-700 dark:text-gray-300">{meta.shortTitle}</span>
     </nav>
 
@@ -60,9 +72,15 @@ const jsonLd = [
       <h1 class="text-3xl sm:text-4xl font-bold text-gray-900 dark:text-gray-100 mb-2 leading-tight">
         {meta.h1 ?? meta.title}
       </h1>
-      <span class="inline-block bg-blue-100 dark:bg-blue-900/40 text-blue-800 dark:text-blue-300 text-xs font-semibold px-2.5 py-1 rounded-full mb-3">
-        {CATEGORY_LABELS[meta.category]}
-      </span>
+      {hub ? (
+        <a href={hub.url} class="inline-block bg-blue-100 dark:bg-blue-900/40 text-blue-800 dark:text-blue-300 text-xs font-semibold px-2.5 py-1 rounded-full mb-3 no-underline hover:opacity-80">
+          {CATEGORY_LABELS[meta.category]}
+        </a>
+      ) : (
+        <span class="inline-block bg-blue-100 dark:bg-blue-900/40 text-blue-800 dark:text-blue-300 text-xs font-semibold px-2.5 py-1 rounded-full mb-3">
+          {CATEGORY_LABELS[meta.category]}
+        </span>
+      )}
       <p class="text-gray-600 dark:text-gray-400 leading-relaxed">
         {meta.tagline ?? meta.description}
       </p>
@@ -95,6 +113,12 @@ const jsonLd = [
       <p class="text-gray-600 dark:text-gray-400 leading-relaxed mb-4">{meta.calculatorIntro}</p>
     )}
 
+    {methodology?.disclaimer && (
+      <aside aria-label="Safety notice" class="mb-4 rounded-lg border border-amber-300 dark:border-amber-700 bg-amber-50 dark:bg-amber-950/30 px-4 py-3 text-sm text-amber-900 dark:text-amber-200 leading-relaxed">
+        <Fragment set:html={methodology.disclaimer} />
+      </aside>
+    )}
+
     <!-- Interactive calculator widget (React island) -->
     <section aria-label="Calculator" class="mb-3">
       <div class="rounded-xl border border-gray-200 dark:border-gray-800 bg-white dark:bg-[#141414] shadow-sm p-4 sm:p-6">
@@ -104,6 +128,11 @@ const jsonLd = [
 
     <!-- Freshness signal + trust sentence -->
     <div class="mb-10">
+      {verifiedLabel && (
+        <p class="text-xs text-gray-500 dark:text-gray-400 text-right mb-1">
+          Rates and tables verified: <time datetime={methodology?.verified}>{verifiedLabel}</time> · <a href="#methodology" class="underline hover:text-[#1565c0] dark:hover:text-[#42a5f5]">sources</a>
+        </p>
+      )}
       {meta.lastUpdated && (
         <p class="text-xs text-gray-400 dark:text-gray-500 text-right mb-1">
           Last updated: {meta.lastUpdated}
@@ -214,6 +243,61 @@ const jsonLd = [
       </section>
     )}
 
+    <!-- Reference tables (rate schedules, code tables) -->
+    {meta.referenceTables && meta.referenceTables.map((t) => (
+      <section aria-label={t.title} class="mb-8">
+        <h2 class="text-xl sm:text-2xl font-semibold text-gray-900 dark:text-gray-100 mb-3">{t.title}</h2>
+        <div class="overflow-x-auto rounded-lg border border-gray-200 dark:border-gray-800">
+          <table class="w-full text-sm text-left">
+            <thead class="bg-gray-50 dark:bg-gray-900 text-gray-700 dark:text-gray-300 text-xs uppercase tracking-wide">
+              <tr>{t.columns.map((c) => <th scope="col" class="px-3 py-2.5 font-semibold whitespace-nowrap">{c}</th>)}</tr>
+            </thead>
+            <tbody class="divide-y divide-gray-100 dark:divide-gray-800">
+              {t.rows.map((row) => (
+                <tr class="bg-white dark:bg-[#141414]">
+                  {row.map((cell, i) => i === 0
+                    ? <th scope="row" class="px-3 py-2 font-medium text-gray-900 dark:text-gray-100 whitespace-nowrap">{cell}</th>
+                    : <td class="px-3 py-2 text-gray-600 dark:text-gray-400 font-mono">{cell}</td>)}
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+        {t.note && <p class="text-xs text-gray-500 dark:text-gray-400 mt-2 [&_a]:underline" set:html={t.note} />}
+      </section>
+    ))}
+
+    <!-- Methodology / sources / limitations -->
+    {methodology && (
+      <section id="methodology" aria-label={methodology.title ?? 'Assumptions, Sources & Limitations'} class="mb-8 scroll-mt-20">
+        <h2 class="text-xl sm:text-2xl font-semibold text-gray-900 dark:text-gray-100 mb-3">
+          {methodology.title ?? 'Assumptions, Sources & Limitations'}
+        </h2>
+        <h3 class="text-sm font-semibold text-gray-800 dark:text-gray-200 mb-2">What this calculator assumes</h3>
+        <ul class="list-disc pl-5 space-y-1.5 text-gray-600 dark:text-gray-400 leading-relaxed mb-4 [&_a]:text-[#1565c0] dark:[&_a]:text-[#42a5f5] [&_a]:underline">
+          {methodology.assumptions.map((a) => <li set:html={a} />)}
+        </ul>
+        {methodology.exclusions && methodology.exclusions.length > 0 && (
+          <>
+            <h3 class="text-sm font-semibold text-gray-800 dark:text-gray-200 mb-2">Not included</h3>
+            <ul class="list-disc pl-5 space-y-1.5 text-gray-600 dark:text-gray-400 leading-relaxed mb-4">
+              {methodology.exclusions.map((x) => <li set:html={x} />)}
+            </ul>
+          </>
+        )}
+        {methodology.sources && methodology.sources.length > 0 && (
+          <>
+            <h3 class="text-sm font-semibold text-gray-800 dark:text-gray-200 mb-2">Sources{verifiedLabel ? ` (checked ${verifiedLabel})` : ''}</h3>
+            <ul class="list-disc pl-5 space-y-1.5 text-sm text-gray-600 dark:text-gray-400">
+              {methodology.sources.map((src) => (
+                <li><a href={src.url} rel="noopener" target="_blank" class="text-[#1565c0] dark:text-[#42a5f5] underline break-words">{src.label}</a></li>
+              ))}
+            </ul>
+          </>
+        )}
+      </section>
+    )}
+
     <!-- Notes -->
     {!meta.suppressBoilerplate && (
       <section aria-label="Notes" class="mb-8">
@@ -232,6 +316,7 @@ const jsonLd = [
     )}
 
     <!-- FAQ — native <details> works without JS, visible to crawlers -->
+    {meta.faq.length > 0 && (
     <section aria-label="Frequently Asked Questions" class="mb-10">
       <h2 class="text-xl sm:text-2xl font-semibold text-gray-900 dark:text-gray-100 mb-4">
         Frequently Asked Questions
@@ -248,6 +333,7 @@ const jsonLd = [
         </details>
       ))}
     </section>
+    )}
 
     <!-- Related Calculators -->
     {related.length > 0 && (

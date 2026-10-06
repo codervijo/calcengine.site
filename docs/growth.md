@@ -64,3 +64,11 @@ https://search.google.com/search-console directly.
   the sitemap.
 - **Result:** TBD — review 2026-06-06
 - **Learning:** TBD
+
+## 2026-10-05 — demand-first pivot: 10 high-demand calculators (Experiment 1)
+- **Status:** active
+- **KPI:** indexed count (URL Inspection), 28d impressions/clicks site-wide and for the 10 new URLs, queries per new URL
+- **Baseline:** 69 sitemap URLs, 1 indexed (68 "URL is unknown to Google"); 28d 12 imp / 0 clicks / pos 19.8 (2026-09-05→10-02); prior 28d 48 imp. Snapshot `seo/snapshots/2026-10-05.json`
+- **Action:** PRD v2 — 10 calculators chosen by Ahrefs demand (markup, PayPal/Stripe/Etsy fees, commission, food cost, weighted average, wire size, amp, energy cost) + Business/Electrical/Developer hubs + homepage repositioning. Etsy fee calculator held back (rates unverified on the live site). 69 → 81 sitemap URLs, none removed. Full thesis + checkpoints: `docs/seo-experiments.md`
+- **Result:** TBD — day-14 discovery check, day-30 comparison, day-60–90 decision (dates from deploy day)
+- **Learning:** TBD

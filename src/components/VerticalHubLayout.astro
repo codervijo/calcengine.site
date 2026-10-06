@@ -1,0 +1,102 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import SiteNav from '../layouts/SiteNav.astro';
+import SiteFooter from '../layouts/SiteFooter.astro';
+import { getCalculatorsByVertical, getCalculatorsByCategory, getHubVerticals, DEVELOPER_SUBHUBS } from '../calculators/registry';
+import { CATEGORY_LABELS, VERTICALS, type Vertical } from '../calculators/registry/types';
+import { buildBreadcrumbJsonLd } from '../seo/jsonLd';
+
+interface Props {
+  vertical: Vertical;
+}
+
+const { vertical } = Astro.props;
+const BASE_URL = 'https://calcengine.site';
+const info = VERTICALS[vertical];
+const canonicalPath = `/calculators/${vertical}`;
+const calculators = getCalculatorsByVertical(vertical);
+// Developer hub groups its calculators under the pre-v2 sub-hubs.
+const groups = vertical === 'developer'
+  ? DEVELOPER_SUBHUBS.map((cat) => ({ label: CATEGORY_LABELS[cat], url: `/calculators/${cat}`, items: getCalculatorsByCategory(cat) })).filter((g) => g.items.length > 0)
+  : [{ label: null, url: null, items: calculators }];
+const otherHubs = getHubVerticals().filter((v) => v !== vertical);
+
+const jsonLd = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'CollectionPage',
+    name: info.hubTitle,
+    description: info.hubDescription,
+    url: `${BASE_URL}${canonicalPath}`,
+    inLanguage: 'en-US',
+    mainEntity: {
+      '@type': 'ItemList',
+      itemListElement: calculators.map((c, i) => ({
+        '@type': 'ListItem',
+        position: i + 1,
+        name: c.meta.title,
+        url: `${BASE_URL}/calculators/${c.meta.slug}`,
+      })),
+    },
+  },
+  buildBreadcrumbJsonLd([
+    { name: 'Home', url: BASE_URL },
+    { name: 'Calculators', url: `${BASE_URL}/calculators` },
+    { name: info.label, url: `${BASE_URL}${canonicalPath}` },
+  ]),
+];
+---
+
+<BaseLayout title={info.hubTitle} description={info.hubDescription} canonical={canonicalPath} jsonLd={jsonLd} ogImage={`${BASE_URL}/og/home.png`}>
+  <SiteNav />
+
+  <main class="max-w-3xl mx-auto px-4 sm:px-6 py-8 sm:py-12">
+    <nav aria-label="Breadcrumb" class="text-sm text-gray-500 dark:text-gray-400 mb-6">
+      <a href="/" class="hover:text-[#1565c0] dark:hover:text-[#42a5f5] transition-colors">Home</a>
+      <span class="mx-2">›</span>
+      <a href="/calculators" class="hover:text-[#1565c0] dark:hover:text-[#42a5f5] transition-colors">Calculators</a>
+      <span class="mx-2">›</span>
+      <span class="text-gray-700 dark:text-gray-300">{info.label}</span>
+    </nav>
+
+    <header class="mb-8">
+      <h1 class="text-3xl sm:text-4xl font-bold text-gray-900 dark:text-gray-100 mb-3 leading-tight">{info.label} Calculators</h1>
+      <p class="text-gray-600 dark:text-gray-400 leading-relaxed">{info.hubIntro}</p>
+    </header>
+
+    {groups.map((g) => (
+      <section aria-label={g.label ?? `${info.label} calculators`} class="mb-8">
+        {g.label && (
+          <h2 class="text-xl font-semibold text-gray-900 dark:text-gray-100 mb-3">
+            <a href={g.url} class="hover:text-[#1565c0] dark:hover:text-[#42a5f5] no-underline">{g.label}</a>
+            <span class="text-sm font-normal text-gray-400 ml-2">{g.items.length}</span>
+          </h2>
+        )}
+        <ul class="space-y-3 list-none">
+          {g.items.map((c) => (
+            <li>
+              <a href={`/calculators/${c.meta.slug}`} class="block border border-gray-200 dark:border-gray-800 rounded-xl p-4 bg-white dark:bg-[#141414] hover:shadow-md dark:hover:border-gray-600 transition-all no-underline">
+                <p class="font-semibold text-gray-900 dark:text-gray-100 mb-1">{c.meta.title}</p>
+                <p class="text-sm text-gray-500 dark:text-gray-400">{c.meta.tagline ?? c.meta.description}</p>
+              </a>
+            </li>
+          ))}
+        </ul>
+      </section>
+    ))}
+
+    {otherHubs.length > 0 && (
+      <nav aria-label="Other calculator categories" class="mt-10 pt-6 border-t border-gray-200 dark:border-gray-800">
+        <h2 class="text-sm font-semibold text-gray-700 dark:text-gray-300 mb-3">More calculator categories</h2>
+        <ul class="flex flex-wrap gap-2 list-none">
+          {otherHubs.map((v) => (
+            <li><a href={`/calculators/${v}`} class="inline-block border border-gray-300 dark:border-gray-700 text-gray-700 dark:text-gray-300 text-sm px-4 py-1.5 rounded-full hover:border-[#1565c0] hover:text-[#1565c0] dark:hover:text-[#42a5f5] no-underline">{VERTICALS[v].label}</a></li>
+          ))}
+          <li><a href="/calculators" class="inline-block text-sm px-4 py-1.5 text-[#1565c0] dark:text-[#42a5f5] hover:underline">All calculators →</a></li>
+        </ul>
+      </nav>
+    )}
+  </main>
+
+  <SiteFooter />
+</BaseLayout>

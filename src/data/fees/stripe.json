@@ -1,0 +1,32 @@
+{
+  "provider": "Stripe",
+  "jurisdiction": "United States Stripe accounts, standard (non-negotiated) pricing",
+  "currency": "USD",
+  "lastVerified": "2026-10-05",
+  "sourcePageUpdated": null,
+  "verification": "live",
+  "sources": [
+    { "label": "Stripe pricing (US) — page shows no effective date", "url": "https://stripe.com/pricing" }
+  ],
+  "methods": [
+    { "id": "card-online", "label": "Online card payment", "pct": 2.9, "fixed": 0.30 },
+    { "id": "card-in-person", "label": "In-person card (Stripe Terminal)", "pct": 2.7, "fixed": 0.05 },
+    { "id": "ach", "label": "ACH Direct Debit", "pct": 0.8, "fixed": 0, "cap": 5.00 }
+  ],
+  "cardSurcharges": [
+    { "id": "international", "label": "International card", "pct": 1.5 },
+    { "id": "conversion", "label": "Currency conversion required", "pct": 1.0 },
+    { "id": "manual", "label": "Manually entered card", "pct": 0.5 }
+  ],
+  "addOns": [
+    { "id": "billing", "label": "Stripe Billing (pay-as-you-go)", "pct": 0.7 },
+    { "id": "tax-basic", "label": "Stripe Tax Basic", "pct": 0.5 }
+  ],
+  "excluded": [
+    "Custom pricing (IC+, volume discounts, country-specific rates)",
+    "Dispute fee ($15.00 per dispute received; $15.00 more to counter, refunded if won)",
+    "Instant Payouts (1.5%, minimum 50¢)",
+    "Tap to Pay per-authorization fee, Invoicing, Tax Complete subscriptions",
+    "Klarna and other payment methods with their own rates"
+  ]
+}

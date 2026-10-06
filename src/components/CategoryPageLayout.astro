@@ -39,6 +39,7 @@ const jsonLd = [
   buildBreadcrumbJsonLd([
     { name: 'Home', url: BASE_URL },
     { name: 'Calculators', url: `${BASE_URL}/calculators` },
+    { name: 'Developer', url: `${BASE_URL}/calculators/developer` },
     { name: categoryLabel, url: `${BASE_URL}${canonicalPath}` },
   ]),
 ];
@@ -60,6 +61,8 @@ const jsonLd = [
       <a href="/" class="hover:text-[#1565c0] dark:hover:text-[#42a5f5] transition-colors">Home</a>
       <span class="mx-2">›</span>
       <a href="/calculators" class="hover:text-[#1565c0] dark:hover:text-[#42a5f5] transition-colors">Calculators</a>
+      <span class="mx-2">›</span>
+      <a href="/calculators/developer" class="hover:text-[#1565c0] dark:hover:text-[#42a5f5] transition-colors">Developer</a>
       <span class="mx-2">›</span>
       <span class="text-gray-700 dark:text-gray-300">{categoryLabel}</span>
     </nav>
@@ -93,8 +96,11 @@ const jsonLd = [
     </ul>
 
     <div class="mt-10 pt-6 border-t border-gray-200 dark:border-gray-800">
+      <a href="/calculators/developer" class="text-sm text-[#1565c0] dark:text-[#42a5f5] hover:underline mr-6">
+        ← All developer calculators
+      </a>
       <a href="/calculators" class="text-sm text-[#1565c0] dark:text-[#42a5f5] hover:underline">
-        ← Browse all calculators
+        Browse all calculators
       </a>
     </div>
 

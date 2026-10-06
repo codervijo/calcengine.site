@@ -1,12 +1,23 @@
 ---
+import { getHubVerticals } from '../calculators/registry';
+import { VERTICALS } from '../calculators/registry/types';
+
 const year = new Date().getFullYear();
+const hubs = getHubVerticals();
 ---
 
 <footer class="border-t border-gray-200 dark:border-gray-800 bg-gray-50 dark:bg-[#0a0a0a] py-8 mt-auto">
   <div class="max-w-5xl mx-auto px-4 sm:px-6">
+    <nav aria-label="Calculator categories" class="mb-5">
+      <ul class="flex flex-wrap justify-center sm:justify-start gap-x-5 gap-y-2 text-sm list-none">
+        {hubs.map((v) => (
+          <li><a href={`/calculators/${v}`} class="text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-200 transition-colors">{VERTICALS[v].label}</a></li>
+        ))}
+      </ul>
+    </nav>
     <div class="flex flex-col sm:flex-row items-center justify-between gap-4">
       <p class="text-sm text-gray-500 dark:text-gray-400">
-        © {year} CalcEngine — Free engineering calculators for developers.
+        © {year} CalcEngine — Free calculators with open formulas.
       </p>
       <nav aria-label="Footer navigation" class="flex items-center gap-5 text-sm text-gray-400 dark:text-gray-500">
         <a href="/calculators" class="hover:text-gray-700 dark:hover:text-gray-300 transition-colors">All Calculators</a>

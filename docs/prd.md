@@ -1,12 +1,33 @@
 # PRD — calcengine.site
 
-## Phase 1 — MVP Calculators (Live)
+## Roadmap
+
+| # | Status | Phase |
+|---|---|---|
+| v1 | ✓ closed 2026-10-05 | **Developer calculator thesis** (Experiment 0, see `docs/seo-experiments.md`) |
+| v1.A | ✓ | Planning (not recorded; v1 started as code) |
+| v1.B | ✓ | MVP calculators |
+| v1.C | ✓ | Calculator expansion (50 tools) + freshness markers |
+| v1.D | ✓ | Externalize pricing & regulatory data to JSON |
+| v1.E | ✓ | EU CRA calculators |
+| v2 | active | **Demand-first broad calculator pivot** (Experiment 1) |
+| v2.A | ✓ 2026-10-05 | Planning / decisions lock: experiment log, baseline snapshot, success criteria |
+| v2.B | ✓ 2026-10-05 | Calculator primitives + vertical/category architecture + fee/electrical data config |
+| v2.C | ✓ 2026-10-05 | Seller & fee batch: PayPal, Stripe, Etsy, Commission, Markup |
+| v2.D | ✓ 2026-10-05 | Math, food & electrical batch: Weighted Average, Food Cost, Wire Size, Amp, Energy Cost |
+| v2.E | ✓ 2026-10-05 | Homepage repositioning, vertical hubs, internal linking, sitemap |
+| v2.F | queued | Measurement: day 14 / 30 / 60–90 checkpoints → SCALE / ITERATE / STOP decision |
+
+Phases were labelled "Phase 1–4" until 2026-10-05; renamed to v1.B–v1.E
+(Phase 3 → v1.D, Phase 4 → v1.E) to match the portfolio versioning scheme.
+
+## v1.B — MVP Calculators (Live)
 - [x] OpenAI Cost Calculator *(API / LLM)*
 - [x] JSON Size Calculator *(Data)*
 - [x] API Rate Limit Calculator *(Backend)*
 - [x] Base64 Size Calculator *(Data)*
 
-## Phase 2 — Calculator Expansion (50 tools)
+## v1.C — Calculator Expansion (50 tools)
 - [x] JWT Size Calculator *(IoTSecurity)* ✅ 2026-04-14
 - [x] UUID Collision Probability Calculator *(Backend)* ✅ 2026-04-14
 - [x] Cron Expression Calculator *(Scheduling)* ✅ 2026-04-14
@@ -57,7 +78,7 @@
   1. **Code freshness** — "Last updated from git at" — derived at build time from `git log` on the definition file; injected into `dateModified` JSON-LD and shown in the UI
   2. **Data freshness** — "Data last verified" — manually set via `meta.dataUpdated` (e.g. pricing, formula accuracy, external references); shown separately in the UI so users know the underlying numbers are current
 
-## Phase 4 — EU Cyber Resilience Act (CRA) Calculators
+## v1.E — EU Cyber Resilience Act (CRA) Calculators
 
 Target audience: embedded/IoT engineers, product managers, compliance teams shipping connected devices to the EU market.
 
@@ -71,6 +92,56 @@ Target audience: embedded/IoT engineers, product managers, compliance teams ship
 - [x] Vulnerability Response Time Calculator *(IoTSecurity)* — inputs: detection → patch → disclosure timeline → compliance vs CRA obligations — "vulnerability response time requirements" ✅ 2026-04-20
 - [x] Encryption Coverage Calculator *(IoTSecurity)* — inputs: % data encrypted at rest + in transit → compliance gap + recommendations — "iot encryption requirements eu" ✅ 2026-04-20
 - [x] EU Device Compliance Quiz *(IoTSecurity)* — inputs: 10–15 yes/no questions → compliant / at-risk / non-compliant verdict — "is my iot device cra compliant" ✅ 2026-04-20
+
+## v2 — Demand-First Pivot (Experiment 1)
+
+Started 2026-10-05. Full thesis, baseline, and evaluation criteria live in
+`docs/seo-experiments.md`; raw baseline in `seo/snapshots/2026-10-05.json`.
+
+Process: `search demand → SERP validation → calculator → measure`.
+Phase 1 is a deliberate **10-page validation batch**. No further calculators
+until v2.F returns SCALE.
+
+### v2.A — Planning / decisions lock ✅ 2026-10-05
+- [x] Close Experiment 0 and open Experiment 1 in `docs/seo-experiments.md`
+- [x] Pre-deploy GSC baseline (totals, queries, pages, URL Inspection of every sitemap URL) → `seo/snapshots/2026-10-05.json`
+- [x] Success criteria + day 14 / 30 / 60–90 checkpoints recorded before deploy
+- Decisions locked: existing 69 URLs preserved (no removals/redirects); verticals = Business & Seller, Math, Construction, Electrical & Energy, Developer; a vertical hub page is only generated once it has ≥2 calculators (no thin hubs); fee rates and electrical tables live in `src/data/`, not in UI code; every rate cites an official source + verified date.
+
+### v2.B — Calculator primitives + vertical architecture ✅ 2026-10-05
+- [x] `vertical` layer over existing categories; existing dev categories (`ai`, `api`, `data`, `performance`, `encoding`, `general`) sit under the Developer vertical
+- [x] Shared UI primitives (number/currency/percent fields, select, result card, formatters)
+- [x] Pure calculation modules in `src/calculators/logic/` with unit tests
+- [x] Methodology/sources/verified-date section on calculator pages (`meta.methodology`)
+- [x] Fee schedules in `src/data/fees/*.json`; electrical tables in `src/data/electrical/*.json`
+
+### v2.C — Seller & fee batch ✅ 2026-10-05
+- [x] PayPal Fee Calculator *(Business & Seller)* — `/calculators/paypal-fee-calculator`
+- [x] Stripe Fee Calculator *(Business & Seller)* — `/calculators/stripe-fee-calculator`
+- [ ] Etsy Fee Calculator *(Business & Seller)* — `/calculators/etsy-fee-calculator` — **held back 2026-10-05**: built and tested but unregistered. Rates come from an archived copy because etsy.com blocks automated fetch. Re-register once the operator confirms the rates on the live site.
+- [x] Commission Calculator *(Business & Seller)* — `/calculators/commission-calculator`
+- [x] Markup Calculator *(Business & Seller)* — `/calculators/markup-calculator`
+
+### v2.D — Math, food & electrical batch ✅ 2026-10-05
+- [x] Weighted Average Calculator *(Math)* — `/calculators/weighted-average-calculator`
+- [x] Food Cost Calculator *(Business & Seller)* — `/calculators/food-cost-calculator`
+- [x] Wire Size Calculator *(Electrical & Energy)* — `/calculators/wire-size-calculator`
+- [x] Amp Calculator *(Electrical & Energy)* — `/calculators/amp-calculator`
+- [x] Energy Cost Calculator *(Electrical & Energy)* — `/calculators/energy-cost-calculator`
+
+### v2.E — Homepage, hubs, internal linking ✅ 2026-10-05
+- [x] Homepage repositioned as a general calculation engine; developer tools one vertical among several
+- [x] Vertical hubs: `/calculators/business`, `/calculators/electrical`, `/calculators/developer` (Math and Construction hubs appear once they reach 2 calculators)
+- [x] Deliberate related-calculator graph (PayPal ↔ Stripe ↔ Etsy; Markup ↔ Commission ↔ Food Cost; Wire Size ↔ Amp ↔ Energy Cost)
+- [x] Category breadcrumbs on calculator pages; footer vertical links; `/calculators` grouped by vertical
+
+### v2.F — Measurement (queued)
+- [x] Deploy date recorded (2026-10-05) in `docs/seo-experiments.md`; git SHA = the v2 commit on `main`
+- [ ] Day 14 (2026-10-19): discovery/indexing check (preconditions)
+- [ ] Day 30 (2026-11-04): baseline comparison
+- [ ] Day 60–90 (2026-12-04 → 2027-01-03): SCALE / ITERATE / STOP decision
+
+Not in v2 (deliberately): shipping, tile, deck, fence, flooring, battery, catering calculators. Wait for v2.F.
 
 ## Data-Dependent Pages
 
@@ -101,7 +172,7 @@ Pages where hardcoded values (prices, specs, regulatory thresholds) go stale and
 
 ### ⚠ All pricing/regulatory data is currently hardcoded inline in each `.tsx` definition file. No external JSON exists.
 
-## Phase 3 — Externalize Pricing & Regulatory Data to JSON
+## v1.D — Externalize Pricing & Regulatory Data to JSON
 
 Extract all hardcoded pricing tables and regulatory thresholds out of calculator definition files into versioned JSON files under `src/data/`. This decouples data updates from code changes and makes scrapers/ingesters trivial to wire up.
 
@@ -113,9 +184,9 @@ Extract all hardcoded pricing tables and regulatory thresholds out of calculator
 - [x] Create `src/data/pricing/bandwidth.json` and update `bandwidth-cost-calculator.tsx` to import it *(General)* ✅ 2026-04-20
 - [x] Create `src/data/pricing/log-storage.json` and update `log-storage-cost-calculator.tsx` to import it *(General)* ✅ 2026-04-20
 - [x] Create `src/data/pricing/sql-query.json` and update `sql-query-cost-estimator.tsx` to import it *(General)* ✅ 2026-04-20
-- [x] Create `src/data/regulatory/cra-thresholds.json` for CRA patch SLA, reporting deadlines, and compliance criteria — shared across all Phase 3 calculators *(General)* ✅ 2026-04-20
+- [x] Create `src/data/regulatory/cra-thresholds.json` for CRA patch SLA, reporting deadlines, and compliance criteria — shared across all v1.E CRA calculators *(General)* ✅ 2026-04-20
 
-Each JSON file should include a `lastVerified` ISO date field so the data freshness marker (Phase 2 — Freshness Markers) can read it directly.
+Each JSON file should include a `lastVerified` ISO date field so the data freshness marker (v1.C — Freshness Markers) can read it directly.
 
 ### Ingestion pipeline candidates (priority order)
 

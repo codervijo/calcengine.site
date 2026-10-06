@@ -67,7 +67,7 @@ export function buildOrganizationJsonLd() {
     '@type': 'Organization',
     name: 'CalcEngine',
     url: BASE_URL,
-    description: 'Free engineering calculators for developers.',
+    description: 'Free online calculators with open formulas: business and seller fees, math, electrical and energy, and developer tools.',
     inLanguage: 'en-US',
     logo: {
       '@type': 'ImageObject',

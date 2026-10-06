@@ -1,0 +1,31 @@
+{
+  "lastVerified": "2026-10-05",
+  "ampacityBasis": "NEC Table 310.16 — allowable ampacities of insulated conductors, not more than three current-carrying conductors in raceway, cable or earth, 30°C (86°F) ambient. Values per the 2023 NEC baseline as reprinted in NFPA's 2026-cycle First Draft report; identical to the 2017 NEC values published by Cerrowire for every cell compared.",
+  "resistanceBasis": "NEC Chapter 9 Table 8 — DC resistance at 75°C (167°F), stranded conductors, ohms per 1,000 ft (uncoated copper; aluminum).",
+  "sources": [
+    { "label": "NFPA 70 (NEC) 2026 First Draft Report, CMP-6 — reprint of Table 310.16", "url": "https://docinfofiles.nfpa.org/files/AboutTheCodes/70/70_A2025_NEC_P06_FD_PrelimFR.pdf" },
+    { "label": "Cerrowire ampacity chart (2017 NEC) — cross-check", "url": "https://www.cerrowire.com/products/resources/tables-calculators/ampacity-charts/" },
+    { "label": "Encore Wire — NEC 240.4(D) small-conductor limits", "url": "https://encorewire.com/products/tools-and-resources/calculators/wire-size-table.html" },
+    { "label": "Isolite — NEC Chapter 9 Table 8 resistance values", "url": "https://isolite.com/downloads/ISOLITE-VOLTAGE-DROP-TABLE-8-METHOD.pdf" }
+  ],
+  "sizes": [
+    { "size": "14 AWG",   "cmil": 4110,   "cu": { "a60": 15,  "a75": 20,  "a90": 25,  "ocpdMax": 15, "ohmsPerKft": 3.14 },   "al": null },
+    { "size": "12 AWG",   "cmil": 6530,   "cu": { "a60": 20,  "a75": 25,  "a90": 30,  "ocpdMax": 20, "ohmsPerKft": 1.98 },   "al": { "a60": 15,  "a75": 20,  "a90": 25,  "ocpdMax": 15, "ohmsPerKft": 3.25 } },
+    { "size": "10 AWG",   "cmil": 10380,  "cu": { "a60": 30,  "a75": 35,  "a90": 40,  "ocpdMax": 30, "ohmsPerKft": 1.24 },   "al": { "a60": 25,  "a75": 30,  "a90": 35,  "ocpdMax": 25, "ohmsPerKft": 2.04 } },
+    { "size": "8 AWG",    "cmil": 16510,  "cu": { "a60": 40,  "a75": 50,  "a90": 55,  "ohmsPerKft": 0.778 },  "al": { "a60": 35,  "a75": 40,  "a90": 45,  "ohmsPerKft": 1.28 } },
+    { "size": "6 AWG",    "cmil": 26240,  "cu": { "a60": 55,  "a75": 65,  "a90": 75,  "ohmsPerKft": 0.491 },  "al": { "a60": 40,  "a75": 50,  "a90": 55,  "ohmsPerKft": 0.808 } },
+    { "size": "4 AWG",    "cmil": 41740,  "cu": { "a60": 70,  "a75": 85,  "a90": 95,  "ohmsPerKft": 0.308 },  "al": { "a60": 55,  "a75": 65,  "a90": 75,  "ohmsPerKft": 0.508 } },
+    { "size": "3 AWG",    "cmil": 52620,  "cu": { "a60": 85,  "a75": 100, "a90": 115, "ohmsPerKft": 0.245 },  "al": { "a60": 65,  "a75": 75,  "a90": 85,  "ohmsPerKft": 0.403 } },
+    { "size": "2 AWG",    "cmil": 66360,  "cu": { "a60": 95,  "a75": 115, "a90": 130, "ohmsPerKft": 0.194 },  "al": { "a60": 75,  "a75": 90,  "a90": 100, "ohmsPerKft": 0.319 } },
+    { "size": "1 AWG",    "cmil": 83690,  "cu": { "a60": 110, "a75": 130, "a90": 145, "ohmsPerKft": 0.154 },  "al": { "a60": 85,  "a75": 100, "a90": 115, "ohmsPerKft": 0.253 } },
+    { "size": "1/0 AWG",  "cmil": 105600, "cu": { "a60": 125, "a75": 150, "a90": 170, "ohmsPerKft": 0.122 },  "al": { "a60": 100, "a75": 120, "a90": 135, "ohmsPerKft": 0.201 } },
+    { "size": "2/0 AWG",  "cmil": 133100, "cu": { "a60": 145, "a75": 175, "a90": 195, "ohmsPerKft": 0.0967 }, "al": { "a60": 115, "a75": 135, "a90": 150, "ohmsPerKft": 0.159 } },
+    { "size": "3/0 AWG",  "cmil": 167800, "cu": { "a60": 165, "a75": 200, "a90": 225, "ohmsPerKft": 0.0766 }, "al": { "a60": 130, "a75": 155, "a90": 175, "ohmsPerKft": 0.126 } },
+    { "size": "4/0 AWG",  "cmil": 211600, "cu": { "a60": 195, "a75": 230, "a90": 260, "ohmsPerKft": 0.0608 }, "al": { "a60": 150, "a75": 180, "a90": 205, "ohmsPerKft": 0.100 } },
+    { "size": "250 kcmil","cmil": 250000, "cu": { "a60": 215, "a75": 255, "a90": 290, "ohmsPerKft": 0.0515 }, "al": { "a60": 170, "a75": 205, "a90": 230, "ohmsPerKft": 0.0847 } },
+    { "size": "300 kcmil","cmil": 300000, "cu": { "a60": 240, "a75": 285, "a90": 320, "ohmsPerKft": 0.0429 }, "al": { "a60": 195, "a75": 230, "a90": 260, "ohmsPerKft": 0.0707 } },
+    { "size": "350 kcmil","cmil": 350000, "cu": { "a60": 260, "a75": 310, "a90": 350, "ohmsPerKft": 0.0367 }, "al": { "a60": 210, "a75": 250, "a90": 280, "ohmsPerKft": 0.0605 } },
+    { "size": "400 kcmil","cmil": 400000, "cu": { "a60": 280, "a75": 335, "a90": 380, "ohmsPerKft": 0.0321 }, "al": { "a60": 225, "a75": 270, "a90": 305, "ohmsPerKft": 0.0529 } },
+    { "size": "500 kcmil","cmil": 500000, "cu": { "a60": 320, "a75": 380, "a90": 430, "ohmsPerKft": 0.0258 }, "al": { "a60": 260, "a75": 310, "a90": 350, "ohmsPerKft": 0.0424 } }
+  ]
+}

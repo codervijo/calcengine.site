@@ -2,17 +2,38 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import SiteNav from '../layouts/SiteNav.astro';
 import SiteFooter from '../layouts/SiteFooter.astro';
-import { getAllCalculators } from '../calculators/registry';
-import { CATEGORY_LABELS } from '../calculators/registry/types';
+import { getCalculatorBySlug, getCalculatorsByVertical, getHubVerticals } from '../calculators/registry';
+import { VERTICALS, type Vertical } from '../calculators/registry/types';
 import { buildWebAppJsonLd, buildOrganizationJsonLd, buildWebSiteJsonLd } from '../seo/jsonLd';
 
 const BASE_URL = 'https://calcengine.site';
-const calculators = getAllCalculators();
+
+// Featured calculators — the v2 demand-validated set (see docs/seo-experiments.md).
+const FEATURED = [
+  'markup-calculator',
+  'paypal-fee-calculator',
+  'weighted-average-calculator',
+  'wire-size-calculator',
+  'commission-calculator',
+  'stripe-fee-calculator',
+];
+const featured = FEATURED.map((s) => getCalculatorBySlug(s)).filter((c) => c !== undefined);
+
+// Developer vertical highlights (pre-v2 pages kept as one vertical among several).
+const DEV_HIGHLIGHTS = ['openai-cost-calculator', 'json-size-calculator', '429-too-many-requests-calculator', 'littles-law-calculator'];
+const devHighlights = DEV_HIGHLIGHTS.map((s) => getCalculatorBySlug(s)).filter((c) => c !== undefined);
+
+const hubs = getHubVerticals();
+const verticalOrder = (Object.keys(VERTICALS) as Vertical[]).filter((v) => v !== 'developer');
+const sections = verticalOrder
+  .map((v) => ({ v, info: VERTICALS[v], items: getCalculatorsByVertical(v), hasHub: hubs.includes(v) }))
+  .filter((s) => s.items.length > 0);
+const devCount = getCalculatorsByVertical('developer').length;
 
 const jsonLd = [
   buildWebAppJsonLd(
     'CalcEngine',
-    'Free engineering calculators for API costs, backend performance, and developer workflows.',
+    'Free online calculators with open formulas: payment fees, markup and commission, weighted averages, wire size, amps and energy cost, plus developer tools.',
     BASE_URL,
     `${BASE_URL}/og/home.png`,
   ),
@@ -21,16 +42,16 @@ const jsonLd = [
 ];
 
 const features = [
-  { title: 'Fast & Simple', desc: 'No sign-ups, no ads. Just instant results.' },
-  { title: 'Built for Engineers', desc: 'Tools designed for real developer workflows.' },
-  { title: 'Open Formulas', desc: 'Every calculator shows its formula and worked examples.' },
-  { title: 'Always Free', desc: 'No paywalls. Use as much as you need.' },
+  { title: 'Formulas shown', desc: 'Every calculator shows the formula it uses and works through real examples.' },
+  { title: 'Sources and dates', desc: 'Fee schedules and code tables name their source and the date we last checked them.' },
+  { title: 'Clear limits', desc: 'Each page says what it assumes and what it does not model, so you know when to dig deeper.' },
+  { title: 'Free, no sign-up', desc: 'Calculations run in your browser. No account, no paywall.' },
 ];
 ---
 
 <BaseLayout
-  title="Engineering Calculators for Developers | API Cost, Tokens, Performance"
-  description="Free engineering calculators for developers. Estimate OpenAI API cost, token usage, bandwidth, and backend performance instantly."
+  title="CalcEngine — Free Calculators for Fees, Markup, Wire Size & More"
+  description="Free online calculators with the formula shown: PayPal and Stripe fees, markup, commission, weighted average, wire size, amps, energy cost and developer tools."
   canonical="/"
   jsonLd={jsonLd}
   ogImage={`${BASE_URL}/og/home.png`}
@@ -38,123 +59,91 @@ const features = [
   <SiteNav />
 
   <!-- Hero -->
-  <section aria-label="Hero" class="bg-[#1565c0] text-white py-16 sm:py-24">
+  <section aria-label="Hero" class="bg-[#1565c0] text-white py-14 sm:py-20">
     <div class="max-w-3xl mx-auto px-4 sm:px-6 text-center">
       <h1 class="text-4xl sm:text-5xl font-bold mb-4 leading-tight">
-        Engineering Calculators for Real Systems
+        Free Calculators That Show Their Working
       </h1>
-      <p class="text-lg sm:text-xl opacity-90 mb-3 font-normal">
-        Free tools for API costs, backend performance, and developer workflows.
-      </p>
-      <p class="text-base opacity-80 mb-8">
-        CalcEngine provides fast, accurate engineering calculators for developers. Estimate API costs, token usage, and backend performance instantly.
+      <p class="text-lg sm:text-xl opacity-90 mb-8 font-normal">
+        Payment fees, pricing, everyday math, electrical sizing and energy cost — each with the formula,
+        the assumptions and a worked example.
       </p>
       <a href="/calculators" class="inline-flex items-center gap-2 bg-white text-[#1565c0] font-semibold px-8 py-3 rounded-lg hover:bg-gray-100 transition-colors no-underline text-base">
         Browse All Calculators
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
       </a>
     </div>
   </section>
 
-  <!-- Popular Calculators -->
-  <section aria-label="Popular calculators" class="max-w-3xl mx-auto px-4 sm:px-6 py-12 sm:py-16">
-    <h2 class="text-2xl sm:text-3xl font-semibold text-gray-900 dark:text-gray-100 text-center mb-2">
+  <!-- Featured -->
+  <section aria-label="Popular calculators" class="max-w-4xl mx-auto px-4 sm:px-6 py-12 sm:py-16">
+    <h2 class="text-2xl sm:text-3xl font-semibold text-gray-900 dark:text-gray-100 text-center mb-8">
       Popular Calculators
     </h2>
-    <p class="text-gray-500 dark:text-gray-400 text-center mb-8">
-      Start with these popular tools used by developers every day.
-    </p>
-    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-      <a href="/calculators/openai-cost-calculator" class="block border border-gray-200 dark:border-gray-800 rounded-xl p-5 bg-white dark:bg-[#141414] hover:shadow-md dark:hover:border-gray-600 transition-all no-underline">
-        <h3 class="font-semibold text-gray-900 dark:text-gray-100 mb-1.5">OpenAI Cost Calculator</h3>
-        <p class="text-sm text-gray-500 dark:text-gray-400">Estimate OpenAI API costs by model, input tokens, and output tokens.</p>
-      </a>
-      <a href="/calculators/429-too-many-requests-calculator" class="block border border-gray-200 dark:border-gray-800 rounded-xl p-5 bg-white dark:bg-[#141414] hover:shadow-md dark:hover:border-gray-600 transition-all no-underline">
-        <h3 class="font-semibold text-gray-900 dark:text-gray-100 mb-1.5">429 Too Many Requests</h3>
-        <p class="text-sm text-gray-500 dark:text-gray-400">What a 429 means, how to read Retry-After, and why you can hit one while under the limit.</p>
-      </a>
-      <a href="/calculators/json-size-calculator" class="block border border-gray-200 dark:border-gray-800 rounded-xl p-5 bg-white dark:bg-[#141414] hover:shadow-md dark:hover:border-gray-600 transition-all no-underline">
-        <h3 class="font-semibold text-gray-900 dark:text-gray-100 mb-1.5">JSON Size Calculator</h3>
-        <p class="text-sm text-gray-500 dark:text-gray-400">Measure the exact byte size of any JSON payload in UTF-8.</p>
-      </a>
-      <a href="/calculators/base64-size-calculator" class="block border border-gray-200 dark:border-gray-800 rounded-xl p-5 bg-white dark:bg-[#141414] hover:shadow-md dark:hover:border-gray-600 transition-all no-underline">
-        <h3 class="font-semibold text-gray-900 dark:text-gray-100 mb-1.5">Base64 Size Calculator</h3>
-        <p class="text-sm text-gray-500 dark:text-gray-400">See the exact Base64-encoded size and ~33% overhead from original bytes.</p>
-      </a>
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+      {featured.map((c) => (
+        <a href={`/calculators/${c.meta.slug}`} class="block border border-gray-200 dark:border-gray-800 rounded-xl p-5 bg-white dark:bg-[#141414] hover:shadow-md dark:hover:border-gray-600 transition-all no-underline">
+          <h3 class="font-semibold text-gray-900 dark:text-gray-100 mb-1.5">{c.meta.title}</h3>
+          <p class="text-sm text-gray-500 dark:text-gray-400">{c.meta.tagline}</p>
+        </a>
+      ))}
+    </div>
+  </section>
+
+  <!-- Categories -->
+  <section aria-label="Calculator categories" class="bg-gray-50 dark:bg-[#0f0f0f] py-12 sm:py-16">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6">
+      <h2 class="text-2xl sm:text-3xl font-semibold text-gray-900 dark:text-gray-100 text-center mb-10">Calculators by Category</h2>
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+        {sections.map((sec) => (
+          <div class="rounded-xl border border-gray-200 dark:border-gray-800 bg-white dark:bg-[#141414] p-5">
+            <h3 class="text-lg font-semibold text-gray-900 dark:text-gray-100 mb-1">
+              {sec.hasHub
+                ? <a href={`/calculators/${sec.v}`} class="hover:text-[#1565c0] dark:hover:text-[#42a5f5] no-underline">{sec.info.label}</a>
+                : sec.info.label}
+            </h3>
+            <p class="text-sm text-gray-500 dark:text-gray-400 mb-3">{sec.info.blurb}</p>
+            <ul class="space-y-1.5 list-none">
+              {sec.items.map((c) => (
+                <li><a href={`/calculators/${c.meta.slug}`} class="text-[#1565c0] dark:text-[#42a5f5] text-sm hover:underline">{c.meta.title}</a></li>
+              ))}
+            </ul>
+          </div>
+        ))}
+        <div class="rounded-xl border border-gray-200 dark:border-gray-800 bg-white dark:bg-[#141414] p-5">
+          <h3 class="text-lg font-semibold text-gray-900 dark:text-gray-100 mb-1">
+            <a href="/calculators/developer" class="hover:text-[#1565c0] dark:hover:text-[#42a5f5] no-underline">{VERTICALS.developer.label}</a>
+          </h3>
+          <p class="text-sm text-gray-500 dark:text-gray-400 mb-3">{VERTICALS.developer.blurb}</p>
+          <ul class="space-y-1.5 list-none">
+            {devHighlights.map((c) => (
+              <li><a href={`/calculators/${c.meta.slug}`} class="text-[#1565c0] dark:text-[#42a5f5] text-sm hover:underline">{c.meta.title}</a></li>
+            ))}
+            <li><a href="/calculators/developer" class="text-gray-600 dark:text-gray-400 text-sm hover:underline">All {devCount} developer calculators →</a></li>
+          </ul>
+        </div>
+      </div>
     </div>
   </section>
 
   <!-- Why CalcEngine -->
-  <section aria-label="Why CalcEngine" class="bg-gray-50 dark:bg-[#0f0f0f] py-12 sm:py-16">
-    <div class="max-w-3xl mx-auto px-4 sm:px-6">
-      <h2 class="text-2xl sm:text-3xl font-semibold text-gray-900 dark:text-gray-100 text-center mb-10">
-        Why CalcEngine?
-      </h2>
-      <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
-        {features.map((f) => (
-          <div>
-            <h3 class="font-semibold text-gray-900 dark:text-gray-100 mb-1">{f.title}</h3>
-            <p class="text-sm text-gray-500 dark:text-gray-400">{f.desc}</p>
-          </div>
-        ))}
-      </div>
-    </div>
-  </section>
-
-  <!-- Category Sections -->
-  <section aria-label="Calculator categories" class="max-w-3xl mx-auto px-4 sm:px-6 py-12 sm:py-16">
-    <h2 class="text-2xl sm:text-3xl font-semibold text-gray-900 dark:text-gray-100 text-center mb-10">Categories</h2>
-    <div class="space-y-8">
-      <div>
-        <h3 class="text-lg font-semibold text-gray-900 dark:text-gray-100 mb-1">API Cost &amp; Token Calculators</h3>
-        <p class="text-sm text-gray-500 dark:text-gray-400 mb-3">Estimate API costs and token usage across models.</p>
-        <ul class="flex flex-wrap gap-3">
-          <li><a href="/calculators/openai-cost-calculator" class="text-[#1565c0] dark:text-[#42a5f5] text-sm underline hover:opacity-80">OpenAI Cost Calculator</a></li>
-          <li><a href="/calculators/429-too-many-requests-calculator" class="text-[#1565c0] dark:text-[#42a5f5] text-sm underline hover:opacity-80">429 Too Many Requests: causes and fixes</a></li>
-        </ul>
-      </div>
-      <div>
-        <h3 class="text-lg font-semibold text-gray-900 dark:text-gray-100 mb-1">Backend &amp; Performance Calculators</h3>
-        <p class="text-sm text-gray-500 dark:text-gray-400 mb-3">Analyze rate limits, bandwidth, and system performance.</p>
-        <ul class="flex flex-wrap gap-3">
-          <li><a href="/calculators/429-too-many-requests-calculator" class="text-[#1565c0] dark:text-[#42a5f5] text-sm underline hover:opacity-80">Handling 429 rate-limit responses</a></li>
-        </ul>
-      </div>
-      <div>
-        <h3 class="text-lg font-semibold text-gray-900 dark:text-gray-100 mb-1">Data &amp; Storage Calculators</h3>
-        <p class="text-sm text-gray-500 dark:text-gray-400 mb-3">Calculate JSON size, payloads, and storage requirements.</p>
-        <ul class="flex flex-wrap gap-3">
-          <li><a href="/calculators/json-size-calculator" class="text-[#1565c0] dark:text-[#42a5f5] text-sm underline hover:opacity-80">JSON Size Calculator</a></li>
-          <li><a href="/calculators/base64-size-calculator" class="text-[#1565c0] dark:text-[#42a5f5] text-sm underline hover:opacity-80">Base64 Size Calculator</a></li>
-        </ul>
-      </div>
-    </div>
-
-    <div class="flex flex-wrap gap-2 justify-center mt-10 mb-10">
-      {Object.entries(CATEGORY_LABELS).map(([key, label]) => (
-        <a href={`/calculators/${key}`} class="border border-gray-300 dark:border-gray-700 text-gray-700 dark:text-gray-300 text-sm px-4 py-1.5 rounded-full hover:border-[#1565c0] dark:hover:border-[#42a5f5] hover:text-[#1565c0] dark:hover:text-[#42a5f5] transition-colors no-underline">
-          {label}
-        </a>
+  <section aria-label="Why CalcEngine" class="max-w-3xl mx-auto px-4 sm:px-6 py-12 sm:py-16">
+    <h2 class="text-2xl sm:text-3xl font-semibold text-gray-900 dark:text-gray-100 text-center mb-10">
+      Why CalcEngine?
+    </h2>
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+      {features.map((f) => (
+        <div>
+          <h3 class="font-semibold text-gray-900 dark:text-gray-100 mb-1">{f.title}</h3>
+          <p class="text-sm text-gray-500 dark:text-gray-400">{f.desc}</p>
+        </div>
       ))}
     </div>
-    <div class="text-center">
+    <div class="text-center mt-10">
       <a href="/calculators" class="inline-flex items-center gap-2 bg-[#1565c0] dark:bg-[#42a5f5] text-white font-semibold px-8 py-3 rounded-lg hover:bg-[#0d47a1] dark:hover:bg-[#1565c0] transition-colors no-underline">
         View All Calculators
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
       </a>
-    </div>
-  </section>
-
-  <!-- What you can calculate -->
-  <section aria-label="What you can calculate" class="bg-gray-50 dark:bg-[#0f0f0f] py-12 sm:py-16">
-    <div class="max-w-3xl mx-auto px-4 sm:px-6">
-      <h2 class="text-2xl sm:text-3xl font-semibold text-gray-900 dark:text-gray-100 mb-4">What you can calculate</h2>
-      <p class="text-gray-600 dark:text-gray-400 mb-4">
-        CalcEngine helps developers estimate API costs, token usage, and backend performance. These tools are designed for real-world engineering scenarios, including AI applications, infrastructure planning, and performance tuning.
-      </p>
-      <p class="text-gray-600 dark:text-gray-400">
-        Instead of using spreadsheets or manual calculations, users can quickly model usage, pricing, and scaling behavior using simple inputs.
-      </p>
     </div>
   </section>
 

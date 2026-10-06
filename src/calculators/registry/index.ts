@@ -1,4 +1,5 @@
-import type { CalculatorDefinition } from './types';
+import type { CalculatorDefinition, CalculatorCategory, Vertical } from './types';
+import { CATEGORY_LABELS, CATEGORY_VERTICAL, VERTICALS, MIN_HUB_SIZE } from './types';
 import { openaiCostCalculator } from '../definitions/openai-cost';
 import { jsonSizeCalculator } from '../definitions/json-size';
 import { tooManyRequestsCalculator } from '../definitions/429-too-many-requests-calculator';
@@ -57,6 +58,15 @@ import { firmwareRiskScoreCalculator } from '../definitions/firmware-risk-score-
 import { vulnerabilityResponseTimeCalculator } from '../definitions/vulnerability-response-time-calculator';
 import { encryptionCoverageCalculator } from '../definitions/encryption-coverage-calculator';
 import { euDeviceComplianceQuizCalculator } from '../definitions/eu-device-compliance-quiz';
+import { paypalFeeCalculator } from '../definitions/paypal-fee-calculator';
+import { stripeFeeCalculator } from '../definitions/stripe-fee-calculator';
+import { commissionCalculator } from '../definitions/commission-calculator';
+import { markupCalculator } from '../definitions/markup-calculator';
+import { foodCostCalculator } from '../definitions/food-cost-calculator';
+import { weightedAverageCalculator } from '../definitions/weighted-average-calculator';
+import { wireSizeCalculator } from '../definitions/wire-size-calculator';
+import { ampCalculator } from '../definitions/amp-calculator';
+import { energyCostCalculator } from '../definitions/energy-cost-calculator';
 
 const calculators: CalculatorDefinition[] = [
   openaiCostCalculator,
@@ -117,6 +127,17 @@ const calculators: CalculatorDefinition[] = [
   vulnerabilityResponseTimeCalculator,
   encryptionCoverageCalculator,
   euDeviceComplianceQuizCalculator,
+  // v2 — demand-first pivot (Experiment 1). Order here is display order on hubs.
+  paypalFeeCalculator,
+  stripeFeeCalculator,
+  // etsyFeeCalculator — held back until its rates are confirmed on etsy.com (see src/data/fees/etsy.json verificationNote).
+  markupCalculator,
+  commissionCalculator,
+  foodCostCalculator,
+  weightedAverageCalculator,
+  wireSizeCalculator,
+  ampCalculator,
+  energyCostCalculator,
 ];
 
 export function getAllCalculators(): CalculatorDefinition[] {
@@ -137,4 +158,30 @@ export function getRelatedCalculators(slugs: string[]): CalculatorDefinition[] {
 
 export function getCategories(): string[] {
   return [...new Set(calculators.map((c) => c.meta.category))];
+}
+
+export function getCalculatorsByVertical(vertical: Vertical): CalculatorDefinition[] {
+  return calculators.filter((c) => CATEGORY_VERTICAL[c.meta.category] === vertical);
+}
+
+/** Verticals that get a hub page at /calculators/{vertical}. Developer always does. */
+export function getHubVerticals(): Vertical[] {
+  return (Object.keys(VERTICALS) as Vertical[]).filter(
+    (v) => v === 'developer' || getCalculatorsByVertical(v).length >= MIN_HUB_SIZE,
+  );
+}
+
+/** Developer sub-categories that have their own (pre-v2) hub pages. */
+export const DEVELOPER_SUBHUBS: CalculatorCategory[] = ['ai', 'api', 'data', 'performance', 'encoding', 'general'];
+
+/**
+ * The hub a calculator's breadcrumb points to: the developer sub-hub for
+ * developer categories, else the vertical hub if it exists, else none.
+ */
+export function getHubForCategory(category: CalculatorCategory): { label: string; url: string } | null {
+  if (DEVELOPER_SUBHUBS.includes(category)) {
+    return { label: CATEGORY_LABELS[category], url: `/calculators/${category}` };
+  }
+  const v = CATEGORY_VERTICAL[category];
+  return getHubVerticals().includes(v) ? { label: VERTICALS[v].label, url: `/calculators/${v}` } : null;
 }
