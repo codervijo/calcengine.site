@@ -88,3 +88,11 @@ https://search.google.com/search-console directly.
   - **Ruled out (2026-10-31, live checks):** robots.txt blocking, noindex (meta or header), redirect chains (www/http → apex 308), client-only links (16 `/calculators/*` links are plain `<a href>` in server HTML), Googlebot user-agent blocking (200).
   - Process lesson for sister sites: **check SV before building, and check indexing within 2 weeks of the first deploy.** v1 shipped 58 pages in 2026-04 and indexing wasn't measured until 2026-10-05.
 - **Next review:** Day 30, 2026-11-04.
+
+## 2026-10-31 — IndexNow submission of unsubmitted sitemap URLs
+- **Status:** active
+- **KPI:** Bing discovery/indexing of calcengine.site URLs (Bing Webmaster Tools). Not a Google KPI: Google does not consume IndexNow.
+- **Baseline:** not captured. No Bing Webmaster data has been pulled for this site yet. Google: 1/81 indexed (see the day-14 entry above).
+- **Action:** `lamill project fix calcengine.site --rule CHECK_154 --apply` submitted 14 sitemap URLs that CHECK_154 flagged as never submitted (the tool didn't print which ones). Key file `/cf72530eed2cae85a7c3215d92affcbf.txt` verified live and matching before submission. CHECK_154 now passes.
+- **Result:** TBD — review 2026-11-28. Needs a Bing baseline first; without one, any Bing number is uninterpretable.
+- **Learning:** TBD. Side benefit if it works: Bing indexing a page Google ignores would point to a Google-specific cause (site-level classification) rather than a technical one.
