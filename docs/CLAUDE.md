@@ -80,7 +80,7 @@ future Claude sessions don't re-propose them.>
   but unregistered: etsy.com returns 403 to automated fetches, so rates were only
   checked against an archived copy. Re-register only after the operator confirms
   rates on the live pages; give it its own day 0 in `docs/seo-experiments.md`.
-- **No new calculators until PRD v2.F says SCALE.** The remaining Ahrefs list
+- **No new calculators until PRD v2.G says SCALE.** The remaining Ahrefs list
   (shipping, tile, deck, fence, flooring, battery, catering) is deliberately
   unbuilt — Experiment 1 is a fixed 9-page batch. Don't propose them early.
 - **Math and Construction hubs** are not generated until each has ≥2 calculators

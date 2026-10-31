@@ -16,7 +16,8 @@
 | v2.C | ✓ 2026-10-05 | Seller & fee batch: PayPal, Stripe, Etsy, Commission, Markup |
 | v2.D | ✓ 2026-10-05 | Math, food & electrical batch: Weighted Average, Food Cost, Wire Size, Amp, Energy Cost |
 | v2.E | ✓ 2026-10-05 | Homepage repositioning, vertical hubs, internal linking, sitemap |
-| v2.F | queued | Measurement: day 14 / 30 / 60–90 checkpoints → SCALE / ITERATE / STOP decision |
+| v2.F | active | Keyword research (no build): treg-sourced demand / low-KD calculator shortlist |
+| v2.G | active | Measurement: day 14 / 30 / 60–90 checkpoints → SCALE / ITERATE / STOP decision |
 
 Phases were labelled "Phase 1–4" until 2026-10-05; renamed to v1.B–v1.E
 (Phase 3 → v1.D, Phase 4 → v1.E) to match the portfolio versioning scheme.
@@ -100,7 +101,7 @@ Started 2026-10-05. Full thesis, baseline, and evaluation criteria live in
 
 Process: `search demand → SERP validation → calculator → measure`.
 Phase 1 is a deliberate **10-page validation batch**. No further calculators
-until v2.F returns SCALE.
+until v2.G returns SCALE.
 
 ### v2.A — Planning / decisions lock ✅ 2026-10-05
 - [x] Close Experiment 0 and open Experiment 1 in `docs/seo-experiments.md`
@@ -135,13 +136,52 @@ until v2.F returns SCALE.
 - [x] Deliberate related-calculator graph (PayPal ↔ Stripe ↔ Etsy; Markup ↔ Commission ↔ Food Cost; Wire Size ↔ Amp ↔ Energy Cost)
 - [x] Category breadcrumbs on calculator pages; footer vertical links; `/calculators` grouped by vertical
 
-### v2.F — Measurement (queued)
+### v2.F — Keyword research (no build)
+Added 2026-10-31 (operator). Research only. **No calculator is built from this list
+until discovery is fixed and v2.G returns SCALE.** Building now would muddy
+Experiment 1's measurement.
+- [x] Pull demand candidates via treg (US search volume, KD, SERP check for small-site rankers) ✅ 2026-10-31
+- [x] Exclude keywords already built or listed in the Experiment 1 demand table ✅ 2026-10-31
+- [x] Ranked shortlist with source + capture date per number → `docs/seo-experiments.md` § Keyword research ✅ 2026-10-31 (8 SERP-checked, ~16 unchecked)
+- [ ] SERP-check the unchecked candidates (stair stringer re-check, Math batch, remaining Construction)
+
+#### Candidate calculators (unscheduled backlog)
+Found by v2.F (2026-10-31). Not assigned to a build phase. Placement waits on the
+v2.G decision. Volume = DataForSEO US monthly (cluster-level, don't sum); KD =
+DataForSEO. Evidence: `docs/seo-experiments.md` § Keyword research.
+
+SERP-checked:
+- [ ] Asphalt Calculator *(Construction)* — 27,100 / KD 0
+- [ ] Topsoil Calculator *(Construction)* — 18,100 / KD 0
+- [ ] Cinder Block Calculator *(Construction)* — 9,900 / KD 0
+- [ ] Conduit Fill Calculator *(Electrical & Energy)* — 18,100 / KD 4 — needs NEC Chapter 9 tables; accuracy + licensing check first
+- [ ] Prorated Rent Calculator *(Business & Seller)* — 18,100 / KD 2
+- [ ] Freight Class Calculator *(Business & Seller)* — 14,800 / KD 0
+- [ ] Gross Profit Margin Calculator *(Business & Seller)* — 12,100 / KD 11 — pairs with Markup
+
+Not yet SERP-checked:
+- [ ] Stair Stringer Calculator *(Construction)* — 12,100 / KD 11 (SERP fetch incomplete)
+- [ ] Pool Volume Calculator *(Construction)* — 22,200 / KD 0–7
+- [ ] Drywall Calculator *(Construction)* — 14,800 / KD 15
+- [ ] Sand Calculator *(Construction)* — 9,900 / KD 0
+- [ ] Sod Calculator *(Construction)* — 9,900 / KD 2
+- [ ] Paver Calculator *(Construction)* — 9,900 / KD 12
+- [ ] Recessed Lighting Calculator *(Construction)* — 8,100 / KD 0
+- [ ] Volt Amps Calculator *(Electrical & Energy)* — 27,100 / KD 5 — may be an Amp Calculator variant, not a new page
+- [ ] Decimal to Fraction Calculator *(Math)* — 27,100 / KD 0
+- [ ] Long Division Calculator *(Math)* — 27,100 / KD 13
+- [ ] System of Equations Calculator *(Math)* — 27,100 / KD 4–9
+- [ ] Mean / Median Calculator *(Math)* — 22,200 / KD 2–5
+
+Already on the deferred list (re-measured): Deck 12,100 / KD 0–12 · Tile 12,100 / KD 7 · Fence 9,900 / KD 0.
+
+### v2.G — Measurement (active)
 - [x] Deploy date recorded (2026-10-05) in `docs/seo-experiments.md`; git SHA = the v2 commit on `main`
-- [ ] Day 14 (2026-10-19): discovery/indexing check (preconditions)
+- [x] Day 14 (2026-10-19): discovery/indexing check (preconditions) — captured late 2026-10-31: sitemap re-fetched ✓, 0/12 new URLs discovered → **discovery still broken** (`seo/snapshots/2026-10-31.json`)
 - [ ] Day 30 (2026-11-04): baseline comparison
 - [ ] Day 60–90 (2026-12-04 → 2027-01-03): SCALE / ITERATE / STOP decision
 
-Not in v2 (deliberately): shipping, tile, deck, fence, flooring, battery, catering calculators. Wait for v2.F.
+Not in v2 (deliberately): shipping, tile, deck, fence, flooring, battery, catering calculators. Wait for v2.G.
 
 ## Data-Dependent Pages
 

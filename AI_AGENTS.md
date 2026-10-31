@@ -20,7 +20,7 @@ How to capture: re-run the read-only GSC pull (Search Console API via
 `~/work/projects/sites/portfolio` OAuth, `uv run --project …`), save it as a
 **new** `seo/snapshots/YYYY-MM-DD.json` (never overwrite), then append
 a dated entry to the checkpoint log in `docs/seo-experiments.md` and
-tick the matching v2.F row in `docs/prd.md`.
+tick the matching v2.G row in `docs/prd.md`.
 
 Held back from the batch: **Etsy Fee Calculator.** Its rates are unconfirmed
 on the live etsy.com (`src/data/fees/etsy.json` → `verificationNote`).
@@ -131,7 +131,7 @@ When in doubt, open `src/calculators/definitions/openai-cost.tsx` and mirror its
 Read `docs/seo-experiments.md` before adding pages. Experiment 0 (developer
 calculators, 69 pages) produced ~12 impressions / 28d; Experiment 1 tests a
 10-page demand-validated batch. Rule: `search demand → SERP validation →
-calculator → measure`. **No new calculators until PRD v2.F returns SCALE.**
+calculator → measure`. **No new calculators until PRD v2.G returns SCALE.**
 Never overwrite `seo/snapshots/*.json`; add a new dated file per capture.
 
 ## Adding a calculator (v2 building blocks)

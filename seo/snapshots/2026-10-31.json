@@ -1,0 +1,1009 @@
+{
+  "schema": "calcengine-seo-snapshot-v1",
+  "snapshot_date": "2026-10-31",
+  "label": "Experiment 1 day-14 checkpoint (captured late, day 26)",
+  "experiment": "Experiment 1 \u2014 Demand-First Broad Calculator Pivot (PRD v2)",
+  "deployed_git_sha_at_capture": "0248f97f88f1ced059aa635c6e4c524ebc71582d",
+  "site": {
+    "host": "https://calcengine.site",
+    "live_sitemap": "https://calcengine.site/sitemap-index.xml",
+    "live_sitemap_url_count": 81,
+    "new_v2_urls": [
+      "https://calcengine.site/calculators/paypal-fee-calculator",
+      "https://calcengine.site/calculators/stripe-fee-calculator",
+      "https://calcengine.site/calculators/commission-calculator",
+      "https://calcengine.site/calculators/markup-calculator",
+      "https://calcengine.site/calculators/food-cost-calculator",
+      "https://calcengine.site/calculators/weighted-average-calculator",
+      "https://calcengine.site/calculators/wire-size-calculator",
+      "https://calcengine.site/calculators/amp-calculator",
+      "https://calcengine.site/calculators/energy-cost-calculator",
+      "https://calcengine.site/calculators/business",
+      "https://calcengine.site/calculators/electrical",
+      "https://calcengine.site/calculators/developer"
+    ],
+    "new_v2_urls_missing_from_sitemap": [],
+    "gsc_sitemaps": [
+      {
+        "path": "https://calcengine.site/sitemap-index.xml",
+        "lastSubmitted": "2026-10-06T00:25:00.021Z",
+        "isPending": false,
+        "isSitemapsIndex": true,
+        "lastDownloaded": "2026-10-26T18:39:33.279Z",
+        "warnings": "0",
+        "errors": "0",
+        "contents": [
+          {
+            "type": "web",
+            "submitted": "81",
+            "indexed": "0"
+          }
+        ]
+      }
+    ]
+  },
+  "gsc_source": {
+    "method": "Search Console API (sitemaps.list + searchanalytics.query + urlInspection.index.inspect), read-only, via portfolio/src/portfolio/gsc.py OAuth",
+    "property": "sc-domain:calcengine.site",
+    "fetched_at": "2026-10-31T20:05:44.376908+00:00"
+  },
+  "gsc_28d": {
+    "period": {
+      "start": "2026-10-01",
+      "end": "2026-10-28",
+      "days": 28,
+      "lag_days": 3
+    },
+    "clicks": 0,
+    "impressions": 9,
+    "ctr": 0,
+    "position": 28.333333333333332
+  },
+  "gsc_prior_28d": {
+    "period": {
+      "start": "2026-09-03",
+      "end": "2026-09-30"
+    },
+    "clicks": 0,
+    "impressions": 14,
+    "ctr": 0,
+    "position": 20.214285714285715
+  },
+  "pages_since_deploy": {
+    "period": {
+      "start": "2026-10-05",
+      "end": "2026-10-28"
+    },
+    "rows": [
+      {
+        "keys": [
+          "https://calcengine.site/"
+        ],
+        "clicks": 0,
+        "impressions": 5,
+        "ctr": 0,
+        "position": 3
+      }
+    ]
+  },
+  "query_page_28d": [
+    {
+      "keys": [
+        "api calc",
+        "https://calcengine.site/"
+      ],
+      "clicks": 0,
+      "impressions": 3,
+      "ctr": 0,
+      "position": 79.66666666666667
+    }
+  ],
+  "indexing": {
+    "method": "URL Inspection API on every live sitemap URL",
+    "indexed_count": 1,
+    "coverage_state_counts": {
+      "Submitted and indexed": 1,
+      "URL is unknown to Google": 80
+    },
+    "new_v2_coverage_state_counts": {
+      "URL is unknown to Google": 12
+    },
+    "per_url": [
+      {
+        "url": "https://calcengine.site",
+        "coverage_state": "Submitted and indexed",
+        "verdict": "PASS",
+        "indexing_state": "INDEXING_ALLOWED",
+        "last_crawl": "2026-10-26T23:22:26Z",
+        "google_canonical": "https://calcengine.site",
+        "referring_urls": [
+          "https://calcengine.site/calculators",
+          "https://www.calcengine.site/",
+          "http://calcengine.site/"
+        ],
+        "sitemaps": [],
+        "is_new_v2": false
+      },
+      {
+        "url": "https://calcengine.site/about",
+        "coverage_state": "URL is unknown to Google",
+        "verdict": "NEUTRAL",
+        "indexing_state": "INDEXING_STATE_UNSPECIFIED",
+        "last_crawl": null,
+        "google_canonical": null,
+        "referring_urls": [],
+        "sitemaps": [],
+        "is_new_v2": false
+      },
+      {
+        "url": "https://calcengine.site/calculators",
+        "coverage_state": "URL is unknown to Google",
+        "verdict": "NEUTRAL",
+        "indexing_state": "INDEXING_STATE_UNSPECIFIED",
+        "last_crawl": null,
+        "google_canonical": null,
+        "referring_urls": [],
+        "sitemaps": [],
+        "is_new_v2": false
+      },
+      {
+        "url": "https://calcengine.site/calculators/429-too-many-requests-calculator",
+        "coverage_state": "URL is unknown to Google",
+        "verdict": "NEUTRAL",
+        "indexing_state": "INDEXING_STATE_UNSPECIFIED",
+        "last_crawl": null,
+        "google_canonical": null,
+        "referring_urls": [],
+        "sitemaps": [],
+        "is_new_v2": false
+      },
+      {
+        "url": "https://calcengine.site/calculators/ai",
+        "coverage_state": "URL is unknown to Google",
+        "verdict": "NEUTRAL",
+        "indexing_state": "INDEXING_STATE_UNSPECIFIED",
+        "last_crawl": null,
+        "google_canonical": null,
+        "referring_urls": [],
+        "sitemaps": [],
+        "is_new_v2": false
+      },
+      {
+        "url": "https://calcengine.site/calculators/amp-calculator",
+        "coverage_state": "URL is unknown to Google",
+        "verdict": "NEUTRAL",
+        "indexing_state": "INDEXING_STATE_UNSPECIFIED",
+        "last_crawl": null,
+        "google_canonical": null,
+        "referring_urls": [],
+        "sitemaps": [],
+        "is_new_v2": true
+      },
+      {
+        "url": "https://calcengine.site/calculators/api",
+        "coverage_state": "URL is unknown to Google",
+        "verdict": "NEUTRAL",
+        "indexing_state": "INDEXING_STATE_UNSPECIFIED",
+        "last_crawl": null,
+        "google_canonical": null,
+        "referring_urls": [],
+        "sitemaps": [],
+        "is_new_v2": false
+      },
+      {
+        "url": "https://calcengine.site/calculators/api-pagination-limit-calculator",
+        "coverage_state": "URL is unknown to Google",
+        "verdict": "NEUTRAL",
+        "indexing_state": "INDEXING_STATE_UNSPECIFIED",
+        "last_crawl": null,
+        "google_canonical": null,
+        "referring_urls": [],
+        "sitemaps": [],
+        "is_new_v2": false
+      },
+      {
+        "url": "https://calcengine.site/calculators/api-response-time-estimator",
+        "coverage_state": "URL is unknown to Google",
+        "verdict": "NEUTRAL",
+        "indexing_state": "INDEXING_STATE_UNSPECIFIED",
+        "last_crawl": null,
+        "google_canonical": null,
+        "referring_urls": [],
+        "sitemaps": [],
+        "is_new_v2": false
+      },
+      {
+        "url": "https://calcengine.site/calculators/bandwidth-cost-calculator",
+        "coverage_state": "URL is unknown to Google",
+        "verdict": "NEUTRAL",
+        "indexing_state": "INDEXING_STATE_UNSPECIFIED",
+        "last_crawl": null,
+        "google_canonical": null,
+        "referring_urls": [],
+        "sitemaps": [],
+        "is_new_v2": false
+      },
+      {
+        "url": "https://calcengine.site/calculators/base64-size-calculator",
+        "coverage_state": "URL is unknown to Google",
+        "verdict": "NEUTRAL",
+        "indexing_state": "INDEXING_STATE_UNSPECIFIED",
+        "last_crawl": null,
+        "google_canonical": null,
+        "referring_urls": [],
+        "sitemaps": [],
+        "is_new_v2": false
+      },
+      {
+        "url": "https://calcengine.site/calculators/batch-processing-time-calculator",
+        "coverage_state": "URL is unknown to Google",
+        "verdict": "NEUTRAL",
+        "indexing_state": "INDEXING_STATE_UNSPECIFIED",
+        "last_crawl": null,
+        "google_canonical": null,
+        "referring_urls": [],
+        "sitemaps": [],
+        "is_new_v2": false
+      },
+      {
+        "url": "https://calcengine.site/calculators/business",
+        "coverage_state": "URL is unknown to Google",
+        "verdict": "NEUTRAL",
+        "indexing_state": "INDEXING_STATE_UNSPECIFIED",
+        "last_crawl": null,
+        "google_canonical": null,
+        "referring_urls": [],
+        "sitemaps": [],
+        "is_new_v2": true
+      },
+      {
+        "url": "https://calcengine.site/calculators/cache-hit-rate-calculator",
+        "coverage_state": "URL is unknown to Google",
+        "verdict": "NEUTRAL",
+        "indexing_state": "INDEXING_STATE_UNSPECIFIED",
+        "last_crawl": null,
+        "google_canonical": null,
+        "referring_urls": [],
+        "sitemaps": [],
+        "is_new_v2": false
+      },
+      {
+        "url": "https://calcengine.site/calculators/cache-ttl-impact-calculator",
+        "coverage_state": "URL is unknown to Google",
+        "verdict": "NEUTRAL",
+        "indexing_state": "INDEXING_STATE_UNSPECIFIED",
+        "last_crawl": null,
+        "google_canonical": null,
+        "referring_urls": [],
+        "sitemaps": [],
+        "is_new_v2": false
+      },
+      {
+        "url": "https://calcengine.site/calculators/cdn-cost-calculator",
+        "coverage_state": "URL is unknown to Google",
+        "verdict": "NEUTRAL",
+        "indexing_state": "INDEXING_STATE_UNSPECIFIED",
+        "last_crawl": null,
+        "google_canonical": null,
+        "referring_urls": [],
+        "sitemaps": [],
+        "is_new_v2": false
+      },
+      {
+        "url": "https://calcengine.site/calculators/commission-calculator",
+        "coverage_state": "URL is unknown to Google",
+        "verdict": "NEUTRAL",
+        "indexing_state": "INDEXING_STATE_UNSPECIFIED",
+        "last_crawl": null,
+        "google_canonical": null,
+        "referring_urls": [],
+        "sitemaps": [],
+        "is_new_v2": true
+      },
+      {
+        "url": "https://calcengine.site/calculators/compression-ratio-calculator",
+        "coverage_state": "URL is unknown to Google",
+        "verdict": "NEUTRAL",
+        "indexing_state": "INDEXING_STATE_UNSPECIFIED",
+        "last_crawl": null,
+        "google_canonical": null,
+        "referring_urls": [],
+        "sitemaps": [],
+        "is_new_v2": false
+      },
+      {
+        "url": "https://calcengine.site/calculators/cpu-usage-estimator",
+        "coverage_state": "URL is unknown to Google",
+        "verdict": "NEUTRAL",
+        "indexing_state": "INDEXING_STATE_UNSPECIFIED",
+        "last_crawl": null,
+        "google_canonical": null,
+        "referring_urls": [],
+        "sitemaps": [],
+        "is_new_v2": false
+      },
+      {
+        "url": "https://calcengine.site/calculators/cra-compliance-score-calculator",
+        "coverage_state": "URL is unknown to Google",
+        "verdict": "NEUTRAL",
+        "indexing_state": "INDEXING_STATE_UNSPECIFIED",
+        "last_crawl": null,
+        "google_canonical": null,
+        "referring_urls": [],
+        "sitemaps": [],
+        "is_new_v2": false
+      },
+      {
+        "url": "https://calcengine.site/calculators/cron-next-run-calculator",
+        "coverage_state": "URL is unknown to Google",
+        "verdict": "NEUTRAL",
+        "indexing_state": "INDEXING_STATE_UNSPECIFIED",
+        "last_crawl": null,
+        "google_canonical": null,
+        "referring_urls": [],
+        "sitemaps": [],
+        "is_new_v2": false
+      },
+      {
+        "url": "https://calcengine.site/calculators/cve-exposure-calculator",
+        "coverage_state": "URL is unknown to Google",
+        "verdict": "NEUTRAL",
+        "indexing_state": "INDEXING_STATE_UNSPECIFIED",
+        "last_crawl": null,
+        "google_canonical": null,
+        "referring_urls": [],
+        "sitemaps": [],
+        "is_new_v2": false
+      },
+      {
+        "url": "https://calcengine.site/calculators/data",
+        "coverage_state": "URL is unknown to Google",
+        "verdict": "NEUTRAL",
+        "indexing_state": "INDEXING_STATE_UNSPECIFIED",
+        "last_crawl": null,
+        "google_canonical": null,
+        "referring_urls": [],
+        "sitemaps": [],
+        "is_new_v2": false
+      },
+      {
+        "url": "https://calcengine.site/calculators/data-transfer-cost-calculator",
+        "coverage_state": "URL is unknown to Google",
+        "verdict": "NEUTRAL",
+        "indexing_state": "INDEXING_STATE_UNSPECIFIED",
+        "last_crawl": null,
+        "google_canonical": null,
+        "referring_urls": [],
+        "sitemaps": [],
+        "is_new_v2": false
+      },
+      {
+        "url": "https://calcengine.site/calculators/developer",
+        "coverage_state": "URL is unknown to Google",
+        "verdict": "NEUTRAL",
+        "indexing_state": "INDEXING_STATE_UNSPECIFIED",
+        "last_crawl": null,
+        "google_canonical": null,
+        "referring_urls": [],
+        "sitemaps": [],
+        "is_new_v2": true
+      },
+      {
+        "url": "https://calcengine.site/calculators/device-lifecycle-compliance-calculator",
+        "coverage_state": "URL is unknown to Google",
+        "verdict": "NEUTRAL",
+        "indexing_state": "INDEXING_STATE_UNSPECIFIED",
+        "last_crawl": null,
+        "google_canonical": null,
+        "referring_urls": [],
+        "sitemaps": [],
+        "is_new_v2": false
+      },
+      {
+        "url": "https://calcengine.site/calculators/disk-iops-calculator",
+        "coverage_state": "URL is unknown to Google",
+        "verdict": "NEUTRAL",
+        "indexing_state": "INDEXING_STATE_UNSPECIFIED",
+        "last_crawl": null,
+        "google_canonical": null,
+        "referring_urls": [],
+        "sitemaps": [],
+        "is_new_v2": false
+      },
+      {
+        "url": "https://calcengine.site/calculators/download-speed-calculator",
+        "coverage_state": "URL is unknown to Google",
+        "verdict": "NEUTRAL",
+        "indexing_state": "INDEXING_STATE_UNSPECIFIED",
+        "last_crawl": null,
+        "google_canonical": null,
+        "referring_urls": [],
+        "sitemaps": [],
+        "is_new_v2": false
+      },
+      {
+        "url": "https://calcengine.site/calculators/electrical",
+        "coverage_state": "URL is unknown to Google",
+        "verdict": "NEUTRAL",
+        "indexing_state": "INDEXING_STATE_UNSPECIFIED",
+        "last_crawl": null,
+        "google_canonical": null,
+        "referring_urls": [],
+        "sitemaps": [],
+        "is_new_v2": true
+      },
+      {
+        "url": "https://calcengine.site/calculators/encoding",
+        "coverage_state": "URL is unknown to Google",
+        "verdict": "NEUTRAL",
+        "indexing_state": "INDEXING_STATE_UNSPECIFIED",
+        "last_crawl": null,
+        "google_canonical": null,
+        "referring_urls": [],
+        "sitemaps": [],
+        "is_new_v2": false
+      },
+      {
+        "url": "https://calcengine.site/calculators/encryption-coverage-calculator",
+        "coverage_state": "URL is unknown to Google",
+        "verdict": "NEUTRAL",
+        "indexing_state": "INDEXING_STATE_UNSPECIFIED",
+        "last_crawl": null,
+        "google_canonical": null,
+        "referring_urls": [],
+        "sitemaps": [],
+        "is_new_v2": false
+      },
+      {
+        "url": "https://calcengine.site/calculators/encryption-overhead-calculator",
+        "coverage_state": "URL is unknown to Google",
+        "verdict": "NEUTRAL",
+        "indexing_state": "INDEXING_STATE_UNSPECIFIED",
+        "last_crawl": null,
+        "google_canonical": null,
+        "referring_urls": [],
+        "sitemaps": [],
+        "is_new_v2": false
+      },
+      {
+        "url": "https://calcengine.site/calculators/energy-cost-calculator",
+        "coverage_state": "URL is unknown to Google",
+        "verdict": "NEUTRAL",
+        "indexing_state": "INDEXING_STATE_UNSPECIFIED",
+        "last_crawl": null,
+        "google_canonical": null,
+        "referring_urls": [],
+        "sitemaps": [],
+        "is_new_v2": true
+      },
+      {
+        "url": "https://calcengine.site/calculators/eu-device-compliance-quiz",
+        "coverage_state": "URL is unknown to Google",
+        "verdict": "NEUTRAL",
+        "indexing_state": "INDEXING_STATE_UNSPECIFIED",
+        "last_crawl": null,
+        "google_canonical": null,
+        "referring_urls": [],
+        "sitemaps": [],
+        "is_new_v2": false
+      },
+      {
+        "url": "https://calcengine.site/calculators/event-processing-rate-calculator",
+        "coverage_state": "URL is unknown to Google",
+        "verdict": "NEUTRAL",
+        "indexing_state": "INDEXING_STATE_UNSPECIFIED",
+        "last_crawl": null,
+        "google_canonical": null,
+        "referring_urls": [],
+        "sitemaps": [],
+        "is_new_v2": false
+      },
+      {
+        "url": "https://calcengine.site/calculators/file-upload-time-calculator",
+        "coverage_state": "URL is unknown to Google",
+        "verdict": "NEUTRAL",
+        "indexing_state": "INDEXING_STATE_UNSPECIFIED",
+        "last_crawl": null,
+        "google_canonical": null,
+        "referring_urls": [],
+        "sitemaps": [],
+        "is_new_v2": false
+      },
+      {
+        "url": "https://calcengine.site/calculators/firmware-risk-score-calculator",
+        "coverage_state": "URL is unknown to Google",
+        "verdict": "NEUTRAL",
+        "indexing_state": "INDEXING_STATE_UNSPECIFIED",
+        "last_crawl": null,
+        "google_canonical": null,
+        "referring_urls": [],
+        "sitemaps": [],
+        "is_new_v2": false
+      },
+      {
+        "url": "https://calcengine.site/calculators/food-cost-calculator",
+        "coverage_state": "URL is unknown to Google",
+        "verdict": "NEUTRAL",
+        "indexing_state": "INDEXING_STATE_UNSPECIFIED",
+        "last_crawl": null,
+        "google_canonical": null,
+        "referring_urls": [],
+        "sitemaps": [],
+        "is_new_v2": true
+      },
+      {
+        "url": "https://calcengine.site/calculators/freshness-markers",
+        "coverage_state": "URL is unknown to Google",
+        "verdict": "NEUTRAL",
+        "indexing_state": "INDEXING_STATE_UNSPECIFIED",
+        "last_crawl": null,
+        "google_canonical": null,
+        "referring_urls": [],
+        "sitemaps": [],
+        "is_new_v2": false
+      },
+      {
+        "url": "https://calcengine.site/calculators/general",
+        "coverage_state": "URL is unknown to Google",
+        "verdict": "NEUTRAL",
+        "indexing_state": "INDEXING_STATE_UNSPECIFIED",
+        "last_crawl": null,
+        "google_canonical": null,
+        "referring_urls": [],
+        "sitemaps": [],
+        "is_new_v2": false
+      },
+      {
+        "url": "https://calcengine.site/calculators/hash-collision-probability-calculator",
+        "coverage_state": "URL is unknown to Google",
+        "verdict": "NEUTRAL",
+        "indexing_state": "INDEXING_STATE_UNSPECIFIED",
+        "last_crawl": null,
+        "google_canonical": null,
+        "referring_urls": [],
+        "sitemaps": [],
+        "is_new_v2": false
+      },
+      {
+        "url": "https://calcengine.site/calculators/http-request-size-calculator",
+        "coverage_state": "URL is unknown to Google",
+        "verdict": "NEUTRAL",
+        "indexing_state": "INDEXING_STATE_UNSPECIFIED",
+        "last_crawl": null,
+        "google_canonical": null,
+        "referring_urls": [],
+        "sitemaps": [],
+        "is_new_v2": false
+      },
+      {
+        "url": "https://calcengine.site/calculators/index-size-calculator",
+        "coverage_state": "URL is unknown to Google",
+        "verdict": "NEUTRAL",
+        "indexing_state": "INDEXING_STATE_UNSPECIFIED",
+        "last_crawl": null,
+        "google_canonical": null,
+        "referring_urls": [],
+        "sitemaps": [],
+        "is_new_v2": false
+      },
+      {
+        "url": "https://calcengine.site/calculators/json-size-calculator",
+        "coverage_state": "URL is unknown to Google",
+        "verdict": "NEUTRAL",
+        "indexing_state": "INDEXING_STATE_UNSPECIFIED",
+        "last_crawl": null,
+        "google_canonical": null,
+        "referring_urls": [],
+        "sitemaps": [],
+        "is_new_v2": false
+      },
+      {
+        "url": "https://calcengine.site/calculators/kubernetes-resource-calculator",
+        "coverage_state": "URL is unknown to Google",
+        "verdict": "NEUTRAL",
+        "indexing_state": "INDEXING_STATE_UNSPECIFIED",
+        "last_crawl": null,
+        "google_canonical": null,
+        "referring_urls": [],
+        "sitemaps": [],
+        "is_new_v2": false
+      },
+      {
+        "url": "https://calcengine.site/calculators/lambda-cost-calculator",
+        "coverage_state": "URL is unknown to Google",
+        "verdict": "NEUTRAL",
+        "indexing_state": "INDEXING_STATE_UNSPECIFIED",
+        "last_crawl": null,
+        "google_canonical": null,
+        "referring_urls": [],
+        "sitemaps": [],
+        "is_new_v2": false
+      },
+      {
+        "url": "https://calcengine.site/calculators/latency-budget-calculator",
+        "coverage_state": "URL is unknown to Google",
+        "verdict": "NEUTRAL",
+        "indexing_state": "INDEXING_STATE_UNSPECIFIED",
+        "last_crawl": null,
+        "google_canonical": null,
+        "referring_urls": [],
+        "sitemaps": [],
+        "is_new_v2": false
+      },
+      {
+        "url": "https://calcengine.site/calculators/leaky-bucket-rate-calculator",
+        "coverage_state": "URL is unknown to Google",
+        "verdict": "NEUTRAL",
+        "indexing_state": "INDEXING_STATE_UNSPECIFIED",
+        "last_crawl": null,
+        "google_canonical": null,
+        "referring_urls": [],
+        "sitemaps": [],
+        "is_new_v2": false
+      },
+      {
+        "url": "https://calcengine.site/calculators/littles-law-calculator",
+        "coverage_state": "URL is unknown to Google",
+        "verdict": "NEUTRAL",
+        "indexing_state": "INDEXING_STATE_UNSPECIFIED",
+        "last_crawl": null,
+        "google_canonical": null,
+        "referring_urls": [],
+        "sitemaps": [],
+        "is_new_v2": false
+      },
+      {
+        "url": "https://calcengine.site/calculators/log-storage-cost-calculator",
+        "coverage_state": "URL is unknown to Google",
+        "verdict": "NEUTRAL",
+        "indexing_state": "INDEXING_STATE_UNSPECIFIED",
+        "last_crawl": null,
+        "google_canonical": null,
+        "referring_urls": [],
+        "sitemaps": [],
+        "is_new_v2": false
+      },
+      {
+        "url": "https://calcengine.site/calculators/markup-calculator",
+        "coverage_state": "URL is unknown to Google",
+        "verdict": "NEUTRAL",
+        "indexing_state": "INDEXING_STATE_UNSPECIFIED",
+        "last_crawl": null,
+        "google_canonical": null,
+        "referring_urls": [],
+        "sitemaps": [],
+        "is_new_v2": true
+      },
+      {
+        "url": "https://calcengine.site/calculators/memory-usage-calculator",
+        "coverage_state": "URL is unknown to Google",
+        "verdict": "NEUTRAL",
+        "indexing_state": "INDEXING_STATE_UNSPECIFIED",
+        "last_crawl": null,
+        "google_canonical": null,
+        "referring_urls": [],
+        "sitemaps": [],
+        "is_new_v2": false
+      },
+      {
+        "url": "https://calcengine.site/calculators/message-queue-delay-calculator",
+        "coverage_state": "URL is unknown to Google",
+        "verdict": "NEUTRAL",
+        "indexing_state": "INDEXING_STATE_UNSPECIFIED",
+        "last_crawl": null,
+        "google_canonical": null,
+        "referring_urls": [],
+        "sitemaps": [],
+        "is_new_v2": false
+      },
+      {
+        "url": "https://calcengine.site/calculators/openai-cost-calculator",
+        "coverage_state": "URL is unknown to Google",
+        "verdict": "NEUTRAL",
+        "indexing_state": "INDEXING_STATE_UNSPECIFIED",
+        "last_crawl": null,
+        "google_canonical": null,
+        "referring_urls": [],
+        "sitemaps": [],
+        "is_new_v2": false
+      },
+      {
+        "url": "https://calcengine.site/calculators/ota-compliance-checker",
+        "coverage_state": "URL is unknown to Google",
+        "verdict": "NEUTRAL",
+        "indexing_state": "INDEXING_STATE_UNSPECIFIED",
+        "last_crawl": null,
+        "google_canonical": null,
+        "referring_urls": [],
+        "sitemaps": [],
+        "is_new_v2": false
+      },
+      {
+        "url": "https://calcengine.site/calculators/pagination-performance-calculator",
+        "coverage_state": "URL is unknown to Google",
+        "verdict": "NEUTRAL",
+        "indexing_state": "INDEXING_STATE_UNSPECIFIED",
+        "last_crawl": null,
+        "google_canonical": null,
+        "referring_urls": [],
+        "sitemaps": [],
+        "is_new_v2": false
+      },
+      {
+        "url": "https://calcengine.site/calculators/patch-sla-calculator",
+        "coverage_state": "URL is unknown to Google",
+        "verdict": "NEUTRAL",
+        "indexing_state": "INDEXING_STATE_UNSPECIFIED",
+        "last_crawl": null,
+        "google_canonical": null,
+        "referring_urls": [],
+        "sitemaps": [],
+        "is_new_v2": false
+      },
+      {
+        "url": "https://calcengine.site/calculators/payload-size-calculator",
+        "coverage_state": "URL is unknown to Google",
+        "verdict": "NEUTRAL",
+        "indexing_state": "INDEXING_STATE_UNSPECIFIED",
+        "last_crawl": null,
+        "google_canonical": null,
+        "referring_urls": [],
+        "sitemaps": [],
+        "is_new_v2": false
+      },
+      {
+        "url": "https://calcengine.site/calculators/paypal-fee-calculator",
+        "coverage_state": "URL is unknown to Google",
+        "verdict": "NEUTRAL",
+        "indexing_state": "INDEXING_STATE_UNSPECIFIED",
+        "last_crawl": null,
+        "google_canonical": null,
+        "referring_urls": [],
+        "sitemaps": [],
+        "is_new_v2": true
+      },
+      {
+        "url": "https://calcengine.site/calculators/performance",
+        "coverage_state": "URL is unknown to Google",
+        "verdict": "NEUTRAL",
+        "indexing_state": "INDEXING_STATE_UNSPECIFIED",
+        "last_crawl": null,
+        "google_canonical": null,
+        "referring_urls": [],
+        "sitemaps": [],
+        "is_new_v2": false
+      },
+      {
+        "url": "https://calcengine.site/calculators/pod-capacity-calculator",
+        "coverage_state": "URL is unknown to Google",
+        "verdict": "NEUTRAL",
+        "indexing_state": "INDEXING_STATE_UNSPECIFIED",
+        "last_crawl": null,
+        "google_canonical": null,
+        "referring_urls": [],
+        "sitemaps": [],
+        "is_new_v2": false
+      },
+      {
+        "url": "https://calcengine.site/calculators/qps-calculator",
+        "coverage_state": "URL is unknown to Google",
+        "verdict": "NEUTRAL",
+        "indexing_state": "INDEXING_STATE_UNSPECIFIED",
+        "last_crawl": null,
+        "google_canonical": null,
+        "referring_urls": [],
+        "sitemaps": [],
+        "is_new_v2": false
+      },
+      {
+        "url": "https://calcengine.site/calculators/raid-capacity-calculator",
+        "coverage_state": "URL is unknown to Google",
+        "verdict": "NEUTRAL",
+        "indexing_state": "INDEXING_STATE_UNSPECIFIED",
+        "last_crawl": null,
+        "google_canonical": null,
+        "referring_urls": [],
+        "sitemaps": [],
+        "is_new_v2": false
+      },
+      {
+        "url": "https://calcengine.site/calculators/regex-performance-calculator",
+        "coverage_state": "URL is unknown to Google",
+        "verdict": "NEUTRAL",
+        "indexing_state": "INDEXING_STATE_UNSPECIFIED",
+        "last_crawl": null,
+        "google_canonical": null,
+        "referring_urls": [],
+        "sitemaps": [],
+        "is_new_v2": false
+      },
+      {
+        "url": "https://calcengine.site/calculators/retry-backoff-calculator",
+        "coverage_state": "URL is unknown to Google",
+        "verdict": "NEUTRAL",
+        "indexing_state": "INDEXING_STATE_UNSPECIFIED",
+        "last_crawl": null,
+        "google_canonical": null,
+        "referring_urls": [],
+        "sitemaps": [],
+        "is_new_v2": false
+      },
+      {
+        "url": "https://calcengine.site/calculators/sbom-coverage-calculator",
+        "coverage_state": "URL is unknown to Google",
+        "verdict": "NEUTRAL",
+        "indexing_state": "INDEXING_STATE_UNSPECIFIED",
+        "last_crawl": null,
+        "google_canonical": null,
+        "referring_urls": [],
+        "sitemaps": [],
+        "is_new_v2": false
+      },
+      {
+        "url": "https://calcengine.site/calculators/session-size-calculator",
+        "coverage_state": "URL is unknown to Google",
+        "verdict": "NEUTRAL",
+        "indexing_state": "INDEXING_STATE_UNSPECIFIED",
+        "last_crawl": null,
+        "google_canonical": null,
+        "referring_urls": [],
+        "sitemaps": [],
+        "is_new_v2": false
+      },
+      {
+        "url": "https://calcengine.site/calculators/sql-query-cost-estimator",
+        "coverage_state": "URL is unknown to Google",
+        "verdict": "NEUTRAL",
+        "indexing_state": "INDEXING_STATE_UNSPECIFIED",
+        "last_crawl": null,
+        "google_canonical": null,
+        "referring_urls": [],
+        "sitemaps": [],
+        "is_new_v2": false
+      },
+      {
+        "url": "https://calcengine.site/calculators/storage-cost-calculator",
+        "coverage_state": "URL is unknown to Google",
+        "verdict": "NEUTRAL",
+        "indexing_state": "INDEXING_STATE_UNSPECIFIED",
+        "last_crawl": null,
+        "google_canonical": null,
+        "referring_urls": [],
+        "sitemaps": [],
+        "is_new_v2": false
+      },
+      {
+        "url": "https://calcengine.site/calculators/stripe-fee-calculator",
+        "coverage_state": "URL is unknown to Google",
+        "verdict": "NEUTRAL",
+        "indexing_state": "INDEXING_STATE_UNSPECIFIED",
+        "last_crawl": null,
+        "google_canonical": null,
+        "referring_urls": [],
+        "sitemaps": [],
+        "is_new_v2": true
+      },
+      {
+        "url": "https://calcengine.site/calculators/thread-pool-size-calculator",
+        "coverage_state": "URL is unknown to Google",
+        "verdict": "NEUTRAL",
+        "indexing_state": "INDEXING_STATE_UNSPECIFIED",
+        "last_crawl": null,
+        "google_canonical": null,
+        "referring_urls": [],
+        "sitemaps": [],
+        "is_new_v2": false
+      },
+      {
+        "url": "https://calcengine.site/calculators/throughput-calculator",
+        "coverage_state": "URL is unknown to Google",
+        "verdict": "NEUTRAL",
+        "indexing_state": "INDEXING_STATE_UNSPECIFIED",
+        "last_crawl": null,
+        "google_canonical": null,
+        "referring_urls": [],
+        "sitemaps": [],
+        "is_new_v2": false
+      },
+      {
+        "url": "https://calcengine.site/calculators/timeout-calculator",
+        "coverage_state": "URL is unknown to Google",
+        "verdict": "NEUTRAL",
+        "indexing_state": "INDEXING_STATE_UNSPECIFIED",
+        "last_crawl": null,
+        "google_canonical": null,
+        "referring_urls": [],
+        "sitemaps": [],
+        "is_new_v2": false
+      },
+      {
+        "url": "https://calcengine.site/calculators/tls-handshake-time-estimator",
+        "coverage_state": "URL is unknown to Google",
+        "verdict": "NEUTRAL",
+        "indexing_state": "INDEXING_STATE_UNSPECIFIED",
+        "last_crawl": null,
+        "google_canonical": null,
+        "referring_urls": [],
+        "sitemaps": [],
+        "is_new_v2": false
+      },
+      {
+        "url": "https://calcengine.site/calculators/token-bucket-rate-limit-calculator",
+        "coverage_state": "URL is unknown to Google",
+        "verdict": "NEUTRAL",
+        "indexing_state": "INDEXING_STATE_UNSPECIFIED",
+        "last_crawl": null,
+        "google_canonical": null,
+        "referring_urls": [],
+        "sitemaps": [],
+        "is_new_v2": false
+      },
+      {
+        "url": "https://calcengine.site/calculators/vulnerability-response-time-calculator",
+        "coverage_state": "URL is unknown to Google",
+        "verdict": "NEUTRAL",
+        "indexing_state": "INDEXING_STATE_UNSPECIFIED",
+        "last_crawl": null,
+        "google_canonical": null,
+        "referring_urls": [],
+        "sitemaps": [],
+        "is_new_v2": false
+      },
+      {
+        "url": "https://calcengine.site/calculators/weighted-average-calculator",
+        "coverage_state": "URL is unknown to Google",
+        "verdict": "NEUTRAL",
+        "indexing_state": "INDEXING_STATE_UNSPECIFIED",
+        "last_crawl": null,
+        "google_canonical": null,
+        "referring_urls": [],
+        "sitemaps": [],
+        "is_new_v2": true
+      },
+      {
+        "url": "https://calcengine.site/calculators/wire-size-calculator",
+        "coverage_state": "URL is unknown to Google",
+        "verdict": "NEUTRAL",
+        "indexing_state": "INDEXING_STATE_UNSPECIFIED",
+        "last_crawl": null,
+        "google_canonical": null,
+        "referring_urls": [],
+        "sitemaps": [],
+        "is_new_v2": true
+      },
+      {
+        "url": "https://calcengine.site/calculators/worker-queue-throughput-calculator",
+        "coverage_state": "URL is unknown to Google",
+        "verdict": "NEUTRAL",
+        "indexing_state": "INDEXING_STATE_UNSPECIFIED",
+        "last_crawl": null,
+        "google_canonical": null,
+        "referring_urls": [],
+        "sitemaps": [],
+        "is_new_v2": false
+      },
+      {
+        "url": "https://calcengine.site/privacy",
+        "coverage_state": "URL is unknown to Google",
+        "verdict": "NEUTRAL",
+        "indexing_state": "INDEXING_STATE_UNSPECIFIED",
+        "last_crawl": null,
+        "google_canonical": null,
+        "referring_urls": [],
+        "sitemaps": [],
+        "is_new_v2": false
+      },
+      {
+        "url": "https://calcengine.site/terms",
+        "coverage_state": "URL is unknown to Google",
+        "verdict": "NEUTRAL",
+        "indexing_state": "INDEXING_STATE_UNSPECIFIED",
+        "last_crawl": null,
+        "google_canonical": null,
+        "referring_urls": [],
+        "sitemaps": [],
+        "is_new_v2": false
+      }
+    ]
+  }
+}

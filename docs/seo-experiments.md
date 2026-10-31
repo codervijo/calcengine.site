@@ -140,7 +140,7 @@ before it can tell us anything about demand (see its preconditions).
 ## Experiment 1 — Demand-First Broad Calculator Pivot (ACTIVE from 2026-10-05)
 
 **Start date:** 2026-10-05.
-**PRD scope:** v2 (v2.A–v2.F).
+**PRD scope:** v2 (v2.A–v2.G).
 **Baseline:** `seo/snapshots/2026-10-05.json`, captured *before* any v2
 change was deployed.
 
@@ -338,3 +338,140 @@ Open items carried forward:
 2. **Day 30 — 2026-11-04:** baseline comparison.
 3. **Day 60 — 2026-12-04 / Day 90 — 2027-01-03:** SCALE / ITERATE / STOP.
 4. Etsy: confirm live rates → re-register → separate day 0.
+
+#### 2026-10-31 — day 14 checkpoint (captured late, day 26)
+
+Due 2026-10-19; missed, captured 2026-10-31. Source: **GSC API**, full
+URL Inspection on all 81 live sitemap URLs.
+
+- Snapshot: `seo/snapshots/2026-10-31.json`
+- Git SHA at capture: `0248f97f88f1ced059aa635c6e4c524ebc71582d` (no code
+  change since the v2 deploy `1da5617`; later commits are docs only)
+- Live sitemap: 81 URLs; all 12 new v2 URLs present
+- **Precondition 1 — sitemap re-fetched: PASS.** GSC `lastDownloaded`
+  2026-10-26T18:39Z (was 2026-06-19). The homepage was crawled the same
+  day (2026-10-26T23:22Z).
+- **Precondition 2 — new URLs discovered: FAIL.** URL Inspection:
+
+  | Scope | Indexed | URL is unknown to Google |
+  |---|---:|---:|
+  | Whole site (81) | 1 (homepage) | 80 |
+  | New v2 URLs (9 calculators + 3 hubs) | 0 | 12 |
+
+- GSC 28d (2026-10-01 → 2026-10-28): 9 impressions, 0 clicks, avg
+  position 28.3. Prior 28d (2026-09-03 → 2026-09-30): 14 impressions,
+  0 clicks, pos 20.2. (These windows differ from the baseline's
+  2026-09-05 → 10-02 = 12; do not diff them directly.)
+- Pages since deploy (2026-10-05 → 10-28): only `/` (5 impressions).
+  No new URL has an impression. Only query reported:
+  `api calc` → `/` (3 impressions, pos 79.7); the rest are anonymized.
+- External signal (Ahrefs, 2026-10-31): Domain Rating **1.4**.
+
+**Verdict: discovery still broken.** Not "demand failed". Per the
+preconditions rule, Experiment 1 cannot be judged yet. Google read the
+sitemap and crawled the homepage, but five days later it had not
+discovered any sitemap URL, including the pages the homepage links to.
+
+Post-mortem reading (hypotheses, not diagnosed):
+
+1. **Crawl priority / no external links** (DR 1.4). Google fetches
+   the sitemap and the homepage but has never put a deeper URL in its
+   crawl queue over ~6.5 months. **Weakened the same day:** the v2.F
+   SERP checks below found DR 0 sites on page 1 for several calculator
+   queries, so low authority alone does not explain it. Still
+   unexplained. Remaining hypotheses (none tested): domain/TLD-level
+   reputation (`.site`), a site-level quality classification after the
+   58-page templated batch in 2026-04, or normal lag after the
+   2026-10-26 sitemap fetch. Homepage links are plain `<a href>` in
+   server HTML (16 `/calculators/*` links), no noindex anywhere, and a
+   Googlebot user agent gets 200.
+2. **Pages built ahead of indexing.** 106 of 126 commits landed in
+   2026-04; indexing was first measured 2026-10-05. Adding more pages
+   could not help while discovery was broken.
+3. **Experiment 0 demand** was also near zero (Ahrefs, above), so v1
+   would not have produced traffic even if indexed.
+4. **The sitemap went unread 2026-06-19 → 2026-10-26.** Possibly linked
+   to the www → apex move (2026-06-12); unproven.
+5. **No promotion or backlink work** was ever done (the "Promotion
+   Agent" in `AI_AGENTS.md` never ran).
+6. Five days between sitemap fetch and inspection may still be normal
+   lag. Day 30 (2026-11-04) shows whether the URLs move to Discovered.
+
+Live-site technical checks (2026-10-31) found no blocker: www/http 308
+→ apex, robots.txt allows `/`, valid sitemap index, self-canonicals,
+JSON-LD present, about 1,100 words of server-rendered HTML on
+`/calculators/markup-calculator`.
+
+Tooling note: `portfolio project check` reported missing `og:image` /
+JSON-LD / short meta description on the homepage; all are present
+live (stale check). `portfolio project seo` labels the site "🟢 healthy
+— earning traffic" at 9 impressions / 0 clicks. Both are misleading for
+this site.
+
+Next: Day 30 on 2026-11-04. If the URLs are still unknown, fix
+discovery before restarting the experiment clock.
+
+### Keyword research — PRD v2.F (2026-10-31)
+
+Research only. Nothing here gets built until discovery is fixed and v2.G
+returns SCALE. Source: **treg**, captured 2026-10-31 (call IDs below). Cost
+about $1.13 in total.
+
+Method:
+
+1. Serpstat phrase-match on `calculator`, US (calls `df4ab680…`,
+   `36a1b57a…`). Rejected: volumes are bucketed and padded with
+   misspellings, and its difficulty scores are not credible ("mortgage
+   calculator" = 2).
+2. DataForSEO Labs keyword suggestions for `calculator`, US, volume
+   1,000–30,000, KD ≤ 20, synonyms collapsed (call `47b11ed8…`):
+   6,894 matches; the top 1,000 were clustered by intent and curated.
+3. Google SERP top 10 for 8 candidates (treg routed SERP, crawl4ai),
+   with Ahrefs free DR for the small sites that rank.
+
+Caveats on the numbers:
+
+- DataForSEO gives every synonym in a cluster the same volume (e.g.
+  `asphalt` and `bitumen calculator` are both 27,100). Treat it as one
+  intent's volume and never sum across variants.
+- KD is backlink-based. It does not account for Google's own inline
+  calculator, AI Overviews, or the discovery problem above.
+- Sanity check vs the operator's Ahrefs figures: markup 18,100 / KD 4
+  (Ahrefs 17,000 / 6), weighted average 9,900 / KD 2–6 (Ahrefs
+  10,000 / 0). Consistent.
+
+Shortlist (volume = DataForSEO US monthly; KD = DataForSEO):
+
+| Keyword | Vol | KD | Vertical | SERP (2026-10-31) |
+|---|---:|---:|---|---|
+| asphalt calculator | 27,100 | 0 | Construction | Paving firms, Omni #7, shiftflow.app (DR 36) #10 |
+| topsoil calculator | 18,100 | 0 | Construction | Small sites on p1: topsoilcalconline.com (DR 9), everydaybudd.com (DR 5), lotsite.ai (DR 12) |
+| cinder block calculator | 9,900 | 0 | Construction | P1 mostly tool sites at DR 0–17 (xtraw.com 0, cinderblockcalculator.net 0, lumabasket.com 0) |
+| stair stringer calculator | 12,100 | 11 | Construction | SERP fetch returned 1 row; re-check |
+| conduit fill calculator | 18,100 | 4 | Electrical | Manufacturers (Southwire, Encore) + conduit-fill-calculator.com (DR 23). Needs NEC Chapter 9 tables; accuracy and licensing check first |
+| gross profit margin calculator | 12,100 | 11 | Business & Seller | SaaS tool pages; jampos.app (DR 0) #8. Pairs with Markup |
+| prorated rent calculator | 18,100 | 2 | Business & Seller | Landlord SaaS; rentreport.io (DR 0) #9 |
+| freight class calculator | 14,800 | 0 | Business & Seller | Logistics firms + loadoptimizer.ai (DR 10) |
+
+Unchecked candidates (volume / KD; SERP not yet inspected):
+
+- Construction: drywall 14,800 / 15 · pool volume 22,200 / 0–7 ·
+  sand 9,900 / 0 · sod 9,900 / 2 · paver 9,900 / 12 · recessed lighting
+  8,100 / 0 · deck 12,100 / 0–12 · tile 12,100 / 7 · fence 9,900 / 0
+  (deck, tile and fence were already on the deferred Ahrefs list).
+- Electrical: volt amps 27,100 / 5. Overlaps the Amp calculator; may
+  be a variant of it, not a new page.
+- Math (the hub needs one more page): decimal to fraction 27,100 / 0 ·
+  long division 27,100 / 13 · system of equations 27,100 / 4–9 ·
+  mean / median 22,200 / 2–5. Likely competing with Google's inline
+  calculator, Symbolab and Mathway; SERP check first.
+
+Excluded on purpose: state paycheck and tax calculators (YMYL, tax tables
+per state), medical dosing and clinical scores (YMYL), brand or product
+queries (TI-84, Ramsey, NFCU, USAA), game calculators, and plain unit
+conversions (assumed answered inline by Google; not checked).
+
+Observation: these soft SERPs are crowded with recently built tool sites
+on `.ai` / `.app` / `.co` domains, some at DR 0, and they rank. That
+supports the demand thesis, and it makes calcengine's 0-of-80
+discovery more anomalous (see Day 14 hypothesis 1).
