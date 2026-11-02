@@ -12,6 +12,29 @@ const ORG = {
   },
 } as const;
 
+const ENTITIES: Record<string, string> = {
+  '&lt;': '<',
+  '&gt;': '>',
+  '&quot;': '"',
+  '&#39;': "'",
+  '&nbsp;': ' ',
+  '&amp;': '&', // last, so "&amp;lt;" decodes to "&lt;", not "<"
+};
+
+/**
+ * FAQ answers are authored as HTML (links, <code>) for the visible page.
+ * Schema answer text must be the same words without markup: Google only
+ * allows a few tags there (<code> isn't one), and the answer must match
+ * what's visible on the page.
+ */
+export function htmlToPlainText(html: string): string {
+  let text = html.replace(/<[^>]*>/g, '');
+  for (const [entity, char] of Object.entries(ENTITIES)) {
+    text = text.split(entity).join(char);
+  }
+  return text.replace(/\s+/g, ' ').trim();
+}
+
 export function buildFaqJsonLd(faq: { question: string; answer: string }[]) {
   return {
     '@context': 'https://schema.org',
@@ -19,7 +42,7 @@ export function buildFaqJsonLd(faq: { question: string; answer: string }[]) {
     mainEntity: faq.map((item) => ({
       '@type': 'Question',
       name: item.question,
-      acceptedAnswer: { '@type': 'Answer', text: item.answer },
+      acceptedAnswer: { '@type': 'Answer', text: htmlToPlainText(item.answer) },
     })),
   };
 }
