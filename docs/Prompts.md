@@ -167,3 +167,33 @@ Session outcome: PRD v2.A–v2.E shipped (commits `1da5617`, `fb36022`);
   60 / 90).
 - "resubmit using lamill tool" → `lamill settings gsc submit-sitemap --site
   calcengine.site --force`.
+
+## 2026-10-31 → 2026-11-02 — Day-14 post-mortem, keyword research, maintenance
+
+Session outcome: day-14 checkpoint recorded (`0ac5a78`); PRD v2.F keyword
+research (research only, no build); IndexNow submission (`2aa05dc`);
+lovable-tagger removed (`eb6686f`); Astro 4 → 5 (`e2f65d2`); plain-text FAQ
+JSON-LD for CHECK_095 (`1733a64`); growth log updated.
+
+### Operator prompts (condensed)
+
+- "this seems to be a dead project. why? do a post mortem" → v1 failed on
+  demand (~0–30 SV); discovery broken (80/81 URLs unknown to Google).
+- "can we double down on pages with demand? use tregs skills to find such
+  keywords" → PRD slot: research only, now (v2.F). DataForSEO Labs via treg;
+  Serpstat rejected (bucketed volumes).
+- "add new found tools to PRD first" → candidate backlog in `docs/prd.md` v2.F.
+- Growth log: DR-0 sites rank on page 1; operator hypothesis "v1 was done
+  without checking SV, and that might be reason for low impressions".
+- "submit sitemap urls to indexnow"; then "ignore bing" (no Bing baselines).
+- "remove lovable-tagger", "upgrade astro to v5",
+  "fix the FAQ answers missing from HTML".
+
+### Open at session close
+
+- Day 30 checkpoint **2026-11-04**: new GSC snapshot → `seo/snapshots/`,
+  update `docs/seo-experiments.md`, `docs/growth.md`, PRD v2.G row.
+- v2.F: SERP-check the 12 unchecked candidates.
+- CHECK_095's last 3 failures are a checker bug in
+  `portfolio/src/portfolio/checks/seo/check_095_live_faq_answers_in_html.py`
+  (space before punctuation after `</code>`); not fixed (separate repo).

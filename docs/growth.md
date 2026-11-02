@@ -94,5 +94,17 @@ https://search.google.com/search-console directly.
 - **KPI:** Bing discovery/indexing of calcengine.site URLs (Bing Webmaster Tools). Not a Google KPI: Google does not consume IndexNow.
 - **Baseline:** not captured. No Bing Webmaster data has been pulled for this site yet. Google: 1/81 indexed (see the day-14 entry above).
 - **Action:** `lamill project fix calcengine.site --rule CHECK_154 --apply` submitted 14 sitemap URLs that CHECK_154 flagged as never submitted (the tool didn't print which ones). Key file `/cf72530eed2cae85a7c3215d92affcbf.txt` verified live and matching before submission. CHECK_154 now passes.
-- **Result:** TBD — review 2026-11-28. Needs a Bing baseline first; without one, any Bing number is uninterpretable.
+- **Result:** moot — operator dropped Bing on 2026-10-31 ("ignore bing"); no baseline will be pulled and the 2026-11-28 review is cancelled.
 - **Learning:** TBD. Side benefit if it works: Bing indexing a page Google ignores would point to a Google-specific cause (site-level classification) rather than a technical one.
+
+## 2026-11-02 — site changes during Experiment 1: Astro 5 upgrade + plain-text FAQ schema
+- **Status:** active
+- **KPI:** same as Experiment 1 — URL Inspection state, indexed count, 28d impressions. Plus FAQ rich-result validity in GSC Enhancements once any page is indexed.
+- **Baseline:** day-14 entry above (1/81 indexed, 9 imp / 0 clicks 28d). Snapshot `seo/snapshots/2026-10-31.json`.
+- **Action:** logged so day-30/60 results can be read against them. None changes page copy, URLs, internal links or the sitemap URL set.
+  - `eb6686f` removed the unused lovable-tagger dev dependency (no output change).
+  - `e2f65d2` upgraded Astro 4 → 5.18.2 and @astrojs/sitemap 3.2.0 → 3.7.4. All 83 built HTML files were identical in SEO elements and visible text; the only output change is the homepage `<loc>` in the sitemap gaining a trailing slash (`https://calcengine.site/`). Deployed and checked live 2026-10-31.
+  - `1733a64` FAQ JSON-LD `acceptedAnswer.text` is now plain text (tags stripped, entities decoded). Before, it held raw HTML (45 `<a>`, 51 `<code>`), which doesn't match the visible text, and Google doesn't allow `<code>` there. Visible FAQ unchanged. Portfolio CHECK_095 on the local build: 13/318 answers missing → 3/318; the remaining 3 are a checker artifact (bs4 `get_text(" ")` adds a space before punctuation after `</code>`), not a page problem.
+- **Result:** TBD — read at day 30 (2026-11-04) together with the Experiment 1 capture. Not expected to move discovery: Google hasn't discovered 80/81 URLs, so it hasn't seen the old schema either.
+- **Learning:** TBD
+
