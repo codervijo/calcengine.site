@@ -14,7 +14,7 @@ const BASE_URL = 'https://calcengine.site';
 const canonicalUrl = canonical
   ? canonical.startsWith('http') ? canonical : canonical === '/' ? BASE_URL : `${BASE_URL}${canonical}`
   : BASE_URL;
-const GA_ID = import.meta.env.PUBLIC_GA_ID;
+const GA_ID = (import.meta.env.PUBLIC_GA_ID || "G-XD85CBYHDL");
 ---
 
 <!DOCTYPE html>
