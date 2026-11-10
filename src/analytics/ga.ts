@@ -13,8 +13,12 @@ export interface CalcEventParams {
 function pushEvent(eventName: string, params: Record<string, string>): void {
   const win = window as unknown as { dataLayer?: unknown[] };
   win.dataLayer = win.dataLayer ?? [];
-  // gtag-compatible: push as Arguments-like object (GA4 processes both formats)
-  win.dataLayer.push(['event', eventName, params]);
+  // gtag.js only processes `arguments` objects in dataLayer — a plain array
+  // is silently ignored — so queue the event the way gtag() itself does.
+  (function (..._args: unknown[]) {
+    // eslint-disable-next-line prefer-rest-params
+    win.dataLayer!.push(arguments);
+  })('event', eventName, params);
 
   if (import.meta.env.DEV) {
     console.log(`[GA] event: ${eventName}`, params);
